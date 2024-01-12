@@ -6,7 +6,13 @@ namespace _10.InvalidNumber
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int number = int.Parse(Console.ReadLine());
+
+            bool flag = (number >= 100 && number <= 200) || number == 0;
+            if (!flag)
+            {
+                Console.WriteLine("invalid");
+            }
         }
     }
 }
