@@ -51,7 +51,7 @@ namespace _05.Journey
             double price = budget * precentageAmountSpent;
 
             Console.WriteLine($"Somewhere in {destination}");
-            Console.WriteLine($"{rest} - {price}");
+            Console.WriteLine($"{rest} - {price:f2}");
         }
     }
 }

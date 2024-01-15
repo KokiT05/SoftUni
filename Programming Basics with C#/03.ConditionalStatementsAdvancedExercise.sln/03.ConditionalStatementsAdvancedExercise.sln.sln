@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Cinema", "01.Cinema\01.Cinema.csproj", "{B14042E6-9A97-4F9D-AD98-545A84F7579F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Cinema", "01.Cinema\01.Cinema.csproj", "{B14042E6-9A97-4F9D-AD98-545A84F7579F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.SummerOutfit", "02.SummerOutfit\02.SummerOutfit.csproj", "{FE1D45BB-EF5C-450B-BDCE-256F69345E3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.SummerOutfit", "02.SummerOutfit\02.SummerOutfit.csproj", "{FE1D45BB-EF5C-450B-BDCE-256F69345E3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.NewHouse", "03.NewHouse\03.NewHouse.csproj", "{FC0B314D-CA2E-413A-BBF1-646710BB8429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.NewHouse", "03.NewHouse\03.NewHouse.csproj", "{FC0B314D-CA2E-413A-BBF1-646710BB8429}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.FishingBoat", "04.FishingBoat\04.FishingBoat.csproj", "{B0B3EAF4-5892-438A-A2D8-6662020EA073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.FishingBoat", "04.FishingBoat\04.FishingBoat.csproj", "{B0B3EAF4-5892-438A-A2D8-6662020EA073}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.Journey", "05.Journey\05.Journey.csproj", "{769464BF-2EBD-4C9A-83AD-0A4326E379F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Journey", "05.Journey\05.Journey.csproj", "{769464BF-2EBD-4C9A-83AD-0A4326E379F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.OperationsBetweenNumbers", "06.OperationsBetweenNumbers\06.OperationsBetweenNumbers.csproj", "{E7A5534D-BAB6-43E2-A990-7E92046B62BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.HotelRoom", "07.HotelRoom\07.HotelRoom.csproj", "{80CDC34A-27DA-466A-9649-55F7394C0AFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.OnTimeForTheExam", "08.OnTimeForTheExam\08.OnTimeForTheExam.csproj", "{94533A7D-280B-4460-B4EE-09736A3456CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.SkiTrip", "09.SkiTrip\09.SkiTrip.csproj", "{A3E1A7FD-39D5-4A0B-8519-DCAF6DC731E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +47,22 @@ Global
 		{769464BF-2EBD-4C9A-83AD-0A4326E379F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769464BF-2EBD-4C9A-83AD-0A4326E379F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769464BF-2EBD-4C9A-83AD-0A4326E379F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A5534D-BAB6-43E2-A990-7E92046B62BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A5534D-BAB6-43E2-A990-7E92046B62BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A5534D-BAB6-43E2-A990-7E92046B62BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A5534D-BAB6-43E2-A990-7E92046B62BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CDC34A-27DA-466A-9649-55F7394C0AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CDC34A-27DA-466A-9649-55F7394C0AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CDC34A-27DA-466A-9649-55F7394C0AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CDC34A-27DA-466A-9649-55F7394C0AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94533A7D-280B-4460-B4EE-09736A3456CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94533A7D-280B-4460-B4EE-09736A3456CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94533A7D-280B-4460-B4EE-09736A3456CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94533A7D-280B-4460-B4EE-09736A3456CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E1A7FD-39D5-4A0B-8519-DCAF6DC731E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E1A7FD-39D5-4A0B-8519-DCAF6DC731E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E1A7FD-39D5-4A0B-8519-DCAF6DC731E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E1A7FD-39D5-4A0B-8519-DCAF6DC731E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
