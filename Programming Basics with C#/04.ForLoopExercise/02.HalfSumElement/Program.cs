@@ -1,39 +1,39 @@
 ﻿using System;
-using System.Security.Cryptography;
 
-namespace _10.OddEvenSum
+namespace _02.HalfSumElement
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int oddSumIndex = 0;
-            int evenSumIndex = 0;
+            int sum = 0;
             int number = 0;
+            int maxNumber = int.MinValue;
 
             int n = int.Parse(Console.ReadLine());
             for (int i = 1; i <= n; i++)
             {
                 number = int.Parse(Console.ReadLine());
-                if (i % 2 == 0)
+
+                sum += number;
+
+                if (number > maxNumber)
                 {
-                    evenSumIndex += number;
-                }
-                else
-                {
-                    oddSumIndex += number;
+                    maxNumber = number;
                 }
             }
 
-            if (oddSumIndex == evenSumIndex)
+            int sumWithoutMaxNumber = sum - maxNumber;
+            if (maxNumber == sumWithoutMaxNumber)
             {
                 Console.WriteLine("Yes");
-                Console.WriteLine($"Sum = {oddSumIndex}");
+                Console.WriteLine("Sum = " + maxNumber);
             }
             else
             {
+                int diff = Math.Abs(maxNumber - sumWithoutMaxNumber);
                 Console.WriteLine("No");
-                Console.WriteLine($"Diff = {Math.Abs(oddSumIndex - evenSumIndex)}");
+                Console.WriteLine($"Diff = {diff}");
             }
         }
     }
