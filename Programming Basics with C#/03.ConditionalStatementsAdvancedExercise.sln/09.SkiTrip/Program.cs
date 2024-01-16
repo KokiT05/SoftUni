@@ -21,7 +21,7 @@ namespace _09.SkiTrip
 
             if (typeOfRoom == "room for one person")
             {
-                price = roomForOnePerson * dayToStay;
+                price = roomForOnePerson * overnigthStay;
             }
             else if (typeOfRoom == "apartment" && dayToStay < 10 && dayToStay > 0)
             {
