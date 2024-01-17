@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.NumbersEndingIn7", "01.NumbersEndingIn7\01.NumbersEndingIn7.csproj", "{C033A70E-8F02-481B-A156-2E179BEAEF0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.NumbersEndingIn7", "01.NumbersEndingIn7\01.NumbersEndingIn7.csproj", "{C033A70E-8F02-481B-A156-2E179BEAEF0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.HalfSumElement", "02.HalfSumElement\02.HalfSumElement.csproj", "{30ED54ED-F560-476B-82E5-C22626D70305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.HalfSumElement", "02.HalfSumElement\02.HalfSumElement.csproj", "{30ED54ED-F560-476B-82E5-C22626D70305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Histogram", "03.Histogram\03.Histogram.csproj", "{4EB3AA02-9A14-4240-8CBC-060098B03331}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.CleverLily", "04.CleverLily\04.CleverLily.csproj", "{2773242E-D97F-4344-9E71-7730E91FD866}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{30ED54ED-F560-476B-82E5-C22626D70305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30ED54ED-F560-476B-82E5-C22626D70305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30ED54ED-F560-476B-82E5-C22626D70305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB3AA02-9A14-4240-8CBC-060098B03331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB3AA02-9A14-4240-8CBC-060098B03331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB3AA02-9A14-4240-8CBC-060098B03331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB3AA02-9A14-4240-8CBC-060098B03331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2773242E-D97F-4344-9E71-7730E91FD866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2773242E-D97F-4344-9E71-7730E91FD866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2773242E-D97F-4344-9E71-7730E91FD866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2773242E-D97F-4344-9E71-7730E91FD866}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
