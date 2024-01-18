@@ -17,7 +17,7 @@ namespace _06.Oscars
 
             totalPoints = totalPoints + academyPoints;
 
-            for (int i = 1; i < numberOfAssesors; i++)
+            for (int i = 1; i <= numberOfAssesors; i++)
             {
                 string appraiserName = Console.ReadLine();
                 double pointsFromEvaluator = double.Parse(Console.ReadLine());
@@ -27,13 +27,14 @@ namespace _06.Oscars
                 if (totalPoints > nomination)
                 {
                     flag = false;
-                    Console.WriteLine($"Congratulations, {actorName} got a nominee for leading role with {totalPoints:f1}");
+                    Console.WriteLine($"Congratulations, {actorName} got a nominee for leading role with {totalPoints:f1}!");
+                    break;
                 }
             }
 
-            if (!flag)
+            if (flag)
             {
-                Console.WriteLine($"Sorry, {actorName} you need {totalPoints - nomination} more!");
+                Console.WriteLine($"Sorry, {actorName} you need {Math.Abs(totalPoints - nomination):f1} more!");
             }
         }
     }
