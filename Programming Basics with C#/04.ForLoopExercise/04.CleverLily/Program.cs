@@ -37,7 +37,7 @@ namespace _04.CleverLily
             double result = Math.Abs(totalMoney - priceOfWashingMachine);
             if (totalMoney >= priceOfWashingMachine)
             {
-                Console.WriteLine($"Yes! {result:f2}");
+                Console.WriteLine($"Yes, {result:f2}");
             }
             else
             {

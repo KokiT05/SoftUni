@@ -11,6 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Histogram", "03.Histogra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.CleverLily", "04.CleverLily\04.CleverLily.csproj", "{2773242E-D97F-4344-9E71-7730E91FD866}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.Salary", "05.Salary\05.Salary.csproj", "{BDEAA828-BA7E-4F58-A0EE-739BFA13E8AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.Oscars", "06.Oscars\06.Oscars.csproj", "{E7D268F7-93ED-4FD7-A0D3-EEA35C68DEF7}"
@@ -19,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TrekkingMania", "07.Trek
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.TennisRanklist", "08.TennisRanklist\08.TennisRanklist.csproj", "{49FD3932-D4DD-4B53-86B5-96BF6B3DCC6D}"
 EndProject
+=======
+>>>>>>> 1233bfcd029f06e0d8a691ea920dffc388067ef9
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +44,7 @@ Global
 		{2773242E-D97F-4344-9E71-7730E91FD866}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2773242E-D97F-4344-9E71-7730E91FD866}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2773242E-D97F-4344-9E71-7730E91FD866}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{BDEAA828-BA7E-4F58-A0EE-739BFA13E8AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDEAA828-BA7E-4F58-A0EE-739BFA13E8AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDEAA828-BA7E-4F58-A0EE-739BFA13E8AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +61,8 @@ Global
 		{49FD3932-D4DD-4B53-86B5-96BF6B3DCC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49FD3932-D4DD-4B53-86B5-96BF6B3DCC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49FD3932-D4DD-4B53-86B5-96BF6B3DCC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> 1233bfcd029f06e0d8a691ea920dffc388067ef9
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
