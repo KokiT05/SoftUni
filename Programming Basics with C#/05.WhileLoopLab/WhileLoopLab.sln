@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ReadText", "01.ReadText\01.ReadText.csproj", "{2275DCAB-EC90-43C5-AED8-907498A8897B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.ReadText", "01.ReadText\01.ReadText.csproj", "{2275DCAB-EC90-43C5-AED8-907498A8897B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Password", "02.Password\02.Password.csproj", "{434959DC-603D-4820-90AC-F517F384E95F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Password", "02.Password\02.Password.csproj", "{434959DC-603D-4820-90AC-F517F384E95F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.SumNumbers", "03.SumNumbers\03.SumNumbers.csproj", "{53D7CC8E-D253-4B9D-BA1C-25BBADB6A6DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.SumNumbers", "03.SumNumbers\03.SumNumbers.csproj", "{53D7CC8E-D253-4B9D-BA1C-25BBADB6A6DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.Sequence2k+1", "04.Sequence2k+1\04.Sequence2k+1.csproj", "{7C33C4BC-A438-4127-8519-EF8F5FC40A9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Sequence2k+1", "04.Sequence2k+1\04.Sequence2k+1.csproj", "{7C33C4BC-A438-4127-8519-EF8F5FC40A9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.AccountBalance", "05.AccountBalance\05.AccountBalance.csproj", "{110C918A-9A36-4D13-A786-4470434F9EF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.AccountBalance", "05.AccountBalance\05.AccountBalance.csproj", "{110C918A-9A36-4D13-A786-4470434F9EF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.MaxNumber", "06.MaxNumber\06.MaxNumber.csproj", "{BC3FED35-8FC4-4C34-BB32-68F9898F684D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.MaxNumber", "06.MaxNumber\06.MaxNumber.csproj", "{BC3FED35-8FC4-4C34-BB32-68F9898F684D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.MinNumber", "07.MinNumber\07.MinNumber.csproj", "{53CF5113-B465-4193-9CBF-48C9B95E13B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.MinNumber", "07.MinNumber\07.MinNumber.csproj", "{53CF5113-B465-4193-9CBF-48C9B95E13B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.Graduation", "08.Graduation\08.Graduation.csproj", "{D99B0D7D-1609-41AB-8584-8599707B0227}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{53CF5113-B465-4193-9CBF-48C9B95E13B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53CF5113-B465-4193-9CBF-48C9B95E13B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53CF5113-B465-4193-9CBF-48C9B95E13B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99B0D7D-1609-41AB-8584-8599707B0227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99B0D7D-1609-41AB-8584-8599707B0227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99B0D7D-1609-41AB-8584-8599707B0227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99B0D7D-1609-41AB-8584-8599707B0227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
