@@ -15,7 +15,7 @@ namespace _08.Graduation
 
             string name = Console.ReadLine();
 
-            while (count < 12)
+            while (count <= 12)
             {
                 grade = double.Parse(Console.ReadLine());
 
@@ -37,9 +37,7 @@ namespace _08.Graduation
                 count++;
             }
 
-            averageGrade = allGrades / count;
-            Console.WriteLine(allGrades);
-            Console.WriteLine(count);
+            averageGrade = allGrades / (count - 1);
 
             if (banished)
             {
