@@ -20,7 +20,7 @@ namespace _03.Vacation
                 money = double.Parse(Console.ReadLine());
                 days += 1;
 
-                if (command == "saved")
+                if (command == "save")
                 {
                     moneyOnHand += money;
                     if (moneyOnHand >= moneyNeededForExcursion)
@@ -36,7 +36,7 @@ namespace _03.Vacation
                     if (daysInWhichSpitsMoney == 5)
                     {
                         Console.WriteLine("You can't save the money.");
-                        Console.WriteLine($"{daysInWhichSpitsMoney}");
+                        Console.WriteLine($"{days}");
                         break;
                     }
 
