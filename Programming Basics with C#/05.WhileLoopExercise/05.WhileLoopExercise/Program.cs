@@ -17,24 +17,29 @@ namespace _01.OldBooks
 
             while (currentBook != "no more books")
             {
-                countBook++;
 
                 if (currentBook == favoriteBook)
                 {
                     flag = true;
                     break;
                 }
+                else
+                {
+                    countBook++;
+                }
+
                 currentBook = Console.ReadLine();
+                currentBook = currentBook.ToLower();
             }
 
             if (flag)
             {
-                Console.WriteLine($"You checked {countBook} books and found it");
+                Console.WriteLine($"You checked {countBook} books and found it.");
             }
             else
             {
-                Console.WriteLine("The book you search is not here! ");
-                Console.WriteLine($"You checked {countBook} books. ");
+                Console.WriteLine("The book you search is not here!");
+                Console.WriteLine($"You checked {countBook} books.");
             }
         }
     }
