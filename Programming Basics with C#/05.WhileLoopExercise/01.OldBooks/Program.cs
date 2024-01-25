@@ -6,8 +6,8 @@ namespace _01.OldBooks
     {
         static void Main(string[] args)
         {
-            int countBook = 0;
-            bool flag = false;
+            int counter = 0;
+            bool isBookFound = false;
 
             string favoriteBook = Console.ReadLine();
             favoriteBook = favoriteBook.ToLower();
@@ -20,26 +20,26 @@ namespace _01.OldBooks
 
                 if (currentBook == favoriteBook)
                 {
-                    flag = true;
+                    isBookFound = true;
                     break;
                 }
                 else
                 {
-                    countBook++;
+                    counter++;
                 }
 
                 currentBook = Console.ReadLine();
                 currentBook = currentBook.ToLower();
             }
 
-            if (flag)
+            if (isBookFound)
             {
-                Console.WriteLine($"You checked {countBook} books and found it.");
+                Console.WriteLine($"You checked {counter} books and found it.");
             }
             else
             {
                 Console.WriteLine("The book you search is not here!");
-                Console.WriteLine($"You checked {countBook} books.");
+                Console.WriteLine($"You checked {counter} books.");
             }
         }
     }

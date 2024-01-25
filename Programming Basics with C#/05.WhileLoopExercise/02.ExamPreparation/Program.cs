@@ -8,9 +8,9 @@ namespace _02.ExamPreparation
         {
             string lastProblem = string.Empty;
             int countGrades = 1;
-            double allGrades = 0;
+            double gradeSum = 0;
             double averageGrades = 0;
-            bool flag = true;
+            bool isFailed = true;
             int countInsatisfactoryGrades = 0;
 
             int numberOfUnsatisfactoryGrades = int.Parse(Console.ReadLine());
@@ -26,12 +26,12 @@ namespace _02.ExamPreparation
 
                     if (countInsatisfactoryGrades == numberOfUnsatisfactoryGrades)
                     {
-                        flag = false;
+                        isFailed = false;
                         break;
                     }
                 }
 
-                allGrades += evaluation;
+                gradeSum += evaluation;
 
                 problem = Console.ReadLine();
 
@@ -47,9 +47,9 @@ namespace _02.ExamPreparation
                 countGrades++;
             }
 
-            averageGrades = allGrades / countGrades;
+            averageGrades = gradeSum / countGrades;
 
-            if (flag)
+            if (isFailed)
             {
                 Console.WriteLine($"Average score: {averageGrades:f2}");
                 Console.WriteLine($"Number of problems: {countGrades}");

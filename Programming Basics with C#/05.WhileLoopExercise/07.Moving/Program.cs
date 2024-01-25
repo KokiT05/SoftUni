@@ -22,7 +22,7 @@ namespace _07.Moving
             {
                 totalValueOfCartons += double.Parse(command);
 
-                if (totalValueOfCartons > volumeOfFreeSpace)
+                if (totalValueOfCartons >= volumeOfFreeSpace)
                 {
                     isSpaceAvailable = false;
                     break;
