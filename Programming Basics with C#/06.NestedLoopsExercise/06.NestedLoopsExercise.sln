@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.NumberPyramid", "01.Numb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.EqualSumsEvenOddPosition", "02.EqualSumsEvenOddPosition\02.EqualSumsEvenOddPosition.csproj", "{1E16BA9E-0B09-4978-AEBE-F03E3EA78031}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.SumPrimeNonPrime", "03.SumPrimeNonPrime\03.SumPrimeNonPrime.csproj", "{8F3BEB2B-FF37-4611-BD9A-E4C91046A16A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.TrainTheTrainers", "04.TrainTheTrainers\04.TrainTheTrainers.csproj", "{D27C54E3-E5BD-4220-9026-5E95FC8199F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{1E16BA9E-0B09-4978-AEBE-F03E3EA78031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E16BA9E-0B09-4978-AEBE-F03E3EA78031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E16BA9E-0B09-4978-AEBE-F03E3EA78031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3BEB2B-FF37-4611-BD9A-E4C91046A16A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3BEB2B-FF37-4611-BD9A-E4C91046A16A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3BEB2B-FF37-4611-BD9A-E4C91046A16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3BEB2B-FF37-4611-BD9A-E4C91046A16A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D27C54E3-E5BD-4220-9026-5E95FC8199F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27C54E3-E5BD-4220-9026-5E95FC8199F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27C54E3-E5BD-4220-9026-5E95FC8199F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27C54E3-E5BD-4220-9026-5E95FC8199F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,6 +19,7 @@
                 current = i;
                 sumEvenPosition = 0;
                 sumOddPosition = 0;
+
                 for (int j = 6; j > 0; j--)
                 {
                     unit = current % 10;
