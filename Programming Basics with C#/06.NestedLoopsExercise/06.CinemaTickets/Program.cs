@@ -57,21 +57,21 @@
                         totalStudentSeats++;
                         occupiedSeats++;
                     }
-
                     totalTickets++;
                 }
                 precentFilled = (occupiedSeats / freeSeats) * 100;
                 Console.WriteLine($"{moviName} - {precentFilled:f2}% full.");
+                moviName = Console.ReadLine();
             }
-            percentKidTickets = totalKidSeats / totalTickets;
-            percentStandardTickets = totalStandardSeats / totalTickets;
-            percentStudentTickets = totalStudentSeats / totalTickets;
+            percentKidTickets = (totalKidSeats / totalTickets) * 100;
+            percentStandardTickets = (totalStandardSeats / totalTickets) * 100;
+            percentStudentTickets = (totalStudentSeats / totalTickets) * 100;
 
 
             Console.WriteLine($"Total tickets: {totalTickets}");
-            Console.WriteLine($"{percentStudentTickets:f2} student tickets.");
-            Console.WriteLine($"{percentStandardTickets:f2} standard tickets.");
-            Console.WriteLine($"{percentKidTickets:f2} kid tickets.");
+            Console.WriteLine($"{percentStudentTickets:f2}% student tickets.");
+            Console.WriteLine($"{percentStandardTickets:f2}% standard tickets.");
+            Console.WriteLine($"{percentKidTickets:f2}% kids tickets.");
 
         }
     }
