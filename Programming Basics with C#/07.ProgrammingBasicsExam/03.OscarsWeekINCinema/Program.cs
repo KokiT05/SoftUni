@@ -76,7 +76,7 @@ namespace _03.OscarsWeekINCinema
 
             totalPrice = price * numberOfTicketsPurchased;
 
-            Console.WriteLine($"A Star Is Born -> {totalPrice:f2}");
+            Console.WriteLine($"{movieName} -> {totalPrice:f2} lv.");
         }
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.AddBags", "02.AddBags\02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.OscarsWeekINCinema", "03.OscarsWeekINCinema\03.OscarsWeekINCinema.csproj", "{F991966D-90C1-4793-84F4-84C4311818D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.Series", "05.Series\05.Series.csproj", "{6F1AC419-A755-40E1-817A-055E365690F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F991966D-90C1-4793-84F4-84C4311818D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F991966D-90C1-4793-84F4-84C4311818D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F991966D-90C1-4793-84F4-84C4311818D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1AC419-A755-40E1-817A-055E365690F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1AC419-A755-40E1-817A-055E365690F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1AC419-A755-40E1-817A-055E365690F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1AC419-A755-40E1-817A-055E365690F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
