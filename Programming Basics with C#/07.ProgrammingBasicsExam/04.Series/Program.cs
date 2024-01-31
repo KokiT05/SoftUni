@@ -22,7 +22,7 @@ namespace _04.Series
             double budget = double.Parse(Console.ReadLine());
             int numberOfSeries = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i <= numberOfSeries; i++)
+            for (int i = 1; i <= numberOfSeries; i++)
             {
                 name = Console.ReadLine();
                 price = double.Parse(Console.ReadLine());
@@ -53,7 +53,6 @@ namespace _04.Series
                 if (totalPrice > budget)
                 {
                     isEnough = false;
-                    break;
                 }
             }
 
