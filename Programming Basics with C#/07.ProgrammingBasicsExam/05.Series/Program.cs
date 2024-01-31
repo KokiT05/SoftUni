@@ -14,7 +14,7 @@ namespace _05.Series
             while (budgetActors > 0)
             {
                 string actorName = Console.ReadLine();
-
+                totalPriceForActor = 0;
                 if (actorName == "ACTION")
                 {
                     break;
@@ -35,11 +35,11 @@ namespace _05.Series
 
             if (budgetActors < 0)
             {
-                Console.WriteLine($"We need {budgetActors} leva for our actors.");
+                Console.WriteLine($"We need {Math.Abs(budgetActors):f2} leva for our actors.");
             }
             else
             {
-                Console.WriteLine($"We are left with {budgetActors} leva.");
+                Console.WriteLine($"We are left with {budgetActors:f2} leva.");
             }
         }
     }
