@@ -29,6 +29,7 @@ namespace _06.HighJump
                 }
                 else
                 {
+                    failedAttempts = 0;
                     currentHeight += 5;
                 }
 
