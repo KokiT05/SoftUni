@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ForeignLanguages", "06.F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TheatrePromotions", "07.TheatrePromotions\07.TheatrePromotions.csproj", "{FA0EBE5D-9E55-4793-AF9B-B6405AC61F5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.Divisible_By_3", "08.Divisible_By_3\08.Divisible_By_3.csproj", "{1BA83B22-C070-4327-9F2F-5EBEFB7760AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.Sum_Of_OddNumbers", "09.Sum_Of_OddNumbers\09.Sum_Of_OddNumbers.csproj", "{81B84E11-FD86-4043-AFEA-ABCADBBFCADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.MultiplicationTable", "10.MultiplicationTable\10.MultiplicationTable.csproj", "{FDDD760E-95BE-4F2D-A51A-DE597E1DA92C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +57,18 @@ Global
 		{FA0EBE5D-9E55-4793-AF9B-B6405AC61F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA0EBE5D-9E55-4793-AF9B-B6405AC61F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA0EBE5D-9E55-4793-AF9B-B6405AC61F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA83B22-C070-4327-9F2F-5EBEFB7760AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA83B22-C070-4327-9F2F-5EBEFB7760AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA83B22-C070-4327-9F2F-5EBEFB7760AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA83B22-C070-4327-9F2F-5EBEFB7760AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81B84E11-FD86-4043-AFEA-ABCADBBFCADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81B84E11-FD86-4043-AFEA-ABCADBBFCADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81B84E11-FD86-4043-AFEA-ABCADBBFCADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81B84E11-FD86-4043-AFEA-ABCADBBFCADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDDD760E-95BE-4F2D-A51A-DE597E1DA92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDDD760E-95BE-4F2D-A51A-DE597E1DA92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDDD760E-95BE-4F2D-A51A-DE597E1DA92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDDD760E-95BE-4F2D-A51A-DE597E1DA92C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
