@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace _06.ReversedChars
 {
@@ -10,8 +11,14 @@ namespace _06.ReversedChars
             char secondChar = char.Parse(Console.ReadLine());
             char thirdChar = char.Parse(Console.ReadLine());
 
+            StringBuilder textSB = new StringBuilder();
+            textSB.Append(thirdChar);
+            textSB.Append(" ");
+            textSB.Append(secondChar);
+            textSB.Append(" ");
+            textSB.Append(firstChar);
             string text = thirdChar + " " + secondChar + " " + firstChar;
-            Console.WriteLine(text);
+            Console.WriteLine(textSB);
         }
     }
 }
