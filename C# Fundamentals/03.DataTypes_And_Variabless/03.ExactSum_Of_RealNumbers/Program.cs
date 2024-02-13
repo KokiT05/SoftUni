@@ -9,8 +9,8 @@ namespace _03.ExactSum_Of_RealNumbers
         static void Main(string[] args)
         {
 
-            decimal sum = 0.0M;
-            decimal number = 0.0M;
+            decimal sum = 0M;
+            decimal number = 0M;
 
             int n = int.Parse(Console.ReadLine());
 
