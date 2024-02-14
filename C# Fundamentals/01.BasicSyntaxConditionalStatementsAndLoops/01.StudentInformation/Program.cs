@@ -10,7 +10,7 @@ namespace _01.StudentInformation
             int studentAge = int.Parse(Console.ReadLine());
             double studentAverageGrade = double.Parse(Console.ReadLine());
 
-            Console.WriteLine($"Name: {studentName}, Age: {studentAge}, Grade: {studentAverageGrade}");
+            Console.WriteLine($"Name: {studentName}, Age: {studentAge}, Grade: {studentAverageGrade:f2}");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace _12.EvenNumber
             }
 
             int absoluteValue = Math.Abs(number);
-            Console.WriteLine($"{absoluteValue}");
+            Console.WriteLine($"The number is: {absoluteValue}");
         }
     }
 }

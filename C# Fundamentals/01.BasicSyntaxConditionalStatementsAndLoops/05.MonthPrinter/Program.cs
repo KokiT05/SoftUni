@@ -45,7 +45,7 @@
                     Console.WriteLine("December");
                     break;
                 default:
-                    Console.WriteLine("Error");
+                    Console.WriteLine("Error!");
                     break;
             }
         }
