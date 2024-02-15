@@ -13,11 +13,11 @@ namespace _06.Triples_Of_LatinLetters
 
             int n = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i <= n; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j <= n; j++)
+                for (int j = 0; j < n; j++)
                 {
-                    for (int k = 0; k <= n; k++)
+                    for (int k = 0; k < n; k++)
                     {
                         firstChar = (char)('a' + i);
                         secondChar = (char)('a' + j);
