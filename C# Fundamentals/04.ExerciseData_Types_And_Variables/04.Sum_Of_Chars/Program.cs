@@ -17,7 +17,7 @@ namespace _04.Sum_Of_Chars
                 sumOfChar += sumbol;
             }
 
-            Console.WriteLine(sumOfChar);
+            Console.WriteLine($"The sum equals: {sumOfChar}");
         }
     }
 }
