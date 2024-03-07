@@ -39,7 +39,7 @@ namespace _5.Login
                     break;
                 }
 
-                Console.WriteLine("Incorect password. Try again.");
+                Console.WriteLine("Incorrect password. Try again.");
 
                 currentPassword = Console.ReadLine();
             }

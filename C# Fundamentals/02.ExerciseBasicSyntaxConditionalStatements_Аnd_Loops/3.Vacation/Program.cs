@@ -22,7 +22,7 @@ namespace _3.Vacation
                 if (typeOfGroup == "students")
                 {
                     currentPriceOnePerson = 8.45;
-                }
+                }   
                 else if (typeOfGroup == "business")
                 {
                     currentPriceOnePerson = 10.90;
@@ -69,7 +69,7 @@ namespace _3.Vacation
             }
             else if (typeOfGroup == "business" && groupOfPeople >= 100)
             {
-                discount = Math.Round(10.0 / groupOfPeople, 2);
+                groupOfPeople -= 10;
             }
             else if (typeOfGroup == "regular" && (groupOfPeople >= 10 && groupOfPeople <= 20))
             {

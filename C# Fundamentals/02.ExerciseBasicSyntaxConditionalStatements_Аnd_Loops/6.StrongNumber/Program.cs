@@ -32,8 +32,6 @@ namespace _6.StrongNumber
             {
                 Console.WriteLine("no");
             }
-
-            Console.WriteLine(sumOfFactorials);
         }
     }
 }

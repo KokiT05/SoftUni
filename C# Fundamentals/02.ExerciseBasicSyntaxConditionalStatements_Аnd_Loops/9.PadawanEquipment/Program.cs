@@ -35,7 +35,7 @@ namespace _9.PadawanEquipment
             else
             {
                 double needMoney = totalPriceForEquipment - amountOfMoney;
-                Console.WriteLine($"Ivan Cho will need {needMoney:f2}lv more.");
+                Console.WriteLine($"John will need {needMoney:f2}lv more.");
             }
         }
     }

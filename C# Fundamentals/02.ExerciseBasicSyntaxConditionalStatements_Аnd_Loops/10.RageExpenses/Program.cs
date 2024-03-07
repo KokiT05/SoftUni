@@ -20,7 +20,7 @@ namespace _10.RageExpenses
             double totalPrice = (trashesDisplay * displayPrice) + (trashesHeadset * headsetPrice)
                                 + (trashesKeyboard * keyboardPrice) + (trashesMouse * mousePrice);
 
-            Console.WriteLine($"Rage expenses: {totalPrice:f2}lv.");
+            Console.WriteLine($"Rage expenses: {totalPrice:f2} lv.");
         }
     }
 }

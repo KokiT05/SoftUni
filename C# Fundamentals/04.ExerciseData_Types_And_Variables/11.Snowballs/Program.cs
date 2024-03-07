@@ -9,12 +9,13 @@ namespace _11.Snowballs
             int snowballSnow = 0;
             int snowballTime = 0;
             int snowballQuality = 0;
-            int snowballValue = 0;
-            int highestSnowball = 0;
+            double snowballValue = 0;
+
+            double highestSnowball = 0;
             int highestSnowballSnow = 0;
             int highestSnowballTime = 0;
             int highestSnowballQuality = 0;
-            int highestSnowballValue = 0;
+            double highestSnowballValue = 0;
 
             int n = int.Parse(Console.ReadLine());
 
@@ -24,7 +25,7 @@ namespace _11.Snowballs
                 snowballTime = int.Parse(Console.ReadLine());
                 snowballQuality = int.Parse(Console.ReadLine());
 
-                snowballValue = (int)Math.Pow((snowballSnow / snowballTime), snowballQuality);
+                snowballValue = Math.Pow((snowballSnow / snowballTime), snowballQuality);
 
                 if (snowballValue > highestSnowball)
                 {
@@ -36,6 +37,7 @@ namespace _11.Snowballs
 
                 }
             }
+
 
             Console.WriteLine($"{highestSnowballSnow} : {highestSnowballTime} = {highestSnowballValue} ({highestSnowballQuality})");
         }
