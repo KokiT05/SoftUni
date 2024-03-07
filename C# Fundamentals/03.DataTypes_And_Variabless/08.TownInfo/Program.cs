@@ -10,7 +10,7 @@ namespace _08.TownInfo
             int population = int.Parse(Console.ReadLine());
             short area = short.Parse(Console.ReadLine());
 
-            Console.WriteLine($"Town {town} has population {population} and area {area} square km.");
+            Console.WriteLine($"Town {town} has population of {population} and area {area} square km.");
         }
     }
 }

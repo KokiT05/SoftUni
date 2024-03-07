@@ -9,8 +9,8 @@ namespace _04.Centuries_To_Minutes
             int centuries = int.Parse(Console.ReadLine());
 
             int years = centuries * 100;
-            int tropicalYear = years / 4;
-            int days = Convert.ToInt32(years * 365.2422);
+
+            int days = (int)(years * 365.2422);
             int hours = days * 24;
             int minutes = hours * 60;
 
