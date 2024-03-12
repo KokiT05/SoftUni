@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace _02._2.FromLeftTo_The_Right
 {
@@ -21,30 +22,46 @@ namespace _02._2.FromLeftTo_The_Right
                     }
                 }
 
-                long leftNumber = long.Parse(input.Substring(0, spaceIndex));
-                long rightNumber = long.Parse(input.Substring(spaceIndex + 1));
+                BigInteger leftNumber = BigInteger.Parse(input.Substring(0, spaceIndex));
+                BigInteger rightNumber = BigInteger.Parse(input.Substring(spaceIndex + 1));
 
-                long leftNumberSumDigits = 0;
-                while (leftNumber != 0)
+                if (leftNumber > rightNumber)
                 {
-                    leftNumberSumDigits += leftNumber % 10;
-                    leftNumber = leftNumber / 10;
-                }
+                    BigInteger leftNumberSumDigits = 0;
+                    while (leftNumber != 0)
+                    {
+                        if (leftNumber < 0)
+                        {
+                            leftNumberSumDigits -= leftNumber % 10;
+                            leftNumber = leftNumber / 10;
+                        }
+                        else
+                        {
+                            leftNumberSumDigits += leftNumber % 10;
+                            leftNumber = leftNumber / 10;
+                        }
+                    }
 
-                long RightNumberSumDigits = 0;
-                while (rightNumber != 0)
-                {
-                    RightNumberSumDigits += rightNumber % 10;
-                    rightNumber = rightNumber / 10;
-                }
-
-                if (RightNumberSumDigits >= leftNumberSumDigits)
-                {
-                    Console.WriteLine(RightNumberSumDigits);
+                    Console.WriteLine(leftNumberSumDigits);
                 }
                 else
                 {
-                    Console.WriteLine(leftNumberSumDigits);
+                    BigInteger RightNumberSumDigits = 0;
+                    while (rightNumber != 0)
+                    {
+
+                        if (rightNumber < 0)
+                        {
+                            RightNumberSumDigits -= rightNumber % 10;
+                            rightNumber = rightNumber / 10;
+                        }
+                        else
+                        {
+                            RightNumberSumDigits += rightNumber % 10;
+                            rightNumber = rightNumber / 10;
+                        }
+                    }
+                    Console.WriteLine(RightNumberSumDigits);
                 }
             }
         }

@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DataTypeFinder", "01.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.2.FromLeftTo_The_Right", "02.2.FromLeftTo_The_Right\02.2.FromLeftTo_The_Right.csproj", "{7E4A7FE9-46A8-4980-97A7-C6E4D5A0179C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.3.FloatingEquality", "03.3.FloatingEquality\03.3.FloatingEquality.csproj", "{C55C7C72-4975-4131-83B5-33A21CC2B741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.4.RefactoringPrimeChecker", "04.4.RefactoringPrimeChecker\04.4.RefactoringPrimeChecker.csproj", "{A5BA5360-975B-4514-A7E5-0E124E54FB8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{7E4A7FE9-46A8-4980-97A7-C6E4D5A0179C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E4A7FE9-46A8-4980-97A7-C6E4D5A0179C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E4A7FE9-46A8-4980-97A7-C6E4D5A0179C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55C7C72-4975-4131-83B5-33A21CC2B741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55C7C72-4975-4131-83B5-33A21CC2B741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55C7C72-4975-4131-83B5-33A21CC2B741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55C7C72-4975-4131-83B5-33A21CC2B741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5BA5360-975B-4514-A7E5-0E124E54FB8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5BA5360-975B-4514-A7E5-0E124E54FB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5BA5360-975B-4514-A7E5-0E124E54FB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5BA5360-975B-4514-A7E5-0E124E54FB8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
