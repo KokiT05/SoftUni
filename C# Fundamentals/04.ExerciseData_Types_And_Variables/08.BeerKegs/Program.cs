@@ -21,7 +21,7 @@ namespace _08.BeerKegs
                 radius = double.Parse(Console.ReadLine());
                 height = int.Parse(Console.ReadLine());
 
-                volume = Math.PI * Math.Pow(radius,2) * height;
+                volume = Math.PI * Math.Pow(radius, 2) * height;
 
                 if (volume >= maxVolume)
                 {
