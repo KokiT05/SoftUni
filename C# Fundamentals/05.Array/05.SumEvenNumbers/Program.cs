@@ -7,19 +7,22 @@ namespace _05.SumEvenNumbers
     {
         static void Main(string[] args)
         {
-            string input = Console.ReadLine();
 
-            int[] numbers = input
+            int[] numbers = Console
+                            .ReadLine()
                             .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                             .Select(int.Parse)
                             .ToArray();
 
             int sum = 0;
-            for (int i = 1; i <= numbers.Length; i++)
+            int currentNumber = 0;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                if (i % 2 == 0)
+                currentNumber = numbers[i];
+
+                if (currentNumber % 2 == 0)
                 {
-                    sum += numbers[i - 1];
+                    sum += currentNumber;
                 }
             }
 

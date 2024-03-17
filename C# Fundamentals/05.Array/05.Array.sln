@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ReverseArray_Of_Strings"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.SumEvenNumbers", "05.SumEvenNumbers\05.SumEvenNumbers.csproj", "{D8773A72-727E-4692-89C7-F1671C03D90E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.EvenAndOddSubtraction", "06.EvenAndOddSubtraction\06.EvenAndOddSubtraction.csproj", "{2FCD70B1-A2E2-42A7-8421-40F70AEEFEA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.EqualArrays", "07.EqualArrays\07.EqualArrays.csproj", "{38AD5371-1C0A-42E5-81C6-5972818CAEFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{D8773A72-727E-4692-89C7-F1671C03D90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8773A72-727E-4692-89C7-F1671C03D90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8773A72-727E-4692-89C7-F1671C03D90E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCD70B1-A2E2-42A7-8421-40F70AEEFEA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCD70B1-A2E2-42A7-8421-40F70AEEFEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCD70B1-A2E2-42A7-8421-40F70AEEFEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCD70B1-A2E2-42A7-8421-40F70AEEFEA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AD5371-1C0A-42E5-81C6-5972818CAEFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AD5371-1C0A-42E5-81C6-5972818CAEFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AD5371-1C0A-42E5-81C6-5972818CAEFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AD5371-1C0A-42E5-81C6-5972818CAEFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
