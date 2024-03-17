@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Day_Of_Week", "01.Day_Of
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.PrintNumbers_In_ReverseOrder", "02.PrintNumbers_In_ReverseOrder\02.PrintNumbers_In_ReverseOrder.csproj", "{F61024E4-3227-4828-A346-770D46FCFDC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.RoundingNumbers", "03.RoundingNumbers\03.RoundingNumbers.csproj", "{A094C87A-2338-4D79-8287-5AD0EB9A6B36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ReverseArray_Of_Strings", "04.ReverseArray_Of_Strings\04.ReverseArray_Of_Strings.csproj", "{9CCD740B-ECB0-4F87-9D4B-030C9FC4E671}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F61024E4-3227-4828-A346-770D46FCFDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F61024E4-3227-4828-A346-770D46FCFDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F61024E4-3227-4828-A346-770D46FCFDC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A094C87A-2338-4D79-8287-5AD0EB9A6B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A094C87A-2338-4D79-8287-5AD0EB9A6B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A094C87A-2338-4D79-8287-5AD0EB9A6B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A094C87A-2338-4D79-8287-5AD0EB9A6B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCD740B-ECB0-4F87-9D4B-030C9FC4E671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCD740B-ECB0-4F87-9D4B-030C9FC4E671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCD740B-ECB0-4F87-9D4B-030C9FC4E671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCD740B-ECB0-4F87-9D4B-030C9FC4E671}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

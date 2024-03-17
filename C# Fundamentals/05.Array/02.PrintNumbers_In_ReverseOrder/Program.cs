@@ -19,8 +19,10 @@ namespace _02.PrintNumbers_In_ReverseOrder
                 numbers[i] = number;
             }
 
-            //Console.WriteLine(string.Join(' ', numbers.Reverse()));
+            // Method 1
+            Console.WriteLine(string.Join(' ', numbers.Reverse()));
 
+            // Method 2
             /*numbers = numbers.Reverse().ToArray();
 
             foreach (int numberItem in numbers)
@@ -28,10 +30,11 @@ namespace _02.PrintNumbers_In_ReverseOrder
                 Console.Write($"{numberItem} ");
             }*/
 
-            for (int i = numbers.Length - 1; i >= 0; i--)
+            // Method 3
+            /*for (int i = numbers.Length - 1; i >= 0; i--)
             {
                 Console.Write($"{numbers[i]} ");
-            }
+            }*/
         }
     }
 }
