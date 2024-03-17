@@ -11,19 +11,19 @@ namespace _11.RefactorVolume_Of_Pyramid
             double heigth = 0.0;
             double V = 0.0;
 
-            Console.WriteLine("Length: ");
+            Console.Write("Length: ");
 
             length = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Width: ");
+            Console.Write("Width: ");
 
             width = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Heigth: ");
+            Console.Write("Height: ");
 
             heigth = double.Parse(Console.ReadLine());
 
-            V = 1/3.0F * ((width * length) * heigth);
+            V = 1/3.0 * ((width * length) * heigth);
 
             Console.WriteLine($"Pyramid Volume: {V:f2}");
         }
