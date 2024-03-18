@@ -42,7 +42,7 @@ namespace _07.EqualArrays
 
                 if (isEqual)
                 {
-                    Console.WriteLine($"Arrays are identical. Sum {firstArraySum}");
+                    Console.WriteLine($"Arrays are identical. Sum: {firstArraySum}");
                 }
                 else
                 {
