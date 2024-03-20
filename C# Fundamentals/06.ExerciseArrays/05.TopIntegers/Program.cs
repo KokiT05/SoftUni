@@ -13,33 +13,30 @@ namespace _05.TopIntegers
                             .Select(int.Parse)
                             .ToArray();
 
-            int[] newArray = new int[numbers.Length];
-            int biggestNumber = numbers[0];
-            int point = 0;
-            int biggestNumberIndex = 0;
-
+            int currentNumber = 0;
             bool isBiggest = true;
-            for (int i = 0; i < numbers.Length - 1; i++)
-            {
 
-                if (numbers[i] > numbers[i + 1] || i == numbers.Length - 2)
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                currentNumber = numbers[i];
+
+                for (int j = i + 1; j < numbers.Length; j++)
                 {
-                    if (i == numbers.Length - 2)
+                    if (currentNumber <= numbers[j])
                     {
-                        newArray[i] = numbers[i + 1];
-                    }
-                    else
-                    {
-                        newArray[i] = numbers[i];
+                        isBiggest = false;
+                        break;
                     }
                 }
-                else
+
+                if (isBiggest)
                 {
-                    newArray[i] = 0;
+                    Console.Write($"{currentNumber} ");
                 }
+
+                isBiggest = true;
             }
 
-            Console.WriteLine(string.Join(' ', newArray));
         }
     }
 }

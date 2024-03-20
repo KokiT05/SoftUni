@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ArrayRotation", "04.Arra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.TopIntegers", "05.TopIntegers\05.TopIntegers.csproj", "{2CEF4345-4547-4568-9285-DFDCD4F1569A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.EqualSums", "06.EqualSums\06.EqualSums.csproj", "{6AB4163B-8A09-4C42-9EEA-2C08153EE7CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2CEF4345-4547-4568-9285-DFDCD4F1569A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CEF4345-4547-4568-9285-DFDCD4F1569A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CEF4345-4547-4568-9285-DFDCD4F1569A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB4163B-8A09-4C42-9EEA-2C08153EE7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB4163B-8A09-4C42-9EEA-2C08153EE7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB4163B-8A09-4C42-9EEA-2C08153EE7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB4163B-8A09-4C42-9EEA-2C08153EE7CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
