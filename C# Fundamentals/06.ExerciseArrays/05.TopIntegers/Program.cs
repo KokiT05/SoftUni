@@ -7,36 +7,35 @@ namespace _05.TopIntegers
     {
         static void Main(string[] args)
         {
-            int[] numbers = Console
-                            .ReadLine()
-                            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                            .Select(int.Parse)
-                            .ToArray();
+            int[] inputArray = Console
+                                .ReadLine()
+                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                .Select(int.Parse)
+                                .ToArray();
 
-            int currentNumber = 0;
-            bool isBiggest = true;
+            bool isTopInteger = true;
 
-            for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < inputArray.Length; i++)
             {
-                currentNumber = numbers[i];
+                int currentNumber = inputArray[i];
+                isTopInteger = true;
 
-                for (int j = i + 1; j < numbers.Length; j++)
+                for (int j = i + 1;  j < inputArray.Length;  j++)
                 {
-                    if (currentNumber <= numbers[j])
+                    if (currentNumber <= inputArray[j])
                     {
-                        isBiggest = false;
+                        isTopInteger = false;
                         break;
                     }
                 }
 
-                if (isBiggest)
+                if (isTopInteger)
                 {
-                    Console.Write($"{currentNumber} ");
+                    Console.Write($"{inputArray[i]} ");
                 }
-
-                isBiggest = true;
             }
 
+            //Console.WriteLine(string.Join(" ", inputArray));
         }
     }
 }

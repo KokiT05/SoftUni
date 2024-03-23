@@ -9,34 +9,31 @@ namespace _06.EqualSums
         {
             int[] numbers = Console
                             .ReadLine()
-                            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                            .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                             .Select(int.Parse)
                             .ToArray();
 
             bool isFound = false;
-            int sumRight = 0;
-            int sumLeft = 0;
-
-            for (int i = 0; i < numbers.Length; i++)
+            for (int currentIndex = 0; currentIndex < numbers.Length; currentIndex++)
             {
-                sumRight = 0;
+                int sumRigth = 0;
 
-                for (int j = i + 1; j < numbers.Length; j++)
+                for (int r = currentIndex + 1; r < numbers.Length; r++)
                 {
-                    sumRight += numbers[j];
+                    sumRigth += numbers[r];
                 }
 
-                sumLeft = 0;
+                int sumLeft = 0;
 
-                for (int j = i - 1; j >= 0; j--)
+                for (int l = currentIndex - 1; l >= 0; l--)
                 {
-                    sumLeft += numbers[j];
+                    sumLeft += numbers[l];
                 }
 
-                if (sumLeft == sumRight)
+                if (sumLeft == sumRigth)
                 {
-                    Console.WriteLine(i);
-                    isFound = true;
+                    Console.Write(currentIndex);
+                    isFound = true; 
                     break;
                 }
             }
