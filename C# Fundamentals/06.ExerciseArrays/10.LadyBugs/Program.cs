@@ -26,32 +26,106 @@ namespace _10.LadyBugs
                 }
             }
 
-            string command = Console.ReadLine();
-            while (command != "end")
+            string command = string.Empty;
+            while ((command = Console.ReadLine()) != "end")
             {
                 string[] parstOfCommand = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 int ladybugIndex = int.Parse(parstOfCommand[0]);
                 string diretion = parstOfCommand[1];
                 int flyLength = int.Parse(parstOfCommand[2]);
 
-                bool action = false;
-
-                if ((ladybugIndex >= 0 && ladybugIndex < filed.Length) &&
-                    (filed[ladybugIndex] == "1"))
+                bool inRange = ladybugIndex >= 0 && ladybugIndex < filed.Length;
+                bool hasLadybug = false;
+                if (inRange)
                 {
-                    action = true;
+                    hasLadybug = filed[ladybugIndex] == "1";
                 }
 
-                if (action && diretion == "right")
+                if (!inRange && !hasLadybug)
                 {
-
-                }
-                else if (action && diretion == "left")
-                {
-
+                    continue;
                 }
 
-                command = Console.ReadLine();
+                if (diretion == "right")
+                {
+                    int sumOfMove = -1;
+                    if (ladybugIndex + flyLength >= filed.Length)
+                    {
+                        filed[ladybugIndex] = "0";
+                    }
+                    else
+                    {
+                        if (filed[ladybugIndex + flyLength] == "1")
+                        {
+                            sumOfMove = flyLength;
+                            filed[ladybugIndex] = "0";
+                            for (int i = ladybugIndex; i < filed.Length; i++)
+                            {
+                                if (ladybugIndex + flyLength < filed.Length &&
+                                    filed[ladybugIndex + flyLength] == "1")
+                                {
+                                    sumOfMove = sumOfMove + flyLength;
+                                    ladybugIndex = ladybugIndex + flyLength;
+                                }
+                                else if (ladybugIndex + flyLength < filed.Length
+                                    && filed[ladybugIndex + flyLength] == "1")
+                                {
+                                    filed[ladybugIndex + flyLength] = "0";
+                                }
+                            }
+                        }
+                        else
+                        {
+                            filed[ladybugIndex] = "0";
+                            filed[ladybugIndex + flyLength] = "1";
+                        }
+                    }
+
+                    if (sumOfMove < filed.Length && sumOfMove >= 0)
+                    {
+                        filed[sumOfMove] = "1";
+                    }
+                }
+                else if (diretion == "left") 
+                {
+                    int sumOfMove = -1;
+                    if (ladybugIndex - flyLength < 0)
+                    {
+                        filed[ladybugIndex] = "0";
+                    }
+                    else
+                    {
+                        if (filed[ladybugIndex - flyLength] == "1")
+                        {
+                            sumOfMove = flyLength;
+                            filed[ladybugIndex] = "0";
+                            for (int i = ladybugIndex; i >= 0; i++)
+                            {
+                                if (ladybugIndex - flyLength >= 0 &&
+                                    filed[ladybugIndex - flyLength] == "1")
+                                {
+                                    sumOfMove = sumOfMove - flyLength;
+                                    ladybugIndex = ladybugIndex - flyLength;
+                                }
+                                else if (ladybugIndex - flyLength >= 0
+                                    && filed[ladybugIndex - flyLength] == "1")
+                                {
+                                    filed[ladybugIndex - flyLength] = "0";
+                                }
+                            }
+                        }
+                        else
+                        {
+                            filed[ladybugIndex] = "0";
+                            filed[ladybugIndex - flyLength] = "1";
+                        }
+                    }
+
+                    if (sumOfMove >= 0 && sumOfMove < filed.Length)
+                    {
+                        filed[sumOfMove] = "1";
+                    }
+                }
             }
 
             Console.WriteLine(string.Join(" ", filed));
