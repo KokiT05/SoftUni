@@ -17,7 +17,6 @@ namespace _10.LadyBugs
                             .ToArray();
 
             int[] field = new int[sizeOfField];
-
             for (int i = 0; i < sizeOfField; i++)
             {
                 field[i] = 0;
@@ -54,7 +53,7 @@ namespace _10.LadyBugs
                 int newPosition = 0;
                 if (direction == "right")
                 {
-                    if (ladybugIndex + flyLength >= field.Length)
+                    if (ladybugIndex + flyLength >= field.Length || ladybugIndex + flyLength < 0)
                     {
                         field[ladybugIndex] = 0;
                     }
@@ -67,12 +66,11 @@ namespace _10.LadyBugs
                     {
                         field[ladybugIndex] = 0;
                         newPosition = ladybugIndex + flyLength;
-
-                        for (int i = newPosition; i < field.Length;)
+                        for (int i = newPosition; i >= 0 && i < field.Length;)
                         {
-                            if (field[newPosition] == 0)
+                            if (field[i] == 0)
                             {
-                                field[newPosition] = 1;
+                                field[i] = 1;
                                 break;
                             }
                             else
@@ -84,7 +82,7 @@ namespace _10.LadyBugs
                 }
                 else if (direction == "left") 
                 {
-                    if (ladybugIndex - flyLength < 0 && ladybugIndex - flyLength >= field.Length)
+                    if (ladybugIndex - flyLength < 0 || ladybugIndex - flyLength >= field.Length)
                     {
                         field[ladybugIndex] = 0;
                     }
@@ -97,12 +95,11 @@ namespace _10.LadyBugs
                     {
                         field[ladybugIndex] = 0;
                         newPosition = ladybugIndex - flyLength;
-
                         for (int i = newPosition; i >= 0 && i < field.Length;)
                         {
-                            if (field[newPosition] == 0)
+                            if (field[i] == 0)
                             {
-                                field[newPosition] = 1;
+                                field[i] = 1;
                                 break;
                             }
                             else
@@ -113,8 +110,7 @@ namespace _10.LadyBugs
                     }
                 }
             }
-
-            Console.WriteLine(string.Join(" ", field));
+            Console.WriteLine(string.Join(' ', field));
         }
     }
 }
