@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace _10.LadyBugs
@@ -7,128 +8,113 @@ namespace _10.LadyBugs
     {
         static void Main(string[] args)
         {
-            int sizeOfFiled = int.Parse(Console.ReadLine());
-            string[] filed = new string[sizeOfFiled];
-            for (int i = 0; i < sizeOfFiled; i++)
+            int sizeOfField = int.Parse(Console.ReadLine());
+
+            int[] indexes = Console
+                            .ReadLine()
+                            .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                            .Select(int.Parse)
+                            .ToArray();
+
+            int[] field = new int[sizeOfField];
+
+            for (int i = 0; i < sizeOfField; i++)
             {
-                filed[i] = "0";
+                field[i] = 0;
             }
 
-            string indexes = Console.ReadLine();
-            indexes = indexes.Replace(" ", "");
             for (int i = 0; i < indexes.Length; i++)
             {
-                int currentIndex = int.Parse(indexes[i].ToString());
-
-                if (currentIndex >= 0 && currentIndex < filed.Length)
+                if (indexes[i] >= 0 && indexes[i] < field.Length)
                 {
-                    filed[currentIndex] = "1";
+                    field[indexes[i]] = 1;
                 }
             }
 
             string command = string.Empty;
-            while ((command = Console.ReadLine()) != "end")
+            while ((command = Console.ReadLine()) != "end" && field.Length > 0)
             {
-                string[] parstOfCommand = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                int ladybugIndex = int.Parse(parstOfCommand[0]);
-                string diretion = parstOfCommand[1];
-                int flyLength = int.Parse(parstOfCommand[2]);
+                string[] commandParts = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                int ladybugIndex = int.Parse(commandParts[0]);
+                string direction = commandParts[1];
+                int flyLength = int.Parse(commandParts[2]);
 
-                bool inRange = ladybugIndex >= 0 && ladybugIndex < filed.Length;
-                bool hasLadybug = false;
-                if (inRange)
-                {
-                    hasLadybug = filed[ladybugIndex] == "1";
-                }
-
-                if (!inRange && !hasLadybug)
+                bool inRange = ladybugIndex >= 0 && ladybugIndex < field.Length;
+                if (!inRange)
                 {
                     continue;
                 }
 
-                if (diretion == "right")
+                bool hasLadyBug = field[ladybugIndex] == 1;
+                if (!hasLadyBug)
                 {
-                    int sumOfMove = -1;
-                    if (ladybugIndex + flyLength >= filed.Length)
+                    continue;
+                }
+
+                int newPosition = 0;
+                if (direction == "right")
+                {
+                    if (ladybugIndex + flyLength >= field.Length)
                     {
-                        filed[ladybugIndex] = "0";
+                        field[ladybugIndex] = 0;
+                    }
+                    else if (field[ladybugIndex + flyLength] == 0)
+                    {
+                        field[ladybugIndex] = 0;
+                        field[ladybugIndex + flyLength] = 1;
                     }
                     else
                     {
-                        if (filed[ladybugIndex + flyLength] == "1")
+                        field[ladybugIndex] = 0;
+                        newPosition = ladybugIndex + flyLength;
+
+                        for (int i = newPosition; i < field.Length;)
                         {
-                            sumOfMove = flyLength;
-                            filed[ladybugIndex] = "0";
-                            for (int i = ladybugIndex; i < filed.Length; i++)
+                            if (field[newPosition] == 0)
                             {
-                                if (ladybugIndex + flyLength < filed.Length &&
-                                    filed[ladybugIndex + flyLength] == "1")
-                                {
-                                    sumOfMove = sumOfMove + flyLength;
-                                    ladybugIndex = ladybugIndex + flyLength;
-                                }
-                                else if (ladybugIndex + flyLength < filed.Length
-                                    && filed[ladybugIndex + flyLength] == "1")
-                                {
-                                    filed[ladybugIndex + flyLength] = "0";
-                                }
+                                field[newPosition] = 1;
+                                break;
+                            }
+                            else
+                            {
+                                i = i + flyLength;
                             }
                         }
-                        else
-                        {
-                            filed[ladybugIndex] = "0";
-                            filed[ladybugIndex + flyLength] = "1";
-                        }
-                    }
-
-                    if (sumOfMove < filed.Length && sumOfMove >= 0)
-                    {
-                        filed[sumOfMove] = "1";
                     }
                 }
-                else if (diretion == "left") 
+                else if (direction == "left") 
                 {
-                    int sumOfMove = -1;
-                    if (ladybugIndex - flyLength < 0)
+                    if (ladybugIndex - flyLength < 0 && ladybugIndex - flyLength >= field.Length)
                     {
-                        filed[ladybugIndex] = "0";
+                        field[ladybugIndex] = 0;
+                    }
+                    else if (field[ladybugIndex - flyLength] == 0)
+                    {
+                        field[ladybugIndex] = 0;
+                        field[ladybugIndex - flyLength] = 1;
                     }
                     else
                     {
-                        if (filed[ladybugIndex - flyLength] == "1")
+                        field[ladybugIndex] = 0;
+                        newPosition = ladybugIndex - flyLength;
+
+                        for (int i = newPosition; i >= 0 && i < field.Length;)
                         {
-                            sumOfMove = flyLength;
-                            filed[ladybugIndex] = "0";
-                            for (int i = ladybugIndex; i >= 0; i++)
+                            if (field[newPosition] == 0)
                             {
-                                if (ladybugIndex - flyLength >= 0 &&
-                                    filed[ladybugIndex - flyLength] == "1")
-                                {
-                                    sumOfMove = sumOfMove - flyLength;
-                                    ladybugIndex = ladybugIndex - flyLength;
-                                }
-                                else if (ladybugIndex - flyLength >= 0
-                                    && filed[ladybugIndex - flyLength] == "1")
-                                {
-                                    filed[ladybugIndex - flyLength] = "0";
-                                }
+                                field[newPosition] = 1;
+                                break;
+                            }
+                            else
+                            {
+                                i = i - flyLength;
                             }
                         }
-                        else
-                        {
-                            filed[ladybugIndex] = "0";
-                            filed[ladybugIndex - flyLength] = "1";
-                        }
-                    }
-
-                    if (sumOfMove >= 0 && sumOfMove < filed.Length)
-                    {
-                        filed[sumOfMove] = "1";
                     }
                 }
             }
 
-            Console.WriteLine(string.Join(" ", filed));
+            Console.WriteLine(string.Join(" ", field));
         }
     }
 }
