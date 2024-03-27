@@ -23,9 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.KaminoFactory", "09.Kami
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10.LadyBugs", "10.LadyBugs\10.LadyBugs.csproj", "{81F89A0E-A538-4B7C-828D-5FACD72ECAC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.1EncryptSortAndPrintArray", "01.1EncryptSortAndPrintArray\01.1EncryptSortAndPrintArray.csproj", "{DC910075-A870-4EFC-A530-5F0E0C9721D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.1EncryptSortAndPrintArray", "01.1EncryptSortAndPrintArray\01.1EncryptSortAndPrintArray.csproj", "{DC910075-A870-4EFC-A530-5F0E0C9721D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.2PascalTriangle", "02.2PascalTriangle\02.2PascalTriangle.csproj", "{3EFA87FF-3637-4EAC-A45B-8BC7D8CC6411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.2PascalTriangle", "02.2PascalTriangle\02.2PascalTriangle.csproj", "{3EFA87FF-3637-4EAC-A45B-8BC7D8CC6411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.3RecursiveFibonacci", "03.3RecursiveFibonacci\03.3RecursiveFibonacci.csproj", "{32CE8B75-CC2D-4E46-8BA6-5B818B1A2192}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.4FoldАndSum", "04.4FoldАndSum\04.4FoldАndSum.csproj", "{3AEA16E5-212E-4558-9FA3-6280A95B5380}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{3EFA87FF-3637-4EAC-A45B-8BC7D8CC6411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EFA87FF-3637-4EAC-A45B-8BC7D8CC6411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EFA87FF-3637-4EAC-A45B-8BC7D8CC6411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32CE8B75-CC2D-4E46-8BA6-5B818B1A2192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32CE8B75-CC2D-4E46-8BA6-5B818B1A2192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32CE8B75-CC2D-4E46-8BA6-5B818B1A2192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32CE8B75-CC2D-4E46-8BA6-5B818B1A2192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEA16E5-212E-4558-9FA3-6280A95B5380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEA16E5-212E-4558-9FA3-6280A95B5380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEA16E5-212E-4558-9FA3-6280A95B5380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEA16E5-212E-4558-9FA3-6280A95B5380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
