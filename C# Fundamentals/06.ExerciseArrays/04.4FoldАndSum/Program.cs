@@ -19,14 +19,12 @@
             for (int i = 0; i < k; i++)
             {
                 firstSide[i] = numbers[i];
-                numbers[i] = 0;
             }
 
             int startIndex = 0;
             for (int i = numbers.Length - 1; i > numbers.Length - (k + 1); i--)
             {
                 int number = numbers[i];
-                numbers[i] = 0;
                 secondSide[startIndex] = number;
                 startIndex++;
             }
