@@ -6,8 +6,6 @@
         {
             int n = int.Parse(Console.ReadLine());
             Console.WriteLine(SolveMemoization(n));
-            //FibonachiRecursion(n);
-            //Console.WriteLine(n);
         }
 
         public static double SolveMemoization(int n)
@@ -30,14 +28,5 @@
             {1, 1},
             {2, 1}
         };
-
-        //static long FibonachiRecursion(int n)
-        //{
-        //    if (n <= 2)
-        //    {
-        //        return 1;
-        //    }
-        //    return FibonachiRecursion(n - 1) + FibonachiRecursion(n - 2);
-        //}
     }
 }
