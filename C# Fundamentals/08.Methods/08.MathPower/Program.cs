@@ -4,18 +4,18 @@
     {
         static void Main(string[] args)
         {
-            int number = int.Parse(Console.ReadLine());
+            double number = double.Parse(Console.ReadLine());
             int power = int.Parse(Console.ReadLine());
-            int result = MathPower(number, power);
+            double result = MathPower(number, power);
 
             Console.WriteLine(result);
 
 
         }
 
-        static int MathPower(int number, int power)
+        static double MathPower(double number, int power)
         {
-            int result = 1;
+            double result = 1;
 
             for (int i = 0; i < power; i++)
             {
