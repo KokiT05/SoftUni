@@ -28,7 +28,7 @@ namespace _03.Characters_in_Range
 
             for (int i = startValue + 1; i < endValue; i++)
             {
-                output.Append(i);
+                output.Append((char)i);
                 output.Append(" ");
             }
 
