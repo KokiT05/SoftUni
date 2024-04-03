@@ -10,7 +10,7 @@ namespace _09.PalindromeIntegers
 
             double number = 0;
             bool isPalindrome = false;
-            while ((command = Console.ReadLine()) != "End")
+            while ((command = Console.ReadLine()) != "END")
             {
                 number = double.Parse(command);
 
