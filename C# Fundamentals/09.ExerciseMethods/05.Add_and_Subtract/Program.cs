@@ -9,7 +9,8 @@
             double thirdNumber = double.Parse(Console.ReadLine());
 
             double sumResult = Sum(firstNumber, secondNumber);
-            double subtractResult = Subtract(sumResult, thirdNumber);
+            //double subtractResult = Subtract(sumResult, thirdNumber);
+            double subtractResult = Subtract(Sum(firstNumber, secondNumber), thirdNumber);
             Console.WriteLine(subtractResult);
         }
 
