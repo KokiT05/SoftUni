@@ -41,7 +41,7 @@
 
             realNumber = realNumber * 1.5;
 
-            Console.WriteLine(realNumber);
+            Console.WriteLine($"{realNumber:f2}");
         }
     }
 }
