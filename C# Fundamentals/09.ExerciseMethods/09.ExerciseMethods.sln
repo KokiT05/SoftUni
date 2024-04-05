@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.MoreExercisCenterPoint",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.MoreExerciseLongerLine", "03.MoreExerciseLongerLine\03.MoreExerciseLongerLine.csproj", "{DDB7CBB0-E674-4E29-9027-E46F416B4604}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.MultiplicationSign", "05.MultiplicationSign\05.MultiplicationSign.csproj", "{38051ED2-0B4C-439E-89FA-3A69343D0E31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.MoreExerciseTribonacciSequence", "04.MoreExerciseTribonacciSequence\04.MoreExerciseTribonacciSequence.csproj", "{0E51DF9B-4E05-4069-AD80-56BC76626531}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{DDB7CBB0-E674-4E29-9027-E46F416B4604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDB7CBB0-E674-4E29-9027-E46F416B4604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDB7CBB0-E674-4E29-9027-E46F416B4604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38051ED2-0B4C-439E-89FA-3A69343D0E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38051ED2-0B4C-439E-89FA-3A69343D0E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38051ED2-0B4C-439E-89FA-3A69343D0E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38051ED2-0B4C-439E-89FA-3A69343D0E31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E51DF9B-4E05-4069-AD80-56BC76626531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E51DF9B-4E05-4069-AD80-56BC76626531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E51DF9B-4E05-4069-AD80-56BC76626531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E51DF9B-4E05-4069-AD80-56BC76626531}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
