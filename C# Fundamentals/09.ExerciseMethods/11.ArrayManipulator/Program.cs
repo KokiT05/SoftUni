@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Linq;
 
 namespace _11.ArrayManipulator
 {
@@ -26,10 +27,10 @@ namespace _11.ArrayManipulator
                 if (command == "exchange")
                 {
                     int index = int.Parse(inputCommands[1]);
-                    isValidIndex = IsValidIndex(index, inputNumbers);
 
-                    if (!isValidIndex)
+                    if (index < 0 || index > inputNumbers.Length - 1)
                     {
+                        Console.WriteLine("Invalid index");
                         continue;
                     }
 
@@ -37,50 +38,58 @@ namespace _11.ArrayManipulator
                 }
                 else if (command == "max")
                 {
-                    string typeOfNumber = inputCommands[1];
-                    if (typeOfNumber == "even")
+                    if (inputCommands[1] == "even")
                     {
-                        MaxEvenNumberIndex(inputNumbers);
+                        if (MaxEvenNumberIndex(inputNumbers) == -1)
+                        {
+                            Console.WriteLine("No matches");
+                            continue;
+                        }
+                        Console.WriteLine(MaxEvenNumberIndex(inputNumbers));
                     }
-                    else if (typeOfNumber == "odd")
+                    else if (inputCommands[1] == "odd")
                     {
-                        MaxOddNumber(inputNumbers);
+                        if (MaxOddNumberIndex(inputNumbers) == -1)
+                        {
+                            Console.WriteLine("No matches");
+                            continue;
+                        }
+                        Console.WriteLine(MaxOddNumberIndex(inputNumbers));
                     }
                 }
                 else if (command == "min")
                 {
-                    string typeOfNumber = inputCommands[1];
-                    if (typeOfNumber == "even")
+                    if (inputCommands[1] == "even")
                     {
-                        MinEvenNumber(inputNumbers);
+                        if (MinEvenNumber(inputNumbers) == -1)
+                        {
+                            Console.WriteLine("No matches");
+                            continue;
+                        }
+                        Console.WriteLine(MinEvenNumber(inputNumbers));
                     }
-                    else if (typeOfNumber == "odd")
+                    else if (inputCommands[1] == "odd")
                     {
-                        MinOddNumber(inputNumbers);
+                        if (MinOddNumber(inputNumbers) == -1)
+                        {
+                            Console.WriteLine("No matches");
+                            continue;
+                        }
+                        Console.WriteLine(MinOddNumber(inputNumbers));
                     }
                 }
                 else if (command == "first")
                 {
                     int count = int.Parse(inputCommands[1]);
-                    bool isCountValid = IsCountValid(count, inputNumbers);
 
-                    if (!isCountValid)
+                    if (inputCommands[2] == "even")
                     {
-                        continue;
+                        FirstEvenNumbers(count, inputNumbers);
                     }
-
-                    string typeOfOperation = inputCommands[2];
-                    string result = string.Empty;
-                    if (typeOfOperation == "even")
+                    else if (inputCommands[2] == "odd")
                     {
-                        result = FirstEvenNumbers(count, inputNumbers);
+                        FirstOddNumbers(count, inputNumbers);
                     }
-                    else if (typeOfOperation == "odd")
-                    {
-                        result = FirstOddNumbers(count, inputNumbers);
-                    }
-
-                    Console.WriteLine($"[{result}]");
                 }
                 else if (command == "last")
                 {
@@ -122,24 +131,29 @@ namespace _11.ArrayManipulator
         } // YES
         static void Exchange(int index, int[] numberArray)
         {
-            int[] newNumberArray = new int[numberArray.Length];
+            int[] firstArray = new int[numberArray.Length - index - 1];
+            int[] secondArray = new int [index + 1];
 
-            int newNumberArrayIndex = 0;
+            int firstArrayIndex = 0;
             for (int i = index + 1; i < numberArray.Length; i++)
             {
-                newNumberArray[newNumberArrayIndex] = numberArray[i];
-                newNumberArrayIndex++;
+                firstArray[firstArrayIndex] = numberArray[i];
+                firstArrayIndex++;
             }
 
             for (int i = 0; i < index + 1; i++)
             {
-                newNumberArray[newNumberArrayIndex] = numberArray[i];
-                newNumberArrayIndex++;
+                secondArray[i] = numberArray[i];
             }
 
-            for (int i = 0; i < numberArray.Length; i++)
+            for (int i = 0; i < firstArray.Length; i++)
             {
-                numberArray[i] = newNumberArray[i];
+                numberArray[i] = firstArray[i];
+            }
+
+            for (int i = 0; i < secondArray.Length; i++)
+            {
+                numberArray[firstArray.Length + i] = secondArray[i];
             }
         } // YES
         static bool IsEvenNumberFound(int[] numbers)
@@ -157,60 +171,43 @@ namespace _11.ArrayManipulator
 
             return isEvenNumberFound;
         } // YES
-        static void MaxEvenNumberIndex(int[] numbers)
+        static int MaxEvenNumberIndex(int[] numbers)
         {
-            bool isEvenNumberFound = IsEvenNumberFound(numbers);
+            int maxEven = int.MinValue;
+            int index = -1;
 
-            if (isEvenNumberFound)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                int maxEvenNUmber = numbers[0];
-                int maxEvenIdex = 0;
-
-                for (int i = 0; i < numbers.Length; i++)
+                if (numbers[i] % 2 == 0)
                 {
-                    if (numbers[i] % 2 == 0)
+                    if (numbers[i] >= maxEven)
                     {
-                        if (numbers[i] >= maxEvenNUmber)
-                        {
-                            maxEvenNUmber = numbers[i];
-                            maxEvenIdex = i;
-                        }
+                        maxEven = numbers[i];
+                        index = i;
                     }
                 }
+            }
 
-                Console.WriteLine(maxEvenIdex);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
+            return index;
         } // YES
-        static void MinEvenNumber(int[] numbers)
+        static int MinEvenNumber(int[] numbers)
         {
-            bool isEvenNumberFound = IsEvenNumberFound(numbers);
-            if (isEvenNumberFound)
-            {
-                int minEvenNUmber = numbers[0];
-                int minEvenIdex = 0;
+            int minEven = int.MaxValue;
+            int index = -1;
 
-                for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 2 == 0)
                 {
-                    if (numbers[i] % 2 == 0)
+                    if (numbers[i] <= minEven)
                     {
-                        if (numbers[i] <= minEvenNUmber)
-                        {
-                            minEvenNUmber = numbers[i];
-                            minEvenIdex = i;
-                        }
+                        minEven = numbers[i];
+                        index = i;
                     }
                 }
+            }
 
-                Console.WriteLine(minEvenIdex);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
+            return index;
         }  // YES
 
         static bool IsOddNumberFound(int[] numbers)
@@ -228,60 +225,43 @@ namespace _11.ArrayManipulator
 
             return isOddNumberFound;
         } // YES
-        static void MaxOddNumber(int[] numbers)
+        static int MaxOddNumberIndex(int[] numbers)
         {
-            bool isOddNumberFound = IsOddNumberFound(numbers);
-            if (isOddNumberFound)
-            {
-                int maxOddNumber = numbers[0];
-                int maxOddIdex = 0;
+            int maxOdd = int.MinValue;
+            int index = -1;
 
-                for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 2 != 0)
                 {
-                    if (numbers[i] % 2 != 0)
+                    if (numbers[i] >= maxOdd)
                     {
-                        if (numbers[i] >= maxOddNumber)
-                        {
-                            maxOddNumber = numbers[i];
-                            maxOddIdex = i;
-                        }
+                        maxOdd = numbers[i];
+                        index = i;
                     }
                 }
+            }
 
-                Console.WriteLine(maxOddIdex);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
+            return index;
         } // YES
-        static void MinOddNumber(int[] numbers)
+        static int MinOddNumber(int[] numbers)
         {
-            bool isOddNumberFound = IsOddNumberFound(numbers);
+            int minOdd = int.MaxValue;
+            int index = -1;
 
-            if (isOddNumberFound)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                int minOddNumber = numbers[0];
-                int minOddIdex = 0;
-
-                for (int i = 0; i < numbers.Length; i++)
+                if (numbers[i] % 2 != 0)
                 {
-                    if (numbers[i] % 2 != 0)
+                    if (numbers[i] <= minOdd)
                     {
-                        if (numbers[i] <= minOddNumber)
-                        {
-                            minOddNumber = numbers[i];
-                            minOddIdex = i;
-                        }
+                        minOdd = numbers[i];
+                        index = i;
                     }
                 }
+            }
 
-                Console.WriteLine(minOddIdex);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
+            return index;
         } // YES
 
         static bool IsCountValid(int index, int[] numbers)
@@ -294,63 +274,65 @@ namespace _11.ArrayManipulator
 
             return true;
         } // YES
-        static string FirstOddNumbers(int index ,int[] numbers)
+        static void FirstOddNumbers(int count ,int[] numbers)
         {
-            string stringBuilder = "";
-
-            bool isOddNumberFound = IsOddNumberFound(numbers);
-            if (isOddNumberFound)
+            string numbersStr = string.Empty;
+            int counter = 0;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                int currentIndex = 0;
-                for (int i = 0; i < numbers.Length; i++)
+                if (numbers[i] % 2 != 0)
                 {
-                    if (numbers[i] % 2 != 0)
-                    {
-                        stringBuilder += numbers[i] + " ";
-                        currentIndex++;
-                    }
-
-                    if (currentIndex == index)
-                    {
-                        break;
-                    }
+                    numbersStr += numbers[i] + " ";
+                    counter++;
                 }
 
-                stringBuilder = string.Join(", ", stringBuilder
-                                .Split(" ", StringSplitOptions.RemoveEmptyEntries)).ToString();
+                if (counter == count)
+                {
+                    break;
+                }
             }
 
-            return stringBuilder;
+            var result = numbersStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (counter == 0)
+            {
+                Console.WriteLine("[]");
+            }
+            else
+            {
+                Console.WriteLine("[" + String.Join(", ", result) + "]");
+            }
         } // YES
 
-        static string FirstEvenNumbers(int index, int[] numbers)
+        static void FirstEvenNumbers(int count, int[] numbers)
         {
-            string stringBuilder = "";
-
-            bool isEvenNumberFoud = IsEvenNumberFound(numbers);
-            if (isEvenNumberFoud)
+            string numbersStr = string.Empty;
+            int counter = 0;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                int currentIndex = 0;
-                for (int i = 0; i < numbers.Length; i++)
+                if (numbers[i] % 2 == 0)
                 {
-                    if (numbers[i] % 2 == 0)
-                    {
-                        stringBuilder += numbers[i] + " ";
-                        currentIndex++;
-                    }
-
-                    if (currentIndex == index)
-                    {
-                        break;
-                    }
+                    numbersStr += numbers[i] + " ";
+                    counter++;
                 }
 
-                stringBuilder = string.Join(", ", stringBuilder
-                                .Split(" ", StringSplitOptions.RemoveEmptyEntries)).ToString();
+                if (counter == count)
+                {
+                    break;
+                }
             }
 
-            return stringBuilder;
-        } // !!!
+            var result = numbersStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (counter == 0)
+            {
+                Console.WriteLine("[]");
+            }
+            else
+            {
+                Console.WriteLine("[" + String.Join(", ", result)+ "]");
+            }
+        }
 
         static string LastEvenNumbers(int index, int[] numbers)
         {
@@ -407,6 +389,7 @@ namespace _11.ArrayManipulator
                         break;
                     }
                 }
+
 
                 stringBuilder = string.Join(", ", stringBuilder.Split(" ", StringSplitOptions.RemoveEmptyEntries)).ToString();
             }
