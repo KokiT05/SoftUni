@@ -33,7 +33,7 @@
             {
                 result = firstNumber * secondNumber;
             }
-            else if (mathOperation == '/')
+            else if (mathOperation == '/' && secondNumber != 0)
             {
                 result = firstNumber / secondNumber;
             }
@@ -43,7 +43,7 @@
                 return;
             }
 
-            Console.WriteLine($"The result is: {firstNumber} {mathOperation} {secondNumber} = {result}");
+            Console.WriteLine($"The result is: {firstNumber} {mathOperation} {secondNumber} = {result:f2}");
         }
 
         static float FirstNumber()
@@ -78,9 +78,31 @@
         static char MathOperation()
         {
             Console.Write("Choose an operation: (+)|(-)|(*)|(/)| ");
-            char mathOperation = char.Parse(Console.ReadLine());
+            char mathOperation = CheckOperation(Console.ReadLine());
             return mathOperation;
         }
+
+        static char CheckOperation(string operation) 
+        {
+            bool isValidOperation = operation == "+"
+                                || operation == "-"
+                                || operation == "*"
+                                || operation == "/";
+
+            while (!isValidOperation)
+            {
+                Console.WriteLine("Invalid operation!");
+                Console.Write("Choose an operation: (+)|(-)|(*)|(/)| ");
+                operation = Console.ReadLine();
+                isValidOperation = operation == "+"
+                                || operation == "-"
+                                || operation == "*"
+                                || operation == "/";
+            }
+
+            return operation[0];
+        }
+
 
 
     }

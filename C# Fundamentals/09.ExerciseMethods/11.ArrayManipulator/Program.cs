@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Linq;
+using System.Collections.Specialized;
 
 namespace _11.ArrayManipulator
 {
@@ -82,6 +83,12 @@ namespace _11.ArrayManipulator
                 {
                     int count = int.Parse(inputCommands[1]);
 
+                    if (count > inputNumbers.Length)
+                    {
+                        Console.WriteLine("Invalid count");
+                        continue;
+                    }
+
                     if (inputCommands[2] == "even")
                     {
                         FirstEvenNumbers(count, inputNumbers);
@@ -95,24 +102,20 @@ namespace _11.ArrayManipulator
                 {
                     int count = int.Parse(inputCommands[1]);
 
-                    bool isCountValid = IsCountValid(count, inputNumbers);
-                    if (!isCountValid)
+                    if (count > inputNumbers.Length)
                     {
+                        Console.WriteLine("Invalid count");
                         continue;
                     }
 
-                    string typeOfOperation = inputCommands[2];
-                    string result = string.Empty;
-                    if (typeOfOperation == "even")
+                    if (inputCommands[2] == "even")
                     {
-                        result = LastEvenNumbers(count, inputNumbers);
+                        LastEvenNumbers(count, inputNumbers);
                     }
-                    else if (typeOfOperation == "odd")
+                    else if (inputCommands[2] == "odd")
                     {
-                        result = LastOddNumbers(count, inputNumbers);
+                        LastOddNumbers(count, inputNumbers);
                     }
-
-                    Console.WriteLine($"[{result}]");
                 }
             }
 
@@ -334,68 +337,69 @@ namespace _11.ArrayManipulator
             }
         }
 
-        static string LastEvenNumbers(int index, int[] numbers)
+        static void LastEvenNumbers(int count, int[] numbers)
         {
 
-            string stringBuilder = "";
+            string numbersStr = string.Empty;
+            int counter = 0;
 
-            bool isEvenNumberFoud = IsEvenNumberFound(numbers);
-
-            if (isEvenNumberFoud)
+            for (int i = numbers.Length - 1 ; i >= 0; i--)
             {
-                int currentIndex = 0;
-                for (int i = numbers.Length - 1; i >= 0; i--)
+                if (numbers[i] % 2 == 0)
                 {
-
-                    if (numbers[i] % 2 == 0)
-                    {
-                        stringBuilder += numbers[i] + " ";
-                        currentIndex++;
-                    }
-
-                    if (currentIndex == index)
-                    {
-                        break;
-                    }
+                    counter++;
+                    numbersStr += numbers[i] + " ";
                 }
 
-                stringBuilder = string.Join(", ", stringBuilder.Split(" ", StringSplitOptions.RemoveEmptyEntries)).ToString();
+                if (counter == count)
+                {
+                    break;
+                }
             }
 
 
-            return stringBuilder;
+            var result = numbersStr.Split(' ', StringSplitOptions.RemoveEmptyEntries).Reverse();
+
+            if (counter == 0)
+            {
+                Console.WriteLine("[]");
+            }
+            else
+            {
+                Console.WriteLine("[" + String.Join(", ", result) + "]");
+            }
         } // YES
 
-        static string LastOddNumbers(int index, int[] numbers)
+        static void LastOddNumbers(int count, int[] numbers)
         {
-            string stringBuilder = "";
+            string numbersStr = string.Empty;
+            int counter = 0;
 
-            bool isOddNumberFoud = IsOddNumberFound(numbers);
-
-            if (isOddNumberFoud)
+            for (int i = numbers.Length - 1; i >= 0; i--)
             {
-                int currentIndex = 0;
-                for (int i = numbers.Length - 1; i >= 0; i--)
+                if (numbers[i] % 2 != 0)
                 {
-
-                    if (numbers[i] % 2 != 0)
-                    {
-                        stringBuilder += numbers[i] + " ";
-                        currentIndex++;
-                    }
-
-                    if (currentIndex == index)
-                    {
-                        break;
-                    }
+                    counter++;
+                    numbersStr += numbers[i] + " ";
                 }
 
-
-                stringBuilder = string.Join(", ", stringBuilder.Split(" ", StringSplitOptions.RemoveEmptyEntries)).ToString();
+                if (counter == count)
+                {
+                    break;
+                }
             }
 
 
-            return stringBuilder;
+            var result = numbersStr.Split(' ', StringSplitOptions.RemoveEmptyEntries).Reverse();
+
+            if (counter == 0)
+            {
+                Console.WriteLine("[]");
+            }
+            else
+            {
+                Console.WriteLine("[" + String.Join(", ", result) + "]");
+            }
         }
     }
 }
