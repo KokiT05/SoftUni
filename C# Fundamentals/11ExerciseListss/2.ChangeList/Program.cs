@@ -18,7 +18,17 @@ namespace _2.ChangeList
 
                 if (command.ToLower() == "delete")
                 {
-                    numbers.Remove(int.Parse(inputData[1]));
+                    for (int i = 0; i < numbers.Count; i++)
+                    {
+                        if (!numbers.Contains(int.Parse(inputData[1])))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            numbers.Remove(int.Parse(inputData[1]));
+                        }
+                    }
                 }
                 else if (command.ToLower() == "insert")
                 {
