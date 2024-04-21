@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace _04.ListOperations
 {
@@ -23,7 +24,7 @@ namespace _04.ListOperations
                 }
                 else if (command == "insert")
                 {
-                    if (int.Parse(inputData[1]) < 0 || int.Parse(inputData[1]) >= numbers.Count)
+                    if (int.Parse(inputData[2]) < 0 || int.Parse(inputData[2]) >= numbers.Count)
                     {
                         Console.WriteLine("Invalid index");
                     }
@@ -45,28 +46,24 @@ namespace _04.ListOperations
                 }
                 else if (command == "shift" && inputData[1].ToLower() == "left" && numbers.Count != 0)
                 {
-                    int count = int.Parse(inputData[2]);
-                    for (int i = 0; i < count; i++)
+                    int task = int.Parse(inputData[2]);
+                    while (task != 0)
                     {
-                        int lastValue = numbers.Last();
-                        for (int j = numbers.Count - 1; j > 0; j--)
-                        {
-                            numbers[j] = numbers[j - 1];
-                        }
-                        numbers[0] = lastValue;
+                        int currentnumber = numbers[0];
+                        numbers.RemoveAt(0);
+                        numbers.Add(currentnumber);
+                        task--;
                     }
                 }
                 else if (command == "shift" && inputData[1].ToLower() == "right" && numbers.Count != 0)
                 {
                     int count = int.Parse(inputData[2]);
-                    for (int i = 0; i < count; i++)
+                    while (count != 0)
                     {
-                        int firstValue = numbers[0];
-                        for (int j = 0; j < numbers.Count - 1; j++)
-                        {
-                            numbers[j] = numbers[j + 1];
-                        }
-                        numbers[numbers.Count-1] = firstValue;
+                        int currentnumber = numbers[numbers.Count - 1];
+                        numbers.RemoveAt(numbers.Count - 1);
+                        numbers.Insert(0, currentnumber);
+                        count--;
                     }
                 }
 
