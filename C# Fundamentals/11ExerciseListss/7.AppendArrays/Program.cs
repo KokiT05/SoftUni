@@ -5,8 +5,7 @@
         static void Main(string[] args)
         {
             string[] inputData = Console.ReadLine().Split('|').Reverse().ToArray();
-            List<string> pieces = new List<string>(inputData.Length);
-            List<string> result = new List<string>(pieces.Count);
+            List<string> result = new List<string>(inputData.Length);
 
             for (int i = 0; i < inputData.Length; i++)
             {
@@ -18,7 +17,7 @@
                 }
             }
 
-            Console.WriteLine(string.Join("", result));
+            Console.WriteLine(string.Join(' ', result));
         }
     }
 }

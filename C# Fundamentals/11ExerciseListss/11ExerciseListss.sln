@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.CardsGame", "6.CardsGame\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.AppendArrays", "7.AppendArrays\7.AppendArrays.csproj", "{D622B3B2-37C3-47C0-9BBA-28D8F04F94D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8.AnonymousThreat", "8.AnonymousThreat\8.AnonymousThreat.csproj", "{12A2D070-AD98-4B3C-8912-BB32DA090954}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.SoftUniCoursePlanning", "10.SoftUniCoursePlanning\10.SoftUniCoursePlanning.csproj", "{DB4DCEA1-19C4-4410-81F8-9BB4291E608A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{D622B3B2-37C3-47C0-9BBA-28D8F04F94D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D622B3B2-37C3-47C0-9BBA-28D8F04F94D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D622B3B2-37C3-47C0-9BBA-28D8F04F94D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A2D070-AD98-4B3C-8912-BB32DA090954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A2D070-AD98-4B3C-8912-BB32DA090954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A2D070-AD98-4B3C-8912-BB32DA090954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A2D070-AD98-4B3C-8912-BB32DA090954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB4DCEA1-19C4-4410-81F8-9BB4291E608A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB4DCEA1-19C4-4410-81F8-9BB4291E608A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB4DCEA1-19C4-4410-81F8-9BB4291E608A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB4DCEA1-19C4-4410-81F8-9BB4291E608A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
