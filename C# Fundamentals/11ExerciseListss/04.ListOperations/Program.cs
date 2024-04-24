@@ -23,7 +23,7 @@ namespace _04.ListOperations
                 }
                 else if (command == "insert")
                 {
-                    if (int.Parse(inputData[1]) < 0 || int.Parse(inputData[1]) >= numbers.Count)
+                    if (int.Parse(inputData[1]) < 0 || int.Parse(inputData[2]) >= numbers.Count)
                     {
                         Console.WriteLine("Invalid index");
                     }
@@ -46,7 +46,7 @@ namespace _04.ListOperations
                 else if (command == "shift" && inputData[1].ToLower() == "left" && numbers.Count != 0)
                 {
                     int count = int.Parse(inputData[2]);
-                    for (int i = 0; i < count; i++)
+                    for (int i = 1; i < count; i++)
                     {
                         int lastValue = numbers.Last();
                         for (int j = numbers.Count - 1; j > 0; j--)
@@ -59,7 +59,7 @@ namespace _04.ListOperations
                 else if (command == "shift" && inputData[1].ToLower() == "right" && numbers.Count != 0)
                 {
                     int count = int.Parse(inputData[2]);
-                    for (int i = 0; i < count; i++)
+                    for (int i = 1; i < count; i++)
                     {
                         int firstValue = numbers[0];
                         for (int j = 0; j < numbers.Count - 1; j++)
