@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.CarRace", "2.CarRace\2.Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.TakeSkipRope", "03.TakeSkipRope\03.TakeSkipRope.csproj", "{E1E0C0A8-A03A-4AF4-9341-C1138106E507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.Mixed_up_Lists", "4.Mixed_up_Lists\4.Mixed_up_Lists.csproj", "{137CF390-BC4B-4FC7-B31D-4B8EE5D59595}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.DrumSet", "5.DrumSet\5.DrumSet.csproj", "{BB2EECF3-A5F9-48E3-90C5-2765D2530CD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{E1E0C0A8-A03A-4AF4-9341-C1138106E507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1E0C0A8-A03A-4AF4-9341-C1138106E507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1E0C0A8-A03A-4AF4-9341-C1138106E507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137CF390-BC4B-4FC7-B31D-4B8EE5D59595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137CF390-BC4B-4FC7-B31D-4B8EE5D59595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137CF390-BC4B-4FC7-B31D-4B8EE5D59595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137CF390-BC4B-4FC7-B31D-4B8EE5D59595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2EECF3-A5F9-48E3-90C5-2765D2530CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2EECF3-A5F9-48E3-90C5-2765D2530CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2EECF3-A5F9-48E3-90C5-2765D2530CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2EECF3-A5F9-48E3-90C5-2765D2530CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
