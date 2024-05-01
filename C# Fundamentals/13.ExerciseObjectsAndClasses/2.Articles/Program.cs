@@ -18,22 +18,27 @@
                                     .ToArray();
 
                 string command = currentData[0];
-
-                if (command.ToLower() == "edit")
-                {
-                    article.Edint(currentData[1]);
-                }
-                else if (command.ToLower() == "changeauthor")
-                {
-                    article.ChangeAuthor(currentData[1]);
-                }
-                else if(command.ToLower() == "rename")
-                {
-                    article.Rename(currentData[1]);
-                }
+                string inputData = currentData[1];
+                Settings(article, command, inputData);
             }
 
             Console.WriteLine(article);
+        }
+
+        public  static void Settings(Article article, string command, string inputData)
+        {
+            if (command.ToLower() == "edit")
+            {
+                article.Edint(inputData);
+            }
+            else if (command.ToLower() == "changeauthor")
+            {
+                article.ChangeAuthor(inputData);
+            }
+            else if (command.ToLower() == "rename")
+            {
+                article.Rename(inputData);
+            }
         }
     }
 
