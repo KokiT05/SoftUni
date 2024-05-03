@@ -1,106 +1,107 @@
-﻿namespace _5.VehicleCatalogue
+﻿using System.Text;
+
+namespace _5.VehicleCatalogue
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Catalogue catalogue = new Catalogue();
+            List<Vehicle> catalogue = new List<Vehicle>();
 
             string command = Console.ReadLine();
             while (command.ToLower() != "end")
             {
-                if (command != "Close the Catalogue")
-                {
-                    string[] dataInformation = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    string typeOfVehicle = dataInformation[0];
-                    string model = dataInformation[1];
-                    string color = dataInformation[2];
-                    double horsePower = double.Parse(dataInformation[3]);
+                string[] cmdArg = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string type = cmdArg[0].ToLower();
+                string model = cmdArg[1];
+                string color = cmdArg[2].ToLower();
+                int horsePower = int.Parse(cmdArg[3]);
 
-                    if (typeOfVehicle.ToLower() == "car")
-                    {
-                        Car car = new Car(model, color, horsePower);
-                        catalogue.Cars.Add(car);
-                    }
-                    else if (typeOfVehicle.ToLower() == "truck")
-                    {
-                        Truck truck = new Truck(model, color, horsePower);
-                        catalogue.Trucks.Add(truck);
-                    }
-                }
-                else
-                {
-                    int count = catalogue.Cars.Count;
-                    double sumOfHorsePower = (catalogue.Cars.Sum(c => c.HorsePower) / count);
-                    Console.WriteLine($"Cars have average horsepower of: {sumOfHorsePower:f2}");
+                Vehicle currentVehicle = new Vehicle(type, model, color, horsePower);
+                catalogue.Add(currentVehicle);
 
-                    count = catalogue.Trucks.Count;
-                    sumOfHorsePower = (catalogue.Trucks.Sum(t => t.HorsePower) / count);
-                    Console.WriteLine($"Trucks have average horsepower of: {sumOfHorsePower:f2}");
+                command = Console.ReadLine();
+            }
+
+            command = Console.ReadLine();
+            while (command != "Close the Catalogue")
+            {
+                string model = command;
+                bool isModelExist = catalogue.Select(x => x.Model).Contains(model);
+
+                if (isModelExist)
+                {
+                    Vehicle currentVehicle = catalogue.First(v => v.Model == model);
+                    Console.WriteLine(currentVehicle);
                 }
 
                 command = Console.ReadLine();
             }
 
-            foreach (Car car in catalogue.Cars)
+            int countOfCars = 0;
+            int coutOfTruck = 0;
+
+            double sumOfCarsHorsePower = 0.0;
+            double sumOfTruckHorsePower = 0.0;
+
+            Vehicle vehicle = null;
+            for (int i = 0; i < catalogue.Count; i++)
             {
-                Console.WriteLine("Type: Car");
-                Console.WriteLine($"Model: {car.Model}");
-                Console.WriteLine($"Color: {car.Color}");
-                Console.WriteLine($"Horsepower: {car.HorsePower}");
+                vehicle = catalogue[i];
+                if (vehicle.Type.ToLower() == "car")
+                {
+                    countOfCars++;
+                    sumOfCarsHorsePower += vehicle.HorsePower;
+                }
+                else if (vehicle.Type.ToLower() == "truck")
+                {
+                    coutOfTruck++;
+                    sumOfTruckHorsePower += vehicle.HorsePower;
+                }
             }
 
-            foreach (Truck truck in catalogue.Trucks)
+            if (countOfCars > 0)
             {
-                Console.WriteLine("Type: Truck");
-                Console.WriteLine($"Model: {truck.Model}");
-                Console.WriteLine($"Color: {truck.Color}");
-                Console.WriteLine($"Horsepower: {truck.HorsePower}");
+                sumOfCarsHorsePower = sumOfCarsHorsePower / countOfCars;
+            }
+
+            if (coutOfTruck > 0)
+            {
+                sumOfTruckHorsePower = sumOfTruckHorsePower / coutOfTruck;
+            }
+
+            Console.WriteLine($"Cars have average horsepower of: {sumOfCarsHorsePower}.");
+            Console.WriteLine($"Trucks have average horsepower of: {sumOfTruckHorsePower}.");
+        }
+
+        public class Vehicle
+        {
+            public Vehicle(string type, string model, string color, int horsePower)
+            {
+                this.Type = type;
+                this.Model = model;
+                this.Color = color;
+                this.HorsePower = horsePower;
+            }
+
+            public string Type { get; set; }
+
+            public string Model { get; set; }
+
+            public string Color { get; set; }
+
+            public int HorsePower { get; set;}
+
+            public override string ToString()
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine($"Type: {(Type == "car" ? "Car" : "Truck")}");
+                stringBuilder.AppendLine($"Model: {Model}");
+                stringBuilder.AppendLine($"Color: {Color}");
+                stringBuilder.AppendLine($"Horsepower: {HorsePower}");
+
+                return stringBuilder.ToString().TrimEnd();
             }
         }
-    }
-
-    public class Catalogue
-    {
-        public Catalogue()
-        {
-            this.Trucks = new List<Truck>();
-            this.Cars = new List<Car>();
-        }
-
-        public List<Car> Cars { get; set; }
-        public List<Truck> Trucks { get; set; }
-    }
-
-    public class Car
-    {
-        public Car(string model, string color, double horsePower)
-        {
-            this.Color = color;
-            this.Model = model;
-            this.HorsePower = horsePower;
-        }
-
-        public string Model { get; set; }
-
-        public string Color { get; set; }
-
-        public double HorsePower { get; set; }
-    }
-
-    public class Truck
-    {
-        public Truck(string model, string color, double horsePower)
-        {
-            this.Color = color;
-            this.Model = model;
-            this.HorsePower = horsePower;
-        }
-
-        public string Model { get; set; }
-
-        public string Color { get; set; }
-
-        public double HorsePower { get;}
     }
 }

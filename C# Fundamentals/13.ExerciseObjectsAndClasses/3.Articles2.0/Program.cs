@@ -7,38 +7,35 @@
             int numberOfArticle = int.Parse(Console.ReadLine());
 
             List<Article> articles = new List<Article>();
-            for (int i = 1; i <= numberOfArticle; i++)
+            for (int i = 0; i < numberOfArticle; i++)
             {
                 string[] currentData = Console.ReadLine()
-                                    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
-                                    .ToArray();
+                                    .Split(", ");
 
                 string title = currentData[0];
                 string content = currentData[1];
                 string author = currentData[2];
+
                 Article article = new Article(title, content, author);
                 articles.Add(article);
             }
 
             string orderType = Console.ReadLine();
 
-            if (orderType.ToLower() == "title")
+            if (orderType == "title")
             {
                 articles = articles.OrderBy(a => a.Title).ToList();
             }
-            else if (orderType.ToLower() == "content")
+            else if (orderType == "content")
             {
-                articles = articles.OrderBy(a => a.Content).ToList();
+                articles.Sort((cOne, cTwo) => cOne.Content.CompareTo(cTwo.Content));
             }
-            else if (orderType.ToLower() == "author")
+            else if (orderType == "author")
             {
                 articles = articles.OrderBy(a => a.Author).ToList();
             }
 
-            foreach (Article article in articles)
-            {
-                Console.WriteLine(article);
-            }
+            Console.WriteLine(string.Join(Environment.NewLine, articles));
         }
     }
 
