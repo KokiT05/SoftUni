@@ -70,8 +70,8 @@ namespace _5.VehicleCatalogue
                 sumOfTruckHorsePower = sumOfTruckHorsePower / coutOfTruck;
             }
 
-            Console.WriteLine($"Cars have average horsepower of: {sumOfCarsHorsePower}.");
-            Console.WriteLine($"Trucks have average horsepower of: {sumOfTruckHorsePower}.");
+            Console.WriteLine($"Cars have average horsepower of: {sumOfCarsHorsePower:f2}.");
+            Console.WriteLine($"Trucks have average horsepower of: {sumOfTruckHorsePower:f2}.");
         }
 
         public class Vehicle
