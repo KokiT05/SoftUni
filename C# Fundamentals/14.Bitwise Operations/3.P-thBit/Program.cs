@@ -32,7 +32,7 @@
             }
             else
             {
-                Console.WriteLine(binaryRepresentation[position] & 1);
+                Console.WriteLine(binaryRepresentation[position]);
             }
         }
     }
