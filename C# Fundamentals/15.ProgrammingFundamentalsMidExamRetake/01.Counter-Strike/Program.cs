@@ -38,7 +38,7 @@
             }
             else
             {
-                Console.WriteLine($"Not enough energy! Game ends with {wonBattleCount} won battles and {energy} energy.");
+                Console.WriteLine($"Not enough energy! Game ends with {wonBattleCount} won battles and {energy} energy");
             }
         }
     }
