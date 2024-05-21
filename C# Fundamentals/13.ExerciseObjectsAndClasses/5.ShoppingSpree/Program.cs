@@ -15,9 +15,12 @@ namespace _5.ShoppingSpree
             for (int i = 0; i < personInformatin.Length; i = i + 2)
             {
                 string personName = personInformatin[i];
-                decimal money = decimal.Parse(personInformatin[+1]);
-                Person person = new Person(personName, money);
-                people.Add(person);
+                double money = double.Parse(personInformatin[+1]);
+                if (money >= 0)
+                {
+                    Person person = new Person(personName, money);
+                    people.Add(person);
+                }
             }
             string[] productsInformation = Console.ReadLine()
                                                 .Split(new char[] {'=', ';'}, 
@@ -25,13 +28,16 @@ namespace _5.ShoppingSpree
             for (int i = 0; i < productsInformation.Length; i = i + 2)
             {
                 string productName = productsInformation[i];
-                decimal productCost = decimal.Parse(productsInformation[i+1]);
-                Product product = new Product(productName, productCost);
-                products.Add(product);
+                double productCost = double.Parse(productsInformation[i+1]);
+                if (productCost >= 0)
+                {
+                    Product product = new Product(productName, productCost);
+                    products.Add(product);
+                }
             }
 
-            Person currentPerson = new Person(string.Empty, 0M);
-            Product currentProduct = new Product(string.Empty, 0M);
+            Person currentPerson = new Person(string.Empty, 0);
+            Product currentProduct = new Product(string.Empty, 0);
 
             string command = Console.ReadLine();
             while (command != "END")
@@ -39,12 +45,14 @@ namespace _5.ShoppingSpree
                 string[] commandArg = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 string personName = commandArg[0];
                 string productName = commandArg[1];
-
+                bool isExistPerson = false;
+                bool isExistProduct = false;
                 foreach (Person person in people)
                 {
                     if (person.Name == personName)
                     {
                         currentPerson = person;
+                        isExistPerson = true;
                     }
                 }
 
@@ -53,10 +61,14 @@ namespace _5.ShoppingSpree
                     if (product.Name == productName)
                     {
                         currentProduct = product;
+                        isExistProduct = true;
                     }
                 }
 
-                currentPerson.AddProduct(currentProduct);
+                if (isExistProduct && isExistPerson)
+                {
+                    currentPerson.AddProduct(currentProduct);
+                }
 
                 command = Console.ReadLine();
             }
@@ -78,7 +90,7 @@ namespace _5.ShoppingSpree
 
     public class Person
     {
-        public Person(string name, decimal money)
+        public Person(string name, double money)
         {
             this.Name = name;
             this.Money = money;
@@ -86,14 +98,13 @@ namespace _5.ShoppingSpree
         }
         public string Name { get; set; }
 
-        public decimal Money { get; set; }
+        public double Money { get; set; }
 
         public List<Product> products { get; set; }
 
         public void AddProduct(Product product) 
         {
-            decimal currentMoney = Money - product.Cost;
-            if (currentMoney < 0)
+            if (product.Cost > Money)
             {
                 Console.WriteLine($"{Name} can't afford {product.Name}");
             }
@@ -108,13 +119,13 @@ namespace _5.ShoppingSpree
 
     public class Product
     {
-        public Product(string name, decimal cost)
+        public Product(string name, double cost)
         {
             this.Name = name;
             this.Cost = cost;
         }
         public string Name { get; set; }
 
-        public decimal Cost { get; set; }
+        public double Cost { get; set; }
     }
 }
