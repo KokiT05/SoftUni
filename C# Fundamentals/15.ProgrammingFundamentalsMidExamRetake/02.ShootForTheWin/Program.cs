@@ -9,7 +9,30 @@
                                     .Select(int.Parse)
                                     .ToArray();
 
-            Console.WriteLine(string.Join(' ', shotTargets));
+            string command = Console.ReadLine();
+            while (command != "End")
+            {
+                int index = int.Parse(command);
+
+                if (index >= 0 && index < shotTargets.Length)
+                {
+                    shotTargets[index] = shotTargets[index] - 1;
+                }
+
+                for (int i = 0; i < shotTargets.Length; i++)
+                {
+                    if (shotTargets[index] < shotTargets[i])
+                    {
+                        shotTargets[i] -= shotTargets[index];
+                    }
+                    else if (shotTargets[index] >= shotTargets[i])
+                    {
+                        shotTargets[i] += shotTargets[index];
+                    }
+                }
+
+                command = Console.ReadLine();
+            }
         }
     }
 }
