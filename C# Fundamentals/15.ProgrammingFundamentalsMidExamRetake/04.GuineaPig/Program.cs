@@ -39,7 +39,7 @@
             if (isEnought)
             {
                 Console.WriteLine("Everything is fine! Puppy is happy! " +
-                    $"Food: {quantityFood:f2}, Hay: {quantityHal:f2}, Cover: {quantityCover:f2}");
+                    $"Food: {(quantityFood / 1000):f2}, Hay: {(quantityHal / 1000):f2}, Cover: {quantityCover:f2}.");
             }
             else
             {

@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.MovingTarget", "03.Movin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.GuineaPig", "04.GuineaPig\04.GuineaPig.csproj", "{2C3D13CD-C1ED-4D9D-AB8A-B5BB0D5E0458}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.ShoppingList", "05.ShoppingList\05.ShoppingList.csproj", "{37B880D7-7A08-4385-B924-D3E47138C6E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.HeartDelivery", "06.HeartDelivery\06.HeartDelivery.csproj", "{14D7813A-A9FE-4138-B785-D425D92D6011}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{2C3D13CD-C1ED-4D9D-AB8A-B5BB0D5E0458}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3D13CD-C1ED-4D9D-AB8A-B5BB0D5E0458}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C3D13CD-C1ED-4D9D-AB8A-B5BB0D5E0458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B880D7-7A08-4385-B924-D3E47138C6E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B880D7-7A08-4385-B924-D3E47138C6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B880D7-7A08-4385-B924-D3E47138C6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B880D7-7A08-4385-B924-D3E47138C6E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D7813A-A9FE-4138-B785-D425D92D6011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D7813A-A9FE-4138-B785-D425D92D6011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D7813A-A9FE-4138-B785-D425D92D6011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D7813A-A9FE-4138-B785-D425D92D6011}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
