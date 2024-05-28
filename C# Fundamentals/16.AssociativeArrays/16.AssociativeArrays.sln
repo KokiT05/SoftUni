@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.CountRealNumbers", "01.CountRealNumbers\01.CountRealNumbers.csproj", "{86825E02-9541-45D9-A126-40A452525932}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.OddOccurrences", "02.OddOccurrences\02.OddOccurrences.csproj", "{A6112804-96A0-41F3-8F72-42C878769EAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{86825E02-9541-45D9-A126-40A452525932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86825E02-9541-45D9-A126-40A452525932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86825E02-9541-45D9-A126-40A452525932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6112804-96A0-41F3-8F72-42C878769EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6112804-96A0-41F3-8F72-42C878769EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6112804-96A0-41F3-8F72-42C878769EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6112804-96A0-41F3-8F72-42C878769EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
