@@ -25,8 +25,8 @@
                 input = Console.ReadLine();
             }
 
-            coursesStudents = coursesStudents.OrderByDescending(v => v.Value.Count)
-                                            .ToDictionary(k => k.Key, v => v.Value);
+            //coursesStudents = coursesStudents.OrderByDescending(v => v.Value.Count)
+                                            //.ToDictionary(k => k.Key, v => v.Value);
 
             foreach (string courseStudent in coursesStudents.Keys)
             {
@@ -34,7 +34,7 @@
 
                 Console.
                 WriteLine
-                ($"-- {string.Join($"\n-- ", coursesStudents[courseStudent].OrderBy(v => v))}");
+                ($"-- {string.Join($"\n-- ", coursesStudents[courseStudent]/*.OrderBy(/*v => v)*/)}");
             }
         }
     }
