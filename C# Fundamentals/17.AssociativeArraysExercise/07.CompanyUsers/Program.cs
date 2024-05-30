@@ -25,12 +25,12 @@
                 input = Console.ReadLine();
             }
 
-            companiesWorkers = companiesWorkers.OrderBy(k => k.Key).ToDictionary(k => k.Key, v => v.Value);
+            //companiesWorkers = companiesWorkers.OrderBy(k => k.Key).ToDictionary(k => k.Key, v => v.Value);
 
             foreach (string company in companiesWorkers.Keys)
             {
                 Console.WriteLine($"{company}");
-                Console.WriteLine($"-- {string.Join("\n--", companiesWorkers[company])}");
+                Console.WriteLine($"-- {string.Join("\n-- ", companiesWorkers[company])}");
             }
         }
     }
