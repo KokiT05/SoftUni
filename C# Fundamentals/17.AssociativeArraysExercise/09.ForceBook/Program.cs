@@ -1,4 +1,12 @@
-﻿namespace _09.ForceBook
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace _09.ForceBook
 {
     internal class Program
     {
@@ -10,22 +18,19 @@
             {
                 
                 string firstArg = string.Empty;
-                string characer = string.Empty;
                 string secondArg =string.Empty;
 
                 if (input.Contains("|"))
                 {
-                    string[] cmdArg = input.Split("|");
+                    string[] cmdArg = input.Split(" | ");
                     firstArg = cmdArg[0];
-                    characer = cmdArg[1];
-                    secondArg = cmdArg[2];
+                    secondArg = cmdArg[1];
                 }
                 else if (input.Contains("->")) 
                 {
-                    string[] cmdArg = input.Split("->");
+                    string[] cmdArg = input.Split(" -> ");
                     firstArg = cmdArg[0];
-                    characer = cmdArg[1];
-                    secondArg = cmdArg[2];
+                    secondArg = cmdArg[1];
                 }
 
                 if (input.Contains('|') && sideUsers.ContainsKey(firstArg) == false)
@@ -42,6 +47,7 @@
                 {
                     foreach (string forceUser in sideUsers.Keys)
                     {
+
                         if (sideUsers[forceUser].Contains(firstArg))
                         {
                             sideUsers[forceUser].Remove(firstArg);
