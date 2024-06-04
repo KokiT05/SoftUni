@@ -1,4 +1,8 @@
-﻿namespace _07.CompanyUsers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _07.CompanyUsers
 {
     internal class Program
     {
@@ -25,7 +29,7 @@
                 input = Console.ReadLine();
             }
 
-            //companiesWorkers = companiesWorkers.OrderBy(k => k.Key).ToDictionary(k => k.Key, v => v.Value);
+            companiesWorkers = companiesWorkers.OrderBy(k => k.Key).ToDictionary(k => k.Key, v => v.Value);
 
             foreach (string company in companiesWorkers.Keys)
             {

@@ -81,7 +81,7 @@ namespace _010.SoftUniExamResults
                 Console.WriteLine($"{item} | {keyValuePairs[item]}");
             }
             Console.WriteLine($"Submissions:");
-            foreach (var item in languageSubmissions.OrderByDescending(v => v.Value))
+            foreach (var item in languageSubmissions.OrderByDescending(v => v.Value).ThenBy(k => k.Key))
             {
                 Console.WriteLine($"{item.Key} - {item.Value}");
             }

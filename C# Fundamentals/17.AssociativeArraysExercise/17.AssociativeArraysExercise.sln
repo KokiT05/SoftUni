@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.ForceBook", "09.ForceBoo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "010.SoftUniExamResults", "010.SoftUniExamResults\010.SoftUniExamResults.csproj", "{D55B1830-FE13-460C-B28D-A2DAE0B1748C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Ranking", "01.Ranking\01.Ranking.csproj", "{01B5BE0D-EB4A-49CB-86E4-168203484B4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{D55B1830-FE13-460C-B28D-A2DAE0B1748C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D55B1830-FE13-460C-B28D-A2DAE0B1748C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D55B1830-FE13-460C-B28D-A2DAE0B1748C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B5BE0D-EB4A-49CB-86E4-168203484B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B5BE0D-EB4A-49CB-86E4-168203484B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B5BE0D-EB4A-49CB-86E4-168203484B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B5BE0D-EB4A-49CB-86E4-168203484B4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
