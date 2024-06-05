@@ -74,14 +74,14 @@
             Console.WriteLine($"Best candidate is {bestCandidate} with total {bestPoint} points.");
 
             userContents = userContents.OrderBy(x => x.Key).ToDictionary(k => k.Key, v => v.Value);
-            Console.WriteLine("Ranking:");
+            Console.WriteLine("Ranking: ");
             foreach (string user in userContents.Keys)
             {
                 Console.WriteLine($"{user}");
                 foreach (KeyValuePair<string, int> contentPoints in 
                     userContents[user].OrderByDescending(v => v.Value))
                 {
-                    Console.WriteLine($"# {contentPoints.Key} -> {contentPoints.Value}");
+                    Console.WriteLine($"#  {contentPoints.Key} -> {contentPoints.Value}");
                 }
             }
         }
