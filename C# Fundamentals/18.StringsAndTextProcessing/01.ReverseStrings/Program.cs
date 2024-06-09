@@ -22,7 +22,7 @@
                 reverse += text[i];
             }
 
-            Console.WriteLine(reverse);
+            Console.WriteLine($"{text} = {reverse}");
         }
 
     }
