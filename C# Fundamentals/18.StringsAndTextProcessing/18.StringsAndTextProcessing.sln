@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.TextFilter", "04.TextFil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.DigitsLettersAndOther", "05.DigitsLettersAndOther\05.DigitsLettersAndOther.csproj", "{EE19C5D2-5D17-4991-BF80-2364EB0A2861}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ImplementingStringMethods", "06.ImplementingStringMethods\06.ImplementingStringMethods.csproj", "{F81C6D3B-B271-4BE6-BA79-8173C9ECD90C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EE19C5D2-5D17-4991-BF80-2364EB0A2861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE19C5D2-5D17-4991-BF80-2364EB0A2861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE19C5D2-5D17-4991-BF80-2364EB0A2861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F81C6D3B-B271-4BE6-BA79-8173C9ECD90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81C6D3B-B271-4BE6-BA79-8173C9ECD90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F81C6D3B-B271-4BE6-BA79-8173C9ECD90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81C6D3B-B271-4BE6-BA79-8173C9ECD90C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
