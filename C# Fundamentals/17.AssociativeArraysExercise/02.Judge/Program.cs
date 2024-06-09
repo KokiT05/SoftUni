@@ -7,8 +7,6 @@
             Dictionary<string, Dictionary<string, int>> userAndContents
                         = new Dictionary<string, Dictionary<string, int>>();
 
-            Dictionary<string, List<int>> userAndTotalPoints = new Dictionary<string, List<int>>();
-
             string input = Console.ReadLine();
             while (input != "no more time")
             {

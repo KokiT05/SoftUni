@@ -23,9 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.ForceBook", "09.ForceBoo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "010.SoftUniExamResults", "010.SoftUniExamResults\010.SoftUniExamResults.csproj", "{D55B1830-FE13-460C-B28D-A2DAE0B1748C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Ranking", "01.Ranking\01.Ranking.csproj", "{01B5BE0D-EB4A-49CB-86E4-168203484B4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Ranking", "01.Ranking\01.Ranking.csproj", "{01B5BE0D-EB4A-49CB-86E4-168203484B4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Judge", "02.Judge\02.Judge.csproj", "{CF0C0DC5-6AD2-41D7-966E-904C8894A6D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Judge", "02.Judge\02.Judge.csproj", "{CF0C0DC5-6AD2-41D7-966E-904C8894A6D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.MOBAChallenger", "03.MOBAChallenger\03.MOBAChallenger.csproj", "{78982B89-16CC-4E80-B812-57A212BF6BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.Snowwhite", "04.Snowwhite\04.Snowwhite.csproj", "{24D9BC24-AB14-4BC8-9428-1F3A9FF1D445}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{CF0C0DC5-6AD2-41D7-966E-904C8894A6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF0C0DC5-6AD2-41D7-966E-904C8894A6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF0C0DC5-6AD2-41D7-966E-904C8894A6D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78982B89-16CC-4E80-B812-57A212BF6BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78982B89-16CC-4E80-B812-57A212BF6BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78982B89-16CC-4E80-B812-57A212BF6BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78982B89-16CC-4E80-B812-57A212BF6BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D9BC24-AB14-4BC8-9428-1F3A9FF1D445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D9BC24-AB14-4BC8-9428-1F3A9FF1D445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D9BC24-AB14-4BC8-9428-1F3A9FF1D445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D9BC24-AB14-4BC8-9428-1F3A9FF1D445}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
