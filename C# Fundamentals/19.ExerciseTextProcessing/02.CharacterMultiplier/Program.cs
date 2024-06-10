@@ -25,7 +25,7 @@
                     result += firstInput[i] * secondInput[i];
                 }
 
-                for (int i = firstInput.Length - 1; i < secondInput.Length; i++)
+                for (int i = firstInput.Length; i < secondInput.Length; i++)
                 {
                     result += secondInput[i];
                 }
@@ -37,7 +37,7 @@
                     result += (byte)firstInput[i] * (byte)secondInput[i];
                 }
 
-                for (int i = secondInput.Length - 1; i < firstInput.Length; i++)
+                for (int i = secondInput.Length; i < firstInput.Length; i++)
                 {
                     result += (byte)firstInput[i];
                 }
