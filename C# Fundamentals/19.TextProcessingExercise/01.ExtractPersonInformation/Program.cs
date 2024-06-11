@@ -10,18 +10,15 @@
             string currentName = string.Empty;
             string currentAge = string.Empty;
 
-            int count = 0;
             for (int i = 1; i <= lines; i++)
             {
                 string input = Console.ReadLine();
-                indexes = 
-                SumbolsArray(input, indexes);
+                indexes = SumbolsArray(input, indexes);
 
                 currentName =
                 input.Substring(indexes[0] + 1, (indexes[1] - (indexes[0] + 1)));
                 currentAge =
                 input.Substring(indexes[2] + 1, (indexes[3] - (indexes[2] + 1)));
-                count = 0;
 
                 Console.WriteLine($"{currentName} is {currentAge} years old.");
             }
