@@ -12,7 +12,7 @@ namespace _01.Furniture
             decimal price = 0;
             int quantity = 0;
 
-            string pattern = @">>(?<furniture>[A-Za-z]+)<<(?<price>\d+\,?\d+)!(?<quantity>\d)";
+            string pattern = @">>(?<furniture>[A-Za-z]+)<<(?<price>\d+\.?\d+)!(?<quantity>\d+)";
             Regex regex = new Regex(pattern);
             MatchCollection matchCollection;
 
@@ -35,6 +35,7 @@ namespace _01.Furniture
                 inputLine = Console.ReadLine();
             }
 
+            Console.WriteLine($"Bought furniture:");
             foreach (string currentFurniture in furnitures)
             {
                 Console.WriteLine(currentFurniture);
