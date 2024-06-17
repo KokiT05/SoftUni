@@ -21,10 +21,30 @@ namespace _02.Race
             string patternKm = @"(\d)";
             MatchCollection matches;
 
+            //The code from lecture
+            //string namePattern = @"[\W\d]";
+            //string numberPattern = @"[\WA-Za-z]";
+
 
             string input = Console.ReadLine();
             while (input.ToLower() != "end of race")
             {
+                //The code from lecture
+                ///string name = Regex.Replace(input, namePattern, "");
+                //string distance = Regex.Replace(input, numberPattern, "");
+                // int sum = 0;
+
+                //foreach (var/char digit in distance)
+                //{
+                    //int currentDigit = int.Parse(digit.ToString());
+                    //sum += currentDigit;
+                //}
+
+                //if (participantsKm.ContainsKey(name))
+                //{
+                //    participantsKm[name] += sum;
+                //}
+
                 string name = string.Empty;
                 double km = 0;
                 matches = Regex.Matches(input, patternName);
@@ -47,7 +67,20 @@ namespace _02.Race
                 input = Console.ReadLine();
             }
 
-            participantsKm = 
+            //The code from lecture
+            //int count = 1;
+            //foreach (var kvp in participantsKm.OrderByDescending(v => v.Value))
+            //{
+            //    string text = count == 1 ? "st" : count == 2 ? "nd" : "rd";
+            //    Console.WriteLine($"{count++}{text} place: {kvp.Key}");
+
+            //    if (count == 4)
+            //    {
+            //        break;
+            //    }
+            //}
+            //
+            participantsKm =
             participantsKm.OrderByDescending(v => v.Value).ToDictionary(k => k.Key, v => v.Value);
 
             int count = 1;

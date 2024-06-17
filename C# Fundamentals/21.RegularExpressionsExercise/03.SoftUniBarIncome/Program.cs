@@ -6,62 +6,83 @@ namespace _03.SoftUniBarIncome
     {
         static void Main(string[] args)
         {
-            Dictionary<string, Dictionary<string, double>> customers
-                = new Dictionary<string, Dictionary<string, double>>(); 
+            //Dictionary<string, Dictionary<string, double>> customers
+            //    = new Dictionary<string, Dictionary<string, double>>(); 
 
-            string patternName = @"%(?<customer>[A-Z][a-z]+)%";
-            string patternProduct = @"<(?<product>[A-Za-z]+)>";
-            string patternCount = @"\|(?<count>\d+)\|";
-            string patternPrice = @"(?<price>\d+\.?\d+)";
-            string patterm =
-            @"%(?<customer>[A-Z][a-z]+)%<(?<product>[A-Za-z]+)>\|(?<count>\d+)\|(?<price>\d+\.?\d+)";
 
+            string patterm = @"%([A-Z][a-z]+)%[^|$%.]*<(\w+)>[^|$%.]*\|(\d+)\|[^|$%.]*?(\d+\.?\d*)\$";
             Regex regex = new Regex(patterm);
-            MatchCollection matchCollection;
 
-            string customerName = string.Empty;
-            string product = string.Empty;
-            int count = 0;
-            double price = 0;
+            double totalSum = 0;
 
             string input = Console.ReadLine();
-            while (input.ToLower() != "end of shift")
+            while (input != "end of shift")
             {
-                matchCollection = regex.Matches(input);
+                Match match = regex.Match(input);
 
-                foreach (Match match in matchCollection)
+                if (match.Success) 
                 {
-                    customerName = match.Groups["customer"].Value;
-                    product = match.Groups["product"].Value;
-                    count = int.Parse(match.Groups["count"].Value);
-                    price = double.Parse(match.Groups["price"].Value);
+                    string customer = match.Groups[1].Value;
+                    string product = match.Groups[2].Value;
+                    int count = int.Parse(match.Groups[3].Value);
+                    double price = double.Parse(match.Groups[4].Value);
 
-                    if (customers.ContainsKey(customerName) == false)
-                    {
-                        customers.Add(customerName, new Dictionary<string, double>
-                        { {product, (count * price) } });
-                    }
-                    else if (customers[customerName].ContainsKey(product) == false)
-                    {
-                        customers[customerName].Add(product, price);
-                    }
+                    totalSum += (count * price);
+                    Console.WriteLine($"{customer}: {product} - {(count * price):f2}");
                 }
 
                 input = Console.ReadLine();
             }
+            Console.WriteLine($"Total income: {totalSum:f2}");
 
-            double totalMoney = 0;
-            foreach (string customer in customers.Keys)
-            {
-                foreach (KeyValuePair<string, double> currentCustomerData in customers[customer])
-                {
-                    Console.WriteLine
-                    ($"{customer}: {currentCustomerData.Key} - {currentCustomerData.Value:f2}");
-                    totalMoney += currentCustomerData.Value;
-                }
-            }
+            //@"%(?<customer>[A-Z][a-z]+)%<(?<product>[A-Za-z]+)>\|(?<count>\d+)\|(?<price>\d+\.?\d+)";
 
-            Console.WriteLine($"Total income: {totalMoney:f2}");
+            //Regex regex = new Regex(patterm);
+            //MatchCollection matchCollection;
+
+            //string customerName = string.Empty;
+            //string product = string.Empty;
+            //int count = 0;
+            //double price = 0;
+
+            //string input = Console.ReadLine();
+            //while (input.ToLower() != "end of shift")
+            //{
+            //    matchCollection = regex.Matches(input);
+
+            //    foreach (Match match in matchCollection)
+            //    {
+            //        customerName = match.Groups["customer"].Value;
+            //        product = match.Groups["product"].Value;
+            //        count = int.Parse(match.Groups["count"].Value);
+            //        price = double.Parse(match.Groups["price"].Value);
+
+            //        if (customers.ContainsKey(customerName) == false)
+            //        {
+            //            customers.Add(customerName, new Dictionary<string, double>
+            //            { {product, (count * price) } });
+            //        }
+            //        else if (customers[customerName].ContainsKey(product) == false)
+            //        {
+            //            customers[customerName].Add(product, price);
+            //        }
+            //    }
+
+            //    input = Console.ReadLine();
+            //}
+
+            //double totalMoney = 0;
+            //foreach (string customer in customers.Keys)
+            //{
+            //    foreach (KeyValuePair<string, double> currentCustomerData in customers[customer])
+            //    {
+            //        Console.WriteLine
+            //        ($"{customer}: {currentCustomerData.Key} - {currentCustomerData.Value:f2}");
+            //        totalMoney += currentCustomerData.Value;
+            //    }
+            //}
+
+            //Console.WriteLine($"Total income: {totalMoney:f2}");
 
         }
     }
