@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.NetherRealms", "05.Nethe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.StarEnigma", "04.StarEnigma\04.StarEnigma.csproj", "{F8EEAABE-E0B3-4CAE-85EE-628B92FF1B69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.ExtractEmails", "6.ExtractEmails\6.ExtractEmails.csproj", "{8CF0140C-08D8-4F2E-92BF-2B85A650ECFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F8EEAABE-E0B3-4CAE-85EE-628B92FF1B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8EEAABE-E0B3-4CAE-85EE-628B92FF1B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8EEAABE-E0B3-4CAE-85EE-628B92FF1B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF0140C-08D8-4F2E-92BF-2B85A650ECFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF0140C-08D8-4F2E-92BF-2B85A650ECFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF0140C-08D8-4F2E-92BF-2B85A650ECFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF0140C-08D8-4F2E-92BF-2B85A650ECFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

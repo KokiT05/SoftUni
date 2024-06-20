@@ -33,45 +33,29 @@ namespace _04.StarEnigma
             string pattern = @"[starSTAR]";
             Regex regex = new Regex(pattern);
 
-            StringBuilder decryptMessage = new StringBuilder();
-            string planeName = string.Empty;
-            int population = 0;
-            string attackType = string.Empty;
-            int soldierCount = 0;
-
             for (int i = 1; i <= countOfLines; i++)
             {
                 string inputMessage = Console.ReadLine();
-                decryptMessage.Clear();
                 pattern = @"[starSTAR]";
                 regex = new Regex(pattern);
 
                 MatchCollection match = regex.Matches(inputMessage);
                 int countOfMatches = match.Count;
 
-                foreach (char character in inputMessage)
-                {
-                    char decryptChar = (char)(character - countOfMatches);
-                    decryptMessage.Append(decryptChar);
-                }
+                StringBuilder decryptMessage = DecryptMessage(inputMessage, countOfMatches);
 
                 pattern =
-            @"@(?<planeName>[A-Za-z]+)\w?:(?<population>[0-9]+)!(?<attackType>[A-Za-z])!->(?<soldier>[0-9]+)";
+@"@(?<planeName>[A-Za-z]+)[^@:!\->]*:(?<population>[0-9]+)[^@:!\->]*\!(?<attackType>[A-Za-z])![^@:!\->]*->(?<soldier>[0-9]+)";
                 regex = new Regex(pattern);
-                Match decryptMatch = regex.Match(decryptMessage.ToString());
-
-                if (decryptMatch.Success)
-                {
-                    planeName = decryptMatch.Groups["planeName"].Value;
-                    population = int.Parse(decryptMatch.Groups["population"].Value);
-                    attackType = decryptMatch.Groups["attackType"].Value;
-                    soldierCount = int.Parse(decryptMatch.Groups["soldier"].Value);
-
-                    Planet planet = new Planet(planeName, population, attackType, soldierCount);
-                    planets.Add(planet);
-                }
+                MatchPlanet(planets, regex, decryptMessage);
             }
 
+            planets = planets.OrderBy(planeName => planeName.Name).ToList();
+            PrintPlanet(planets);
+        }
+
+        public static void PrintPlanet(List<Planet> planets)
+        {
             int countofAttackType = planets.Where(attackType => attackType.AttackType == "A").Count();
 
             Console.WriteLine($"Attacked planets: {countofAttackType}");
@@ -87,6 +71,37 @@ namespace _04.StarEnigma
             {
                 Console.WriteLine($"-> {planet.Name}");
             }
+        }
+
+        public static void MatchPlanet(List<Planet> planets, Regex regex, StringBuilder decryptMessage)
+        {
+            Match decryptMatch = regex.Match(decryptMessage.ToString());
+
+            if (decryptMatch.Success)
+            {
+                string planeName = decryptMatch.Groups["planeName"].Value;
+                int population = int.Parse(decryptMatch.Groups["population"].Value);
+                string attackType = decryptMatch.Groups["attackType"].Value;
+                int soldierCount = int.Parse(decryptMatch.Groups["soldier"].Value);
+
+                Planet planet = new Planet(planeName, population, attackType, soldierCount);
+                planets.Add(planet);
+            }
+        }
+
+        public static StringBuilder DecryptMessage(string message, int countOfMatch)
+        {
+            StringBuilder decryptMessage = new StringBuilder();
+            decryptMessage.Clear();
+
+            foreach (char character in message)
+            {
+
+                char decryptChar = (char)(character - countOfMatch);
+                decryptMessage.Append(decryptChar);
+            }
+
+            return decryptMessage;
         }
     }
 }
