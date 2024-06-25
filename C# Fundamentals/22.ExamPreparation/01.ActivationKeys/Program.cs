@@ -16,7 +16,7 @@
                 {
                     string substring = commandArg[1];
                     string result = activationKey.Contains(substring) ?
-                    $"{activationKey} contains {substring}." : "Substring not found!";
+                    $"{activationKey} contains {substring}" : "Substring not found!";
                     Console.WriteLine(result);
                 }
                 else if (instruction.ToLower() == "flip" && commandArg[1].ToLower() == "upper")
