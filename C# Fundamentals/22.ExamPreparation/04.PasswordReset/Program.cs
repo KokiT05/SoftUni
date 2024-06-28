@@ -8,7 +8,7 @@ namespace _04.PasswordReset
         static void Main(string[] args)
         {
             string password = Console.ReadLine();
-            string newPassword = string.Empty;
+            //string newPassword = string.Empty;
 
             string inputData = Console.ReadLine();
             while (inputData != "Done")
@@ -18,7 +18,7 @@ namespace _04.PasswordReset
 
                 if (command == "TakeOdd")
                 {
-                    newPassword = string.Empty;
+                    string newPassword = string.Empty;
 
                     // TODO: Make this with LINQ if is possible
                     for (int i = 1; i < password.Length; i++)
@@ -35,43 +35,35 @@ namespace _04.PasswordReset
                 }
                 else if (command == "Cut")
                 {
-                    newPassword = string.Empty;
                     int startIndex = int.Parse(commandArg[1]);
                     int length = int.Parse(commandArg[2]);
 
                     string substring = password.Substring(startIndex, length);
-                    List<string> passwordObject = password
-                                    .Select(s => s.ToString())
-                                    .ToList();
-                    passwordObject.Remove(substring);
+                    int indexOfSubString = password.IndexOf(substring);
+                    password = password.Remove(indexOfSubString, substring.Length);
 
-                    foreach (string item in passwordObject)
-                    {
-                        newPassword += item;
-                    }
-
-                    Console.WriteLine(newPassword);
+                    Console.WriteLine(password);
                 }
                 else if (command == "Substitute")
                 {
                     string subString = commandArg[1];
                     string substitute = commandArg[2];
 
-                    if (newPassword.Contains(subString) == false)
+                    if (password.Contains(subString) == false)
                     {
                         Console.WriteLine("Nothing to replace!");
                     }
                     else
                     {
-                        newPassword = newPassword.Replace(subString, substitute);
-                        Console.WriteLine(newPassword);
+                        password = password.Replace(subString, substitute);
+                        Console.WriteLine(password);
                     }
                 }
 
                 inputData = Console.ReadLine();
             }
 
-            Console.WriteLine($"Your password is: {newPassword}");
+            Console.WriteLine($"Your password is: {password}");
         }
     }
 }
