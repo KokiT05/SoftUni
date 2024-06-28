@@ -9,7 +9,7 @@ namespace _05.FancyBarcodes
         {
             int count = int.Parse(Console.ReadLine());
 
-            string barcodePattern = @"(\@\#+)([A-Z][A-Za-z0-9]{5,})(\@\#+)";
+            string barcodePattern = @"(\@\#+)([A-Z][A-Za-z0-9]{4,}[A-Z])(\@\#+)";
             string productGroupPattern = @"\d+";
 
             Regex regex = new Regex(barcodePattern);
