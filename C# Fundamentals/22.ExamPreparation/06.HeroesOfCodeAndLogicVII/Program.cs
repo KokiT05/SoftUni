@@ -35,7 +35,7 @@
                     case "CastSpell":
                         double MPneeded = double.Parse(inputData[2]);
                         string spellName = inputData[3];
-                        CastSpell(heroes, heroName, MPneeded, spellName); 
+                        CastSpell(heroes, heroName, MPneeded, spellName);
                         break;
                     case "TakeDamage":
                         double damage = double.Parse(inputData[2]);
@@ -66,7 +66,7 @@
         }
 
         static void CastSpell
-        (Dictionary<string, List<double>> heroes, 
+        (Dictionary<string, List<double>> heroes,
         string heroName,
         double MPneeded,
         string spellName)
@@ -109,11 +109,20 @@
         string heroName,
         double amountMP)
         {
+
+
             if (ContainsHero(heroes, heroName))
             {
-                heroes[heroName][1] += amountMP;
-                heroes[heroName][1] = heroes[heroName][1] >= 200 ? 200 : heroes[heroName][1];
-                Console.WriteLine($"{heroName} recharged for {heroes[heroName][1] - amountMP} MP!");
+                if (heroes[heroName][1] + amountMP > 200)
+                {
+                    Console.WriteLine($"{heroName} recharged for {200 - heroes[heroName][1]} MP!");
+                    heroes[heroName][1] = 200;
+                }
+                else
+                {
+                    heroes[heroName][1] += amountMP;
+                    Console.WriteLine($"{heroName} recharged for {amountMP} MP!");
+                }
             }
         }
 
@@ -124,18 +133,15 @@
         {
             if (ContainsHero(heroes, heroName))
             {
-                double healedFor = 0;
                 if (heroes[heroName][0] + amountHP > 100)
                 {
-                    healedFor = 100 - heroes[heroName][0];
-                    heroes[heroName][0] += amountHP;
-                    heroes[heroName][0] = heroes[heroName][0] >= 100 ? 100 : heroes[heroName][0];
-                    Console.WriteLine($"{heroName} healed for {healedFor} HP!");
+                    Console.WriteLine($"{heroName} healed for {100 - heroes[heroName][0]} HP!");
+                    heroes[heroName][0] = 100;
                 }
                 else
                 {
-                    healedFor = amountHP;
-                    Console.WriteLine($"{heroName} healed for {healedFor} HP!");
+                    heroes[heroName][0] += amountHP;
+                    Console.WriteLine($"{heroName} healed for {amountHP} HP!");
                 }
             }
         }
