@@ -8,6 +8,7 @@ Programming Basics with C#
  - Syntax
  - Work with conditional statements (if-else, switch)
  - Working with loops (for, while)
+
 Programming Fundamentals with C#
  - Working with linear data structures (Array, List, Associative Array)
  - Understanding of various IT concepts (HTTP, Objects and Classes, Database, Git and GitHub, QA Introduction)
