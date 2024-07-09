@@ -6,6 +6,13 @@
         {
             string input = Console.ReadLine();
 
+            input = StringModification(input);
+
+            Console.WriteLine(input);
+        }
+
+        public static string StringModification(string input)
+        {
             int countOfSequence = 0;
 
             char firstSymbol = input[0];
@@ -27,16 +34,22 @@
                     }
                 }
 
-                if (countOfSequence >= 2)
-                {
-                    input = input.Remove(i, countOfSequence - 1);
-                }
+                input = RemoveUnnecessaryPart(input, countOfSequence, i);
 
                 countOfSequence = 0;
-
             }
 
-            Console.WriteLine(input);
+            return input;
+        }
+
+        public static string RemoveUnnecessaryPart(string input, int countOfSequence, int index)
+        {
+            if (countOfSequence >= 2)
+            {
+                input = input.Remove(index, countOfSequence - 1);
+            }
+
+            return input;
         }
     }
 }

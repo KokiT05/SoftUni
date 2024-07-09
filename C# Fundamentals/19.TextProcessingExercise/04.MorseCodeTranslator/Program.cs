@@ -8,6 +8,13 @@
             string[] morceAlphabet = "·- -··· -·-· -·· · ··-· --· ···· ·· ·--- -·- ·-·· -- -· --- ·--· --·- ·-· ··· - ··- ···- ·-- -··- -·-- --··".Replace('·', '.').Split(' ');
             string[] alphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z".Split(' ');
 
+            string message = MorceAlphabetToMessage(morseCode, morceAlphabet, alphabet);
+
+            Console.WriteLine(message);
+        }
+
+        static string MorceAlphabetToMessage(string[] morseCode, string[] morceAlphabet, string[] alphabet)
+        {
             string message = string.Empty;
             foreach (string code in morseCode)
             {
@@ -22,7 +29,7 @@
                 }
             }
 
-            Console.WriteLine(message);
+            return message;
         }
     }
 }

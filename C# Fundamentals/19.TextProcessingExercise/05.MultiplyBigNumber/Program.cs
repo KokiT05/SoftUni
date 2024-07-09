@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace _05.MultiplyBigNumber
 {
@@ -10,31 +11,43 @@ namespace _05.MultiplyBigNumber
             bigNumString = bigNumString.TrimStart(new char[] { '0' });
             char[] bigNum = bigNumString.ToCharArray();
             int number = int.Parse(Console.ReadLine());
+
             if (number == 0)
             {
                 Console.WriteLine("0");
                 return;
             }
+
             List<string> newNum = new List<string>();
 
-            int parse = 0;
-            for (int i = bigNum.Length - 1; i >= 0; i--)
-            {
-                parse = (int.Parse(Convert.ToString(bigNum[i])) * number) + parse;
-                newNum.Insert(0, (parse % 10).ToString());
-                parse /= 10;
-            }
-
-
-            if (parse > 0)
-                Console.WriteLine($"{parse}{string.Join("", newNum)}");
-            else
-                Console.WriteLine($"{string.Join("", newNum)}");
+            int carry = MultiplyLargeNumber(bigNum, number, newNum);
+            PrintResult(carry, newNum);
 
             //string bigNumber = Console.ReadLine();
             //int singleDigitChar = int.Parse(Console.ReadLine());
             //string result = MultiplyLargeNumber(bigNumber, singleDigitChar);
             //Console.WriteLine(result);
+        }
+
+        static int MultiplyLargeNumber(char[] bigNum, int number, List<string> newNum)
+        {
+            int carry = 0;
+            for (int i = bigNum.Length - 1; i >= 0; i--)
+            {
+                carry = (int.Parse(Convert.ToString(bigNum[i])) * number) + carry;
+                newNum.Insert(0, (carry % 10).ToString());
+                carry /= 10;
+            }
+
+            return carry;
+        }
+
+        static void PrintResult(int carry, List<string> newNum)
+        {
+            if (carry > 0)
+                Console.WriteLine($"{carry}{string.Join("", newNum)}");
+            else
+                Console.WriteLine($"{string.Join("", newNum)}");
         }
 
         //static string MultiplyLargeNumber(string bigNumber, int singleDigitChar)

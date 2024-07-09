@@ -6,6 +6,13 @@
         {
             string inputText = Console.ReadLine();
 
+            string encryptText = Encrypt(inputText);
+
+            Console.WriteLine(encryptText);
+        }
+
+        public static string Encrypt(string inputText)
+        {
             int symbolValue = 0;
             string encryptText = string.Empty;
             for (int i = 0; i < inputText.Length; i++)
@@ -15,7 +22,7 @@
                 encryptText = encryptText + (char)symbolValue;
             }
 
-            Console.WriteLine(encryptText);
+            return encryptText;
         }
     }
 }
