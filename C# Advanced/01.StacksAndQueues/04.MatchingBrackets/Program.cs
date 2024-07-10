@@ -22,7 +22,7 @@ namespace _04.MatchingBrackets
 
                     Console
                     .WriteLine
-                    (arithmeticExpression.Substring(openingBracket, closingBracket - openingBracket));
+                    (arithmeticExpression.Substring(openingBracket, closingBracket - openingBracket + 1));
                 }
             }
         }
