@@ -14,20 +14,20 @@
             {
                 if (input == "green")
                 {
-                    sumOfPassedCars = sumOfPassedCars + countPass;
-
                     for (int i = 1; i <= countPass; i++)
                     {
                         if (cars.Count == 0)
                         {
                             break;
                         }
-
+                        sumOfPassedCars++;
                         Console.WriteLine($"{cars.Dequeue()} passed!");
                     }
                 }
-
-                cars.Enqueue(input);
+                else
+                {
+                    cars.Enqueue(input);
+                }
 
                 input = Console.ReadLine();
             }
