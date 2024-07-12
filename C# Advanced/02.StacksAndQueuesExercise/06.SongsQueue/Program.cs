@@ -11,31 +11,46 @@
             {
                 string command = Console.ReadLine();
 
-                if (command.Contains("Play"))
-                {
-                    songsQueue.Dequeue();
-                }
-                else if (command.Contains("Add"))
-                {
-                    int indexOfSong = command.IndexOf(" ") + 1;
-                    string song = command.Substring(indexOfSong, command.Length - indexOfSong);
-                    if (songsQueue.Contains(song))
-                    {
-                        Console.WriteLine($"{song} is already contained!");
-                    }
-                    else
-                    {
-                        songsQueue.Enqueue(song);
-                    }
-
-                }
-                else if (command.Contains("Show"))
-                {
-                    Console.WriteLine(string.Join(", ", songsQueue));
-                }
+                OperationCommand(command, songsQueue);
             }
 
             Console.WriteLine($"No more songs!");
+        }
+
+        static void AddSong(string song, Queue<string> songs)
+        {
+            if (songs.Contains(song))
+            {
+                Console.WriteLine($"{song} is already contained!");
+            }
+            else
+            {
+                songs.Enqueue(song);
+            }
+        }
+
+        static void OperationCommand(string command, Queue<string> songsQueue)
+        {
+            if (command.Contains("Play"))
+            {
+                songsQueue.Dequeue();
+            }
+            else if (command.Contains("Add"))
+            {
+                string song = GetSong(command);
+                AddSong(song, songsQueue);
+            }
+            else if (command.Contains("Show"))
+            {
+                Console.WriteLine(string.Join(", ", songsQueue));
+            }
+        }
+
+        static string GetSong(string inputData)
+        {
+            int indexOfSong = inputData.IndexOf(" ") + 1;
+            string song = inputData.Substring(indexOfSong, inputData.Length - indexOfSong);
+            return song;
         }
     }
 }
