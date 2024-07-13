@@ -9,17 +9,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.BasicQueueOperations", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.MaximumAndMinimumElement", "03.MaximumAndMinimumElement\03.MaximumAndMinimumElement.csproj", "{9440F07C-E047-44AF-BEF5-1DA1CB8EEFB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.FastFood", "04.FastFood\04.FastFood.csproj", "{0B0C054A-FC50-48FE-A0DE-EF41B9D10A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.FastFood", "04.FastFood\04.FastFood.csproj", "{0B0C054A-FC50-48FE-A0DE-EF41B9D10A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.FashionBoutique", "05.FashionBoutique\05.FashionBoutique.csproj", "{1B327C59-62E0-4123-ABD6-3EA4BD7328EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.FashionBoutique", "05.FashionBoutique\05.FashionBoutique.csproj", "{1B327C59-62E0-4123-ABD6-3EA4BD7328EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.SongsQueue", "06.SongsQueue\06.SongsQueue.csproj", "{DE1EEA73-DD8A-4F72-8C6F-3818852C409E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.SongsQueue", "06.SongsQueue\06.SongsQueue.csproj", "{DE1EEA73-DD8A-4F72-8C6F-3818852C409E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TruckTour", "07.TruckTour\07.TruckTour.csproj", "{EF2D1514-15BE-4DC4-94DE-DEF760B3AA54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.TruckTour", "07.TruckTour\07.TruckTour.csproj", "{EF2D1514-15BE-4DC4-94DE-DEF760B3AA54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.BalancedParenthesis", "08.BalancedParenthesis\08.BalancedParenthesis.csproj", "{BA47BBDB-5AFB-4E2C-8380-7AB88205FA8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.BalancedParenthesis", "08.BalancedParenthesis\08.BalancedParenthesis.csproj", "{BA47BBDB-5AFB-4E2C-8380-7AB88205FA8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.SimpleTextEditor", "09.SimpleTextEditor\09.SimpleTextEditor.csproj", "{E30D3678-94BF-4F3F-B715-2B918BC9CEBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.SimpleTextEditor", "09.SimpleTextEditor\09.SimpleTextEditor.csproj", "{E30D3678-94BF-4F3F-B715-2B918BC9CEBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.Crossroads", "10.Crossroads\10.Crossroads.csproj", "{A4CDE045-57D9-41D1-B387-E73BAD25C131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11.KeyRevolver", "11.KeyRevolver\11.KeyRevolver.csproj", "{A91B502F-F406-49EB-B21F-6FDB9C2076C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12.CupsAndBottles", "12.CupsAndBottles\12.CupsAndBottles.csproj", "{0376CD86-FFD9-439F-997E-52338CDEA0D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{E30D3678-94BF-4F3F-B715-2B918BC9CEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E30D3678-94BF-4F3F-B715-2B918BC9CEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E30D3678-94BF-4F3F-B715-2B918BC9CEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4CDE045-57D9-41D1-B387-E73BAD25C131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4CDE045-57D9-41D1-B387-E73BAD25C131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4CDE045-57D9-41D1-B387-E73BAD25C131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4CDE045-57D9-41D1-B387-E73BAD25C131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91B502F-F406-49EB-B21F-6FDB9C2076C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91B502F-F406-49EB-B21F-6FDB9C2076C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91B502F-F406-49EB-B21F-6FDB9C2076C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91B502F-F406-49EB-B21F-6FDB9C2076C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0376CD86-FFD9-439F-997E-52338CDEA0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0376CD86-FFD9-439F-997E-52338CDEA0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0376CD86-FFD9-439F-997E-52338CDEA0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0376CD86-FFD9-439F-997E-52338CDEA0D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
