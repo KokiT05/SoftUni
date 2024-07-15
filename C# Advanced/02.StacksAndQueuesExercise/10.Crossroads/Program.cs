@@ -1,4 +1,6 @@
-﻿namespace _10.Crossroads
+﻿using System.Linq;
+
+namespace _10.Crossroads
 {
     internal class Program
     {
@@ -7,35 +9,74 @@
             int durationOfGreenLight = int.Parse(Console.ReadLine());
             int durationOfFreeWindow = int.Parse(Console.ReadLine());
 
-            Queue<char> carCharQueue = new Queue<char>();
-            int countCarPass = 0;
-            int timeToPass = durationOfGreenLight;
+            Queue<string> carsQueue = new Queue<string>();
+            Queue<char> currentCarQueue = new Queue<char>();
+            bool isOnGreenLight = true;
+            int timeToPass = 0;
+            int countOfPassCars = 0;
 
             string command = Console.ReadLine();
             while (command != "END")
             {
                 if (command == "green")
                 {
-                    if (durationOfFreeWindow < carCharQueue.Count)
+                    isOnGreenLight = true;
+                    timeToPass = durationOfGreenLight;
+                    while (carsQueue.Count > 0)
                     {
-                        for (int i = 0; i < durationOfFreeWindow; i++)
+                        string currentCarString = carsQueue.Dequeue();
+                        foreach (char symbol in currentCarString)
                         {
-                            carCharQueue.Dequeue();
+                            currentCarQueue.Enqueue(symbol);
                         }
-                        Console.WriteLine($"{carCharQueue.Peek()} A crash happened!");
-                        break;
-                    }
 
-                    if ()
-                    {
+                        for (int i = 1; i <= timeToPass && currentCarQueue.Count > 0; i++)
+                        {
+                            currentCarQueue.Dequeue();
 
+                        }
+
+                        if (currentCarQueue.Count > 0)
+                        {
+                            for (int i = 1; i <= (durationOfFreeWindow + timeToPass) && currentCarQueue.Count > 0; i++)
+                            {
+                                currentCarQueue.Dequeue();
+                            }
+
+                            isOnGreenLight = false;
+                        }
+
+                        if (currentCarQueue.Count > 0)
+                        {
+                            Console.WriteLine($"A crash happened!");
+                            Console
+                            .WriteLine
+                            ($"{currentCarString} was hit at {currentCarQueue.Peek()}.");
+                            return;
+                        }
+                        else
+                        {
+                            timeToPass -= currentCarString.Length;
+                            countOfPassCars++;
+                        }
+
+                        if (isOnGreenLight == false)
+                        {
+                            break;
+                        }
                     }
                 }
-                else if (command != "green")
+                else
                 {
-                    carCharQueue = new Queue<char>(command.ToCharArray());
+                    carsQueue.Enqueue(command);
                 }
+
+                command = Console.ReadLine();
             }
+
+            Console
+            .WriteLine
+            ($"Everyone is safe.\n{countOfPassCars} total cars passed the crossroads.");
         }
     }
 }
