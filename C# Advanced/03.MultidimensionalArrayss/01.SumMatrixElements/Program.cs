@@ -10,6 +10,7 @@
 
             int[,] matrix = new int[rowSize, colSize];
             int sumOfMatrix = 0;
+
             for (int row = 0; row < rowSize; row++)
             {
                 int[] numbersInput = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
