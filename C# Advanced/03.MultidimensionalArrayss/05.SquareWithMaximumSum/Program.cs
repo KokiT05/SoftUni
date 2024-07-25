@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             int[] matrixData = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
-
+            int n = 2;
             int rowMatrix = matrixData[0];
             int colMatrix = matrixData[1];
             int[,] matrix = new int[rowMatrix, colMatrix];
@@ -24,27 +24,34 @@
             int rowIndex = 0;
             int colIndex = 0;
 
-            for (int row = 0; row < matrix.GetLength(0) - 1; row++)
+            for (int row = 0; row < matrix.GetLength(0) - n + 1; row++)
             {
-                for (int col = 0; col < matrix.GetLength(1) - 1; col++)
+                for (int col = 0; col < matrix.GetLength(1) - n + 1; col++)
                 {
-                    sumOfSquear = matrix[row, col] + 
-                                matrix[row, col + 1] + 
-                                matrix[row + 1, col] +
-                                matrix[row + 1, col + 1];
 
-                    if (maxValueSuqearSum < sumOfSquear)
+                    for (int insideRow = 1; insideRow < n; insideRow++)
                     {
-                        rowIndex = row;
-                        colIndex = col;
-                        maxValueSuqearSum = sumOfSquear;
+                        for (int insideCol = 1; insideCol < n; insideCol++)
+                        {
+                            sumOfSquear = matrix[row, col] +
+                                            matrix[row, col + insideCol] +
+                                            matrix[row + insideRow, col] +
+                                            matrix[row + insideRow, col + insideCol];
+
+                            if (maxValueSuqearSum < sumOfSquear)
+                            {
+                                rowIndex = row;
+                                colIndex = col;
+                                maxValueSuqearSum = sumOfSquear;
+                            }
+                        }
                     }
                 }
             }
 
-            for (int row = rowIndex; row < rowIndex + 2; row++)
+            for (int row = rowIndex; row < rowIndex + n; row++)
             {
-                for (int col = colIndex; col < colIndex + 2; col++)
+                for (int col = colIndex; col < colIndex + n; col++)
                 {
                     Console.Write($"{matrix[row, col]} ");
                 }
