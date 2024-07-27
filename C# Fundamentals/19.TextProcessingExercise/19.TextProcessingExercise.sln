@@ -3,31 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ValidUsernames", "01.ValidUsernames\01.ValidUsernames.csproj", "{A9B6ABCD-D380-4139-AA4C-6657F4DA0C38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.ValidUsernames", "01.ValidUsernames\01.ValidUsernames.csproj", "{A9B6ABCD-D380-4139-AA4C-6657F4DA0C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.CharacterMultiplier", "02.CharacterMultiplier\02.CharacterMultiplier.csproj", "{5883C8FB-A25D-4D34-8728-FA11B98E149B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.CharacterMultiplier", "02.CharacterMultiplier\02.CharacterMultiplier.csproj", "{5883C8FB-A25D-4D34-8728-FA11B98E149B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.ExtractFile", "03.ExtractFile\03.ExtractFile.csproj", "{E0BEA7BF-DF98-4FD1-867C-D665BC42926B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.ExtractFile", "03.ExtractFile\03.ExtractFile.csproj", "{E0BEA7BF-DF98-4FD1-867C-D665BC42926B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.CaesarCipher", "04.CaesarCipher\04.CaesarCipher.csproj", "{A9FD153B-403A-404F-9921-EBEF3BB6BBA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.CaesarCipher", "04.CaesarCipher\04.CaesarCipher.csproj", "{A9FD153B-403A-404F-9921-EBEF3BB6BBA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.MultiplyBigNumber", "05.MultiplyBigNumber\05.MultiplyBigNumber.csproj", "{BAA98626-1F0F-4C56-BCD5-F9F2D63A0642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.MultiplyBigNumber", "05.MultiplyBigNumber\05.MultiplyBigNumber.csproj", "{BAA98626-1F0F-4C56-BCD5-F9F2D63A0642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ReplaceRepeatingChars", "06.ReplaceRepeatingChars\06.ReplaceRepeatingChars.csproj", "{B6FCAB53-39F9-4210-AC8C-84F97AA1CEDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.ReplaceRepeatingChars", "06.ReplaceRepeatingChars\06.ReplaceRepeatingChars.csproj", "{B6FCAB53-39F9-4210-AC8C-84F97AA1CEDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.StringExplosion", "07.StringExplosion\07.StringExplosion.csproj", "{49861836-B0A8-4067-ADD3-B0C3BB874CB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.StringExplosion", "07.StringExplosion\07.StringExplosion.csproj", "{49861836-B0A8-4067-ADD3-B0C3BB874CB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.LettersChangeNumbers", "08.LettersChangeNumbers\08.LettersChangeNumbers.csproj", "{6532802C-3AEF-438F-AB1C-6FBA5B7DD7D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.LettersChangeNumbers", "08.LettersChangeNumbers\08.LettersChangeNumbers.csproj", "{6532802C-3AEF-438F-AB1C-6FBA5B7DD7D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ExtractPersonInformation", "01.ExtractPersonInformation\01.ExtractPersonInformation.csproj", "{30053873-2314-460B-BA7F-5F981E12855F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.ExtractPersonInformation", "01.ExtractPersonInformation\01.ExtractPersonInformation.csproj", "{30053873-2314-460B-BA7F-5F981E12855F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.AsciiSumator", "02.AsciiSumator\02.AsciiSumator.csproj", "{2B321790-F7F3-410A-920D-CB5614DCFC14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.AsciiSumator", "02.AsciiSumator\02.AsciiSumator.csproj", "{2B321790-F7F3-410A-920D-CB5614DCFC14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.TreasureFinder", "03.TreasureFinder\03.TreasureFinder.csproj", "{7590FF55-35AC-49ED-BF98-933225380ADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.TreasureFinder", "03.TreasureFinder\03.TreasureFinder.csproj", "{7590FF55-35AC-49ED-BF98-933225380ADB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.MorseCodeTranslator", "04.MorseCodeTranslator\04.MorseCodeTranslator.csproj", "{ABFED5BE-8987-4CB0-85DF-7B4F959239E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.MorseCodeTranslator", "04.MorseCodeTranslator\04.MorseCodeTranslator.csproj", "{ABFED5BE-8987-4CB0-85DF-7B4F959239E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.HTML", "05.HTML\05.HTML.csproj", "{45E9F527-1CBD-47BB-A213-FF0DB84F0E3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.HTML", "05.HTML\05.HTML.csproj", "{45E9F527-1CBD-47BB-A213-FF0DB84F0E3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.Palindrome", "09.Palindrome\09.Palindrome.csproj", "{E81E2EFF-71F8-45FE-9FCB-BBCDB813B58E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{45E9F527-1CBD-47BB-A213-FF0DB84F0E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45E9F527-1CBD-47BB-A213-FF0DB84F0E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45E9F527-1CBD-47BB-A213-FF0DB84F0E3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81E2EFF-71F8-45FE-9FCB-BBCDB813B58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81E2EFF-71F8-45FE-9FCB-BBCDB813B58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81E2EFF-71F8-45FE-9FCB-BBCDB813B58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81E2EFF-71F8-45FE-9FCB-BBCDB813B58E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

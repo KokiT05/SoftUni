@@ -15,11 +15,11 @@
                 string type = inputArr[0];
                 string name = inputArr[1];
                 double damage = 
-                inputArr[2] == "null" || inputArr[2] == "0" ? 45 : double.Parse(inputArr[2]);
+                inputArr[2] == "null" ? 45 : double.Parse(inputArr[2]);
                 double health =
-                inputArr[3] == "null" || inputArr[3] == "0" ? 250 : double.Parse(inputArr[3]);
+                inputArr[3] == "null" ? 250 : double.Parse(inputArr[3]);
                 double armor =
-                inputArr[4] == "null" || inputArr[4] == "0" ? 10 : double.Parse(inputArr[4]);
+                inputArr[4] == "null" ? 10 : double.Parse(inputArr[4]);
 
                 if (dragonsInfo.ContainsKey(type) == false)
                 {

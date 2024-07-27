@@ -10,9 +10,10 @@
             string input = Console.ReadLine();
             string[] inputData;
             string player = string.Empty;
+            string removePlayer = string.Empty;
             while (input != "Season end")
             {
-                if (input.Contains("vs") == false)
+                if (input.Contains(" vs ") == false)
                 {
                     inputData = input.Split(" -> ");
                     player = inputData[0];
@@ -33,7 +34,7 @@
                        points : playerData[player][position];
 
                 }
-                else
+                else if (input.Contains(" vs "))
                 {
                     inputData = input.Split(" vs ");
                     player = inputData[0];
@@ -43,18 +44,25 @@
                     {
                         foreach (string position in playerData[player].Keys)
                         {
-                            if (playerData[secondPlayer].ContainsKey(position))
+                            if (playerData[secondPlayer].ContainsKey(position) &&
+                                playerData[player].ContainsKey(position))
                             {
                                 if (playerData[secondPlayer][position] < playerData[player][position])
                                 {
-                                    playerData.Remove(secondPlayer);
+                                    removePlayer = secondPlayer;
                                 }
                                 else if (playerData[secondPlayer][position] > playerData[player][position])
                                 {
-                                    playerData.Remove(player);
+                                    removePlayer = player;
                                 }
                             }
                         }
+
+                        if (string.IsNullOrEmpty(removePlayer) == false)
+                        {
+                            playerData.Remove(removePlayer);
+                        }
+                        removePlayer = string.Empty;
                     }
                 }
 
