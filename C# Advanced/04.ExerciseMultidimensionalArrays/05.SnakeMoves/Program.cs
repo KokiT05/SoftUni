@@ -1,4 +1,7 @@
-﻿namespace _05.SnakeMoves
+﻿using System;
+using System.Reflection;
+
+namespace _05.SnakeMoves
 {
     internal class Program
     {
@@ -18,39 +21,20 @@
             int index = 0;
             int matrixRow = 0;
             int matrixCol = 0;
-
             string direction = "left";
 
-            while (matrixRow < rowSize) 
+            while (matrixRow < rowSize)
             {
 
                 if (direction == "left")
                 {
-                    for (int col = 0; col < columnSize; col++)
-                    {
-                        if (index == snace.Length)
-                        {
-                            index = 0;
-                        }
-
-                        matrix[matrixRow, col] = snace[index].ToString();
-                        index++;
-                    }
+                    index = LeftOperationMatrix(matrix, index, snace, matrixRow);
 
                     direction = "right";
                 }
                 else if (direction == "right")
                 {
-                    for (int col = columnSize - 1; col >= 0; col --)
-                    {
-                        if (index == snace.Length)
-                        {
-                            index = 0;
-                        }
-
-                        matrix[matrixRow, col] = snace[index].ToString();
-                        index++;
-                    }
+                    index = RightOperationMatrix(matrix, index, snace, matrixRow);
 
                     direction = "left";
                 }
@@ -58,14 +42,58 @@
                 matrixRow++;
             }
 
-            for (int row = 0; row < rowSize; row++)
+            PrintMatrix(matrix);
+        }
+
+        static void PrintMatrix(string[,] matrix)
+        {
+            for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                for (int col = 0; col < columnSize; col++)
+                for (int col = 0; col < matrix.GetLength(1); col++)
                 {
                     Console.Write($"{matrix[row, col]}");
                 }
                 Console.WriteLine();
             }
+        }
+
+        static int LeftOperationMatrix
+                (string[,] matrix, 
+                int index, 
+                string snace, 
+                int matrixRow)
+        {
+            for (int col = 0; col < matrix.GetLength(1); col++)
+            {
+                if (index == snace.Length)
+                {
+                    index = 0;
+                }
+
+                matrix[matrixRow, col] = snace[index].ToString();
+                index++;
+            }
+
+            return index;
+        }
+
+        static int RightOperationMatrix
+                (string[,] matrix,
+                int index,
+                string snace,
+                int matrixRow)
+        {
+            for (int col = matrix.GetLength(1) - 1; col >= 0; col--)
+            {
+                if (index == snace.Length)
+                {
+                    index = 0;
+                }
+
+                matrix[matrixRow, col] = snace[index].ToString();
+                index++;
+            }
+            return index;
         }
     }
 }
