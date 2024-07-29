@@ -16,7 +16,9 @@
 
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                int[] inputRow = Console.ReadLine().Split().Select(int.Parse).ToArray();
+                int[] inputRow = Console.ReadLine()
+                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                .Select(int.Parse).ToArray();
 
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
@@ -29,6 +31,7 @@
             int rowIndex = 0;
             int columnIndex = 0;
             int n = 3;
+
             for (int row = 0; row < (matrix.GetLength(0) - n) + 1; row++)
             {
                 for (int col = 0; col < (matrix.GetLength(1) - n) + 1; col++)
