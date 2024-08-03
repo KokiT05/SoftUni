@@ -1,196 +1,72 @@
-﻿namespace _10.RadioactiveMutantVampireBunnies
+﻿
+namespace _10.RadioactiveMutantVampireBunnies
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int[] matrixSize = Console.ReadLine()
-                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                                .Select(int.Parse)
-                                .ToArray();
-
-            int rowSize = matrixSize[0];
-            int colSize = matrixSize[1];
+            int[] dimentions = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            int rowSize = dimentions[0];
+            int colSize = dimentions[1];
 
             char[,] matrix = new char[rowSize, colSize];
 
+            int playerRow = -1;
+            int playerCol = -1;
 
-            int currentRow = 0;
-            int currentCol = 0;
             for (int row = 0; row < rowSize; row++)
             {
-                string inputRow = Console.ReadLine();
+                char[] rowData = Console.ReadLine().ToCharArray();
                 for (int col = 0; col < colSize; col++)
                 {
-                    matrix[row, col] = inputRow[col];
-                    if (inputRow[col] == 'P')
+                    matrix[row, col] = rowData[col];
+
+                    if (matrix[row, col] == 'P')
                     {
-                        currentRow = row;
-                        currentCol = col;
+                        playerRow = row;
+                        playerCol = col;
                     }
                 }
             }
 
-            string playerMove = Console.ReadLine();
-
+            char[] directions = Console.ReadLine().ToCharArray();
             bool isWon = false;
             bool isDead = false;
-            for (int move = 0; move < playerMove.Length; move++)
+
+            foreach (char direction in directions)
             {
-                if (playerMove[move] == 'L')
-                {
-                    matrix[currentRow, currentCol] = '.';
-                    if (currentCol - 1 < 0)
-                    {
-                        isWon = true;
-                    }
-                    else if (matrix[currentRow, currentCol - 1] == 'B')
-                    {
-                        currentCol--;
-                        isDead = true;
-                    }
-                    else if (currentCol - 1 >= 0)
-                    {
-                        currentCol--;
-                        matrix[currentRow, currentCol] = 'P';
-                    }
-                }
-                else if (playerMove[move] == 'U')
-                {
-                    matrix[currentRow, currentCol] = '.';
-                    if (currentRow - 1 < 0)
-                    {
-                        isWon = true;
-                    }
-                    else if (matrix[currentRow - 1, currentCol] == 'B')
-                    {
-                        currentRow--;
-                        isDead = true;
-                    }
-                    else if (currentRow - 1 >= 0)
-                    {
-                        currentRow--;
-                        matrix[currentRow, currentCol] = 'P';
-                    }
-                }
-                else if (playerMove[move] == 'R')
-                {
-                    matrix[currentRow, currentCol] = '.';
-                    if (currentCol + 1 >= colSize)
-                    {
-                        isWon = true;
+                int newPlayerRow = playerRow;
+                int newPlayerCol = playerCol;
 
-                    }
-                    else if (matrix[currentRow, currentCol + 1] == 'B')
-                    {
-                        currentCol++;
-                        isDead = true;
-                    }
-                    else if (currentCol + 1 < colSize)
-                    {
-                        currentCol++;
-                        matrix[currentRow, currentCol] = 'P';
-                    }
-                }
-                else if (playerMove[move] == 'D')
+                if (direction == 'U')
                 {
-                    matrix[currentRow, currentCol] = '.';
-                    if (currentRow + 1 >= rowSize)
-                    {
-                        isWon = true;
-                    }
-                    else if (matrix[currentRow + 1, currentCol] == 'B')
-                    {
-                        currentRow++;
-                        isDead = true;
-                    }
-                    else if (currentRow + 1 < rowSize)
-                    {
-                        currentRow++;
-                        matrix[currentRow, currentCol] = 'P';
-                    }
+                    newPlayerRow--;
+                }
+                else if (direction == 'L')
+                {
+                    newPlayerCol--;
+                }
+                else if (direction == 'D')
+                {
+                    newPlayerRow++;
+                }
+                else if (direction == 'R')
+                {
+                    newPlayerCol++;
                 }
 
-                for (int row = 0; row < rowSize; row++)
+                if (!IsValidCell(newPlayerRow, newPlayerCol, rowSize, colSize))
                 {
-                    for (int col = 0; col < colSize; col++)
-                    {
-                        if (matrix[row, col] == 'B')
-                        {
-                            if (row + 1 < rowSize && matrix[row + 1, col] == 'P')
-                            {
-                                isDead = true;
-                                matrix[row + 1, col] = 'B';
-                            }
-                            else if (row + 1 < rowSize)
-                            {
-                                matrix[row + 1, col] = 'B';
-                            }
-                            
-                            if (col - 1 >= 0 && matrix[row, col - 1] == 'P')
-                            {
-                                isDead = true;
-                                matrix[row, col - 1] = 'B';
-                            }
-                            else if (col - 1 >= 0)
-                            {
-                                matrix[row, col - 1] = 'B';
-                            }
-                            
-                            if (row - 1 >= 0 && matrix[row - 1, col] == 'P')
-                            {
-                                isDead = true;
-                                matrix[row - 1, col] = 'B';
-                            }
-                            else if (row - 1 >= 0)
-                            {
-                                matrix[row - 1, col] = 'B';
-                            }
-                            
-                            if (col + 1 < colSize && matrix[row, col + 1] == 'P')
-                            {
-                                isDead = true;
-                                matrix[row, col + 1] = 'B';
-                            }
-                            else if (col + 1 < colSize)
-                            {
-                                matrix[row, col + 1] = 'B';
-                            }
-                        }
-                    }
-
-                    if (isWon)
-                    {
-                        break;
-                    }
-
-                    if (isDead)
-                    {
-                        break;
-                    }
+                    isWon = true;
+                    matrix[playerRow, playerCol] = '.';
                 }
             }
 
+        }
 
-            for (int row = 0; row < rowSize; row++)
-            {
-                for (int col = 0; col < colSize; col++)
-                {
-                    Console.Write($"{matrix[row, col]}");
-                }
-                Console.WriteLine();
-            }
-
-            if (isWon)
-            {
-                Console.WriteLine($"won: {currentRow} {currentCol}”");
-                return;
-            }
-
-            if (isDead)
-            {
-                Console.WriteLine($"dead: {currentRow} {currentCol}");
-            }
+        private static bool IsValidCell(int row, int col, int rowSize, int colSize)
+        {
+            return row >= 0 && row < rowSize && col >= 0 && col < colSize;
         }
     }
 }
