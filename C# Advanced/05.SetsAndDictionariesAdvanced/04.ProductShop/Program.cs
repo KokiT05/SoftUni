@@ -34,7 +34,7 @@ namespace _04.ProductShop
 
             foreach (KeyValuePair<string, Dictionary<string, double>> shop in shopsProducts)
             {
-                Console.WriteLine($"{shop.Key} ->");
+                Console.WriteLine($"{shop.Key}->");
 
                 foreach (KeyValuePair<string, double> product in shop.Value)
                 {

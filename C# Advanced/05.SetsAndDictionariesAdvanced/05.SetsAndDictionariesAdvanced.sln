@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.AverageStudentGrades", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ProductShop", "04.ProductShop\04.ProductShop.csproj", "{B6F6CCFB-CF30-4D8D-8028-5F62419AA9B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.CitiesByContinentAndCountry", "05.CitiesByContinentAndCountry\05.CitiesByContinentAndCountry.csproj", "{73A4BE3B-4954-42A8-A4C4-CD907622D335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.RecordUniqueNames", "06.RecordUniqueNames\06.RecordUniqueNames.csproj", "{69D6DBC6-067C-425B-AB59-14DEDD60C2C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B6F6CCFB-CF30-4D8D-8028-5F62419AA9B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F6CCFB-CF30-4D8D-8028-5F62419AA9B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F6CCFB-CF30-4D8D-8028-5F62419AA9B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73A4BE3B-4954-42A8-A4C4-CD907622D335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73A4BE3B-4954-42A8-A4C4-CD907622D335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73A4BE3B-4954-42A8-A4C4-CD907622D335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73A4BE3B-4954-42A8-A4C4-CD907622D335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69D6DBC6-067C-425B-AB59-14DEDD60C2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D6DBC6-067C-425B-AB59-14DEDD60C2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D6DBC6-067C-425B-AB59-14DEDD60C2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D6DBC6-067C-425B-AB59-14DEDD60C2C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
