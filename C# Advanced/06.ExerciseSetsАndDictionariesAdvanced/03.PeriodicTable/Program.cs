@@ -6,8 +6,8 @@
         {
             int n = int.Parse(Console.ReadLine());
 
-            HashSet<string> chemicalElementsSet = new HashSet<string>();
-
+            SortedSet<string> chemicalElementsSet = new SortedSet<string>();
+            
             for (int i = 0; i < n; i++)
             {
                 string[] inputChemicalElements = Console.ReadLine().Split();
