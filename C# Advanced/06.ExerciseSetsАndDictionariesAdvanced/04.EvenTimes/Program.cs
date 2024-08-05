@@ -20,7 +20,9 @@
                 numbersCount[number]++;
             }
 
-            string result = numbersCount.Keys.First(v => numbersCount[v] == numbersCount.Values.Max());
+            string result = numbersCount
+                            .Keys.
+                            First(v => numbersCount[v] % 2 == 0);
 
             Console.WriteLine(result);
         }
