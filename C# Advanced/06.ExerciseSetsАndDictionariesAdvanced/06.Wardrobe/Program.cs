@@ -17,25 +17,26 @@
                                 .Split(" -> ", StringSplitOptions.RemoveEmptyEntries);
                 color = input[0];
 
-                string[] clothesCollection = input[1].Split(",");
+                string[] clothesCollection = input[1].Split(",", StringSplitOptions.RemoveEmptyEntries);
+
+                if (!wardrobe.ContainsKey(color))
+                {
+                    wardrobe.Add(color, new Dictionary<string, int>());
+                }
 
                 for (int j = 0; j < clothesCollection.Length; j++)
                 {
-                    if (!wardrobe.ContainsKey(color))
-                    {
-                        wardrobe.Add(color, new Dictionary<string, int>());
-                    }
 
                     if (!wardrobe[color].ContainsKey(clothesCollection[j]))
                     {
                         wardrobe[color].Add(clothesCollection[j], 0);
-                    }
+                    }  
 
                     wardrobe[color][clothesCollection[j]]++;
                 }
             }
 
-            string[] wantedClothes = Console.ReadLine().Split();
+            string[] wantedClothes = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
             color = wantedClothes[0];
             string clothes = wantedClothes[1];
 
@@ -45,8 +46,8 @@
 
                 foreach (KeyValuePair<string, int> clothesFromWardrobe in clothesColor.Value)
                 {
-                    if (clothesColor.Key.Contains(color) && clothesFromWardrobe.Key.Contains(clothes))
-                    {
+                    if (clothesColor.Key == color && clothesFromWardrobe.Key == clothes)
+                    {   
                         Console.WriteLine($"* {clothesFromWardrobe.Key} - {clothesFromWardrobe.Value} (found!)");
                     }
                     else
