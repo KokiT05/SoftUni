@@ -4,97 +4,65 @@
     {
         static void Main(string[] args)
         {
+            Dictionary<string, Dictionary<string, SortedSet<string>>> app =
+                new Dictionary<string, Dictionary<string, SortedSet<string>>>();
 
-            string[] inputArg;
-            string firstVloget = string.Empty;
-            string command = string.Empty;
-            string secondVloger = string.Empty;
+            string commandInput = Console.ReadLine();
 
-            string input = Console.ReadLine();
-
-            HashSet<string> vloggers = new HashSet<string>();
-            Dictionary<string, List<string>> followers = new Dictionary<string, List<string>>();
-            Dictionary<string, List<string>> following = new Dictionary<string, List<string>>();
-
-            while (input != "Statistics")
+            while (commandInput != "Statistics")
             {
-                inputArg = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                firstVloget = inputArg[0];
-                command = inputArg[1];
+                string[] commandData = commandInput.Split(" ");
+                string vloggerName = commandData[0];
+                string command = commandData[1];
 
                 if (command == "joined")
                 {
-                    vloggers.Add(firstVloget);
-
-                    if (!followers.ContainsKey(firstVloget))
+                    if (!app.ContainsKey(vloggerName))
                     {
-                        followers.Add(firstVloget, new List<string>());
-                    }
-
-                    if (!following.ContainsKey(firstVloget))
-                    {
-                        following.Add(firstVloget, new List<string>());
+                        app.Add(vloggerName, new Dictionary<string, SortedSet<string>>());
+                        app[vloggerName].Add("following", new SortedSet<string>());
+                        app[vloggerName].Add("followers", new SortedSet<string>());
                     }
                 }
                 else if (command == "followed")
                 {
-                    secondVloger = inputArg[2];
+                    string vloggerNameTwo = commandData[2];
 
-                    if (vloggers.Contains(firstVloget) && 
-                        vloggers.Contains(secondVloger) && 
-                        (firstVloget != secondVloger) &&
-                        !followers[secondVloger].Contains(firstVloget))
+                    if (app.ContainsKey(vloggerName) && app.ContainsKey(vloggerNameTwo) && vloggerName != vloggerNameTwo)
                     {
-                        followers[secondVloger].Add(firstVloget);
-                        following[firstVloget].Add(secondVloger);
+                        app[vloggerName]["following"].Add(vloggerNameTwo);
+                        app[vloggerNameTwo]["followers"].Add(vloggerName);
                     }
                 }
 
-                input = Console.ReadLine();
+                commandInput = Console.ReadLine();
             }
 
-            Console.WriteLine($"The V-Logger has a total of {vloggers.Count} vloggers in its logs");
+            Dictionary<string, Dictionary<string, SortedSet<string>>> sortedDataApp =
+                app.OrderByDescending(kvp => kvp.Value["followers"].Count)
+                .ThenBy(kvp => kvp.Value["following"].Count)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-            followers = followers.OrderByDescending(v => v.Value.Count).ToDictionary(k => k.Key, v => v.Value);
+            Console.WriteLine($"The V-Logger has a total of {app.Count} vloggers in its logs.");
+            int counter = 0;
 
-            int mostFollowers = 0;
-            int minimallyFollowed = 0;
-            string famousVloger = string.Empty;
-            foreach (string vloger in vloggers)
+            foreach (KeyValuePair<string, Dictionary<string, SortedSet<string>>> vlogger in sortedDataApp)
             {
-                if (followers[vloger].Count > mostFollowers)
+                int followersCount = vlogger.Value["followers"].Count;
+                int followingCount = vlogger.Value["following"].Count;
+
+                Console.WriteLine(
+                $"{++counter}. {vlogger.Key} : {followersCount} followers, {followingCount} following");
+
+                if (counter == 1)
                 {
-                    mostFollowers = followers[vloger].Count;
-                    minimallyFollowed = following[vloger].Count;
-                    famousVloger = vloger;
-                }
-                else if (followers[vloger].Count == mostFollowers && following[vloger].Count < minimallyFollowed)
-                {
-                    mostFollowers = followers[vloger].Count;
-                    minimallyFollowed = following[vloger].Count;
-                    famousVloger = vloger;
+                    foreach (string follower in vlogger.Value["followers"])
+                    {
+                        Console.WriteLine($"*  {follower}");
+                    }
                 }
             }
 
-            KeyValuePair<string, List<string>> famousVlogerFollowersList = followers.First(k => k.Key == famousVloger);
-            Console.
-            WriteLine
-            ($"1. {famousVlogerFollowersList.Key} : " +
-            $"{followers[famousVlogerFollowersList.Key].Count} followers, " +
-            $"{following[famousVlogerFollowersList.Key].Count} following");
-            foreach (string follower in famousVlogerFollowersList.Value)
-            {
-                Console.WriteLine($"*  {follower}");
-            }
-
-            followers.Remove(famousVloger);
-            int count = 2;
-            foreach (KeyValuePair<string, List<string>> vloger in followers)
-            {
-                Console.
-                WriteLine($"{count}. {vloger.Key} : {vloger.Value.Count} followers, {following[vloger.Key].Count} following");
-                count++;
-            }
 
         }
     }
