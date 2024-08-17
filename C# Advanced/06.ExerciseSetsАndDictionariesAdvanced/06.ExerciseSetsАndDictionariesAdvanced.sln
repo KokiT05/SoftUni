@@ -3,25 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.UniqueUsernames", "01.UniqueUsernames\01.UniqueUsernames.csproj", "{AE6B380A-A634-43C2-B149-70AAEC0790AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.UniqueUsernames", "01.UniqueUsernames\01.UniqueUsernames.csproj", "{AE6B380A-A634-43C2-B149-70AAEC0790AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.SetsOfElements", "02.SetsOfElements\02.SetsOfElements.csproj", "{B6E276B2-D6C7-4CE2-9BF5-B27D85312A5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.SetsOfElements", "02.SetsOfElements\02.SetsOfElements.csproj", "{B6E276B2-D6C7-4CE2-9BF5-B27D85312A5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.PeriodicTable", "03.PeriodicTable\03.PeriodicTable.csproj", "{FE0603CF-946F-4BAC-AEB0-82EED7652416}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.PeriodicTable", "03.PeriodicTable\03.PeriodicTable.csproj", "{FE0603CF-946F-4BAC-AEB0-82EED7652416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.EvenTimes", "04.EvenTimes\04.EvenTimes.csproj", "{F3BD029F-6CA8-42AC-88C5-81E3C854FF30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.EvenTimes", "04.EvenTimes\04.EvenTimes.csproj", "{F3BD029F-6CA8-42AC-88C5-81E3C854FF30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.CountSymbols", "05.CountSymbols\05.CountSymbols.csproj", "{A449712A-8B62-4C3A-B40E-680271285DF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.CountSymbols", "05.CountSymbols\05.CountSymbols.csproj", "{A449712A-8B62-4C3A-B40E-680271285DF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.Wardrobe", "06.Wardrobe\06.Wardrobe.csproj", "{8DEBEFF8-6971-4F69-9715-8A3F0E01321C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Wardrobe", "06.Wardrobe\06.Wardrobe.csproj", "{8DEBEFF8-6971-4F69-9715-8A3F0E01321C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TheV-Logger", "07.TheV-Logger\07.TheV-Logger.csproj", "{585AB40D-CEBD-4484-8880-9C8292928940}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.TheV-Logger", "07.TheV-Logger\07.TheV-Logger.csproj", "{585AB40D-CEBD-4484-8880-9C8292928940}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.Ranking", "08.Ranking\08.Ranking.csproj", "{6650AB56-2DF9-465F-BAE2-11B3683EE1A3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.SoftUniExamResults", "09.SoftUniExamResults\09.SoftUniExamResults.csproj", "{C5EBC5DA-C30E-4E36-A689-457DC55B5272}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.ForceBook", "10.ForceBook\10.ForceBook.csproj", "{DE48F5E2-C960-4771-8051-85D8DAE94A39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.Ranking", "08.Ranking\08.Ranking.csproj", "{6650AB56-2DF9-465F-BAE2-11B3683EE1A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,14 +57,6 @@ Global
 		{6650AB56-2DF9-465F-BAE2-11B3683EE1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6650AB56-2DF9-465F-BAE2-11B3683EE1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6650AB56-2DF9-465F-BAE2-11B3683EE1A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5EBC5DA-C30E-4E36-A689-457DC55B5272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5EBC5DA-C30E-4E36-A689-457DC55B5272}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5EBC5DA-C30E-4E36-A689-457DC55B5272}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5EBC5DA-C30E-4E36-A689-457DC55B5272}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE48F5E2-C960-4771-8051-85D8DAE94A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE48F5E2-C960-4771-8051-85D8DAE94A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE48F5E2-C960-4771-8051-85D8DAE94A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE48F5E2-C960-4771-8051-85D8DAE94A39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

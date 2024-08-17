@@ -26,6 +26,29 @@
 
 
             Console.WriteLine(countOfRack);
+
+            int[] allClothesInput = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+            Stack<int> allClothesStack = new Stack<int>(allClothesInput);
+
+            int boxCapacity = int.Parse(Console.ReadLine());
+            int currentRackCapacity = boxCapacity;
+            int racksCount = 1;
+
+            while (allClothesStack.Any())
+            {
+                int clothesS = allClothesStack.Pop();
+                currentRackCapacity -= clothesS;
+
+                if (currentRackCapacity < 0)
+                {
+                    racksCount++;
+                    currentRackCapacity = boxCapacity - clothesS;
+                }
+            }
+
+            Console.WriteLine(racksCount);
+
+
         }
     }
 }

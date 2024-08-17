@@ -8,8 +8,8 @@ namespace _09.SimpleTextEditor
         {
             int n = int.Parse(Console.ReadLine());
 
-            var builder = new StringBuilder();
-            var stack = new Stack<string>();
+            StringBuilder builder = new StringBuilder();
+            Stack<string> stack = new Stack<string>();
             stack.Push(builder.ToString());
 
             for (int i = 0; i < n; i++)
