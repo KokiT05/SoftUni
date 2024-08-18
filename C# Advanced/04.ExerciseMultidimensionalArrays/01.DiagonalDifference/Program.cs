@@ -18,17 +18,11 @@
             }
 
             int sumOfPrimaryDiagonal = 0;
+            int sumOfSecondaryDiagonal = 0;
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 sumOfPrimaryDiagonal += matrix[i,i];
-            }
-
-            int sumOfSecondaryDiagonal = 0;
-            int count = 0;
-            for (int i = matrix.GetLength(1) - 1; i >= 0; i--)
-            {
-                sumOfSecondaryDiagonal += matrix[count,i];
-                count++;
+                sumOfSecondaryDiagonal += matrix[(matrix.GetLength(0) - 1) - i, i];
             }
 
             Console.WriteLine(Math.Abs(sumOfPrimaryDiagonal - sumOfSecondaryDiagonal));

@@ -113,21 +113,25 @@ class RPNCalculator
 
     static void Main()
     {
-        string[] infixExpressions =
-        {
-            //"5 + 3",
-            "2 * (4 + 6 * 4)",
-            "7 - (2 * 3) + 8",
-            "(10 / 2) + (3 * 4) - 5",
-            "(12 + 5) * (9 - 4) / 3 + 8"
-        };
+        Console.WriteLine("Въведете инфиксен математически израз:");
 
-        foreach (string infix in infixExpressions)
+        string infixExpression = Console.ReadLine();
+
+        try
         {
-            string rpnExpression = ShuntingYard.ConvertToRPN(infix); // Преобразуване с Shunting Yard алгоритъма
-            Console.WriteLine($"RPN Expression: {rpnExpression}");
-            double result = EvaluateRPN(rpnExpression); // Изчисление на резултата от RPN
-            Console.WriteLine($"Result: {result}\n");
+            // Преобразуване на инфиксния израз в RPN с Shunting Yard алгоритъма
+
+            string rpnExpression = ShuntingYard.ConvertToRPN(infixExpression);
+            Console.WriteLine($"RPN израз: {rpnExpression}");
+
+            // Изчисление на крайния резултат от RPN израза
+
+            double result = RPNCalculator.EvaluateRPN(rpnExpression);
+            Console.WriteLine($"Резултат: {result}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Грешка: {ex.Message}");
         }
     }
 }
