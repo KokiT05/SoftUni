@@ -5,15 +5,17 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.OddLines", "07.StreamsFilesAndDirectories\01.OddLines.csproj", "{FBE3E839-A0AC-406F-A4D5-83D1D8FBA93B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.LineNumbers", "02.LineNumbers\02.LineNumbers.csproj", "{77D32CE4-0A16-42CB-A481-3AD19C61D505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.LineNumbers", "02.LineNumbers\02.LineNumbers.csproj", "{77D32CE4-0A16-42CB-A481-3AD19C61D505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.WordCount", "03.WordCount\03.WordCount.csproj", "{1E298539-427B-45D9-BF28-DADC29CFDF35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.WordCount", "03.WordCount\03.WordCount.csproj", "{1E298539-427B-45D9-BF28-DADC29CFDF35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.MergeFiles", "04.MergeFiles\04.MergeFiles.csproj", "{C312B019-60EC-4286-B6A6-C3D23BFCF8FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.MergeFiles", "04.MergeFiles\04.MergeFiles.csproj", "{C312B019-60EC-4286-B6A6-C3D23BFCF8FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.SliceAFile", "05.SliceAFile\05.SliceAFile.csproj", "{DC561E4D-E8E6-46D6-808F-9B27A24A643F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.SliceAFile", "05.SliceAFile\05.SliceAFile.csproj", "{DC561E4D-E8E6-46D6-808F-9B27A24A643F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.FolderSize", "06.FolderSize\06.FolderSize.csproj", "{37A8D825-DC80-42D3-9CEA-E8CD4EFA5F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.FolderSize", "06.FolderSize\06.FolderSize.csproj", "{37A8D825-DC80-42D3-9CEA-E8CD4EFA5F99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.ScanFolderRecursively", "07.ScanFolderRecursively\07.ScanFolderRecursively.csproj", "{45F97DFE-4C73-457A-86DC-9F52B4E9AC73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{37A8D825-DC80-42D3-9CEA-E8CD4EFA5F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A8D825-DC80-42D3-9CEA-E8CD4EFA5F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A8D825-DC80-42D3-9CEA-E8CD4EFA5F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F97DFE-4C73-457A-86DC-9F52B4E9AC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F97DFE-4C73-457A-86DC-9F52B4E9AC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F97DFE-4C73-457A-86DC-9F52B4E9AC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F97DFE-4C73-457A-86DC-9F52B4E9AC73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
