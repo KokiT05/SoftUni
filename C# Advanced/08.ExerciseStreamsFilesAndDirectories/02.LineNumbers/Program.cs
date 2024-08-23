@@ -12,7 +12,6 @@ namespace _02.LineNumbers
 
             string[] text = File.ReadLines("../../../text.txt").ToArray();
             string[] result = new string[text.Length];
-            StringBuilder stringBuilder = new StringBuilder();
 
             for (int i = 0; i < text.Length; i++)
             {
@@ -22,8 +21,7 @@ namespace _02.LineNumbers
                     countLetters = CountLetters(text[i]);
                 }
 
-                text[i] = $"Line {i + 1}: " + text[i] + $" ({countLetters})({countPunctuationMarks})";
-                result[i] = text[i];
+                result[i] = $"Line {i + 1}: " + text[i] + $" ({countLetters})({countPunctuationMarks})";
             }
 
             File.WriteAllLines("../../../output.txt", result);
