@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.WordCount", "03.WordCoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.CopyBinaryFile", "04.CopyBinaryFile\04.CopyBinaryFile.csproj", "{63751D5D-F16A-4228-BD75-1FCA09529CD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.DirectoryTraversal", "05.DirectoryTraversal\05.DirectoryTraversal.csproj", "{0D7ED4D2-1E31-4BB7-8D3A-BEB7942899E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ZipAndExtract", "06.ZipAndExtract\06.ZipAndExtract.csproj", "{5DC17CC3-5423-48F2-A797-E8F1408E2047}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{63751D5D-F16A-4228-BD75-1FCA09529CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63751D5D-F16A-4228-BD75-1FCA09529CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63751D5D-F16A-4228-BD75-1FCA09529CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D7ED4D2-1E31-4BB7-8D3A-BEB7942899E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7ED4D2-1E31-4BB7-8D3A-BEB7942899E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7ED4D2-1E31-4BB7-8D3A-BEB7942899E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7ED4D2-1E31-4BB7-8D3A-BEB7942899E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC17CC3-5423-48F2-A797-E8F1408E2047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC17CC3-5423-48F2-A797-E8F1408E2047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC17CC3-5423-48F2-A797-E8F1408E2047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC17CC3-5423-48F2-A797-E8F1408E2047}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
