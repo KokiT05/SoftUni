@@ -1,0 +1,17 @@
+.txt
+$--New Text Document.txt - 0kb
+$--TestPhpDocument.php.txt - 0kb
+$--TextDocument1.txt - 0kb
+$--y.html.txt - 0kb
+$--TextDocument2.txt - 0,005kb
+$--report.txt - 0,235kb
+$--ResultText.txt - 0,39kb
+.cs
+$--TestClassOne.cs - 0,208kb
+$--TestClassTwo.cs - 0,208kb
+$--Program.cs - 3,741kb
+.html
+$--FirstHtmlDocumentTest.html - 0kb
+$--New.html - 0kb
+.csproj
+$--05.DirectoryTraversal.csproj - 0,304kb
