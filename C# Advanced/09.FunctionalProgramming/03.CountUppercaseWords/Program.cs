@@ -4,19 +4,35 @@
     {
         static void Main(string[] args)
         {
-            Func<string, string[]> currentText = word =>
-            {
-                List<string> words = new List<string>();
-                if (char.IsUpper(word[0]))
-                {
-                    words.Add(word);
-                }
+            //Func<string[], string[]> currentText = words =>
+            //{
+            //    List<string> upperCaseWord = new List<string>();
 
-                return words.ToArray();
-            };
+            //    foreach (string word in words)
+            //    {
+            //        if (char.IsUpper(word[0]))
+            //        {
+            //            upperCaseWord.Add(word);
+            //        }
+            //    }
 
+            //    return upperCaseWord.ToArray();
+            //};
+
+            //string[] text = Console.ReadLine()
+            //                .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            //PrintUppercaseWords(currentText(text));
+
+            Func<string, bool> filter = text => char.IsUpper(text[0]);
             string text = Console.ReadLine();
-            PrintUppercaseWords(currentText(text));
+            string[] words = text.Split();
+
+            words = words.Where(filter).ToArray();
+
+            foreach (var word in words)
+            {
+                Console.WriteLine(word);
+            }
         }
 
         static void PrintUppercaseWords(string[] words)
