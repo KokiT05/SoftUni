@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
 
-            // 60/100!!!
+            // 100/100!!!
             int[] range = Console.ReadLine()
                                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                                 .Select(int.Parse)
