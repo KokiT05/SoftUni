@@ -1,10 +1,10 @@
-﻿namespace _09.PredicateParty_
+﻿namespace _10.ThePartyReservationFilterModule
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }

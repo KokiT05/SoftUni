@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.ListOfPredicates", "08.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.PredicateParty!", "09.PredicateParty!\09.PredicateParty!.csproj", "{567BD9DC-38E6-43A3-9CCA-D6F879D688A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.ThePartyReservationFilterModule", "10.ThePartyReservationFilterModule\10.ThePartyReservationFilterModule.csproj", "{BCA0425E-73C0-4492-BC79-1694B8328407}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{567BD9DC-38E6-43A3-9CCA-D6F879D688A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{567BD9DC-38E6-43A3-9CCA-D6F879D688A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{567BD9DC-38E6-43A3-9CCA-D6F879D688A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA0425E-73C0-4492-BC79-1694B8328407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA0425E-73C0-4492-BC79-1694B8328407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA0425E-73C0-4492-BC79-1694B8328407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA0425E-73C0-4492-BC79-1694B8328407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
