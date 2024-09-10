@@ -14,11 +14,23 @@
 
             Console.WriteLine(string.Join(Environment.NewLine, filteredName));
 
-            //Predicate<string> predicate = n => n.Length <= length;
+            Predicate<string> predicate = n => n.Length <= length;
 
-            //string[] filteredNames = Array.FindAll(names, predicate);
+            string[] filteredNames = Array.FindAll(names, predicate);
 
-            //Console.WriteLine(string.Join(Environment.NewLine, filteredNames));
+            Console.WriteLine(string.Join(Environment.NewLine, filteredNames));
+
+            //Code from lecture
+            //int n = int.Parse(Console.ReadLine());
+            //List<string> names = Console.ReadLine().Split(" ").ToList();
+
+            //Func<string, int, bool> func = (name, length) => name.Length <= length;
+
+            //names = names.Where(name => func(name, n)).ToList();
+
+            //Action<List<string>> print = 
+            //    names => Console.WriteLine(string.Join(Environment.NewLine, names));
+            //print(names);
         }
     }
 }

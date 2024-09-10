@@ -27,6 +27,20 @@
             }
 
             Console.WriteLine(string.Join(" ", result));
+
+            //Code from the lecture
+            //int end = int.Parse(Console.ReadLine());
+            //List<int> dividers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+            //List<int> numbers = Enumerable.Range(1, end).ToList();
+            //Func<int, int, bool> predicate = (number, divisor) => number % divisor == 0;
+
+            //foreach (int number in numbers)
+            //{
+            //    if (dividers.All(divisor => predicate(number, divisor)))
+            //    {
+            //        Console.Write(number + " ");
+            //    }
+            //}
         }
     }
 }

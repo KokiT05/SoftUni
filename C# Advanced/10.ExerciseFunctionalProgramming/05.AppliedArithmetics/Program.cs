@@ -27,6 +27,35 @@ namespace _05.AppliedArithmetics
 
                 command = Console.ReadLine();
             }
+
+            //Code from lecture
+            //Dictionary<string, Func<int, int>> arithmeticFunctions =
+            //new Dictionary<string, Func<int, int>>()
+            //{
+            //    {"add", number => number + 1 },
+            //    {"multiply", number => number * 2 },
+            //    {"subtract", number => number - 1 },
+            //};
+
+            //List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+            //Action<List<int>> print = numbers => Console.WriteLine(string.Join(" ", numbers));
+
+            //string command = Console.ReadLine();
+            //while (command != "end")
+            //{
+            //    if (arithmeticFunctions.ContainsKey(command))
+            //    {
+            //        Func<int, int> func = arithmeticFunctions[command];
+            //        numbers = numbers.Select(func).ToList();
+            //    }
+            //    else if (command == "print")
+            //    {
+            //        print(numbers);
+            //    }
+
+            //    command = Console.ReadLine();
+            //}
         }
 
         static Func<int, int> MathematicalOperations(string command)
