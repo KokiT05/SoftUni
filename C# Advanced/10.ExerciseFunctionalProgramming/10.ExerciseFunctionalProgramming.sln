@@ -15,13 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.AppliedArithmetics", "05
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.ReverseAndExclude", "06.ReverseAndExclude\06.ReverseAndExclude.csproj", "{3BF3CFA7-A1FE-4E61-9748-DEBC514D4C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.PredicateForNames", "07.PredicateForNames\07.PredicateForNames.csproj", "{9AE47E03-87B5-43DA-9A39-659218F57928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.PredicateForNames", "07.PredicateForNames\07.PredicateForNames.csproj", "{9AE47E03-87B5-43DA-9A39-659218F57928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.ListOfPredicates", "08.ListOfPredicates\08.ListOfPredicates.csproj", "{182AFC7B-9A46-4FD9-A955-7EE9482A160E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.ListOfPredicates", "08.ListOfPredicates\08.ListOfPredicates.csproj", "{182AFC7B-9A46-4FD9-A955-7EE9482A160E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.PredicateParty!", "09.PredicateParty!\09.PredicateParty!.csproj", "{567BD9DC-38E6-43A3-9CCA-D6F879D688A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.PredicateParty!", "09.PredicateParty!\09.PredicateParty!.csproj", "{567BD9DC-38E6-43A3-9CCA-D6F879D688A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.ThePartyReservationFilterModule", "10.ThePartyReservationFilterModule\10.ThePartyReservationFilterModule.csproj", "{BCA0425E-73C0-4492-BC79-1694B8328407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10.ThePartyReservationFilterModule", "10.ThePartyReservationFilterModule\10.ThePartyReservationFilterModule.csproj", "{BCA0425E-73C0-4492-BC79-1694B8328407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11.TriFunction", "11.TriFunction\11.TriFunction.csproj", "{F5A0ECDA-3551-4E13-AD9B-CC8AAC874058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{BCA0425E-73C0-4492-BC79-1694B8328407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCA0425E-73C0-4492-BC79-1694B8328407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCA0425E-73C0-4492-BC79-1694B8328407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A0ECDA-3551-4E13-AD9B-CC8AAC874058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A0ECDA-3551-4E13-AD9B-CC8AAC874058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A0ECDA-3551-4E13-AD9B-CC8AAC874058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A0ECDA-3551-4E13-AD9B-CC8AAC874058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

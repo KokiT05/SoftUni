@@ -1,4 +1,6 @@
-﻿namespace _09.PredicateParty_
+﻿using System;
+
+namespace _09.PredicateParty_
 {
     internal class Program
     {
@@ -31,19 +33,7 @@
                 conditional = splitInput[1];
                 criteria = splitInput[2];
 
-                if (conditional.ToLower() == "startswith")
-                {
-                    func = (guests, conditional) => guests.FindAll(name => name.StartsWith(criteria));
-                }
-                else if (conditional.ToLower() == "endswith")
-                {
-                    func = (guests, conditional) => guests.FindAll(name => name.EndsWith(criteria));
-                }
-                else if (conditional.ToLower() == "length")
-                {
-                    int length = int.Parse(criteria);
-                    func = (guests, conditional) => guests.FindAll(name => name.Length == length);
-                }
+                func = GetFunc(guests, conditional, criteria);
 
                 if (command.ToLower() == "remove")
                 {
@@ -66,8 +56,26 @@
             {
                 Console.WriteLine("Nobody is going to the party!");
             }
+        }
 
-            Console.WriteLine(string.Join(", ", guests));
+        static Func<List<string>, string, List<string>> GetFunc
+                            (List<string> guest, string conditional, string criteria)
+        {
+            if (conditional.ToLower() == "startswith")
+            {
+                return (guests, conditional) => guests.FindAll(name => name.StartsWith(criteria));
+            }
+            else if (conditional.ToLower() == "endswith")
+            {
+                return (guests, conditional) => guests.FindAll(name => name.EndsWith(criteria));
+            }
+            else if (conditional.ToLower() == "length")
+            {
+                int length = int.Parse(criteria);
+                return (guests, conditional) => guests.FindAll(name => name.Length == length);
+            }
+
+            return (guest, conditional) => guest;
         }
     }
 }
