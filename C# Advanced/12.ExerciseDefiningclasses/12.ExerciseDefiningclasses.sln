@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DefineAClassPerson", "01.DefineAClassPerson\01.DefineAClassPerson.csproj", "{0FDF3492-32B5-48CB-8F53-4BC8DC6B60EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.DateModifier", "02.DateModifier\02.DateModifier.csproj", "{DF0324D6-7037-4032-8250-E113A5E62A72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.SpeedRacing", "03.SpeedRacing\03.SpeedRacing.csproj", "{3F4B3621-ECF3-41CB-970A-7049B10D2116}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0FDF3492-32B5-48CB-8F53-4BC8DC6B60EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FDF3492-32B5-48CB-8F53-4BC8DC6B60EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FDF3492-32B5-48CB-8F53-4BC8DC6B60EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF0324D6-7037-4032-8250-E113A5E62A72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0324D6-7037-4032-8250-E113A5E62A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0324D6-7037-4032-8250-E113A5E62A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0324D6-7037-4032-8250-E113A5E62A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F4B3621-ECF3-41CB-970A-7049B10D2116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4B3621-ECF3-41CB-970A-7049B10D2116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4B3621-ECF3-41CB-970A-7049B10D2116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4B3621-ECF3-41CB-970A-7049B10D2116}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
