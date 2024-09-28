@@ -21,6 +21,7 @@ namespace _02.FindMiddleOfTheLinkedList
             return length;
         }
 
+
         public int GetMiddle(Node node)
         {
             int length = GetLength(node);
@@ -33,6 +34,21 @@ namespace _02.FindMiddleOfTheLinkedList
             }
 
             return node.Value;
+        }
+
+        // Hare and Tortoise algorithm
+        public int GetMiddleHareAndTortoise(Node head)
+        {
+            Node slowPtr = head;
+            Node fastPtr = head;
+
+            while (fastPtr != null && fastPtr.Next != null)
+            {
+                fastPtr = fastPtr.Next.Next;
+                slowPtr = slowPtr.Next;
+            }
+
+            return slowPtr.Value;
         }
     }
 }
