@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.SearchingInSinglyLinkedL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.FindingLengthInSinglyLinkedList", "06.FindingLengthInSinglyLinkedList\06.FindingLengthInSinglyLinkedList.csproj", "{81E65E07-1C0C-4A04-8597-2EB7372FE89D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.InsertionInSinglyLinkedList", "07.InsertionInSinglyLinkedList\07.InsertionInSinglyLinkedList.csproj", "{5B4141C9-E3D4-457A-935B-8C57F9B0A346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4141C9-E3D4-457A-935B-8C57F9B0A346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4141C9-E3D4-457A-935B-8C57F9B0A346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4141C9-E3D4-457A-935B-8C57F9B0A346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4141C9-E3D4-457A-935B-8C57F9B0A346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
