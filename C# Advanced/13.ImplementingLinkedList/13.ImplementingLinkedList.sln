@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReverseLinkedList", "Revers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.FindMiddleOfTheLinkedList", "02.FindMiddleOfTheLinkedList\02.FindMiddleOfTheLinkedList.csproj", "{7B660F84-7644-4413-8743-B91D294DBBE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.ReverseАLinkedList", "03.ReverseАLinkedList\03.ReverseАLinkedList.csproj", "{4D8767D8-01B0-43AA-9235-AE0EF5EE3423}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.ReverseАLinkedList", "03.ReverseАLinkedList\03.ReverseАLinkedList.csproj", "{4D8767D8-01B0-43AA-9235-AE0EF5EE3423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.Traversal_InSinglyLinkedList", "04.Traversal_InSinglyLinkedList\04.Traversal_InSinglyLinkedList.csproj", "{9D94C4CC-5A9A-4B4A-A6C6-DC0C79670491}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.SearchingInSinglyLinkedList", "05.SearchingInSinglyLinkedList\05.SearchingInSinglyLinkedList.csproj", "{1A2C21B6-5019-4EB4-911B-A76AE89CCD4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.FindingLengthInSinglyLinkedList", "06.FindingLengthInSinglyLinkedList\06.FindingLengthInSinglyLinkedList.csproj", "{81E65E07-1C0C-4A04-8597-2EB7372FE89D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{4D8767D8-01B0-43AA-9235-AE0EF5EE3423}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D8767D8-01B0-43AA-9235-AE0EF5EE3423}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D8767D8-01B0-43AA-9235-AE0EF5EE3423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D94C4CC-5A9A-4B4A-A6C6-DC0C79670491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D94C4CC-5A9A-4B4A-A6C6-DC0C79670491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D94C4CC-5A9A-4B4A-A6C6-DC0C79670491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D94C4CC-5A9A-4B4A-A6C6-DC0C79670491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2C21B6-5019-4EB4-911B-A76AE89CCD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2C21B6-5019-4EB4-911B-A76AE89CCD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2C21B6-5019-4EB4-911B-A76AE89CCD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2C21B6-5019-4EB4-911B-A76AE89CCD4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E65E07-1C0C-4A04-8597-2EB7372FE89D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

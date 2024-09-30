@@ -12,11 +12,14 @@
             head.Next.Next.Next = new Node(4);
 
             RecursionReverse systemLinkedList = new RecursionReverse();
+            head = systemLinkedList.Reverse(head);
 
-            systemLinkedList.Reverse(head);
-            Console.WriteLine();
-
-            Node reverseLinkedList = systemLinkedList.Reverse(head);
+            Node currentNode = head;
+            while (head != null)
+            {
+                Console.WriteLine(head.Value);
+                head = head.Next;
+            }
 
             // Interative Method
             //Node head = new Node(1);

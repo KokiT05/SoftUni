@@ -8,20 +8,20 @@ namespace _03.ReverseАLinkedList
 {
     public class RecursionReverse
     {
-        public Node Reverse(Node node)
+        public Node Reverse(Node head)
         {
-            if (node.Next == null)
+            if (head == null || head.Next == null)
             {
-                return node;
+                return head;
             }
 
-            node.Next = null;
+            Node rest = Reverse(head.Next);
 
-            Node returnNode = Reverse(node.Next);
-            returnNode.Next = node;
+            head.Next.Next = head;
 
+            head.Next = null;
 
-            return returnNode;
+            return rest;
         }
     }
 }
