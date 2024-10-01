@@ -36,7 +36,7 @@ namespace _07.InsertionInSinglyLinkedList
             Node currentNode = head;
             while (currentNode != null)
             {
-                Console.Write(currentNode.Value + " ");
+                Console.Write(currentNode.Value + "->");
                 currentNode = currentNode.Next;
             }
         }
