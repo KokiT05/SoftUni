@@ -36,14 +36,15 @@ namespace _12.DeletionAtASpecificPositionOfSinglyLinkedList
             {
                 if (length == position)
                 {
-                    current = currentNode.Next;
-                    currentNode = null;
-                    previous.Next = current;
+                    currentNode.Next = currentNode.Next.Next;
+                    //current = currentNode.Next;
+                    //currentNode = null;
+                    //previous.Next = current;
                     break;
                 }
                 else
                 {
-                    previous = currentNode;
+                    //previous = currentNode;
                     currentNode = currentNode.Next;
                 }
                 length++;
