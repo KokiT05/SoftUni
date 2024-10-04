@@ -22,21 +22,13 @@ namespace _14.ImplementingStackAndQueue
         {
             get
             {
-                if (index >= this.Count)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-
+                this.ValidateIndex(index);
                 return items[index];
             }
 
             set
             {
-                if (index >= this.Count)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-
+                this.ValidateIndex(index);
                 items[index] = value;
             }
         }
@@ -55,17 +47,14 @@ namespace _14.ImplementingStackAndQueue
 
         public int RemoveAt(int index)
         {
-            if (index >= this.Count)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            this.ValidateIndex(index);
 
             int item = this.items[index];
             this.items[index] = default(int);
             this.Shift(index);
             this.Count--;
 
-            if (this.Count <= this.items.Length / 4)
+            if (this.Count == this.items.Length / 4)
             {
                 this.Shrink();
             }
@@ -75,9 +64,9 @@ namespace _14.ImplementingStackAndQueue
 
         public void Insert(int index, int element)
         {
-            if (index >= this.Count)
+            if (index > this.Count)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Invalid index!");
             }
 
             if (this.Count == this.items.Length)
@@ -105,14 +94,20 @@ namespace _14.ImplementingStackAndQueue
 
         public void Swap(int firstIndex, int secondIndex)
         {
-            if (firstIndex >= this.Count || secondIndex >= this.Count)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            this.ValidateIndex(firstIndex);
+            this.ValidateIndex(secondIndex);
 
             int value = this.items[firstIndex];
             this.items[firstIndex] = this.items[secondIndex];
             this.items[secondIndex] = value;
+        }
+
+        private void ValidateIndex(int index)
+        {
+            if (index >= this.Count || index < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void Resize()
@@ -139,11 +134,11 @@ namespace _14.ImplementingStackAndQueue
         private void Shrink()
         {
             int[] copy = new int[this.items.Length / 2];
-
-            for (int i = 0; i < this.Count; i++)
-            {
-                copy[i] = this.items[i];
-            }
+            Array.Copy(this.items, copy, this.Count);
+            //for (int i = 0; i < this.Count; i++)
+            //{
+            //    copy[i] = this.items[i];
+            //}
 
             this.items = copy;
         }
