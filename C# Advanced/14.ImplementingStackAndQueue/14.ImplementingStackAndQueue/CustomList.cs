@@ -102,6 +102,47 @@ namespace _14.ImplementingStackAndQueue
             this.items[secondIndex] = value;
         }
 
+        public int Find(Predicate<int> func)
+        {
+            bool flag = false;
+            for (int i = 0; i < this.Count; i++)
+            {
+                flag = func(this.items[i]);
+                if (flag)
+                {
+                    return this.items[i];
+                }
+            }
+
+            return 0;
+        }
+
+        public void Reverse()
+        {
+            int[] reverseList = new int[this.Count];
+            int count = 0;
+            for (int i = this.Count - 1; i >= 0; i--)
+            {
+                reverseList[count] = this.items[i];
+                count++;
+            }
+
+            this.items = reverseList;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < this.Count; i++)
+            {
+                stringBuilder.Append(this.items[i]);
+                stringBuilder.Append(" ");
+            }
+
+            return stringBuilder.ToString();
+        }
+
         private void ValidateIndex(int index)
         {
             if (index >= this.Count || index < 0)
