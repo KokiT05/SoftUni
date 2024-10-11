@@ -6,29 +6,23 @@ namespace _07.Tuple
     {
         static void Main(string[] args)
         {
-            string[] personInformation = Console
-                                        .ReadLine()
-                                        .Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            string fullName = personInformation[0] + " " + personInformation[1];
-            string addres = personInformation[2];
-            Tuple<string, string> firstTyple = new Tuple<string, string>(fullName, addres);
+            string[] firstTupleInput = Console.ReadLine().Split(" ");
+            string fullName = firstTupleInput[0] + " " + firstTupleInput[1];
+            MyTuple<string, string> firstTuple =
+                new MyTuple<string, string>(fullName, firstTupleInput[2]);
 
-            string[] beerInformation = Console.
-                                        ReadLine().
-                                        Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            int litersBeer = int.Parse(beerInformation[1]);
-            string name = beerInformation[0];
-            Tuple<string, int> secondTuple = new Tuple<string, int>(name, litersBeer);
-            //Tuple<string, int> secondTuple = new Tuple<string, int>(name, litersBeer);
+            string[] secondTupleInput = Console.ReadLine().Split(" ");
+            MyTuple<string, int> secondTuple =
+                new MyTuple<string, int>(secondTupleInput[0], int.Parse(secondTupleInput[1]));
 
-            string[] numbers = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            int IntegerNumber = int.Parse(numbers[0]);
-            double doubleNumber = double.Parse(numbers[1]);
-            Tuple<int, double> thirdTuple = new Tuple<int, double>(IntegerNumber, doubleNumber);
+            string[] thirdTupleInput = Console.ReadLine().Split(" ");
+            MyTuple<int, double> thirdTuple =
+                new MyTuple<int, double>(int.Parse(thirdTupleInput[0]), double.Parse(thirdTupleInput[1]));
 
-            Console.WriteLine($"{firstTyple.ItemOne} -> {firstTyple.ItemTwo}");
-            Console.WriteLine($"{secondTuple.ItemOne} -> {secondTuple.ItemTwo}");
-            Console.WriteLine($"{thirdTuple.ItemOne} -> {thirdTuple.ItemTwo}");
+
+            Console.WriteLine(firstTuple);
+            Console.WriteLine(secondTuple);
+            Console.WriteLine(thirdTuple);
         }
     }
 }

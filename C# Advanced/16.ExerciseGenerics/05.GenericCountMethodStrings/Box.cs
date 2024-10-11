@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _05.GenericCountMethodStrings
 {
-    public class Box<T> where T : IComparable<T>
+    public class Box<T> where T : IComparable
     {
         public Box(T value)
         {
@@ -14,29 +14,12 @@ namespace _05.GenericCountMethodStrings
         }
         public T Value { get; set; }
 
-        public int Comparer(List<Box<T>> list, T elemt)
-        {
-            int count = 0;
-
-            for (int i = 0; i < list.Count; i++)
-            {
-
-                T secondElement = list[i].Value;
-                int value = secondElement.CompareTo(elemt);
-
-                if (value > 0)
-                {
-                    count++;
-                }
-
-            }
-
-            return count;
-        }
-
         public override string ToString()
         {
-            return $"{Value.GetType().FullName}: {Value}";
+            Type valueType = this.Value.GetType();
+            string valueTypeFullName = valueType.FullName;
+
+            return $"{valueTypeFullName}: {this.Value}";
         }
     }
 }

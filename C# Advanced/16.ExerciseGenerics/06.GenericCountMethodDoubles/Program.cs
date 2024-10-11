@@ -14,9 +14,28 @@
             }
 
             double element = double.Parse(Console.ReadLine());
-            Box<double> elementForComparer = new Box<double>(element);
+            Box<double> comperableBox = new Box<double>(element);
 
-            Console.WriteLine(elementForComparer.Comparer(list, element));
+            Console.WriteLine(GetGreaterThanCount(list, comperableBox));
+
+        }
+
+        public static int GetGreaterThanCount<T>(List<Box<T>> boxes, Box<T> element)
+            where T : IComparable
+        {
+            int count = 0;
+
+            foreach (Box<T> box in boxes)
+            {
+                int compare = box.Value.CompareTo(element.Value);
+
+                if (compare > 0)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }
