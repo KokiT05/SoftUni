@@ -16,7 +16,10 @@ namespace _03.GenericSwapMethodStrings
 
         public override string ToString()
         {
-            return $"{Value.GetType().FullName}: {Value}";
+            Type valueType = this.Value.GetType();
+            string valueTypeFullName = valueType.FullName;
+
+            return $"{valueTypeFullName}: {this.Value}";
         }
     }
 }

@@ -7,8 +7,7 @@
             int n = int.Parse(Console.ReadLine());
             for (int i = 1; i <= n; i++)
             {
-                string input = Console.ReadLine();
-                Box<string> box = new Box<string>(input);
+                Box<string> box = new Box<string>(Console.ReadLine());
                 Console.WriteLine(box.ToString());
             }
         }
