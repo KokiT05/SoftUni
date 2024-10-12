@@ -4,16 +4,16 @@
     {
         static void Main(string[] args)
         {
-            Node<int> head = new Node<int>(321);
-            CustomLinkedList<int> linkedList = new CustomLinkedList<int>(head);
+            Node<string> head = new Node<string>("AAA");
+            CustomLinkedList<string> linkedList = new CustomLinkedList<string>(head);
 
             string input = Console.ReadLine();
             while (input != "end")
             {
                 if (input == "add")
                 {
-                    int value = int.Parse(Console.ReadLine());
-                    Node<int> node = new Node<int>(value);
+                    string value = Console.ReadLine();
+                    Node<string> node = new Node<string>(value);
                     linkedList.Add(node);
                 }
                 input = Console.ReadLine();
@@ -21,7 +21,7 @@
 
             linkedList.PrintListValues();
 
-            //linkedList.RemoveHead();
+            linkedList.RemoveHead();
             linkedList.RemoveLastNode();
 
             Console.WriteLine();

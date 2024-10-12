@@ -19,8 +19,12 @@ namespace _08.Threeuple
         }
 
         public TFirstItem ItemOne { get; set; }
-
         public TSecondItem ItemTwo { get; set; }
         public TThirdItem ItemThird { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.ItemOne} -> {this.ItemTwo} -> {this.ItemThird}";
+        }
     }
 }
