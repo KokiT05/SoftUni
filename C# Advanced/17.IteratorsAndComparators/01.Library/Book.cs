@@ -15,11 +15,11 @@ namespace _01.Library
             this.Authors = new List<string>(authors);
         }
 
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public int Year { get; set; }
+        public int Year { get; private set; }
 
-        public List<string> Authors { get; set; }
+        public List<string> Authors { get; private set; }
 
         public override string ToString()
         {

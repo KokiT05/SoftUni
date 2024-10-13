@@ -1,4 +1,4 @@
-﻿namespace _01.Library
+﻿namespace _03.LibraryComparable
 {
     internal class Program
     {
@@ -10,8 +10,8 @@
                 new Book("Under the Yoke", 1893, "Ivan Vazov"),
                 new Book("TestBookTitile", 1111, "TestAuthorOne", "TestAuthorTwo")
             };
-             
-            Library<Book> myLibrary = new Library<Book>(books);
+
+            Library myLibrary = new Library(books);
 
             foreach (Book book in myLibrary)
             {

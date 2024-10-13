@@ -11,7 +11,7 @@ namespace _01.Library
     {
         private readonly List<T> books;
 
-        public Library(IEnumerable<T> books)
+        public Library(params T[] books)
         {
             this.books = new List<T>(books);
         }

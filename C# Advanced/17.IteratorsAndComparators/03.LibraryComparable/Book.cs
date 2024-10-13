@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _02.LibraryYield
+namespace _03.LibraryComparable
 {
-    public class Book
+    public class Book : IComparable<Book>
     {
         public Book(string title, int year, params string[] authors)
         {
@@ -15,11 +15,21 @@ namespace _02.LibraryYield
             this.Authors = new List<string>(authors);
         }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public int Year { get; private set; }
+        public int Year { get; set; }
 
-        public List<string> Authors { get; private set; }
+        public List<string> Authors { get; set; }
+
+        public int CompareTo(Book book)
+        {
+            if (this.Year != book.Year)
+            {
+                return this.Year - book.Year;
+            }
+
+            return this.Title.CompareTo(book.Title);
+        }
 
         public override string ToString()
         {

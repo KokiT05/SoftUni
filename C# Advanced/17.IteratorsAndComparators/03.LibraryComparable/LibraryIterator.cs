@@ -5,20 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01.Library
+namespace _03.LibraryComparable
 {
-    public class LibraryIterator<T> : IEnumerator<T>
+    public class LibraryIterator : IEnumerator<Book>
     {
-        private readonly List<T> books;
+        private List<Book> books;
 
-        private int currentIndex;
-        public LibraryIterator(List<T> books)
+        private int currentIndex = -1;
+        public LibraryIterator(IEnumerable<Book> books)
         {
-            Reset();
-            this.books = new List<T>(books);
+            this.books = new List<Book>(books);
         }
 
-        public T Current => this.books[currentIndex];
+        public Book Current => books[currentIndex];
 
         object IEnumerator.Current => this.Current;
 
