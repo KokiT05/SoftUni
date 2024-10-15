@@ -9,12 +9,12 @@ namespace _01.Library
 {
     public class LibraryIterator<T> : IEnumerator<T>
     {
-        private readonly List<T> books;
+        private List<T> books;
 
         private int currentIndex;
         public LibraryIterator(List<T> books)
         {
-            Reset();
+            this.Reset();
             this.books = new List<T>(books);
         }
 
@@ -24,7 +24,7 @@ namespace _01.Library
 
         public void Dispose()
         {
-
+            this.books = null;
         }
 
         public bool MoveNext()

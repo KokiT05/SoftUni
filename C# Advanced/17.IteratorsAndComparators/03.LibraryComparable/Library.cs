@@ -20,7 +20,7 @@ namespace _03.LibraryComparable
         public Library()
         {
             IComparer<Book> comparer = new BookComparer();
-            this.books = new SortedSet<Book>(books, comparer);
+            this.books = new SortedSet<Book>(comparer);
         }
 
         public IEnumerator<Book> GetEnumerator()

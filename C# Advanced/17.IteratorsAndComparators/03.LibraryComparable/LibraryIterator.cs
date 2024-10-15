@@ -11,9 +11,10 @@ namespace _03.LibraryComparable
     {
         private List<Book> books;
 
-        private int currentIndex = -1;
+        private int currentIndex;
         public LibraryIterator(IEnumerable<Book> books)
         {
+            this.Reset();
             this.books = new List<Book>(books);
         }
 
@@ -23,7 +24,7 @@ namespace _03.LibraryComparable
 
         public void Dispose()
         {
-
+            this.books = null;
         }
 
         public bool MoveNext()
