@@ -9,7 +9,49 @@ namespace _03.Stack
 {
     public class CustomStack<T> : IEnumerable<T>
     {
-        LinkedList<T> stack;
+        private LinkedList<T> stack;
+        //private List<T> items; // C
+
+        //public CustomStack() // C
+        //{
+        //    this.items = new List<T>();
+        //}
+
+        //public CustomStack(List<T> items) // C
+        //{
+        //    this.items = new List<T>(items);
+        //}
+
+        //public void Push(T element) // C
+        //{
+        //    this.items.Add(element);
+        //}
+
+        //public T Pop()
+        //{
+        //    if (this.items.Count == 0)
+        //    {
+        //        throw new InvalidOperationException("No elements");
+        //    }
+
+        //    int index = this.items.Count - 1;
+        //    T element = this.items[index];
+        //    this.items.RemoveAt(index);
+        //    return element;
+        //}
+
+        //public IEnumerator<T> GetEnumerator()
+        //{
+        //    for (int i = items.Count - 1; i >= 0; i--)
+        //    {
+        //        yield return items[i];
+        //    }
+        //}
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return this.GetEnumerator();
+        //}
 
         public CustomStack(params T[] collection)
         {
