@@ -30,32 +30,37 @@ namespace _06.EqualityLogic
 
         public override bool Equals(object inputObject)
         {
-            if (inputObject == null || !(inputObject is Person))
-            {
-                return false;
-            }
+            //if (inputObject == null || !(inputObject is Person))
+            //{
+            //    return false;
+            //}
 
-            Person otherPerson = (Person)inputObject;
-            bool isEquals = 
-            (this.Name.ToLower() == otherPerson.Name.ToLower() && this.Age == otherPerson.Age);
-            return isEquals;
+            //Person otherPerson = (Person)inputObject;
+            //bool isEquals = 
+            //(this.Name.ToLower() == otherPerson.Name.ToLower() && this.Age == otherPerson.Age);
+            //return isEquals;
+
+            return this.GetHashCode() == inputObject.GetHashCode();
         }
 
         public override int GetHashCode()
         {
-            string name = this.Name.ToLower();
-            int charSum = 0;
-            for (int i = 0; i < name.Length; i++)
-            {
-                charSum += (name[i] * i + name[i]) * name[i];
-            }
+            int nameHash = this.Name.GetHashCode();
+            int ageHash = this.Age.GetHashCode();
+            return nameHash + ageHash;
+            //string name = this.Name.ToLower();
+            //int charSum = 0;
+            //for (int i = 0; i < name.Length; i++)
+            //{
+            //    charSum += (name[i] * i + name[i]) * name[i];
+            //}
 
-            int nameHashCode = charSum * name.Length;
-            int ageHashCode = this.Age.GetHashCode();
+            //int nameHashCode = charSum * name.Length;
+            //int ageHashCode = this.Age.GetHashCode();
 
-            int personHashCode = nameHashCode ^ ageHashCode;
+            //int personHashCode = nameHashCode ^ ageHashCode;
 
-            return personHashCode;
+            //return personHashCode;
         }
     }
 }
