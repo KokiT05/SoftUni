@@ -4,17 +4,8 @@
     {
         static void Main(string[] args)
         {
-            int[] liliesInput = Console.ReadLine()
-                                    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
-                                    .Select(int.Parse)
-                                    .ToArray();
-            Stack<int> lilies = new Stack<int>(liliesInput);
-
-            int[] rosesInput = Console.ReadLine()
-                                .Split(", ", StringSplitOptions.RemoveEmptyEntries)
-                                .Select(int.Parse)
-                                .ToArray();
-            Queue<int> roses = new Queue<int>(rosesInput);
+            Stack<int> lilies = new Stack<int>(LiliesRead());
+            Queue<int> roses = new Queue<int>(RosesInput());
 
             int storedFlowers = 0;
             int countOfWreaths = 0;
@@ -46,18 +37,43 @@
             }
 
             int needWreath = 5;
-            if (countOfWreaths >= 5)
+            int leftWreath = storedFlowers / 15;
+            countOfWreaths += leftWreath;
+            PrintWreathMessage(countOfWreaths, needWreath);
+        }
+
+        static void PrintWreathMessage(int countOfWreaths, int needWreath)
+        {
+            if (countOfWreaths >= needWreath)
             {
                 Console
-                .WriteLine($"You made it, you are going to the competition with {countOfWreaths} wreaths!" );
+                .WriteLine($"You made it, you are going to the competition with {countOfWreaths} wreaths!");
             }
             else
             {
-                int leftWreath = storedFlowers / 15;
-                countOfWreaths += leftWreath;
                 Console
-                .WriteLine($"You didn't make it, you need {needWreath - countOfWreaths} wreaths more");
+                .WriteLine($"You didn't make it, you need {needWreath - countOfWreaths} wreaths more!");
             }
+        }
+
+        static int[] LiliesRead()
+        {
+             int[] liliesInput = Console.ReadLine()
+                        .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                        .Select(int.Parse)
+                        .ToArray();
+
+            return liliesInput;
+        }
+
+        static int[] RosesInput()
+        {
+            int[] rosesInput = Console.ReadLine()
+                    .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .ToArray();
+
+            return rosesInput;
         }
     }
 }
