@@ -4,12 +4,12 @@
     {
         static void Main(string[] args)
         {
-            int n = 5;
-            int factorial = Factorial(n);
+            int n = int.Parse(Console.ReadLine());
+            long factorial = Factorial(n);
             Console.WriteLine($"Recursion factorial: {factorial}");
         }
 
-        public static int Factorial(int n)
+        public static long Factorial(int n)
         {
             if (n == 0)
             {

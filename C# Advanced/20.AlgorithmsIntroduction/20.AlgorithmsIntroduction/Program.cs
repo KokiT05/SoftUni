@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             //Fibonacci recursion
-            //int n = 3;
-            //Console.WriteLine($"Fibonacci({n}) = {Fibonacci(n)}");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Fibonacci({n}) = {Fibonacci(n)}");
 
             //Recursion
         }
