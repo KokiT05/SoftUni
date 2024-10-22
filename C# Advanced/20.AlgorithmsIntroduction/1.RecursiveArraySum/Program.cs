@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            int[] array = { 1, 2, 3, 4, 5, -9 };
+            int[] array = { -1, 0, 1 };
             Console.WriteLine($"Array sum: {array.Sum()}");
             int sumOfArray = ArraySum(array.Length - 1, array);
             Console.WriteLine($"Recursion sum: {sumOfArray}");
