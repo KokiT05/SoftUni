@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.RecursionPalindrome", "5.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.GreedySumOfCoins", "06.GreedySumOfCoins\06.GreedySumOfCoins.csproj", "{DB82CC54-6626-4B4B-8477-06EFDEFF334C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.SetCover", "07.SetCover\07.SetCover.csproj", "{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DB82CC54-6626-4B4B-8477-06EFDEFF334C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB82CC54-6626-4B4B-8477-06EFDEFF334C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB82CC54-6626-4B4B-8477-06EFDEFF334C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
