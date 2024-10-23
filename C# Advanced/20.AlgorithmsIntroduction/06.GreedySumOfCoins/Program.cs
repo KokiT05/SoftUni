@@ -4,17 +4,59 @@
     {
         static void Main(string[] args)
         {
-            int[] availableCoins = new int[] { 3, 7, 1 };
-            int targetSum = 11;
+            int[] availableCoins = new int[] { 1, 2, 5 };
+            int targetSum = 2031154123;
 
-            Dictionary<int, int> selectedCoins = ChooseCoins(availableCoins, targetSum);
-
-            Console.WriteLine($"Number of coin to take: {selectedCoins.Values.Sum()}");
-            foreach (KeyValuePair<int, int> coin in selectedCoins)
+            try
             {
-                Console.WriteLine($"{coin.Value} coin(s) with value {coin.Key}");
+                Dictionary<int, int> selectedCoins = ChooseCoinsFastMethod(availableCoins, targetSum);
+                Console.WriteLine($"Number of coin to take: {selectedCoins.Values.Sum()}");
+                foreach (KeyValuePair<int, int> coin in selectedCoins)
+                {
+                    Console.WriteLine($"{coin.Value} coin(s) with value {coin.Key}");
+                }
+            }
+            catch (InvalidOperationException errorMessage)
+            {
+                Console.WriteLine(errorMessage.Message);
             }
         }
+
+        public static Dictionary<int, int> ChooseCoinsFastMethod(int[] coins, int targetSum)
+        {
+            coins = coins.OrderByDescending(c => c).ToArray();
+
+            Dictionary<int, int> chosenCoins = new Dictionary<int, int>();
+            int currentSum = 0;
+
+            for (int i = 0; i < coins.Length; i++)
+            {
+                int currentCoin = coins[i];
+
+                if (currentSum + currentCoin > targetSum)
+                {
+                    continue;
+                }
+
+                int coinsToTake = (targetSum - currentSum) / currentCoin;
+                currentSum += currentCoin * coinsToTake;
+
+                chosenCoins.Add(currentCoin, coinsToTake);
+
+                if (currentSum == targetSum)
+                {
+                    break;
+                }
+            }
+
+            if (currentSum != targetSum)
+            {
+                throw new InvalidOperationException("Error");
+            }
+
+            return chosenCoins;
+        }
+
 
         public static Dictionary<int, int> ChooseCoins(int[] coins, int targetSum)
         {
