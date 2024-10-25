@@ -13,13 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3.RecursionReverseString", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4.RecursionNumberPyramid", "4.NumberPyramid\4.RecursionNumberPyramid.csproj", "{80043B32-904F-4724-B79A-DFB1F73C28C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.RecursionPalindrome", "5.RecursionPalindrome\5.RecursionPalindrome.csproj", "{310B067B-2C83-469F-A8CF-6C84790285BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5.RecursionPalindrome", "5.RecursionPalindrome\5.RecursionPalindrome.csproj", "{310B067B-2C83-469F-A8CF-6C84790285BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.GreedySumOfCoins", "06.GreedySumOfCoins\06.GreedySumOfCoins.csproj", "{DB82CC54-6626-4B4B-8477-06EFDEFF334C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.GreedySumOfCoins", "06.GreedySumOfCoins\06.GreedySumOfCoins.csproj", "{DB82CC54-6626-4B4B-8477-06EFDEFF334C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.GreedySetCover", "07.SetCover\07.GreedySetCover.csproj", "{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.GreedySetCover", "07.SetCover\07.GreedySetCover.csproj", "{CC4D23C6-E710-4D86-8465-BA2ADA8960C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.SortBubbleSort", "08.SortBubbleSort\08.SortBubbleSort.csproj", "{4D3040F1-D5F6-45CA-8BD4-7FDBB78F2846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.SortBubbleSort", "08.SortBubbleSort\08.SortBubbleSort.csproj", "{4D3040F1-D5F6-45CA-8BD4-7FDBB78F2846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.SortMergeSort", "09.SortMergeSort\09.SortMergeSort.csproj", "{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{4D3040F1-D5F6-45CA-8BD4-7FDBB78F2846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D3040F1-D5F6-45CA-8BD4-7FDBB78F2846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D3040F1-D5F6-45CA-8BD4-7FDBB78F2846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
