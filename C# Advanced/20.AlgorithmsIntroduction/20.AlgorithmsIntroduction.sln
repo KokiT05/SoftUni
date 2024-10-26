@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.GreedySetCover", "07.Set
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.SortBubbleSort", "08.SortBubbleSort\08.SortBubbleSort.csproj", "{4D3040F1-D5F6-45CA-8BD4-7FDBB78F2846}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.SortMergeSort", "09.SortMergeSort\09.SortMergeSort.csproj", "{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.SortMergeSort", "09.SortMergeSort\09.SortMergeSort.csproj", "{51E77847-EBA7-4DFE-8BD3-403138D0EE3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "010.SortQuickSort", "010.SortQuickSort\010.SortQuickSort.csproj", "{9139873D-3C94-49A9-A9FE-8ACFA1809624}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "010.SortQuickSort", "010.SortQuickSort\010.SortQuickSort.csproj", "{9139873D-3C94-49A9-A9FE-8ACFA1809624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "011.SortSelectionSort", "011.SortSelectionSort\011.SortSelectionSort.csproj", "{3EE889B4-6F01-4B93-A141-F34D8E6A7669}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{9139873D-3C94-49A9-A9FE-8ACFA1809624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9139873D-3C94-49A9-A9FE-8ACFA1809624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9139873D-3C94-49A9-A9FE-8ACFA1809624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE889B4-6F01-4B93-A141-F34D8E6A7669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE889B4-6F01-4B93-A141-F34D8E6A7669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE889B4-6F01-4B93-A141-F34D8E6A7669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE889B4-6F01-4B93-A141-F34D8E6A7669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
