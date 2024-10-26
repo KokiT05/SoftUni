@@ -4,12 +4,11 @@
     {
         static void Main(string[] args)
         {
-            int[] array = { 38, 27, 43, 3, 9, 82, 13 };
-
-            Console.WriteLine($"Before MergeSort:");
+            int[] array = { 23, 1, 15, 4 };
+            Console.WriteLine($"before mergesort:");
             Console.WriteLine(string.Join(", ", array));
             Sort(array);
-            Console.WriteLine($"After MergeSort");
+            Console.WriteLine($"after mergesort");
             Console.WriteLine(string.Join(", ", array));
         }
 
@@ -35,10 +34,12 @@
             Merge(array, left, right);
         }
 
-        public static void Merge(int[] array, int[] left, int[] right)
+        private static void Merge(int[] array, int[] left, int[] right)
         {
             int i = 0, j = 0, k = 0;
-
+            // 1 23 L - 2
+            // 4 15 L - 2
+            // 1 23 5 4
             // Сливане на подмасивите в сортиран ред
             while (i < left.Length && j < right.Length)
             {
