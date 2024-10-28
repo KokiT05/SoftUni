@@ -28,51 +28,39 @@
                 }
             }
 
-            //Stack<int> waveOrcAttack = orcs[countOfWave];
-
-            while (plates.Count > 0 && orcs.Count > 0)
+            while (plates.Count > 0 && orcs.Count > 1)
             {
-                Stack<int> waveOrcAttack = orcs[0];
-                orcs.RemoveAt(0);
+                Stack<int> orcsWaveAttack = orcs[0];
 
+                if (orcsWaveAttack.Count == 0 && orcs.Count != 1)
+                {
+                    orcs.RemoveAt(0);
+                    orcsWaveAttack = orcs[0];
+                }
                 int plate = plates.Peek();
-                int orc = waveOrcAttack.Peek();
-                bool plateInWhile = false;
-                bool orcInWhile = false;
-                while (plate > 0 && waveOrcAttack.Count > 0)
-                {
-                        orc = waveOrcAttack.Pop();
-                        plate -= orc;
-                    plateInWhile = true;
-                }
 
-                if (plate < 0)
-                {
-                    orc -=  orc + plate;
-                }
-                else if (plate == 0 && plateInWhile)
-                {
-                    plates.Dequeue();
-                    orc = 0;
-                }
+                //int orcValue = orcsWaveAttack.Peek();
 
-                while (orc > 0 && plates.Count > 0)
+                while (plate > 0 && orcsWaveAttack.Count > 0)
                 {
-                    plate = plates.Dequeue();
-                    //orc -= plate;
-                    orcInWhile = true;
-                }
+                    int orcValue = orcsWaveAttack.Peek();
+                    plate -= orcValue;
+                    int currentOrc = orcsWaveAttack.Pop();
 
-                if (orc < 0)
-                {
-                    plate += orc;
-                }
-                else if (orc == 0 && orcInWhile)
-                {
-                    waveOrcAttack.Pop();
-                    plate = 0;
-                }
 
+                    if (plate < 0)
+                    {
+                        currentOrc -= orcValue + plate;
+                        plates.Dequeue();
+                        orcsWaveAttack.Push(currentOrc);
+                    }
+                    else if (plate == 0)
+                    {
+                        plates.Dequeue();
+                    }
+                    currentOrc -= orcValue;
+                    //orcValue = orcsWaveAttack.Peek();
+                }
             }
 
             if (plates.Count > 0)
@@ -87,14 +75,11 @@
 
             if (orcs.Any(w => w.Count > 0))
             {
-                Console.WriteLine($"Orcs left: ");
-                foreach (Stack<int> wavee in orcs)
-                {
-                    Console.Write($"{string.Join(", ", wavee)}");
-                }
+                Console.WriteLine($"Orcs left: {string.Join(", ", orcs[0])}");
+                //Console.WriteLine($"Orcs left: {string.Join(", ", orcs[0])}");
+                //Console.WriteLine();
+                //Console.WriteLine($"{string.Join(", ", orcs[])}");
             }
-
-            //Console.WriteLine("Hello, World!");
         }
     }
 }
