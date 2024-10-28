@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "21.Exam", "21.Exam\21.Exam.csproj", "{0DE2BACB-844D-4D00-87C1-03E4C836F48D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.TheRace", "03.TheRace\03.TheRace.csproj", "{E95CA6D8-5633-44F4-A7E8-19FF26DB1C90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.TheRace", "03.TheRace\03.TheRace.csproj", "{E95CA6D8-5633-44F4-A7E8-19FF26DB1C90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Warships", "02.Warships\02.Warships.csproj", "{524B5321-CE08-4A2C-A8B8-45B4CB4593C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E95CA6D8-5633-44F4-A7E8-19FF26DB1C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E95CA6D8-5633-44F4-A7E8-19FF26DB1C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E95CA6D8-5633-44F4-A7E8-19FF26DB1C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{524B5321-CE08-4A2C-A8B8-45B4CB4593C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{524B5321-CE08-4A2C-A8B8-45B4CB4593C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{524B5321-CE08-4A2C-A8B8-45B4CB4593C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{524B5321-CE08-4A2C-A8B8-45B4CB4593C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

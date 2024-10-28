@@ -18,9 +18,9 @@ namespace TheRace
         }
         public string Name { get; set; }
 
-        public int Capacity { get; private set; }
+        public int Capacity { get; set; }
 
-        public int Count => this.contestants.Count;
+        public int Count { get { return contestants.Count; } }
 
         public void Add(Racer racer)
         {
@@ -63,13 +63,13 @@ namespace TheRace
         public string Report()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"Racers participating at {this.Name}");
-            foreach (Racer recer in contestants)
+            stringBuilder.AppendLine($"Racers participating at {this.Name}:");
+            foreach (Racer racer in contestants)
             {
-                stringBuilder.AppendLine(recer.ToString());
+                stringBuilder.AppendLine(racer.ToString());
             }
 
-            return stringBuilder.ToString();
+            return stringBuilder.ToString().TrimEnd();
         }
 
         //public List<Racer> Contestants { get; set; }

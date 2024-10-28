@@ -7,41 +7,55 @@ namespace TheRace
         static void Main(string[] args)
         {
             //Initialize the repository
-            Race race = new Race("Indianapolis 500", 10);
+            //Race race = new Race("Indianapolis 500", 10);
 
-            //Initialzie cars
-            Car car1 = new Car("ferrari", 150);
-            Car car2 = new Car("lambo", 170);
+            ////Initialzie cars
+            //Car car1 = new Car("ferrari", 150);
+            //Car car2 = new Car("lambo", 170);
 
-            //Initialize racer1
-            Racer racer1 = new Racer("Stephen", 40, "Bulgaria", car1);
+            ////Initialize racer1
+            //Racer racer1 = new Racer("Stephen", 40, "Bulgaria", car1);
 
-            //Print Racer
-            Console.WriteLine(racer1); //Racer: Stephen, 40 (Bulgaria)
+            ////Print Racer
+            //Console.WriteLine(racer1); //Racer: Stephen, 40 (Bulgaria)
 
-            //Add Racer
-            race.Add(racer1);
-            //Remove Racer
-            race.Remove("Vin Benzin"); //false
+            ////Add Racer
+            //race.Add(racer1);
+            ////Remove Racer
+            //race.Remove("Vin Benzin"); //false
 
-            Racer racer2 = new Racer("Mark", 34, "UK", car2);
+            //Racer racer2 = new Racer("Mark", 34, "UK", car2);
 
-            //Add Racer
-            race.Add(racer2);
+            ////Add Racer
+            //race.Add(racer2);
 
-            Racer oldestRacer = race.GetOldestRacer(); // Racer with name Stephen
-            Racer racerStephen = race.GetRacer("Stephen"); // Racer with name Stephen
-            Racer fastestRacer = race.GetFastestRacer(); // Racer with name Mark
+            //Racer oldestRacer = race.GetOldestRacer(); // Racer with name Stephen
+            //Racer racerStephen = race.GetRacer("Stephen"); // Racer with name Stephen
+            //Racer fastestRacer = race.GetFastestRacer(); // Racer with name Mark
 
-            Console.WriteLine(oldestRacer); //Racer: Stephen, 40 (Bulgaria)
-            Console.WriteLine(racerStephen); //Racer: Stephen, 40 (Bulgaria)
-            Console.WriteLine(fastestRacer); // Racer: Mark, 34 (UK)
-            Console.WriteLine(race.Count); //2
+            //Console.WriteLine(oldestRacer); //Racer: Stephen, 40 (Bulgaria)
+            //Console.WriteLine(racerStephen); //Racer: Stephen, 40 (Bulgaria)
+            //Console.WriteLine(fastestRacer); // Racer: Mark, 34 (UK)
+            //Console.WriteLine(race.Count); //2
 
-            Console.WriteLine(race.Report());
+            //Console.WriteLine(race.Report());
             //Racers working at Indianapolis 500:
             //Racer: Stephen, 40 (Bulgaria)
             //Racer: Mark, 34 (UK)
+
+            Race raceTwo = new Race("KokiRace", 100);
+            for (int i = 0; i < 10; i++)
+            {
+                Car car = new Car($"C{i}", i);
+                Racer racer = new Racer($"{i}", i, $"{i}", car);
+                raceTwo.Add(racer);
+            }
+            Car catTest = new Car("CarTest", 1000);
+            Racer racerTest = new Racer("RacerTest", 1000, "RacerTestCountry", catTest);
+            raceTwo.Add(racerTest);
+
+            Console.WriteLine(raceTwo.Report());
+            Console.WriteLine(raceTwo.Remove("RacerTest"));
 
         }
     }
