@@ -16,9 +16,15 @@ namespace CustomRandomList
         }
         public string RandomString()
         {
+            if (this.Count == 0)
+            {
+                return "";
+            }
+
             int index = random.Next(0, this.Count);
+            string randomElement = this[index];
             this.RemoveAt(index);
-            return this[index];
+            return randomElement;
         }
     }
 }
