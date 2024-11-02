@@ -6,7 +6,6 @@ namespace Animals
 {
     public class Animal
     {
-        private int age;
         public Animal(string name, int age, string gender)
         {
             this.Name = name;
@@ -15,33 +14,19 @@ namespace Animals
         }
         public string Name { get; set; }
 
-        public int Age
-        {
-            get
-            {
-                return this.age;
-            }
-
-            set
-            {
-                if (value < 0)
-                {
-                    this.age = 0;
-                    Console.WriteLine("Invalid input!");
-                }
-                else
-                {
-
-                }
-                this.age = value;
-            }
-        }
+        public int Age { get; set; }
 
         public string Gender { get; set; }
 
-        public virtual void ProduceSound()
+        public virtual string ProduceSound()
         {
+            return string.Empty;
+        }
 
+        public override string ToString()
+        {
+            return this.GetType().Name + Environment.NewLine +
+                $"{this.Name} {this.Age} {this.Gender}";
         }
     }
 }

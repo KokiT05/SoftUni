@@ -6,13 +6,15 @@ namespace Animals
 {
     public class Tomcat : Cat
     {
-        public Tomcat(string name, int age, string gender) : base(name, age, gender)
+        private const string DefaultGender = "Male";
+        public Tomcat(string name, int age) : base(name, age, DefaultGender)
         {
         }
 
-        public override void ProduceSound()
+        public override string ProduceSound()
         {
-            Console.WriteLine($"MEOW");
+            return "MEOW";
+            //Console.WriteLine($"MEOW");
         }
     }
 }

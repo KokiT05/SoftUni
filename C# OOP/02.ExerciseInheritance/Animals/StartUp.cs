@@ -19,38 +19,44 @@ namespace Animals
                 int animalAge = int.Parse(animalInformation[1]);
                 string animalGender = animalInformation[2];
 
-                if (animalType == "dog")
+                if (string.IsNullOrEmpty(animalName) || 
+                    animalAge < 0 || 
+                    string.IsNullOrEmpty(animalGender))
                 {
-                    animal = new Dog(animalName, animalAge, animalGender);
+                    Console.WriteLine($"Invalid input!");
                 }
-                else if (animalType == "frog")
+                else
                 {
-                    animal = new Frog(animalName, animalAge, animalGender);
-                }
-                else if (animalType == "cat")
-                {
-                    animal = new Cat(animalName, animalAge, animalGender);
-                }
-                else if (animalType == "kitten")
-                {
-                    animal = new Kitten(animalName, animalAge, animalGender);
-                }
-                else if (animalType == "tomcat")
-                {
-                    animal = new Tomcat(animalName, animalAge, animalGender);
-                }
+                    if (animalType == "dog")
+                    {
+                        animal = new Dog(animalName, animalAge, animalGender);
+                    }
+                    else if (animalType == "frog")
+                    {
+                        animal = new Frog(animalName, animalAge, animalGender);
+                    }
+                    else if (animalType == "cat")
+                    {
+                        animal = new Cat(animalName, animalAge, animalGender);
+                    }
+                    else if (animalType == "kitten")
+                    {
+                        animal = new Kitten(animalName, animalAge);
+                    }
+                    else if (animalType == "tomcat")
+                    {
+                        animal = new Tomcat(animalName, animalAge);
+                    }
 
-                animals.Add(animal);
+                    animals.Add(animal);
+                }
                 animalType = Console.ReadLine().ToLower().TrimEnd();
             }
 
             foreach (Animal currentAnimal in animals)
             {
-                Console.WriteLine($"{currentAnimal.GetType().Name}");
-                Console.
-                WriteLine
-                ($"{currentAnimal.Name} {currentAnimal.Age} {currentAnimal.Gender}");
-                currentAnimal.ProduceSound();
+                Console.WriteLine(currentAnimal);
+                Console.WriteLine(currentAnimal.ProduceSound());
             }
         }
     }
