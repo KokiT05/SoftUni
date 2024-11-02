@@ -6,8 +6,11 @@ namespace Restaurant
 {
     public class Cake : Dessert
     {
+        private const double DefaultGrams = 250;
+        private const double DefaultCalories = 1000;
+        private const decimal DefaultPrice = 5;
         public Cake(string name) 
-            : base(name, 5, 250, 1000)
+            : base(name, DefaultPrice, DefaultGrams, DefaultCalories)
         {
             //this.Price = 5;
             //this.Grams = 250;
