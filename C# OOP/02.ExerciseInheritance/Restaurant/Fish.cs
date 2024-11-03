@@ -10,6 +10,6 @@ namespace Restaurant
         public Fish(string name, decimal price) : base(name, price, DefaultGrams)
         {
             //this.Grams = 22;
-        }
+        } 
     }
 }
