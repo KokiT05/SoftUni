@@ -27,10 +27,7 @@ namespace _03.ShoppingSpree
 
             private set
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be empty");
-                }
+                Validator.ThrowIfStringIsNullOrEmpty(value, "Name cannot be empty");
 
                 this.name = value;
             }
@@ -45,10 +42,7 @@ namespace _03.ShoppingSpree
 
             private set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Money cannot be negative");
-                }
+                Validator.ThrowIfNumberIsNegative(value, "Money cannot be negative");
 
                 this.money = value;
             }
@@ -62,6 +56,10 @@ namespace _03.ShoppingSpree
 
         public void Bought(Product product)
         {
+            //if (product.Cost > this.Money)
+            //{
+            //    throw new InvalidOperationException($"{this.Name} can't afford {product.Name}");
+            //}
             this.bagProducts.Add(product);
             this.Money -= product.Cost;
         }

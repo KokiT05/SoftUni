@@ -57,6 +57,21 @@
 			get
 			{				
 				return this.CalculateProductPerDay();
+
+                //if (this.Age >= 0 && this.Age <= 3)
+                //{
+                //    return 1.5;
+                //}
+                //else if (this.Age >= 4 && this.Age <= 7)
+                //{
+                //    return 2;
+                //}
+                //else if (this.Age >= 8 && this.Age <= 11)
+                //{
+                //    return 1;
+                //}
+
+                //return 0.75;
 			}
         }
 

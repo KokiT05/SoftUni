@@ -8,6 +8,9 @@ namespace _04.PizzaCalories
 {
     public class Topping
     {
+        private const int MinWeight = 1;
+        private const int MaxWeight = 50;
+
         private double weight;
         private string toppingType;
 
@@ -25,13 +28,18 @@ namespace _04.PizzaCalories
 
             private set
             {
-                if (value != "meat" && 
-                    value != "veggies" && 
-                    value != "cheese" &&
-                    value != "sauce")
-                {
-                    throw new Exception($"Cannot place {value} on top of your pizza.");
-                }
+                Validator.ThrowIfValueIsNotAllowed
+                (new HashSet<string> { "meat", "veggies", "cheese", "sauce" }, 
+                value.ToLower(), 
+                $"Cannot place {value} on top of your pizza.");
+
+                //if (value != "meat" && 
+                //    value != "veggies" && 
+                //    value != "cheese" &&
+                //    value != "sauce")
+                //{
+                //    throw new ArgumentException($"Cannot place {value} on top of your pizza.");
+                //}
 
                 this.toppingType = value;
             }
@@ -45,11 +53,17 @@ namespace _04.PizzaCalories
 
             private set
             {
-                if (value < 1 || value > 50)
-                {
-                    throw new Exception
-                        ($"{this.ToppingType} weight should be in the range [1..50].");
-                }
+                Validator.TrowIfNumberIsNotInRange
+                (value,
+                MinWeight,
+                MaxWeight,
+                $"{this.ToppingType} weight should be in the range [{MinWeight}..{MaxWeight}].");
+
+                //if (value < minWeight || value > maxWeight)
+                //{
+                //    throw new ArgumentException
+                //        ($"{this.ToppingType} weight should be in the range [{minWeight}..{maxWeight}].");
+                //}
                 this.weight = value;
             }
         }
@@ -62,15 +76,15 @@ namespace _04.PizzaCalories
         }
         private double ToppingCaloriesModifier()
         {
-            if (this.ToppingType == "meat")
+            if (this.ToppingType.ToLower() == "meat")
             {
                 return 1.2;
             }
-            else if (this.ToppingType == "veggies")
+            else if (this.ToppingType.ToLower() == "veggies")
             {
                 return 0.8;
             }
-            else if (this.ToppingType == "cheese")
+            else if (this.ToppingType.ToLower() == "cheese")
             {
                 return 1.1;
             }

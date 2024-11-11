@@ -8,10 +8,14 @@ namespace _04.PizzaCalories
 {
     public class Pizza
     {
-        private string name;
-        private readonly List<Topping> toppings;
+        private const int NameMinLength = 1;
+        private const int NameMaxLength = 15;
+
         private const int MinCountToppings = 0;
         private const int MaxCountToppings = 10;
+
+        private string name;
+        private readonly List<Topping> toppings;
 
         public Pizza(string name)
         {
@@ -28,9 +32,10 @@ namespace _04.PizzaCalories
 
             private set
             {
-                if (value.Length > 15)
+                if (value.Length < NameMinLength || value.Length > NameMaxLength)
                 {
-                    throw new Exception("Pizza name should be between 1 and 15 symbols.");
+                    throw new ArgumentException
+                        ($"Pizza name should be between {NameMinLength} and {NameMaxLength} symbols.");
                 }
                 else if (string.IsNullOrEmpty(value))
                 {
@@ -70,7 +75,8 @@ namespace _04.PizzaCalories
         {
             if (this.NumberOfToppings > MaxCountToppings)
             {
-                throw new Exception("Number of toppings should be in range [0..10].");
+                throw new Exception
+                ($"Number of toppings should be in range [{MinCountToppings}..{MaxCountToppings}].");
             }
 
             this.toppings.Add(topping);

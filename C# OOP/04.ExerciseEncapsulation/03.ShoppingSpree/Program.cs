@@ -6,35 +6,19 @@ namespace _03.ShoppingSpree
     {
         static void Main(string[] args)
         {
-            string[] personInput = Console.ReadLine().Split(new char[] { ';', '=' });
-            string[] productsInput = Console.ReadLine().Split(new char[] {';', '='});
-
-            Dictionary<string, Person> personBags = new Dictionary<string, Person>();
-            Dictionary<string, Product> productCost = new Dictionary<string, Product>();
+            Dictionary<string, Person> personBags;
+            Dictionary<string, Product> productCost;
 
             try
             {
-                Person person;
-                for (int i = 0; i < personInput.Length - 1; i = i + 2)
-                {
-                    string personName = personInput[i];
-                    decimal personMoney = decimal.Parse(personInput[i + 1]);
-                    person = new Person(personName, personMoney);
-                    personBags.Add(personName, person);
-                }
-
-                Product product;
-                for (int i = 0; i < productsInput.Length - 1; i = i + 2)
-                {
-                    string productName = productsInput[i];
-                    decimal cost = decimal.Parse(productsInput[i + 1]);
-                    product = new Product(productName, cost);
-                    productCost.Add(productName, product);
-                }
+                personBags = ReadPeople();
+                productCost = ReadProduct();
             }
             catch (ArgumentException messageException)
             {
-                throw new ArgumentException(messageException.Message);
+                Console.WriteLine(messageException.Message);
+                return;
+                //throw new ArgumentException(messageException.Message);
             }
 
             Person currentPerson;
@@ -80,6 +64,38 @@ namespace _03.ShoppingSpree
                 }
                 Console.WriteLine($"{personBag.Name} - {personBag.PrintBag()}");
             }
+        }
+
+        public static Dictionary<string, Person> ReadPeople()
+        {
+            Dictionary<string, Person> personBags = new Dictionary<string, Person>();
+            string[] personInput = Console.ReadLine().Split(new char[] { ';', '=' });
+            Person person;
+            for (int i = 0; i < personInput.Length - 1; i = i + 2)
+            {
+                string personName = personInput[i];
+                decimal personMoney = decimal.Parse(personInput[i + 1]);
+                person = new Person(personName, personMoney);
+                personBags.Add(personName, person);
+            }
+
+            return personBags;
+        }
+
+        public static Dictionary<string, Product> ReadProduct()
+        {
+            Dictionary<string, Product> productCost = new Dictionary<string, Product>();
+            string[] productsInput = Console.ReadLine().Split(new char[] { ';', '=' });
+            Product product;
+            for (int i = 0; i < productsInput.Length - 1; i = i + 2)
+            {
+                string productName = productsInput[i];
+                decimal cost = decimal.Parse(productsInput[i + 1]);
+                product = new Product(productName, cost);
+                productCost.Add(productName, product);
+            }
+
+            return productCost;
         }
     }
 }

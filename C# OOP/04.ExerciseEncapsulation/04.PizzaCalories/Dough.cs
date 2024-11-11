@@ -8,6 +8,10 @@ namespace _04.PizzaCalories
 {
     public class Dough
     {
+        private const int MinWeight = 1;
+        private const int MaxWeight = 200;
+        private const string InvalidDoughExceptionMessage = "Invalid type of dough.";
+
         private double weight;
         private string flourType;
         private string bakingTechnique;
@@ -28,10 +32,15 @@ namespace _04.PizzaCalories
             }
             private set
             {
-                if (value != "white" && value != "wholegrain")
-                {
-                    throw new Exception("Invalid type of dough.");
-                }
+                Validator.ThrowIfValueIsNotAllowed
+                    (new HashSet<string> { "white", "wholegrain"}, 
+                    value.ToLower(),
+                    InvalidDoughExceptionMessage);
+
+                //if (value != "white" && value != "wholegrain")
+                //{
+                //    throw new ArgumentException(invalidDoughExceptionMessage);
+                //}
 
                 this.flourType = value;
             }
@@ -45,10 +54,15 @@ namespace _04.PizzaCalories
 
             private set
             {
-                if (value != "crispy" && value != "chewy" && value != "homemade")
-                {
-                    throw new Exception("Invalid type of dough.");
-                }
+                Validator.ThrowIfValueIsNotAllowed
+                    (new HashSet<string> { "crispy", "chewy", "homemade" }, 
+                    value.ToLower(),
+                    InvalidDoughExceptionMessage);
+
+                //if (value != "crispy" && value != "chewy" && value != "homemade")
+                //{
+                //    throw new ArgumentException(invalidDoughExceptionMessage);
+                //}
 
                 this.bakingTechnique = value;
             }
@@ -62,10 +76,17 @@ namespace _04.PizzaCalories
             }
             private set
             {
-                if (value < 1 || value > 200)
-                {
-                    throw new Exception("Dough weight should be in the range [1..200].");
-                }
+                Validator.TrowIfNumberIsNotInRange
+                (value, 
+                MinWeight, 
+                MaxWeight, 
+                $"Dough weight should be in the range [{MinWeight}..{MaxWeight}].");
+
+                //if (value < minWeight || value > maxWeight)
+                //{
+                //    throw new ArgumentException
+                //        ($"Dough weight should be in the range [{minWeight}..{maxWeight}].");
+                //}
 
                 this.weight = value;
             }
@@ -84,7 +105,7 @@ namespace _04.PizzaCalories
 
         private double FlourTypeModifier()
         {
-            if (this.FlourType == "white")
+            if (this.FlourType.ToLower() == "white")
             {
                 return 1.5;
             }
@@ -94,11 +115,11 @@ namespace _04.PizzaCalories
 
         private double BakingTechniqueModifier()
         {
-            if (this.BakingTechnique == "crispy")
+            if (this.BakingTechnique.ToLower() == "crispy")
             {
                 return 0.9;
             }
-            else if (this.BakingTechnique == "chewy")
+            else if (this.BakingTechnique.ToLower() == "chewy")
             {
                 return 1.1;
             }

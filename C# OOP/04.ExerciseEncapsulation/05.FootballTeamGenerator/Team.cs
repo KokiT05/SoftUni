@@ -30,15 +30,17 @@ namespace _05.FootballTeamGenerator
 
             private set
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("A name should not be empty.");
-                }
+                Validator.ThrowIfStringIsNullOrWhiteSpace
+                    (value, GlobalConstants.InvalidNameExceptionMessage);
+                //if (string.IsNullOrEmpty(value))
+                //{
+                //    throw new ArgumentException("A name should not be empty.");
+                //}
 
                 this.name = value;
             }
         }
-        public int Rating => this.TotalRating();
+        public double Rating => this.TotalRating();
 
         public void AddPlayer(Player player)
         {
@@ -57,13 +59,18 @@ namespace _05.FootballTeamGenerator
             this.players.Remove(player);
         }
 
-        private int TotalRating()
+        private double TotalRating()
         {
-            int totalRating = 0;
-            foreach (Player player in this.Players)
+            if (players.Count == 0)
             {
-                totalRating += player.SkillLevel;
+                return 0;
             }
+
+            double totalRating = players.Average(p => p.SkillLevel);
+            //foreach (Player player in this.Players)
+            //{
+            //    totalRating += player.SkillLevel;
+            //}
 
             return totalRating;
         }

@@ -27,10 +27,7 @@ namespace _01.ClassBoxData
 
             private set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentException($"Length cannot be zero or negative.");
-                }
+                this.ThrowIfInvalidSide(value, nameof(this.Length));
 
                 this.length = value;
             }
@@ -44,10 +41,7 @@ namespace _01.ClassBoxData
 
             private set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentException($"Width cannot be zero or negative.");
-                }
+                this.ThrowIfInvalidSide(value, nameof(this.Width));
 
                 this.width = value;
             }
@@ -61,10 +55,7 @@ namespace _01.ClassBoxData
 
             private set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentException($"Height cannot be zero or negative.");
-                }
+                this.ThrowIfInvalidSide(value, nameof(this.Height));
 
                 this.height = value;
             }
@@ -89,6 +80,14 @@ namespace _01.ClassBoxData
                                 (2 * this.length * this.height) +
                                 (2 * this.width * this.height);
             return surfaceArea;
+        }
+
+        private void ThrowIfInvalidSide(double value, string property)
+        {
+            if (value <= 0)
+            {
+                throw new ArgumentException($"{property} cannot be zero or negative.");
+            }
         }
     }
 }

@@ -8,6 +8,6 @@ namespace _02.Cars
 {
     public interface IElectricCar
     {
-        int Battery {  get; set; }
+        public int Battery {  get; set; }
     }
 }
