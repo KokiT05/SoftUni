@@ -1,10 +1,16 @@
-﻿namespace _01.DefineInterfaceIPerson
+﻿namespace _01.DefineInterfaceIPerson // PersonInfo
 {
-    internal class Program
+    internal class Program // StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            string name = Console.ReadLine();
+            int age = int.Parse(Console.ReadLine());
+
+            IPerson person = new Citizen(name, age);
+
+            Console.WriteLine(person.Name);
+            Console.WriteLine(person.Age);
         }
     }
 }
