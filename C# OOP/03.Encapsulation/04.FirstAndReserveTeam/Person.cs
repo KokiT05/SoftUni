@@ -12,12 +12,12 @@ namespace _04.FirstAndReserveTeam
         private string lastName;
         private int age;
         private decimal salary;
-        public Person(string firstName, string lastName, int age, decimal salary)
+        public Person(string firstName, string lastName, int age)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Age = age;
-            this.Salary = salary;
+            //this.Salary = salary;
         }
 
         public string FirstName

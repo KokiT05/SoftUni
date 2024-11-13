@@ -32,6 +32,7 @@ namespace _04.FirstAndReserveTeam
         {
             if (person.Age < 40)
             {
+                
                 this.firstTeam.Add(person);
             }
             else
