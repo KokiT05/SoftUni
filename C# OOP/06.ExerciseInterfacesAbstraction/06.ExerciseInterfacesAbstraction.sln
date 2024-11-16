@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DefineInterfaceIPerson", "01.DefineInterfaceIPerson\01.DefineInterfaceIPerson.csproj", "{948B566A-0E89-4361-8597-1EF408E2C80E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.DefineInterfaceIPerson", "01.DefineInterfaceIPerson\01.DefineInterfaceIPerson.csproj", "{948B566A-0E89-4361-8597-1EF408E2C80E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{B19AB042-4031-4898-8AA1-A91DC1E0E587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{B19AB042-4031-4898-8AA1-A91DC1E0E587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Telephony", "03.Telephony\03.Telephony.csproj", "{6CED0514-F8AD-46A8-8A22-ADEF45636BE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Telephony", "03.Telephony\03.Telephony.csproj", "{6CED0514-F8AD-46A8-8A22-ADEF45636BE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.BorderControl", "04.BorderControl\04.BorderControl.csproj", "{A81255D0-836D-4DF3-BFB5-8EF762B7E072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.BorderControl", "04.BorderControl\04.BorderControl.csproj", "{A81255D0-836D-4DF3-BFB5-8EF762B7E072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.BirthdayCelebrations", "05.BirthdayCelebrations\05.BirthdayCelebrations.csproj", "{257E1AF7-A03F-46F0-BA28-75B8E001EDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.BirthdayCelebrations", "05.BirthdayCelebrations\05.BirthdayCelebrations.csproj", "{257E1AF7-A03F-46F0-BA28-75B8E001EDA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.FoodShortage", "06.FoodShortage\06.FoodShortage.csproj", "{4074300F-AA0B-4D06-8895-F7EA6C86AF48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.FoodShortage", "06.FoodShortage\06.FoodShortage.csproj", "{4074300F-AA0B-4D06-8895-F7EA6C86AF48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.ExplicitInterfaces", "09.ExplicitInterfaces\09.ExplicitInterfaces.csproj", "{4AEB48A6-5644-4B74-826C-EAE74110A505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.ExplicitInterfaces", "09.ExplicitInterfaces\09.ExplicitInterfaces.csproj", "{4AEB48A6-5644-4B74-826C-EAE74110A505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.CollectionHierarchy", "08.CollectionHierarchy\08.CollectionHierarchy.csproj", "{20412CDD-6F91-466F-8AEB-BD6E80AA6B9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.MilitaryElite", "07.MilitaryElite\07.MilitaryElite.csproj", "{34671542-ABA7-41CD-81B9-9305C49FD2ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{4AEB48A6-5644-4B74-826C-EAE74110A505}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AEB48A6-5644-4B74-826C-EAE74110A505}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AEB48A6-5644-4B74-826C-EAE74110A505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20412CDD-6F91-466F-8AEB-BD6E80AA6B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20412CDD-6F91-466F-8AEB-BD6E80AA6B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20412CDD-6F91-466F-8AEB-BD6E80AA6B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20412CDD-6F91-466F-8AEB-BD6E80AA6B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34671542-ABA7-41CD-81B9-9305C49FD2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34671542-ABA7-41CD-81B9-9305C49FD2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34671542-ABA7-41CD-81B9-9305C49FD2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34671542-ABA7-41CD-81B9-9305C49FD2ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
