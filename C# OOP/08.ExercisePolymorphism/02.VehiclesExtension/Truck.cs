@@ -9,6 +9,7 @@ namespace _02.VehiclesExtension
     public class Truck : Vehicle
     {
         private const double SummerFuelConsumptionPerKm = 1.6;
+        private const double TankCapacityHole = 0.95;
         public Truck(double fuelQuantity, double fuelConsumptionInLitersPerKm, double tankCapacity) 
             : base(fuelQuantity, fuelConsumptionInLitersPerKm, tankCapacity)
         {
@@ -17,7 +18,9 @@ namespace _02.VehiclesExtension
 
         public override void Refueling(double fuelQuantity)
         {
-            base.FuelQuantity += fuelQuantity * 0.95;
+            IsEnoughFuel(fuelQuantity);
+            base.FuelQuantity += fuelQuantity * TankCapacityHole;
+
         }
     }
 }

@@ -14,13 +14,17 @@ namespace _02.VehiclesExtension
         private double fuelConsumptionInLitersPerKm;
         protected Vehicle(double fuelQuantity, double fuelConsumptionInLitersPerKm, double tankCapacity)
         {
-            this.FuelQuantity = fuelQuantity;
-            this.FuelConsumptionInLitersPerKm = fuelConsumptionInLitersPerKm;
             this.TankCapacit = tankCapacity;
+            this.FuelConsumptionInLitersPerKm = fuelConsumptionInLitersPerKm;
+            this.FuelQuantity = fuelQuantity;
             //this.
         }
 
-        public double TankCapacit { get; protected set; }
+        public double TankCapacit
+        {
+            get { return this.tankCapacit; }
+            protected set { this.tankCapacit = value; }
+        }
         public double FuelQuantity
         {
             get
@@ -30,15 +34,21 @@ namespace _02.VehiclesExtension
 
             protected set
             {
-                if (value <= this.tankCapacit)
+                if (this.tankCapacit >= value)
                 {
                     this.fuelQuantity = value;
                 }
-
-                this.fuelQuantity = 0;
+                else
+                {
+                    this.fuelQuantity = 0;
+                }
             }
         }
-        public double FuelConsumptionInLitersPerKm { get; protected set; }
+        public double FuelConsumptionInLitersPerKm 
+        { 
+            get { return this.fuelConsumptionInLitersPerKm;}
+            protected set { this.fuelConsumptionInLitersPerKm = value; } 
+        }
         public virtual string Driving(double distance)
         {
             if (CanDrive(distance))
@@ -52,14 +62,18 @@ namespace _02.VehiclesExtension
 
         public virtual void Refueling(double fuelQuantity)
         {
-            if (fuelQuantity + this.FuelQuantity > this.TankCapacit)
-            {
-                throw new InvalidOperationException($"Cannot fit {fuelQuantity} fuel in the tank");
-            }
+            IsEnoughFuel(fuelQuantity);
 
             this.FuelQuantity += fuelQuantity;
         }
 
+        protected void IsEnoughFuel(double fuelQuantity)
+        {
+            if (fuelQuantity + this.FuelQuantity > this.TankCapacit)
+            {
+                throw new InvalidOperationException($"Cannot fit {fuelQuantity} fuel in the tank");
+            }
+        }
         public override string ToString()
         {
             return $"{this.GetType().Name}: {this.FuelQuantity:f2}";

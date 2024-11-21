@@ -21,7 +21,7 @@
             string[] busInformation = Console.ReadLine().Split();
             double busFuelQuantity = double.Parse(busInformation[1]);
             double busLitersPerKm = double.Parse(busInformation[2]);
-            double busTankCapacity = Double.Parse(busInformation[3]);
+            double busTankCapacity = double.Parse(busInformation[3]);
             Vehicle bus = new Bus(busFuelQuantity, busLitersPerKm, busTankCapacity);
 
             int n = int.Parse(Console.ReadLine());
@@ -41,26 +41,50 @@
                     vehicle = truck;
 
                 }
+                else if (vehicleType == nameof(Bus))
+                {
+                    vehicle = bus;
+                }
 
-                if (command == "Drive")
+                try
                 {
-                    double distance = double.Parse(inputCommand[2]);
-                    Console.WriteLine(vehicle.Driving(distance));
-                    //Console.WriteLine(vehicle.Driving(vehicleParameter));
+                    if (command == "Drive")
+                    {
+                        double distance = double.Parse(inputCommand[2]);
+                        Console.WriteLine(vehicle.Driving(distance));
+                        //Console.WriteLine(vehicle.Driving(vehicleParameter));
+                    }
+                    else if (command == "DriveEmpty")
+                    {
+                        Bus currentBus = (Bus)vehicle;
+                        double distance = double.Parse(inputCommand[2]);
+                        Console.WriteLine(currentBus.DrivingEmpty(distance));
+                    }
+                    else if (command == "Refuel")
+                    {
+                        double liters = double.Parse(inputCommand[2]);
+                        IsValidLiters(liters);
+                        vehicle.Refueling(liters);
+                        //vehicle.Refueling(vehicleParameter);
+                    }
                 }
-                else if (command == "DriveEmpty")
+                catch (Exception exceptionMessage)
                 {
-                    double distance = Double.Parse(inputCommand[3]);
-                    Console.WriteLine(vehicle.Driving());
-                }
-                else if (command == "Refuel")
-                {
-                    double liters = double.Parse(inputCommand[2]);
-                    vehicle.Refueling(liters);
-                    //vehicle.Refueling(vehicleParameter);
+                    Console.WriteLine(exceptionMessage.Message);
                 }
             }
 
+            Console.WriteLine(car);
+            Console.WriteLine(truck);
+            Console.WriteLine(bus);
+        }
+
+        public static void IsValidLiters(double liters)
+        {
+            if (liters <= 0)
+            {
+                throw new ArgumentException("Fuel must be a positive number");
+            }
         }
     }
 }
