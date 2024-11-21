@@ -40,7 +40,7 @@ namespace _07.MilitaryElite
             stringBuilder.
             AppendLine
             ($"Name: {this.FirstName} {this.LastName} Id: {this.Id} Salary: {this.Salary}");
-
+            stringBuilder.AppendLine();
             foreach (IPrivate @private in this.privates)
             {
                 stringBuilder.AppendLine(@private.ToString());
