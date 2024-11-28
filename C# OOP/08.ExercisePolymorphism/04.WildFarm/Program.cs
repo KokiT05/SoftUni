@@ -1,136 +1,118 @@
-﻿namespace _04.WildFarm
+﻿using _04.WildFarm.Animals;
+using _04.WildFarm.Animals.Birds;
+using _04.WildFarm.Animals.Mammals;
+using _04.WildFarm.Animals.Mammals.Felines;
+using _04.WildFarm.Foods;
+
+namespace _04.WildFarm
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Animal animal = null;
-            Food food = null;
             List<Animal> animals = new List<Animal>();
+
             while (true)
             {
-                string[] animalInformation = Console.ReadLine().Split();
-
-                if (animalInformation[0] == "End")
+                string animalInput = Console.ReadLine();
+                if (animalInput == "End")
                 {
                     break;
                 }
-                string animalType = animalInformation[0];
-                string animalName = animalInformation[1];
-                double weight = double.Parse(animalInformation[2]);
 
+                string[] animalInformation = animalInput.Split();
+                Animal animal = CreateAnimal(animalInformation);
+                animals.Add(animal);
 
                 string[] foodInformation = Console.ReadLine().Split();
-                string foodType = foodInformation[0];
-                int foodQuantity = int.Parse(foodInformation[1]);
+                Food food = CreateFood(foodInformation);
 
-                if (animalType == nameof(Owl) || animalType == nameof(Hen))
+                Console.WriteLine(animal.Sound());
+
+                try
                 {
-                    double wingSize = double.Parse(animalInformation[2]);
-
-                    if (animalType == nameof(Owl))
-                    {
-                        animal = new Owl(animalName, weight, foodQuantity, wingSize);
-                    }
-                    else if (animalType == nameof(Hen))
-                    {
-                        animal = new Hen(animalName, weight, foodQuantity, wingSize);
-                    }
-                    animals.Add(animal);
-                   // animal.AddFoodEaten(foodQuantity);
-                    AnimalFunctionality(animal, foodType);
-                    continue;
+                    animal.Eat(food);
                 }
-
-                string livingRegion = animalInformation[3];
-
-                if (animalType == nameof(Mouse) || animalType ==  nameof(Dog))
+                catch (InvalidProgramException exceptionMessage)
                 {
-                    if (animalType == nameof(Mouse))
-                    {
-                        animal = new Mouse(animalName, weight, foodQuantity, livingRegion);
-                    }
-                    else if (animalType == nameof(Dog))
-                    {
-                        animal = new Dog(animalName, weight, foodQuantity, livingRegion);
-                    }
-                    animals.Add(animal);
-                   // animal.AddFoodEaten(foodQuantity);
-                    AnimalFunctionality(animal, foodType);
-                    continue;
+                    Console.WriteLine(exceptionMessage.Message);
                 }
-
-                string breed = animalInformation[4];
-                if (animalType == nameof(Cat))
-                {
-                    animal = new Cat(animalName, weight, foodQuantity, livingRegion, breed);
-                }
-                else if (animalType == nameof(Tiger))
-                {
-                    animal = new Tiger(animalName, weight, foodQuantity, livingRegion, breed);
-                }
-
-                animals.Add(animal);
-                //animal.AddFoodEaten(foodQuantity);
-                AnimalFunctionality(animal, foodType);
             }
 
             foreach (Animal currentAnimal in animals)
             {
                 Console.WriteLine(currentAnimal);
             }
-        }
-
-        public static void CanEat(Animal animal, string foodName)
-        {
-            if (animal.Foods.Contains(foodName))
-            {
-                Console.WriteLine(animal.Sound());
-            }
-            else
-            {
-                Console.WriteLine($"{animal.GetType().Name} does not eat {foodName}!");
-            }
-
 
         }
 
-        public static void AddWeight(Animal animal)
+        private static Food CreateFood(string[] foodInformation)
         {
-            double weight = 0;
+            Food food = null;
+            string foodType = foodInformation[0];
+            int foodQuantity = int.Parse(foodInformation[1]);
 
-            if (animal.GetType().Name == nameof(Hen))
+            if (foodType == nameof(Fruit))
             {
-                weight = GlobalConstants.HenAddWeight;
+                food = new Fruit(foodQuantity);
             }
-            else if (animal.GetType().Name == nameof(Owl))
+            else if (foodType == nameof(Meat))
             {
-                weight = GlobalConstants.OwlAddWeight;
+                food = new Meat(foodQuantity);
             }
-            else if (animal.GetType().Name == nameof(Cat))
+            else if (foodType == nameof(Seeds))
             {
-                weight = GlobalConstants.CatAddWeight;
+                food = new Seeds(foodQuantity);
             }
-            else if (animal.GetType().Name == nameof(Tiger))
+            else if (foodType == nameof(Vegetable))
             {
-                weight = GlobalConstants.TigerAddWeight;
+                food = new Vegetable(foodQuantity);
             }
-            else if (animal.GetType().Name == nameof(Dog))
-            {
-                weight = GlobalConstants.DogAddWeight;
-            }
-            else if (animal.GetType().Name == nameof(Mouse))
-            {
-                weight = GlobalConstants.MouseAddWeight;
-            }
-            weight = weight * animal.FoodEaten;
-            animal.AddWeight(weight);
+
+            return food;
         }
 
-        public static void AnimalFunctionality(Animal animal, string foodName)
+        public static Animal CreateAnimal(string[] animalInformation)
         {
-            CanEat(animal, foodName);
-            AddWeight(animal);
+            Animal animal = null;
+            string animalType = animalInformation[0];
+            string animalName = animalInformation[1];
+            double animalWeight = double.Parse(animalInformation[2]);
+
+            if (animalType == nameof(Owl))
+            {
+                double wingSize = double.Parse(animalInformation[3]);
+                animal = new Owl(animalName, animalWeight, wingSize);
+            }
+            else if (animalType == nameof(Hen))
+            {
+                double wingSize = double.Parse(animalInformation[3]);
+                animal = new Hen(animalName, animalWeight, wingSize);
+            }
+            else if (animalType == nameof(Dog))
+            {
+                string livingRegion = animalInformation[3];
+                animal = new Dog(animalName, animalWeight, livingRegion);
+            }
+            else if (animalType == nameof(Mouse))
+            {
+                string livingRegion = animalInformation[3];
+                animal = new Mouse(animalName, animalWeight, livingRegion);
+            }
+            else if (animalType == nameof(Cat))
+            {
+                string livingRegion = animalInformation[3];
+                string breed = animalInformation[4];
+                animal = new Cat(animalName, animalWeight, livingRegion, breed);
+            }
+            else if (animalType == nameof(Tiger))
+            {
+                string livingRegion = animalInformation[3];
+                string breed = animalInformation[4];
+                animal = new Tiger(animalName, animalWeight, livingRegion, breed);
+            }
+
+            return animal;
         }
     }
 }

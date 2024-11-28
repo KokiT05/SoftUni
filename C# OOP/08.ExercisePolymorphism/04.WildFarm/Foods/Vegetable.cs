@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _04.WildFarm
+namespace _04.WildFarm.Foods
 {
-    public class Seeds : Food
+    public class Vegetable : Food
     {
-        public Seeds(int quantity) : base(quantity)
+        public Vegetable(int quantity) : base(quantity)
         {
+
         }
     }
 }
