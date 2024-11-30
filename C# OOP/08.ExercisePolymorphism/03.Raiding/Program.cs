@@ -4,52 +4,35 @@
     {
         static void Main(string[] args)
         {
-            Heroes heroes = new Heroes();
-            BaseHero hero = null;
-            List<BaseHero> raidGroup = new List<BaseHero>();
-
+            List<BaseHero> heroes = new List<BaseHero>();
             int n = int.Parse(Console.ReadLine());
-            for (int i = 0; i < n; i++)
+
+            while (heroes.Count < n)
             {
                 string name = Console.ReadLine();
                 string heroType = Console.ReadLine();
 
-                if (!Enum.TryParse(heroType, out heroes))
+                BaseHero hero = CreateHero(name, heroType);
+
+                if (hero == null)
                 {
                     Console.WriteLine("Invalid hero!");
                     continue;
                 }
 
-                if (heroType == "Druid")
-                {
-                    hero = new Druid(name);
-                }
-                else if (heroType == "Paladin")
-                {
-                    hero = new Paladin(name);
-                }
-                else if (heroType == "Rogue")
-                {
-                    hero = new Rogue(name);
-                }
-                else if (heroType == "Warrior")
-                {
-                    hero = new Warrior(name);
-                }
+                heroes.Add(hero);
 
-                raidGroup.Add(hero);
             }
 
             int bossPower = int.Parse(Console.ReadLine());
-            int totalHeroesPower = 0;
 
-            foreach (BaseHero currentHero in raidGroup)
+            foreach (BaseHero hero in heroes)
             {
-                Console.WriteLine(currentHero.CastAbility());
-                totalHeroesPower += currentHero.Power;
+                Console.WriteLine(hero.CastAbility());
+                bossPower -= hero.Power;
             }
 
-            if (totalHeroesPower >= bossPower)
+            if (bossPower <= 0)
             {
                 Console.WriteLine("Victory!");
             }
@@ -57,6 +40,29 @@
             {
                 Console.WriteLine("Defeat...");
             }
+        }
+
+        public static BaseHero CreateHero(string name, string heroType)
+        {
+            BaseHero hero = null;
+            if (heroType == nameof(Druid))
+            {
+                hero = new Druid(name);
+            }
+            else if (heroType == nameof(Paladin))
+            {
+                hero = new Paladin(name);
+            }
+            else if (heroType == nameof(Rogue))
+            {
+                hero = new Rogue(name);
+            }
+            else if (heroType == nameof(Warrior))
+            {
+                hero = new Warrior(name);
+            }
+
+            return hero;
         }
     }
 }

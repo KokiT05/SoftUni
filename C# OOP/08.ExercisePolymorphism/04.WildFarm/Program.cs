@@ -33,7 +33,7 @@ namespace _04.WildFarm
                 {
                     animal.Eat(food);
                 }
-                catch (InvalidProgramException exceptionMessage)
+                catch (InvalidOperationException exceptionMessage)
                 {
                     Console.WriteLine(exceptionMessage.Message);
                 }

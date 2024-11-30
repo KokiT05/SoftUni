@@ -8,12 +8,11 @@ namespace _03.Raiding
 {
     public class Paladin : BaseHero
     {
-        private int paladinPaladin = 100;
-        public Paladin(string name) : base(name)
+        private const int PaladinPaladin = 100;
+        public Paladin(string name) : base(name, PaladinPaladin)
         {
             
         }
-        public override int Power { get { return this.paladinPaladin; } }
 
         public override string CastAbility()
         {

@@ -10,15 +10,16 @@ namespace _03.Raiding
     {
         private string name;
         //private int power;
-        protected BaseHero(string name)
+        protected BaseHero(string name, int power)
         {
             this.Name = name;
+            this.Power = power;
             //this.Power = power;
         }
 
         public  string Name { get; private set; }
 
-        public abstract int Power { get; }
+        public int Power { get; private set; }
 
         public abstract string CastAbility();
     }

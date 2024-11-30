@@ -8,11 +8,10 @@ namespace _03.Raiding
 {
     public class Rogue : BaseHero
     {
-        private int roguePower = 80;
-        public Rogue(string name) : base(name)
+        private const int RoguePower = 80;
+        public Rogue(string name) : base(name, RoguePower)
         {
         }
-        public override int Power { get { return this.roguePower; } }
 
         public override string CastAbility()
         {

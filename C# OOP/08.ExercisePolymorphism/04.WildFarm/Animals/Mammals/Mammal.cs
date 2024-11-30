@@ -23,8 +23,8 @@ namespace _04.WildFarm.Animals.Mammals
 
         public override string ToString()
         {
-            return $"{this.GetType().Name} [{this.Name} {this.Weight} " +
-                $"{this.LivingRegion} {this.FoodEaten}]";
+            return $"{this.GetType().Name} [{this.Name}, {this.Weight}, " +
+                $"{this.LivingRegion}, {this.FoodEaten}]";
         }
     }
 }

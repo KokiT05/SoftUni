@@ -24,8 +24,8 @@ namespace _04.WildFarm.Animals.Mammals.Felines
 
         public override string ToString()
         {
-            return $"{this.GetType().Name} [{this.Name} " +
-                $"{this.Breed} {this.Weight} {this.LivingRegion} {this.FoodEaten}]";
+            return $"{this.GetType().Name} [{this.Name}, " +
+                $"{this.Breed}, {this.Weight}, {this.LivingRegion}, {this.FoodEaten}]";
         }
     }
 }
