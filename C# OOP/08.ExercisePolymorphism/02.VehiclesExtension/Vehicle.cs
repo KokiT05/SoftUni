@@ -11,82 +11,83 @@ namespace _02.VehiclesExtension
     {
         private double tankCapacit;
         private double fuelQuantity;
-        private double fuelConsumptionInLitersPerKm;
-        protected Vehicle(double fuelQuantity, double fuelConsumptionInLitersPerKm, double tankCapacity)
+        private double fuelConsumption;
+        protected Vehicle(double fuelQuantity,
+                        double fuelConsumption,
+                        double tankCapacity
+                        , double airConditionerModifier)
         {
-            this.TankCapacit = tankCapacity;
-            this.FuelConsumptionInLitersPerKm = fuelConsumptionInLitersPerKm;
+            this.TankCapacity = tankCapacity;
             this.FuelQuantity = fuelQuantity;
-            //this.
+            this.FuelConsumption = fuelConsumption;
+            this.AirConditionerModifier = airConditionerModifier;
         }
 
-        public double TankCapacit
-        {
-            get { return this.tankCapacit; }
-            protected set { this.tankCapacit = value; }
-        }
+        private double AirConditionerModifier { get; set; }
         public double FuelQuantity
         {
-            get
-            {
-                return this.fuelQuantity;
-            }
-
+            get => this.fuelQuantity;
             protected set
             {
-                if (this.tankCapacit >= value)
-                {
-                    this.fuelQuantity = value;
-                }
-                else
+                if (value > this.TankCapacity)
                 {
                     this.fuelQuantity = 0;
                 }
+                else
+                {
+                    this.fuelQuantity = value;
+                }
             }
         }
-        public double FuelConsumptionInLitersPerKm 
-        { 
-            get { return this.fuelConsumptionInLitersPerKm;}
-            protected set { this.fuelConsumptionInLitersPerKm = value; } 
-        }
-        public virtual string Driving(double distance)
+        public double FuelConsumption { get; private set; }
+
+        public double TankCapacity { get; private set; }
+        public string Driving(double distance)
         {
-            if (CanDrive(distance))
+            double requiredFuel = (this.FuelConsumption + this.AirConditionerModifier) * distance;
+
+            if (requiredFuel > this.FuelQuantity)
             {
-                this.FuelQuantity -= distance * this.FuelConsumptionInLitersPerKm;
-                return $"{this.GetType().Name} travelled {distance} km";
+                throw new InvalidOperationException($"{this.GetType().Name} needs refueling");
             }
 
-            return $"{this.GetType().Name} needs refueling";
+            this.FuelQuantity -= requiredFuel;
+            return $"{this.GetType().Name} travelled {distance} km";
         }
 
         public virtual void Refueling(double fuelQuantity)
         {
-            IsEnoughFuel(fuelQuantity);
+            if (fuelQuantity <= 0)
+            {
+                throw new ArgumentException($"Fuel must be a positive number");
+            }
+
+            if (this.fuelQuantity + fuelQuantity > this.TankCapacity)
+            {
+                throw new InvalidOperationException($"Cannot fit {fuelQuantity} fuel in the tank");
+            }
 
             this.FuelQuantity += fuelQuantity;
         }
 
-        protected void IsEnoughFuel(double fuelQuantity)
-        {
-            if (fuelQuantity + this.FuelQuantity > this.TankCapacit)
-            {
-                throw new InvalidOperationException($"Cannot fit {fuelQuantity} fuel in the tank");
-            }
-        }
         public override string ToString()
         {
             return $"{this.GetType().Name}: {this.FuelQuantity:f2}";
         }
 
-        private bool CanDrive(double distance)
-        {
-            if ((this.FuelConsumptionInLitersPerKm * distance) <= this.FuelQuantity)
-            {
-                return true;
-            }
+        //protected Vehicle(double fuelQuantity, double fuelConsumptionInLitersPerKm, double tankCapacity)
+        //{
+        //    this.TankCapacit = tankCapacity;
+        //    this.FuelConsumptionInLitersPerKm = fuelConsumptionInLitersPerKm;
+        //    this.FuelQuantity = fuelQuantity;
+        //    //this.
+        //}
 
-            return false;
-        }
+        //public double TankCapacit
+        //{
+        //    get { return this.tankCapacit; }
+        //    protected set { this.tankCapacit = value; }
+        //}
+
     }
 }

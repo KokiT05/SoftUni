@@ -10,9 +10,8 @@ namespace _01.Vehicles
     {
         private const double SummerFuelConsumptionPerKm = 0.9;
         public Car(double fuelQuantity, double fuelConsumptionInLitersPerKm) 
-            : base(fuelQuantity, fuelConsumptionInLitersPerKm)
+            : base(fuelQuantity, fuelConsumptionInLitersPerKm, SummerFuelConsumptionPerKm)
         {
-            base.FuelConsumptionInLitersPerKm += SummerFuelConsumptionPerKm;
         }
     }
 }

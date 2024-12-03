@@ -4,17 +4,10 @@
     {
         static void Main(string[] args)
         {
+            Vehicle car = CreateVehicle();
+            Vehicle truck = CreateVehicle();
+
             Vehicle vehicle = null;
-
-            string[] carInformation = Console.ReadLine().Split();
-            double carFuelQuantity = double.Parse(carInformation[1]);
-            double carLitersPerKm = double.Parse(carInformation[2]);
-            Vehicle car = new Car(carFuelQuantity, carLitersPerKm);
-
-            string[] truckInformation = Console.ReadLine().Split();
-            double truckFuelQuantity = double.Parse(truckInformation[1]);
-            double truckLitersPerKm = double.Parse(truckInformation[2]);
-            Vehicle truck = new Truck(truckFuelQuantity, truckLitersPerKm);
 
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
@@ -22,6 +15,7 @@
                 string[] inputCommand = Console.ReadLine().Split();
                 string command = inputCommand[0];
                 string vehicleType = inputCommand[1];
+                double parameter = double.Parse(inputCommand[2]);
 
                 if (vehicleType == nameof(Car))
                 {
@@ -32,21 +26,48 @@
                     vehicle = truck;
 
                 }
-
+                    
                 if (command == "Drive")
                 {
-                    double distance = double.Parse(inputCommand[2]);
-                    Console.WriteLine(vehicle.Driving(distance));
+                    try
+                    {
+                        Console.WriteLine(vehicle.Driving(parameter));
+                    }
+                    catch (InvalidOperationException message)
+                    {
+                        Console.WriteLine(message.Message);
+                    }
                 }
                 else if (command == "Refuel")
                 {
-                    double liters = double.Parse(inputCommand[2]);
-                    vehicle.Refueling(liters);
+                    vehicle.Refueling(parameter);
                 }
             }
 
             Console.WriteLine(car);
             Console.WriteLine(truck);
+        }
+
+        public static Vehicle CreateVehicle()
+        {
+            string[] parts = Console.ReadLine().Split();
+
+            string type = parts[0];
+            double fuelQuantity = double.Parse(parts[1]);
+            double fuelConsumption = double.Parse(parts[2]);
+
+            Vehicle vehicle = null;
+
+            if (type == nameof(Car))
+            {
+                vehicle = new Car(fuelQuantity, fuelConsumption);
+            }
+            else if (type == nameof(Truck))
+            {
+                vehicle = new Truck(fuelQuantity, fuelConsumption);
+            }
+
+            return vehicle;
         }
     }
 }

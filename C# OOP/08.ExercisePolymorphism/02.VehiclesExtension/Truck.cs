@@ -10,17 +10,24 @@ namespace _02.VehiclesExtension
     {
         private const double SummerFuelConsumptionPerKm = 1.6;
         private const double TankCapacityHole = 0.95;
-        public Truck(double fuelQuantity, double fuelConsumptionInLitersPerKm, double tankCapacity) 
-            : base(fuelQuantity, fuelConsumptionInLitersPerKm, tankCapacity)
+        public Truck(double fuelQuantity, double fuelConsumption, double tankCapacity) 
+            : base(fuelQuantity, fuelConsumption, tankCapacity, SummerFuelConsumptionPerKm)
         {
-            base.FuelConsumptionInLitersPerKm += SummerFuelConsumptionPerKm;
         }
 
-        public override void Refueling(double fuelQuantity)
+        public virtual void Refueling(double fuelQuantity)
         {
-            IsEnoughFuel(fuelQuantity);
-            base.FuelQuantity += fuelQuantity * TankCapacityHole;
+            if (fuelQuantity <= 0)
+            {
+                throw new ArgumentException($"Fuel must be a positive number");
+            }
 
+            if (this.FuelQuantity + fuelQuantity > this.TankCapacity)
+            {
+                throw new InvalidOperationException($"Cannot fit {fuelQuantity} fuel in the tank");
+            }
+
+            this.FuelQuantity += (fuelQuantity * 0.95);
         }
     }
 }

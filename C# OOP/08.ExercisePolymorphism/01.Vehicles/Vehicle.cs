@@ -9,23 +9,27 @@ namespace _01.Vehicles
 {
     public abstract class Vehicle
     {
-        protected Vehicle(double fuelQuantity, double fuelConsumptionInLitersPerKm)
+        protected Vehicle(double fuelQuantity, double fuelConsumption, double airConditionerModifier)
         {
             this.FuelQuantity = fuelQuantity;
-            this.FuelConsumptionInLitersPerKm = fuelConsumptionInLitersPerKm;
+            this.FuelConsumption = fuelConsumption;
+            this.AirConditionerModifier = airConditionerModifier;
         }
 
-        public double FuelQuantity { get; protected set; }
-        public double FuelConsumptionInLitersPerKm { get; protected set; }
+        private double AirConditionerModifier { get; set; }
+        public double FuelQuantity { get; private set; }
+        public double FuelConsumption { get; private set; }
         public string Driving(double distance)
         {
-            if (CanDrive(distance))
+            double requiredFuel = (this.FuelConsumption + this.AirConditionerModifier) * distance;
+
+            if (requiredFuel > this.FuelQuantity)
             {
-                this.FuelQuantity -= distance * this.FuelConsumptionInLitersPerKm;
-                return $"{this.GetType().Name} travelled {distance} km";
+                throw new InvalidOperationException($"{this.GetType().Name} needs refueling");
             }
 
-            return $"{this.GetType().Name} needs refueling";
+            this.FuelQuantity -= requiredFuel;
+            return $"{this.GetType().Name} travelled {distance} km";
         }
 
         public virtual void Refueling(double fuelQuantity)
@@ -40,7 +44,7 @@ namespace _01.Vehicles
 
         private bool CanDrive(double distance)
         {
-            if ((this.FuelConsumptionInLitersPerKm * distance) <= this.FuelQuantity)
+            if ((this.FuelConsumption * distance) <= this.FuelQuantity)
             {
                 return true;
             }

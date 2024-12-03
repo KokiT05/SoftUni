@@ -9,10 +9,9 @@ namespace _02.VehiclesExtension
     internal class Car : Vehicle
     {
         private const double SummerFuelConsumptionPerKm = 0.9;
-        public Car(double fuelQuantity, double fuelConsumptionInLitersPerKm, double tankCapacity) 
-            : base(fuelQuantity, fuelConsumptionInLitersPerKm, tankCapacity)
+        public Car(double fuelQuantity, double fuelConsumption, double tankCapacity) 
+            : base(fuelQuantity, fuelConsumption, tankCapacity, SummerFuelConsumptionPerKm)
         {
-            base.FuelConsumptionInLitersPerKm += SummerFuelConsumptionPerKm;
         }
     }
 }
