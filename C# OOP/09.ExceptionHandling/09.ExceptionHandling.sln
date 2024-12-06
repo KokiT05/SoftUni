@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.FixingVol2", "04.FixingV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.Convert.ToDouble", "05.Convert.ToDouble\05.Convert.ToDouble.csproj", "{44FA71DC-85E8-4380-A5E8-7F8DC0363815}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ValidPerson", "06.ValidPerson\06.ValidPerson.csproj", "{992C2357-56AA-4F3E-A18C-145DD258C608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.CustomException", "07.CustomException\07.CustomException.csproj", "{90665720-23AD-4FED-BD32-5C0AB428D339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{44FA71DC-85E8-4380-A5E8-7F8DC0363815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44FA71DC-85E8-4380-A5E8-7F8DC0363815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44FA71DC-85E8-4380-A5E8-7F8DC0363815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992C2357-56AA-4F3E-A18C-145DD258C608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992C2357-56AA-4F3E-A18C-145DD258C608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992C2357-56AA-4F3E-A18C-145DD258C608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992C2357-56AA-4F3E-A18C-145DD258C608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90665720-23AD-4FED-BD32-5C0AB428D339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90665720-23AD-4FED-BD32-5C0AB428D339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90665720-23AD-4FED-BD32-5C0AB428D339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90665720-23AD-4FED-BD32-5C0AB428D339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
