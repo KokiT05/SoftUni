@@ -7,7 +7,7 @@
             try
             {
                 Student student = new Student("Ivan", "ivancho04@abv.bg");
-                Student studentTwo = new Student("Ivanch@", "ivancho04@abv.bg");
+                //Student studentTwo = new Student("Ivanch@", "ivancho04@abv.bg");
             }
             catch (InvalidPersonNameException personNameException)
             {
