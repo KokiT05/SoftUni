@@ -6,10 +6,10 @@ namespace P01.Stream_Progress
 {
     public class StreamProgressInfo
     {
-        private File file;
+        private IProgress file;
 
         // If we want to stream a music file, we can't
-        public StreamProgressInfo(File file)
+        public StreamProgressInfo(IProgress file)
         {
             this.file = file;
         }

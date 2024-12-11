@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace P02.Graphic_Editor
 {
-    public class Rectangle : IShape
+    public class Triangle : IShape
     {
         public string Draw()
         {
-            return "I'm Recangle";
+            return "I'm Triangle";
         }
     }
 }

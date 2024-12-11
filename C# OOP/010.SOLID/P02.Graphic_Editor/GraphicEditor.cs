@@ -6,20 +6,18 @@ namespace P02.Graphic_Editor
 {
     public class GraphicEditor
     {
-        public void DrawShape(IShape shape)
+        private IDraw draw;
+        private IShape shape;
+
+        public GraphicEditor(IShape shape, IDraw draw)
         {
-            if (shape is Circle)
-            {
-                Console.WriteLine("I'm Circle");
-            }
-            else if (shape is Rectangle)
-            {
-                Console.WriteLine("I'm Recangle");
-            }
-            else if (shape is Square)
-            {
-                Console.WriteLine("I'm Square");
-            }
+            this.shape = shape;
+            this.draw = draw;
+        }
+
+        public void Draw()
+        {
+            draw.DrawShape(shape);
         }
     }
 }
