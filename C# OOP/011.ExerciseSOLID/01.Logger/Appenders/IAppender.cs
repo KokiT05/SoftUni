@@ -10,6 +10,7 @@ namespace _01.LoggerExercise.Appenders
 {
     public interface IAppender
     {
+        ReportLevel ReportLevel { get; set; }
         public void Append(string date, ReportLevel reportLevel, string message);
     }
 }

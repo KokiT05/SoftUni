@@ -1,5 +1,6 @@
 ﻿using _01.LoggerExercise.Enums;
 using _01.LoggerExercise.Layouts;
+using _01.LoggerExercise.Loggers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace _01.LoggerExercise.Appenders
 {
-    public class ConsoleAppender : Appender
+    public class FileAppender : Appender
     {
-        public ConsoleAppender(ILayout layout) : base (layout)
+        private readonly ILogFile logFile;
+        public FileAppender(ILayout layout, ILogFile logFile) : base(layout)
         {
-            
+            this.logFile = logFile;
         }
         public override void Append(string date, ReportLevel reportLevel, string message)
         {
@@ -21,8 +23,10 @@ namespace _01.LoggerExercise.Appenders
                 return;
             }
 
-            string content = string.Format(this.layout.Template, date, reportLevel, message);
-            Console.WriteLine(content);
+            string content =
+                string.Format(this.layout.Template, date, reportLevel, message) + Environment.NewLine;
+
+            this.logFile.Write(content);
         }
     }
 }
