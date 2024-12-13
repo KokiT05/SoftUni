@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Logger", "01.Logger\01.Logger.csproj", "{3C2D933E-1625-4E7E-8CBC-BBEBE6473B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.LoggerExercise", "01.Logger\01.LoggerExercise.csproj", "{3C2D933E-1625-4E7E-8CBC-BBEBE6473B09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
