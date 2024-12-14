@@ -52,7 +52,7 @@ namespace _01.LoggerExercise.Loggers
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-
+            stringBuilder.AppendLine("Logger info");
             foreach (Appender appender in this.appenders)
             {
                 stringBuilder.AppendLine(appender.ToString());
