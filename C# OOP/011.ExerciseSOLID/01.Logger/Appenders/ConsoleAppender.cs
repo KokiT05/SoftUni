@@ -21,6 +21,8 @@ namespace _01.LoggerExercise.Appenders
                 return;
             }
 
+            this.MessagesCount += 1;
+
             string content = string.Format(this.layout.Template, date, reportLevel, message);
             Console.WriteLine(content);
         }

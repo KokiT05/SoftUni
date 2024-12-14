@@ -19,7 +19,15 @@ namespace _01.LoggerExercise.Appenders
 
         public ReportLevel ReportLevel { get; set; }
 
+        protected int MessagesCount { get; set; }
+
         public abstract void Append(string date, ReportLevel reportLevel, string message);
+
+        public override string ToString()
+        {
+            return $"Appender type: {this.GetType().Name}, Layout type: {this.layout.GetType().Name}," +
+                $"Report level: {this.ReportLevel}, Messages appended: {this.MessagesCount}";
+        }
 
         protected bool CanAppend(ReportLevel reportLevel)
         {

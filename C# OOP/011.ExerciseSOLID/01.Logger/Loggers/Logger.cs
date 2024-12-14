@@ -48,5 +48,17 @@ namespace _01.LoggerExercise.Loggers
                 appender.Append(date, reportLevel, message);
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (Appender appender in this.appenders)
+            {
+                stringBuilder.AppendLine(appender.ToString());
+            }
+
+            return stringBuilder.ToString().TrimEnd();
+        }
     }
 }
