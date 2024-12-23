@@ -1,13 +1,13 @@
-﻿namespace _01.Stealer // Stealer
+﻿namespace _02.HighQualityMistakes // Stealer
 {
     public class Program // StartUp
     {
         static void Main(string[] args)
         {
             Spy spy = new Spy();
-
-            string result = spy.StealFieldInfo("_01.Stealer.Hacker", "username", "password");
+            string result = spy.AnalyzeAccessModifiers("_02.HighQualityMistakes.Hacker");
             Console.WriteLine(result);
+
         }
     }
 }
