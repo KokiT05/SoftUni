@@ -25,7 +25,7 @@ namespace _06.CodeTracker
                     //    .Where(a => a.GetType().Name.StartsWith("Author")))
                     //{
                     //    Console.WriteLine($"{method.Name} is written by {attribute.Name}");
-                    //} // For Main method (main method need to be public)
+                    //} //
 
                     foreach (AuthorAttribute attribute in attributeCollection)
                     {
