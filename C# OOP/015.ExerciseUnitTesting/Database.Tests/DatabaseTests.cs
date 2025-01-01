@@ -1,7 +1,9 @@
 using NUnit.Framework;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Tests
 {
@@ -69,8 +71,14 @@ namespace Tests
         {
             Type type = this.database.GetType();
 
-            ConstructorInfo constructorInfo = type.GetConstructor(BindingFlags.Public, new Type[] { typeof(int[])});
-            ParameterInfo[] parameterInfo = constructorInfo.GetParameters();
+            ConstructorInfo constructorInfo = type
+                .GetConstructor
+                (BindingFlags.Public | BindingFlags.Instance, new Type[] { typeof(int[])});
+            ParameterInfo[] parametersInfo = constructorInfo.GetParameters();
+            ParameterInfo parameter = parametersInfo[0];
+
+            Assert.That(parameter.ParameterType.Name, Is.EqualTo(typeof(int[]).Name));
+            //Assert.That(typeof(int[]), Is.EqualTo(parameter.GetType()));
         }
 
         [Test]
