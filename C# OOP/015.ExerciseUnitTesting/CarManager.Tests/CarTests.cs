@@ -25,6 +25,21 @@ namespace Tests
         }
 
         [Test]
+        public void ConstructorsSetsPropertyValuesCorrectly()
+        {
+            string expectedMake = this.car.Make;
+            string expectedModel = this.car.Model;
+            double expectedConsumption = this.car.FuelConsumption;
+            double expectedCapacity = this.car.FuelCapacity;
+
+            Assert.True(expectedMake == this.car.Make);
+            Assert.True(expectedModel == this.car.Model);
+            Assert.True(expectedConsumption == this.car.FuelConsumption);
+            Assert.True(expectedCapacity == this.car.FuelCapacity);
+            Assert.True(this.fuelAmount == this.car.FuelAmount);
+        }
+
+        [Test]
         public void MakePropertyCannotBeNullOrEmpty()
         {
             Assert.Throws<ArgumentException>(
@@ -119,6 +134,63 @@ namespace Tests
 
             Assert.True(fuelCapacityPropertyValue == this.fuelCapacity,
             "Property fuelCapacity does not return correct data");
+        }
+
+        [Test]
+        public void RefuelMethodRefuelCar()
+        {
+            double fuel = 21;
+            this.car.Refuel(fuel);
+            Assert.True(this.car.FuelAmount == fuel, "The Refuel method not working properly");
+
+            this.car.Refuel(fuel);
+            Assert.True(this.car.FuelAmount == fuel + fuel, "The Refuel method not working properly");
+
+            this.car.Refuel(fuel);
+            Assert.True(this.car.FuelAmount == this.car.FuelCapacity, 
+            "The amount of fuel is more than the fuel capacity");
+        }
+
+        [Test]
+        public void RefuelMethodCannotAcceptZeroOrNegativeFuel()
+        {
+            double zeroFuel = 0;
+            double negativeFuel = -4;
+
+            Assert.Throws<ArgumentException>(
+            () => this.car.Refuel(zeroFuel),
+            "Refuel method accept zero fuel");
+
+            Assert.Throws<ArgumentException>(
+            () => this.car.Refuel(negativeFuel),
+            "Refuel method accept negative fuel");
+        }
+
+        [Test]
+        public void DriveMethodShouldReduceFuel()
+        {
+            double fuel = 100;
+            this.car.Refuel(fuel);
+
+            double distance = 75;
+
+            double expectedFuelAmount = this.car.FuelAmount - 4.125;
+
+            this.car.Drive(distance);
+
+            Assert.True(this.car.FuelAmount == expectedFuelAmount, "Drive method does not reduce fuel properly");
+        }
+
+        [Test]
+        public void DriveMethodThrowsAnErrorWhenIsNotEnoughFuel()
+        {
+            double fuel = 100;
+            this.car.Refuel(fuel);
+
+            double distance = 10000;
+            Assert.Throws<InvalidOperationException>(
+            () => this.car.Drive(distance), 
+            "Drive method does not throws an error when there is not enough fuel");
         }
     }
 }
