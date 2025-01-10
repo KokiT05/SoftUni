@@ -20,7 +20,7 @@ public class DummyTests
     {
         this.dummy = new Dummy(dummyHealth, dummyExperience);
         this.axe = new Axe(axeAttack, axeDurability);
-        this.hero = new Hero(heroName);
+        this.hero = new Hero(heroName, this.axe);
     }
 
     [Test]
