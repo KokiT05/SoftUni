@@ -30,5 +30,6 @@ public class HeroTests
         hero.Attack(target.Object);
 
         Assert.That(hero.Experience, Is.EqualTo(target.Object.GiveExperience()));
+        //Assert.That(hero.Experience, Is.EqualTo(20));
     }
 }
