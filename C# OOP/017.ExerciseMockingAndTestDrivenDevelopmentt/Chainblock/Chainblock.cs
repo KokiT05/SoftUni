@@ -71,12 +71,29 @@ namespace Chainblock
 
         public IEnumerable<string> GetAllReceiversWithTransactionStatus(TransactionStatus status)
         {
-            throw new NotImplementedException();
+            IEnumerable<ITransaction> currentTransactions =
+                this.transactions.Values.Select(t => t).Where(t => t.Status == status).OrderBy(t => t.Amount);
+
+            if (!currentTransactions.Any())
+            {
+                throw new InvalidOperationException();
+            }
+
+            return currentTransactions.Select(t => t.To);
         }
 
         public IEnumerable<string> GetAllSendersWithTransactionStatus(TransactionStatus status)
         {
-            throw new NotImplementedException();
+            IEnumerable<ITransaction> currentTransactions = 
+                this.transactions.Values.Select(t => t).Where(t => t.Status == status).OrderBy(t => t.Amount);
+
+            if (!currentTransactions.Any())
+            {
+                throw new InvalidOperationException();
+            }
+
+            return currentTransactions.Select(t => t.From);
+
         }
 
         public ITransaction GetById(int id)
@@ -111,7 +128,17 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByTransactionStatus(TransactionStatus status)
         {
-            throw new NotImplementedException();
+            IEnumerable<ITransaction> currentTransactions =
+            this.transactions.Values.Select(t => t)
+                                    .Where(t => t.Status == status)
+                                    .OrderByDescending(t => t.Amount);
+
+            if (!currentTransactions.Any())
+            {
+                throw new InvalidOperationException();
+            }
+
+            return currentTransactions;
         }
 
         public IEnumerable<ITransaction> GetByTransactionStatusAndMaximumAmount(TransactionStatus status, double amount)
