@@ -288,8 +288,10 @@ namespace Chainblock.Tests
             };
 
             IEnumerable<ITransaction> actualResult = this.chainblock.GetAllOrderedByAmountDescendingThenById();
+
             int currentId = actualResult.FirstOrDefault().Id;
             double currentAmount = double.PositiveInfinity;
+            
             foreach (ITransaction transaction in actualResult)
             {
 
@@ -370,7 +372,7 @@ namespace Chainblock.Tests
         [Test]
         public void GetByReceiverOrderedByAmountThenByIdShouldReturnAllTransactionByReceiver()
         {
-                        ITransaction firstTestTransaction = new Transaction()
+            ITransaction firstTestTransaction = new Transaction()
             {
                 Id = 1234567,
                 From = "TestTransaction",
@@ -392,7 +394,7 @@ namespace Chainblock.Tests
             this.chainblock.Add(secondTestTransaction);
 
             IEnumerable<ITransaction> actualResult =
-                this.chainblock.GetBySenderOrderedByAmountDescending(this.transaction.To);
+                this.chainblock.GetByReceiverOrderedByAmountThenById(this.transaction.To);
 
             int currentId = actualResult.First().Id;
             double amount = double.PositiveInfinity;
@@ -400,12 +402,270 @@ namespace Chainblock.Tests
             {
                 Assert.That(currentTransaction.To, Is.EqualTo(this.transaction.To));
                 Assert.That(currentTransaction.Amount, Is.LessThanOrEqualTo(amount));
-                Assert.That(currentTransaction.Id, Is.GreaterThanOrEqualTo(currentId));
+
+                if (currentTransaction.Amount == amount)
+                {
+                    Assert.That(currentTransaction.Id, Is.GreaterThanOrEqualTo(currentId));
+                }
 
                 amount = currentTransaction.Amount;
             }
         }
 
+        public void GetByReceiverOrderedByAmountThenByIdShouldReturnExceptionWhenReceiverDoesNotExist()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Unauthorized,
+                Amount = 22.22
+            };
 
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Aborted,
+                Amount = 13.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                this.chainblock.GetBySenderOrderedByAmountDescending("NotExistReceiver");
+            });
+        }
+
+        [Test]
+        public void GetByTransactionStatusAndMaximumAmountShouldReturnTransactions()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Unauthorized,
+                Amount = 22.22
+            };
+
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Aborted,
+                Amount = 13.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            double maxAmount = 214;
+
+            IEnumerable<ITransaction> actualResult =
+                this.chainblock.GetByTransactionStatusAndMaximumAmount(this.transaction.Status, maxAmount);
+
+            double currentAmount = double.PositiveInfinity;
+            foreach (ITransaction currentTransaction in actualResult)
+            {
+                Assert.That(currentTransaction.Status, Is.EqualTo(this.transaction.Status));
+                Assert.That(currentTransaction.Amount, Is.LessThanOrEqualTo(maxAmount));
+                Assert.That(currentTransaction.Amount, Is.LessThanOrEqualTo(currentAmount));
+            }
+        }
+
+        public void GetBySenderAndMinimumAmountDescendingShouldReturnExceptionWhenNoTransactionsFound()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = "firstTestTransaction",
+                To = "firstTestTransaction",
+                Status = TransactionStatus.Unauthorized,
+                Amount = 2241.22
+            };
+
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = "secondTestTransaction",
+                To = "secondTestTransaction",
+                Status = TransactionStatus.Aborted,
+                Amount = 132.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            double minAmount = 100;
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                this.chainblock.GetBySenderAndMinimumAmountDescending("FakeSender", minAmount);
+            });
+
+        }
+
+        [Test]
+        public void GetBySenderAndMinimumAmountDescendingShouldReturnAllTransactionWithSenderAndMinimumAmount()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = this.transaction.From,
+                To = "firstTestTransaction",
+                Status = TransactionStatus.Unauthorized,
+                Amount = 2241.22
+            };
+
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = this.transaction.From,
+                To = "secondTestTransaction",
+                Status = TransactionStatus.Aborted,
+                Amount = 132.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            double minAmount = 100;
+
+            IEnumerable<ITransaction> actualResult =
+                this.chainblock.GetBySenderAndMinimumAmountDescending(this.transaction.From, minAmount);
+
+            double currentAmount = double.PositiveInfinity;
+            foreach (ITransaction currentTransaction in actualResult)
+            {
+                Assert.That(currentTransaction.From, Is.EqualTo(this.transaction.From));
+                Assert.That(currentTransaction.Amount, Is.GreaterThan(minAmount));
+                Assert.That(currentTransaction.Amount, Is.LessThanOrEqualTo(currentAmount));
+            }
+        }
+
+        [Test]
+        public void GetByReceiverAndAmountRangeShouldReturnExceptionWhenThereAreNoTransactions()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Unauthorized,
+                Amount = 22.22
+            };
+
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Aborted,
+                Amount = 13.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            double amountMin = 100;
+            double amountMax = 250;
+
+            Assert.Throws<InvalidOperationException>(() => 
+            this.chainblock.GetByReceiverAndAmountRange(this.transaction.To, amountMin, amountMax));
+
+        }
+
+        [Test]
+        public void GetByReceiverAndAmountRangeShouldReturnAllTransactionByReceiverAndAmounRange()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Unauthorized,
+                Amount = 22.22
+            };
+
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Aborted,
+                Amount = 13.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            double amountMin = 10;
+            double amountMax = 25;
+
+            IEnumerable<ITransaction> actualTransactions =
+                this.chainblock.GetByReceiverAndAmountRange(this.transaction.To, amountMin, amountMax);
+
+            int currentId = actualTransactions.FirstOrDefault().Id;
+            double currentAmount = double.PositiveInfinity;
+            foreach (ITransaction currentTransaction in actualTransactions)
+            {
+                Assert.That(currentTransaction.To, Is.EqualTo(this.transaction.To));
+                Assert.That(currentTransaction.Amount, Is.LessThanOrEqualTo(amountMax));
+                Assert.That(currentTransaction.Amount, Is.GreaterThanOrEqualTo(amountMin));
+                Assert.That(currentTransaction.Amount, Is.LessThanOrEqualTo(currentAmount));
+
+                if (currentAmount == currentTransaction.Amount)
+                {
+                    Assert.That(currentTransaction.Id, Is.GreaterThanOrEqualTo(currentId));
+                }
+
+                currentAmount = currentTransaction.Amount;
+                currentId = currentTransaction.Id;
+            }
+        }
+
+        [Test]
+        public void GetAllInAmountRange()
+        {
+            ITransaction firstTestTransaction = new Transaction()
+            {
+                Id = 1234567,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Unauthorized,
+                Amount = 22.22
+            };
+
+            ITransaction secondTestTransaction = new Transaction()
+            {
+                Id = 98765,
+                From = "TestTransaction",
+                To = this.transaction.To,
+                Status = TransactionStatus.Aborted,
+                Amount = 13.31
+            };
+
+            this.chainblock.Add(firstTestTransaction);
+            this.chainblock.Add(secondTestTransaction);
+
+            double amountMin = 10;
+            double amountMax = 30;
+
+            IEnumerable<ITransaction> actualResult = this.chainblock.GetAllInAmountRange(amountMin, amountMax);
+            IEnumerable<ITransaction> expectedResult = 
+            new List<ITransaction>() { firstTestTransaction, secondTestTransaction};
+
+            Assert.That(actualResult, Is.EquivalentTo(expectedResult));
+
+            actualResult = this.chainblock.GetAllInAmountRange(50, 100);
+
+            Assert.That(actualResult.Count(), Is.EqualTo(0));
+        }
     }
 }
