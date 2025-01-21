@@ -40,6 +40,114 @@ namespace Chainblock.Tests
             this.chainblock.Add(this.transaction);
         }
 
+        // Code from the lecture
+        [Test]
+        public void Add_ThrowsException_WhenTransactionWithIdAlreadyExists()
+        {
+            int id = 1;
+
+            this.chainblock.Add(new Transaction
+            {
+                Id = id,
+                Status = TransactionStatus.Successfull,
+                Amount = 100,
+                From = "firstPerson",
+                To = "secondPerson"
+            });
+
+            Assert.Throws<InvalidOperationException>(() => this.chainblock.Add(new Transaction
+            {
+                Id = id,
+                From = "firstPerson",
+                To = "ThirdPerson",
+                Amount = 150,
+            })) ;
+        }
+
+        [Test]
+        public void Add_ShouldAddsTransactionToChainblock_WhenTransactionIdIsValid()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            Assert.That(this.chainblock.Count, Is.EqualTo(1));
+            Assert.That(this.chainblock.Contains(transaction.Id), Is.True);
+        }
+
+        [Test]
+        public void ContainsId_ReturnsTrue_WhenTransactionWithIdExists()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            Assert.That(this.chainblock.Contains(transaction.Id), Is.True);
+        }
+
+        [Test]
+        public void ContainsId_ReturnsFalse_WhenTransactionWithIdDoesNotExists()
+        {
+            Assert.That(this.chainblock.Contains(1), Is.False);
+        }
+
+        [Test]
+        public void ContainsTransaction_ReturnsFalse_WhenTransactionWithIdDoesNotExist()
+        {
+            Assert.That(this.chainblock.Contains(this.CreateSimpleTransaction()), Is.False);
+        }
+
+        [Test]
+        public void ContainsTransaction_ReturnsFalse_WhenTransactionWithIdExistButOtherPropertiesDoNotMatch()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            ITransaction searchingTransaction = new Transaction()
+            {
+                Id = transaction.Id,
+                Amount = transaction.Amount + 50,
+                From = transaction.From + "Fake",
+                To = transaction.To + "Fake",
+                Status = TransactionStatus.Aborted
+            };
+
+            Assert.That(this.chainblock.Contains(searchingTransaction), Is.False);
+        }
+
+        [Test]
+        public void Contains_ReturnsTrue_WhenTransactionMatchesChainblockTransaction()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            ITransaction searchingTransaction = new Transaction()
+            {
+                Id = transaction.Id,
+                Amount = transaction.Amount,
+                From = transaction.From,
+                To = transaction.To,
+                Status = transaction.Status
+            };
+
+            Assert.That(this.chainblock.Contains(searchingTransaction), Is.True);
+        }
+
+        private ITransaction CreateSimpleTransaction()
+        {
+            return new Transaction()
+            {
+                Id = 1,
+                Status = TransactionStatus.Successfull,
+                From = "firstPerson",
+                To = "secondPerson",
+                Amount = 100
+            };
+        }
+        //-------------------------------------------------------------------
+        // My code
         [Test]
         public void AddMethodShouldAddTransaction()
         {
