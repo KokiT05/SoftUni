@@ -13,6 +13,7 @@ namespace Chainblock.Tests
         ITransaction transaction;
         ITransaction secondTransaction;
 
+        IChainblock firstChainblock;
         IChainblock chainblock;
 
         [SetUp]
@@ -34,10 +35,11 @@ namespace Chainblock.Tests
                 Amount = 123.123
             };
 
-
             this.chainblock = new Chainblock();
 
-            this.chainblock.Add(this.transaction);
+            this.firstChainblock = new Chainblock();
+
+            this.firstChainblock.Add(this.transaction);
         }
 
         // Code from the lecture
@@ -110,7 +112,7 @@ namespace Chainblock.Tests
                 Amount = transaction.Amount + 50,
                 From = transaction.From + "Fake",
                 To = transaction.To + "Fake",
-                Status = TransactionStatus.Aborted
+                Status = TransactionStatus.Failed
             };
 
             Assert.That(this.chainblock.Contains(searchingTransaction), Is.False);
@@ -135,6 +137,157 @@ namespace Chainblock.Tests
             Assert.That(this.chainblock.Contains(searchingTransaction), Is.True);
         }
 
+        [Test]
+        public void Count_ReturnZero_WhenChainblockIsEmpty()
+        {
+            Assert.That(this.chainblock.Count, Is.Zero);
+        }
+
+        [Test]
+        public void ChangeTransactionStatus_ThrowsException_WhenIdDoesNotExist()
+        {
+            this.chainblock.Add(this.CreateSimpleTransaction());
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                this.chainblock.ChangeTransactionStatus(100, TransactionStatus.Failed);
+            });
+        }
+
+        [Test]
+        public void ChangeTransactionStatus_ChangesTransactionStatus_WhenIdExists()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            TransactionStatus transactionStatus = TransactionStatus.Unauthorized;
+
+            this.chainblock.ChangeTransactionStatus(transaction.Id, transactionStatus);
+
+            Assert.That(transaction.Status, Is.EqualTo(transactionStatus));
+        }
+
+        [Test]
+        public void RemoveTransactionById_ThrowsException_WhenIdDoesNotExist()
+        {
+            this.chainblock.Add(this.CreateSimpleTransaction());
+
+            Assert.Throws<InvalidOperationException>(() => this.chainblock.RemoveTransactionById(100));
+        }
+
+        [Test]
+        public void RemoveTransaction_RemoveChainblockTransaction_WhenIdExists()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+            this.chainblock.RemoveTransactionById(transaction.Id);
+
+            Assert.That(this.chainblock.Count, Is.Zero);
+            Assert.That(this.chainblock.Contains(transaction.Id), Is.False);
+        }
+        
+        [Test]
+        public void GetById_ThrowsException_WhenIdDoesNotExist()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            Assert.Throws<InvalidOperationException>(() => this.chainblock.GetById(transaction.Id + 1 ));
+        }
+
+        [Test]
+        public void GetById_ReturnsExpectedTransaction_WhenIdExists()
+        {
+            ITransaction transaction = this.CreateSimpleTransaction();
+
+            this.chainblock.Add(transaction);
+
+            ITransaction chainblockTransaction = this.chainblock.GetById(transaction.Id);
+
+            Assert.That(transaction, Is.EqualTo(transaction));
+        }
+
+        [Test]
+        public void GetByTransactionStatus_ThrowsException_WhenThereAreNoTransactionWithStatus()
+        {
+            this.chainblock.Add(new Transaction()
+            {
+                Id = 1,
+                From = "firstTransaction",
+                To = "firstTransaction",
+                Amount = 11.00,
+                Status = TransactionStatus.Successfull
+            });
+
+            this.chainblock.Add(new Transaction()
+            {
+                Id = 2,
+                From = "secondTransaction",
+                To = "secondTransaction",
+                Amount = 22.00,
+                Status = TransactionStatus.Failed
+            });
+
+            this.chainblock.Add(new Transaction()
+            {
+                Id = 3,
+                From = "secondTransaction",
+                To = "secondTransaction",
+                Amount = 33.00,
+                Status = TransactionStatus.Aborted
+            });
+
+            Assert.Throws<InvalidOperationException>(() => 
+            this.chainblock.GetByTransactionStatus(TransactionStatus.Unauthorized));
+        }
+
+        [Test]
+        public void GetByTransactionStatus_ReturnsFilteredAndSortedData_WhenChainblockContainsTransactionsWithStatus()
+        {
+            for (int i = 0; i <= 100; i++)
+            {
+                TransactionStatus transactionStatus = TransactionStatus.Successfull;
+
+                if (i % 2 == 0)
+                {
+                    transactionStatus = TransactionStatus.Unauthorized;
+                }
+                else if (i % 3 == 0)
+                {
+                    transactionStatus = TransactionStatus.Aborted;
+                }
+                else if (i % 5 == 0)
+                {
+                    transactionStatus = TransactionStatus.Failed;
+                }
+
+                ITransaction transaction = new Transaction()
+                {
+                    Id = i,
+                    Amount = 100,
+                    From = $"Person{i}",
+                    To = $"Receiver{i}",
+                    Status = transactionStatus
+                };
+
+                this.chainblock.Add(transaction);
+            }
+
+            TransactionStatus filterStatus = TransactionStatus.Successfull;
+
+            List<ITransaction> expectedTransactions = this.chainblock
+                                                    .Where(t => t.Status == filterStatus)
+                                                    .OrderByDescending(t => t.Amount)
+                                                    .ToList();
+
+            List<ITransaction> actualTransactions = this.chainblock.GetByTransactionStatus(filterStatus).ToList();
+
+            Assert.That(expectedTransactions, Is.EquivalentTo(actualTransactions));
+        }
+
         private ITransaction CreateSimpleTransaction()
         {
             return new Transaction()
@@ -152,16 +305,16 @@ namespace Chainblock.Tests
         public void AddMethodShouldAddTransaction()
         {
 
-            Assert.That(this.chainblock.Count, Is.EqualTo(1));
-            Assert.That(this.chainblock.Contains(this.transaction.Id));
+            Assert.That(this.firstChainblock.Count, Is.EqualTo(1));
+            Assert.That(this.firstChainblock.Contains(this.transaction.Id));
         }
 
         [Test]
         public void AddMethodCannotAddExistingTransaction()
         {
-            this.chainblock.Add(this.transaction);
+            this.firstChainblock.Add(this.transaction);
 
-            Assert.That(this.chainblock.Count, Is.EqualTo(1));
+            Assert.That(this.firstChainblock.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -176,42 +329,42 @@ namespace Chainblock.Tests
                 Amount = this.transaction.Amount,
             };
 
-            Assert.That(this.chainblock.Contains(this.transaction), Is.EqualTo(true));
+            Assert.That(this.firstChainblock.Contains(this.transaction), Is.EqualTo(true));
         }
 
         [Test]
         public void ContainsMethodShouldReturnFalseWhenItDoesNotFindTransaction()
         {
 
-            Assert.That(this.chainblock.Contains(this.secondTransaction), Is.EqualTo(false));
+            Assert.That(this.firstChainblock.Contains(this.secondTransaction), Is.EqualTo(false));
         }
 
         [Test]
         public void ContainsMethodShouldReturnTrueWhenFindTransactionId()
         {
-            Assert.That(this.chainblock.Contains(this.transaction.Id), Is.EqualTo(true));
+            Assert.That(this.firstChainblock.Contains(this.transaction.Id), Is.EqualTo(true));
         }
 
         [Test]
         public void ContainsMethodShouldReturnFalseWhenItDoesNotFindTransactionId()
         {
-            Assert.That(this.chainblock.Contains(this.secondTransaction), Is.EqualTo(false));
+            Assert.That(this.firstChainblock.Contains(this.secondTransaction), Is.EqualTo(false));
         }
 
         [Test]
         public void CountPropertyShouldReturnCorrecntNumberOfTransaction()
         {
-            Assert.That(this.chainblock.Count, Is.EqualTo(1));
+            Assert.That(this.firstChainblock.Count, Is.EqualTo(1));
 
-            this.chainblock.Add(this.secondTransaction);
+            this.firstChainblock.Add(this.secondTransaction);
 
-            Assert.That(this.chainblock.Count, Is.EqualTo(2));
+            Assert.That(this.firstChainblock.Count, Is.EqualTo(2));
         }
 
         [Test]
         public void ChangeTransactionStatusMethodShouldChangeTransactionStatus()
         {
-            this.chainblock.ChangeTransactionStatus(this.transaction.Id, TransactionStatus.Failed);
+            this.firstChainblock.ChangeTransactionStatus(this.transaction.Id, TransactionStatus.Failed);
 
             Assert.That(this.transaction.Status, Is.EqualTo(TransactionStatus.Failed));
         }
@@ -220,29 +373,29 @@ namespace Chainblock.Tests
         public void ChangeTransactionStatusMethodShouldReturnExceptionWhenTransactionDoesNotExist()
         {
             Assert.Throws<ArgumentException>(
-            () => this.chainblock.ChangeTransactionStatus(this.secondTransaction.Id, TransactionStatus.Aborted));
+            () => this.firstChainblock.ChangeTransactionStatus(this.secondTransaction.Id, TransactionStatus.Aborted));
         }
 
         [Test]
         public void RemoveTransactionByIdMethodShouldRemoveTranaction()
         {
-            this.chainblock.RemoveTransactionById(this.transaction.Id);
+            this.firstChainblock.RemoveTransactionById(this.transaction.Id);
 
-            Assert.That(this.chainblock.Contains(this.transaction.Id), Is.EqualTo(false));
-            Assert.That(this.chainblock.Count, Is.EqualTo(0));
+            Assert.That(this.firstChainblock.Contains(this.transaction.Id), Is.EqualTo(false));
+            Assert.That(this.firstChainblock.Count, Is.EqualTo(0));
         }
 
         [Test]
         public void RemoveTransactionByIdMethodShouldReturnExceptionWhenTransactionDoesNotExist()
         {
             Assert.Throws<InvalidOperationException>(
-            () => this.chainblock.RemoveTransactionById(this.secondTransaction.Id));
+            () => this.firstChainblock.RemoveTransactionById(this.secondTransaction.Id));
         }
 
         [Test]
         public void GetByIdMethodShouldReturnTransanction()
         {
-            ITransaction expectedTransaction = this.chainblock.GetById(this.transaction.Id);
+            ITransaction expectedTransaction = this.firstChainblock.GetById(this.transaction.Id);
 
             Assert.True(expectedTransaction.Equals(this.transaction));
         }
@@ -251,7 +404,7 @@ namespace Chainblock.Tests
         public void GetByIdMethodShouldReturnExceptionWhenTransactionDoesNotExist()
         {
             Assert.Throws<InvalidOperationException>(
-                () => this.chainblock.GetById(this.secondTransaction.Id));
+                () => this.firstChainblock.GetById(this.secondTransaction.Id));
         }
 
         [Test]
@@ -268,9 +421,9 @@ namespace Chainblock.Tests
                 Amount = 11.11
             };
 
-            this.chainblock.Add(testTransaction);
+            this.firstChainblock.Add(testTransaction);
 
-            IEnumerable<ITransaction> actualTransactions = this.chainblock.GetByTransactionStatus
+            IEnumerable<ITransaction> actualTransactions = this.firstChainblock.GetByTransactionStatus
                 (transactionStatusSuccessfull);
 
 
@@ -294,7 +447,7 @@ namespace Chainblock.Tests
         public void GetByTransactionStatusShouldThrowExceptionWhenStatusIsNotFound()
         {
             Assert.Throws<InvalidOperationException>(
-            () => this.chainblock.GetByTransactionStatus(TransactionStatus.Unauthorized));
+            () => this.firstChainblock.GetByTransactionStatus(TransactionStatus.Unauthorized));
         }
 
         [Test]
@@ -311,10 +464,10 @@ namespace Chainblock.Tests
                 Amount = 11.11
             };
 
-            this.chainblock.Add(testTransaction);
+            this.firstChainblock.Add(testTransaction);
 
             IEnumerable<string> actualResult =
-                this.chainblock.GetAllSendersWithTransactionStatus(transactionStatusSuccessfull);
+                this.firstChainblock.GetAllSendersWithTransactionStatus(transactionStatusSuccessfull);
 
             IEnumerable<string> expectedResult = new List<string>() { this.transaction.From, testTransaction.From };
 
@@ -326,7 +479,7 @@ namespace Chainblock.Tests
         {
             Assert.Throws<InvalidOperationException>(() =>
             {
-                this.chainblock.GetAllSendersWithTransactionStatus(TransactionStatus.Unauthorized);
+                this.firstChainblock.GetAllSendersWithTransactionStatus(TransactionStatus.Unauthorized);
             });
         }
 
@@ -353,11 +506,11 @@ namespace Chainblock.Tests
                 Amount = 22.22
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             IEnumerable<string> actualResult = 
-            this.chainblock.GetAllReceiversWithTransactionStatus(transactionStatusFailed);
+            this.firstChainblock.GetAllReceiversWithTransactionStatus(transactionStatusFailed);
 
             IEnumerable<string> expectedResult = new List<string>()
             { firstTestTransaction.To, secondTestTransaction.To};
@@ -370,7 +523,7 @@ namespace Chainblock.Tests
         {
             Assert.Throws<InvalidOperationException>(() =>
             {
-                this.chainblock.GetAllReceiversWithTransactionStatus(TransactionStatus.Aborted);
+                this.firstChainblock.GetAllReceiversWithTransactionStatus(TransactionStatus.Aborted);
             });
         }
 
@@ -395,7 +548,7 @@ namespace Chainblock.Tests
                 Amount = 22.22
             };
 
-            IEnumerable<ITransaction> actualResult = this.chainblock.GetAllOrderedByAmountDescendingThenById();
+            IEnumerable<ITransaction> actualResult = this.firstChainblock.GetAllOrderedByAmountDescendingThenById();
 
             int currentId = actualResult.FirstOrDefault().Id;
             double currentAmount = double.PositiveInfinity;
@@ -431,11 +584,11 @@ namespace Chainblock.Tests
                 Amount = 27.22
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             IEnumerable<ITransaction> actualResult =
-                this.chainblock.GetBySenderOrderedByAmountDescending(this.transaction.From);
+                this.firstChainblock.GetBySenderOrderedByAmountDescending(this.transaction.From);
 
             double amount = double.PositiveInfinity;
             foreach (ITransaction currentTransaction in actualResult)
@@ -468,12 +621,12 @@ namespace Chainblock.Tests
                 Amount = 25.22
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             Assert.Throws<InvalidOperationException>(() =>
             {
-                this.chainblock.GetBySenderOrderedByAmountDescending("DontExist");
+                this.firstChainblock.GetBySenderOrderedByAmountDescending("DontExist");
             });
         }
 
@@ -498,11 +651,11 @@ namespace Chainblock.Tests
                 Amount = 13.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             IEnumerable<ITransaction> actualResult =
-                this.chainblock.GetByReceiverOrderedByAmountThenById(this.transaction.To);
+                this.firstChainblock.GetByReceiverOrderedByAmountThenById(this.transaction.To);
 
             int currentId = actualResult.First().Id;
             double amount = double.PositiveInfinity;
@@ -540,12 +693,12 @@ namespace Chainblock.Tests
                 Amount = 13.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             Assert.Throws<InvalidOperationException>(() =>
             {
-                this.chainblock.GetBySenderOrderedByAmountDescending("NotExistReceiver");
+                this.firstChainblock.GetBySenderOrderedByAmountDescending("NotExistReceiver");
             });
         }
 
@@ -570,13 +723,13 @@ namespace Chainblock.Tests
                 Amount = 13.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             double maxAmount = 214;
 
             IEnumerable<ITransaction> actualResult =
-                this.chainblock.GetByTransactionStatusAndMaximumAmount(this.transaction.Status, maxAmount);
+                this.firstChainblock.GetByTransactionStatusAndMaximumAmount(this.transaction.Status, maxAmount);
 
             double currentAmount = double.PositiveInfinity;
             foreach (ITransaction currentTransaction in actualResult)
@@ -607,14 +760,14 @@ namespace Chainblock.Tests
                 Amount = 132.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             double minAmount = 100;
 
             Assert.Throws<InvalidOperationException>(() =>
             {
-                this.chainblock.GetBySenderAndMinimumAmountDescending("FakeSender", minAmount);
+                this.firstChainblock.GetBySenderAndMinimumAmountDescending("FakeSender", minAmount);
             });
 
         }
@@ -640,13 +793,13 @@ namespace Chainblock.Tests
                 Amount = 132.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             double minAmount = 100;
 
             IEnumerable<ITransaction> actualResult =
-                this.chainblock.GetBySenderAndMinimumAmountDescending(this.transaction.From, minAmount);
+                this.firstChainblock.GetBySenderAndMinimumAmountDescending(this.transaction.From, minAmount);
 
             double currentAmount = double.PositiveInfinity;
             foreach (ITransaction currentTransaction in actualResult)
@@ -678,14 +831,14 @@ namespace Chainblock.Tests
                 Amount = 13.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             double amountMin = 100;
             double amountMax = 250;
 
             Assert.Throws<InvalidOperationException>(() => 
-            this.chainblock.GetByReceiverAndAmountRange(this.transaction.To, amountMin, amountMax));
+            this.firstChainblock.GetByReceiverAndAmountRange(this.transaction.To, amountMin, amountMax));
 
         }
 
@@ -710,14 +863,14 @@ namespace Chainblock.Tests
                 Amount = 13.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             double amountMin = 10;
             double amountMax = 25;
 
             IEnumerable<ITransaction> actualTransactions =
-                this.chainblock.GetByReceiverAndAmountRange(this.transaction.To, amountMin, amountMax);
+                this.firstChainblock.GetByReceiverAndAmountRange(this.transaction.To, amountMin, amountMax);
 
             int currentId = actualTransactions.FirstOrDefault().Id;
             double currentAmount = double.PositiveInfinity;
@@ -759,19 +912,19 @@ namespace Chainblock.Tests
                 Amount = 13.31
             };
 
-            this.chainblock.Add(firstTestTransaction);
-            this.chainblock.Add(secondTestTransaction);
+            this.firstChainblock.Add(firstTestTransaction);
+            this.firstChainblock.Add(secondTestTransaction);
 
             double amountMin = 10;
             double amountMax = 30;
 
-            IEnumerable<ITransaction> actualResult = this.chainblock.GetAllInAmountRange(amountMin, amountMax);
+            IEnumerable<ITransaction> actualResult = this.firstChainblock.GetAllInAmountRange(amountMin, amountMax);
             IEnumerable<ITransaction> expectedResult = 
             new List<ITransaction>() { firstTestTransaction, secondTestTransaction};
 
             Assert.That(actualResult, Is.EquivalentTo(expectedResult));
 
-            actualResult = this.chainblock.GetAllInAmountRange(50, 100);
+            actualResult = this.firstChainblock.GetAllInAmountRange(50, 100);
 
             Assert.That(actualResult.Count(), Is.EqualTo(0));
         }

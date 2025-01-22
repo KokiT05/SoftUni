@@ -21,37 +21,72 @@ namespace Chainblock
 
         public void Add(ITransaction tx)
         {
-            if (!this.Contains(tx.Id))
+            // Code from the lecture
+            if (this.Contains(tx.Id))
             {
-                this.transactions.Add(tx.Id, tx);
+                throw new InvalidOperationException($"Transaction with id: {tx.Id} already exists.");
             }
+
+            this.transactions.Add(tx.Id, tx);
+
+            // My code
+            //if (!this.Contains(tx.Id))
+            //{
+            //    this.transactions.Add(tx.Id, tx);
+            //}
         }
 
         public void ChangeTransactionStatus(int id, TransactionStatus newStatus)
         {
-            if (!this.transactions.ContainsKey(id))
+            // Code from the lecture
+            if (!this.Contains(id))
             {
-                throw new ArgumentException();
+                throw new ArgumentException($"{id} id does not exist.");
             }
 
-            ITransaction currentTransaction = this.transactions[id];
-            currentTransaction.Status = newStatus;
+            ITransaction transaction = this.transactions[id];
+            transaction.Status = newStatus;
+
+            // My code
+            //if (!this.transactions.ContainsKey(id))
+            //{
+            //    throw new ArgumentException();
+            //}
+
+            //ITransaction currentTransaction = this.transactions[id];
+            //currentTransaction.Status = newStatus;
         }
 
         public bool Contains(ITransaction tx)
         {
-            ITransaction currentTransaction = this.transactions.Values
-                                                .FirstOrDefault(t => t.Status == tx.Status &&
-                                                                        t.From == tx.From &&
-                                                                        t.To == tx.To &&
-                                                                        t.Amount == tx.Amount);
-
-            if (currentTransaction == null)
+            // Code from the lecture
+            if (!this.Contains(tx.Id))
             {
                 return false;
             }
 
-            return true;
+            ITransaction existingTransaction = this.transactions[tx.Id];
+
+            return tx.From == existingTransaction.From &&
+                    tx.To == existingTransaction.To &&
+                    tx.Status == existingTransaction.Status &&
+                    tx.Amount == existingTransaction.Amount;
+
+
+
+            // My code
+            //ITransaction currentTransaction = this.transactions.Values
+            //                                    .FirstOrDefault(t => t.Status == tx.Status &&
+            //                                                            t.From == tx.From &&
+            //                                                            t.To == tx.To &&
+            //                                                            t.Amount == tx.Amount);
+
+            //if (currentTransaction == null)
+            //{
+            //    return false;
+            //}
+
+            //return true;
         }
 
         public bool Contains(int id)
@@ -98,12 +133,21 @@ namespace Chainblock
 
         public ITransaction GetById(int id)
         {
-            if (!this.transactions.ContainsKey(id))
+            // Code from lecture
+            if (!this.Contains(id))
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException($"Transaction with {id} does not exist");
             }
 
             return this.transactions[id];
+
+            // My code
+            //if (!this.transactions.ContainsKey(id))
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return this.transactions[id];
         }
 
         public IEnumerable<ITransaction> GetByReceiverAndAmountRange(string receiver, double lo, double hi)
@@ -167,17 +211,31 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByTransactionStatus(TransactionStatus status)
         {
-            IEnumerable<ITransaction> currentTransactions =
-            this.transactions.Values.Select(t => t)
-                                    .Where(t => t.Status == status)
-                                    .OrderByDescending(t => t.Amount);
+            // Code from the lecture
+            List<ITransaction> result = this.transactions.Values
+                                            .Where(t => t.Status == status)
+                                            .OrderByDescending(t => t.Amount)
+                                            .ToList();
 
-            if (!currentTransactions.Any())
+            if (result.Count == 0)
             {
                 throw new InvalidOperationException();
             }
 
-            return currentTransactions;
+            return result;
+
+            // My Code
+            //IEnumerable<ITransaction> currentTransactions =
+            //this.transactions.Values.Select(t => t)
+            //                        .Where(t => t.Status == status)
+            //                        .OrderByDescending(t => t.Amount);
+
+            //if (!currentTransactions.Any())
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return currentTransactions;
         }
 
         public IEnumerable<ITransaction> GetByTransactionStatusAndMaximumAmount(TransactionStatus status, double amount)
@@ -188,17 +246,29 @@ namespace Chainblock
 
         public IEnumerator<ITransaction> GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (var transaction in this.transactions)
+            {
+                yield return transaction.Value;
+            }
         }
 
         public void RemoveTransactionById(int id)
         {
-            if (!this.transactions.ContainsKey(id))
+            // Code from lecture
+            if (!this.Contains(id))
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException($"Transaction with {id} does not exist.");
             }
 
             this.transactions.Remove(id);
+
+            // My code
+            //if (!this.transactions.ContainsKey(id))
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //this.transactions.Remove(id);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
