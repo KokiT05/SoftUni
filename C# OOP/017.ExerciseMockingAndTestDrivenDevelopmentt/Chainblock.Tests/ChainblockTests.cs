@@ -213,6 +213,123 @@ namespace Chainblock.Tests
         [Test]
         public void GetByTransactionStatus_ThrowsException_WhenThereAreNoTransactionWithStatus()
         {
+            this.AddThreeTransactionWithDifferentStatus();
+
+            Assert.Throws<InvalidOperationException>(() => 
+            this.chainblock.GetByTransactionStatus(TransactionStatus.Unauthorized));
+        }
+
+        [Test]
+        public void GetByTransactionStatus_ReturnsFilteredAndSortedData_WhenChainblockContainsTransactionsWithStatus()
+        {
+            this.AddBulkOfTransactions();
+
+            TransactionStatus filterStatus = TransactionStatus.Successfull;
+
+            List<ITransaction> expectedTransactions = this.chainblock
+                                                    .Where(t => t.Status == filterStatus)
+                                                    .OrderByDescending(t => t.Amount)
+                                                    .ToList();
+
+            List<ITransaction> actualTransactions = this.chainblock.GetByTransactionStatus(filterStatus).ToList();
+
+            Assert.That(expectedTransactions, Is.EquivalentTo(actualTransactions));
+        }
+
+        [Test]
+        public void GetAllSendersWithTransactionStatus_ThrowsExecption_WhenTransactionDoNotExistWithStatus()
+        {
+            this.AddThreeTransactionWithDifferentStatus();
+
+            Assert.Throws<InvalidOperationException>(() =>
+                            this.chainblock.GetAllSendersWithTransactionStatus(TransactionStatus.Unauthorized));
+        }
+
+        public void GetAllSendersWithTransactionStatus_ReturnsFilteredAndSortedData_WhenTransactionsExists()
+        {
+            this.AddBulkOfTransactions();
+
+            TransactionStatus transactionStatus = TransactionStatus.Successfull;
+
+            List<string> expected = this.chainblock
+                                    .Where(t => t.Status == transactionStatus)
+                                    .OrderBy(t => t.Amount)
+                                    .Select(t => t.From)
+                                    .ToList();
+
+            List<string> actual = this.chainblock
+                                .GetAllSendersWithTransactionStatus(transactionStatus)
+                                .ToList();
+
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+        [Test]
+        public void GetAllReceiversWithTransactionStatus_ThrowsException_WhenTransactionWithStatusDoNotExist()
+        {
+            this.AddThreeTransactionWithDifferentStatus();
+
+            Assert.Throws<InvalidOperationException>(() => 
+            this.chainblock.GetAllReceiversWithTransactionStatus(TransactionStatus.Unauthorized)); 
+        }
+
+        [Test]
+        public void GetAllReceiversWithTransactionStatus_ReturnsFilteredAndSortedData_WhenTransactionWithStatusExist()
+        {
+            this.AddBulkOfTransactions();
+
+            TransactionStatus transactionStatus = TransactionStatus.Successfull;
+
+            List<string> expected = this.chainblock
+                                    .Where(t => t.Status == transactionStatus)
+                                    .OrderBy(t => t.Amount)
+                                    .Select(t => t.To)
+                                    .ToList();
+
+            List<string> actual = this.chainblock.GetAllReceiversWithTransactionStatus(transactionStatus).ToList();
+
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+        public void GetAllOrderedByAmountDescendingThenById()
+        {
+
+        }
+
+        private void AddBulkOfTransactions()
+        {
+            for (int i = 0; i <= 100; i++)
+            {
+                TransactionStatus transactionStatus = TransactionStatus.Successfull;
+
+                if (i % 2 == 0)
+                {
+                    transactionStatus = TransactionStatus.Unauthorized;
+                }
+                else if (i % 3 == 0)
+                {
+                    transactionStatus = TransactionStatus.Aborted;
+                }
+                else if (i % 5 == 0)
+                {
+                    transactionStatus = TransactionStatus.Failed;
+                }
+
+                ITransaction transaction = new Transaction()
+                {
+                    Id = i,
+                    Amount = 100 + i,
+                    From = $"Person{i}",
+                    To = $"Receiver{i}",
+                    Status = transactionStatus
+                };
+
+                this.chainblock.Add(transaction);
+            }
+        }
+
+        private void AddThreeTransactionWithDifferentStatus()
+        {
             this.chainblock.Add(new Transaction()
             {
                 Id = 1,
@@ -239,53 +356,6 @@ namespace Chainblock.Tests
                 Amount = 33.00,
                 Status = TransactionStatus.Aborted
             });
-
-            Assert.Throws<InvalidOperationException>(() => 
-            this.chainblock.GetByTransactionStatus(TransactionStatus.Unauthorized));
-        }
-
-        [Test]
-        public void GetByTransactionStatus_ReturnsFilteredAndSortedData_WhenChainblockContainsTransactionsWithStatus()
-        {
-            for (int i = 0; i <= 100; i++)
-            {
-                TransactionStatus transactionStatus = TransactionStatus.Successfull;
-
-                if (i % 2 == 0)
-                {
-                    transactionStatus = TransactionStatus.Unauthorized;
-                }
-                else if (i % 3 == 0)
-                {
-                    transactionStatus = TransactionStatus.Aborted;
-                }
-                else if (i % 5 == 0)
-                {
-                    transactionStatus = TransactionStatus.Failed;
-                }
-
-                ITransaction transaction = new Transaction()
-                {
-                    Id = i,
-                    Amount = 100,
-                    From = $"Person{i}",
-                    To = $"Receiver{i}",
-                    Status = transactionStatus
-                };
-
-                this.chainblock.Add(transaction);
-            }
-
-            TransactionStatus filterStatus = TransactionStatus.Successfull;
-
-            List<ITransaction> expectedTransactions = this.chainblock
-                                                    .Where(t => t.Status == filterStatus)
-                                                    .OrderByDescending(t => t.Amount)
-                                                    .ToList();
-
-            List<ITransaction> actualTransactions = this.chainblock.GetByTransactionStatus(filterStatus).ToList();
-
-            Assert.That(expectedTransactions, Is.EquivalentTo(actualTransactions));
         }
 
         private ITransaction CreateSimpleTransaction()
