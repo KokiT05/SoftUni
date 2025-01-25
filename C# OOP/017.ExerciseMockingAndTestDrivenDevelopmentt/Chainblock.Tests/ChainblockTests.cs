@@ -291,36 +291,118 @@ namespace Chainblock.Tests
             Assert.That(expected, Is.EquivalentTo(actual));
         }
 
-        public void GetAllOrderedByAmountDescendingThenById()
+        public void GetAllOrderedByAmountDescendingThenById_ReturnsTransactionInExpectedOrder()
         {
+            this.AddBulkOfTransactions();
 
+            List<ITransaction> expected = this.chainblock
+                                        .OrderByDescending(t => t.Amount)
+                                        .ThenBy(t => t.Id)
+                                        .ToList();
+
+            List<ITransaction> actual = this.chainblock.GetAllOrderedByAmountDescendingThenById().ToList();
+
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+        [Test]
+        public void GetBySenderOrderedByAmountDescending_ThrowsException_WhenThereAreNoTransactionBySender()
+        {
+            this.AddBulkOfTransactions();
+
+            Assert.Throws<InvalidOperationException>(() =>
+            this.chainblock.GetBySenderOrderedByAmountDescending("FakeSender"));
+        }
+
+        [Test]
+        public void GetBySenderOrderedByAmountDescending_ReturnsFilteredAndSortedData()
+        {
+            this.AddBulkOfTransactions();
+
+            string sender = this.chainblock.FirstOrDefault().From;
+
+            List<ITransaction> expected = this.chainblock
+                                        .Where(t => t.From == sender)
+                                        .OrderByDescending(t => t.Amount)
+                                        .ToList();
+
+            List<ITransaction> actual = this.chainblock.GetBySenderOrderedByAmountDescending(sender).ToList();
+
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+        [Test]
+        public void GetByReceiverOrderedByAmountThenById_ThrowsException_WhenReceiverDoesNotExist()
+        {
+            this.AddBulkOfTransactions();
+
+            Assert.Throws<InvalidOperationException>(() =>
+            this.chainblock.GetByReceiverOrderedByAmountThenById("FakeReceiver "));
+        }
+
+        [Test]
+        public void GetByReceiverOrderedByAmountThenById_ReturnsFilteredAndSortedData()
+        {
+            this.AddBulkOfTransactions();
+
+            string receiver = this.chainblock.FirstOrDefault().To;
+
+            List<ITransaction> result = this.chainblock.GetByReceiverOrderedByAmountThenById(receiver).ToList();
+
+            double prevAmount = double.PositiveInfinity;
+            int id = 0;
+
+            foreach (ITransaction transaction in result)
+            {
+                Assert.That(transaction.To, Is.EqualTo(receiver));
+                Assert.That(transaction.Amount, Is.LessThanOrEqualTo(prevAmount));
+
+                if (transaction.Amount == prevAmount)
+                {
+                    Assert.That(transaction.Id, Is.GreaterThan(id));
+                }
+
+                prevAmount = transaction.Amount;
+                id = transaction.Id;
+            }
         }
 
         private void AddBulkOfTransactions()
         {
-            for (int i = 0; i <= 100; i++)
+            int n = 100;
+            for (int i = 0; i <= n; i++)
             {
                 TransactionStatus transactionStatus = TransactionStatus.Successfull;
+                string from = "Jonh";
+                string to = "Niki";
 
                 if (i % 2 == 0)
                 {
                     transactionStatus = TransactionStatus.Unauthorized;
+                    from = "Ani";
+                    to = "Dido";
                 }
                 else if (i % 3 == 0)
                 {
                     transactionStatus = TransactionStatus.Aborted;
+                    from = "Stoyan";
+                    to = "Yoanna";
                 }
                 else if (i % 5 == 0)
                 {
                     transactionStatus = TransactionStatus.Failed;
+                    from = "Nasko";
+                    to = "Ina";
                 }
+
+                double amount = i % 2 == 0 ? 100 : 100 + i;
 
                 ITransaction transaction = new Transaction()
                 {
-                    Id = i,
-                    Amount = 100 + i,
-                    From = $"Person{i}",
-                    To = $"Receiver{i}",
+                    Id = n - i,
+                    Amount = amount,
+                    From = from,
+                    To = to,
                     Status = transactionStatus
                 };
 

@@ -101,33 +101,71 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetAllOrderedByAmountDescendingThenById()
         {
-            return this.transactions.Values.OrderByDescending(t => t.Amount).ThenBy(t => t.Id);
+            // Code from the lecture
+            return this.transactions.Values.OrderByDescending(t => t.Amount).ThenBy(t => t.Id).ToList();
+
+            // My code
+            //return this.transactions.Values.OrderByDescending(t => t.Amount).ThenBy(t => t.Id);
         }
 
         public IEnumerable<string> GetAllReceiversWithTransactionStatus(TransactionStatus status)
         {
-            IEnumerable<ITransaction> currentTransactions =
-                this.transactions.Values.Select(t => t).Where(t => t.Status == status).OrderBy(t => t.Amount);
+            // Code fro, the lecture
 
-            if (!currentTransactions.Any())
+            List<string> result = this.transactions
+                                    .Values
+                                    .Where(t => t.Status == status)
+                                    .OrderBy(t => t.Amount)
+                                    .Select(t => t.To)
+                                    .ToList();
+
+            if (result.Count == 0)
             {
                 throw new InvalidOperationException();
             }
 
-            return currentTransactions.Select(t => t.To);
+            return result;
+
+            // My code
+            //IEnumerable<ITransaction> currentTransactions =
+            //    this.transactions.Values.Select(t => t).Where(t => t.Status == status).OrderBy(t => t.Amount);
+
+            //if (!currentTransactions.Any())
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return currentTransactions.Select(t => t.To);
         }
 
         public IEnumerable<string> GetAllSendersWithTransactionStatus(TransactionStatus status)
         {
-            IEnumerable<ITransaction> currentTransactions = 
-                this.transactions.Values.Select(t => t).Where(t => t.Status == status).OrderBy(t => t.Amount);
+            // Code fro, the lecture
 
-            if (!currentTransactions.Any())
+            List<string> result = this.transactions
+                                    .Values
+                                    .Where(t => t.Status == status)
+                                    .OrderBy(t => t.Amount)
+                                    .Select(t => t.From)
+                                    .ToList();
+
+            if (result.Count == 0)
             {
                 throw new InvalidOperationException();
             }
 
-            return currentTransactions.Select(t => t.From);
+            return result;
+
+            // My code
+            //IEnumerable<ITransaction> currentTransactions = 
+            //    this.transactions.Values.Select(t => t).Where(t => t.Status == status).OrderBy(t => t.Amount);
+
+            //if (!currentTransactions.Any())
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return currentTransactions.Select(t => t.From);
 
         }
 
