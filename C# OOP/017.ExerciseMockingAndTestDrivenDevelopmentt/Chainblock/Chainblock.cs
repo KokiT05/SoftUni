@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -207,17 +208,32 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByReceiverOrderedByAmountThenById(string receiver)
         {
-            IEnumerable<ITransaction> currentTransactions = this.transactions.Values
-                                                            .Where(t => t.To == receiver)
-                                                            .OrderByDescending(t => t.Amount)
-                                                            .ThenBy(t => t.Id);
+            // Code from lecture
+            List<ITransaction> result = this.transactions.Values
+                                .Where(t => t.To == receiver)
+                                .OrderByDescending(t => t.Amount)
+                                .ThenBy(t => t.Id)
+                                .ToList();
 
-            if (!currentTransactions.Any())
+            if (result.Count == 0)
             {
                 throw new InvalidOperationException();
             }
 
-            return currentTransactions;
+            return result;
+
+            // My code
+            //IEnumerable<ITransaction> currentTransactions = this.transactions.Values
+            //                                                .Where(t => t.To == receiver)
+            //                                                .OrderByDescending(t => t.Amount)
+            //                                                .ThenBy(t => t.Id);
+
+            //if (!currentTransactions.Any())
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return currentTransactions;
         }
 
         public IEnumerable<ITransaction> GetBySenderAndMinimumAmountDescending(string sender, double amount)
@@ -236,15 +252,30 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetBySenderOrderedByAmountDescending(string sender)
         {
-            IEnumerable<ITransaction> currentTransaction = this.transactions.Values
-                                                .Where(t => t.From == sender)
-                                                .OrderByDescending(t => t.Amount);
-            if (!currentTransaction.Any())
+            // Code from the lecture
+            List<ITransaction> result = this.transactions.Values
+                                            .Where(t => t.From == sender)
+                                            .OrderByDescending(t => t.Amount)
+                                            .ThenBy(t => t.Id)
+                                            .ToList();
+
+            if (result.Count == 0)
             {
                 throw new InvalidOperationException();
             }
 
-            return currentTransaction;
+            return result;
+
+            // My code
+            //IEnumerable<ITransaction> currentTransaction = this.transactions.Values
+            //                                    .Where(t => t.From == sender)
+            //                                    .OrderByDescending(t => t.Amount);
+            //if (!currentTransaction.Any())
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return currentTransaction;
         }
 
         public IEnumerable<ITransaction> GetByTransactionStatus(TransactionStatus status)
