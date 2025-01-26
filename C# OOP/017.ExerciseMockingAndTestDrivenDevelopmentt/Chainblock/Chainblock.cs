@@ -191,14 +191,15 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByReceiverAndAmountRange(string receiver, double lo, double hi)
         {
+            
             IEnumerable<ITransaction> currentTransactions = this.transactions.Values
-                                                            .Where(t => t.To == receiver &&
-                                                                    t.Amount >= lo &&
-                                                                    t.Amount < hi)
-                                                            .OrderByDescending(t => t.Amount)
-                                                            .ThenBy(t => t.Id);
+                                                .Where(t => t.To == receiver &&
+                                                        t.Amount >= lo &&
+                                                        t.Amount < hi)
+                                                .OrderByDescending(t => t.Amount)
+                                                .ThenBy(t => t.Id);
 
-            if (!currentTransactions.Any())
+            if (currentTransactions.Count() == 0)
             {
                 throw new InvalidOperationException();
             }
@@ -238,16 +239,30 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetBySenderAndMinimumAmountDescending(string sender, double amount)
         {
-            IEnumerable<ITransaction> currentTransaction = this.transactions.Values
-                                                            .Where(t => t.From == sender &&
-                                                            t.Amount > amount)
-                                                            .OrderByDescending(t => t.Amount);
-            if (!currentTransaction.Any())
+            // Code from the lecture
+            List<ITransaction> result = this.transactions.Values
+                                    .Where(t => t.From == sender && t.Amount > amount)
+                                    .OrderByDescending(t => t.Amount)
+                                    .ToList();
+
+            if (result.Count == 0)
             {
                 throw new InvalidOperationException();
             }
 
-            return currentTransaction;  
+            return result;
+
+            // My Code
+            //IEnumerable<ITransaction> currentTransaction = this.transactions.Values
+            //                                                .Where(t => t.From == sender &&
+            //                                                t.Amount > amount)
+            //                                                .OrderByDescending(t => t.Amount);
+            //if (!currentTransaction.Any())
+            //{
+            //    throw new InvalidOperationException();
+            //}
+
+            //return currentTransaction;  
         }
 
         public IEnumerable<ITransaction> GetBySenderOrderedByAmountDescending(string sender)
@@ -309,8 +324,15 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByTransactionStatusAndMaximumAmount(TransactionStatus status, double amount)
         {
-            return this.transactions.Values.Where(t => t.Status == status &&
-                                                    t.Amount <= amount).OrderByDescending(t => t.Amount);
+            // Code from the lecture
+
+            return this.transactions.Values
+                                    .Where(t => t.Status == status && t.Amount <= amount)
+                                    .OrderByDescending(t => t.Amount);
+
+            // My code
+            //return this.transactions.Values.Where(t => t.Status == status &&
+            //                                        t.Amount <= amount).OrderByDescending(t => t.Amount);
         }
 
         public IEnumerator<ITransaction> GetEnumerator()

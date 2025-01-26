@@ -367,6 +367,184 @@ namespace Chainblock.Tests
             }
         }
 
+        [Test]
+        public void GetByTransactionStatusAndMaximumAmount_ReturnsEmptyCollection_WhenStatusIsNotValid()
+        {
+            this.AddThreeTransactionWithDifferentStatus();
+
+            Assert.That(
+                this.chainblock.GetByTransactionStatusAndMaximumAmount(TransactionStatus.Unauthorized, 100), 
+                Is.EquivalentTo(new List<ITransaction>()));
+        }
+
+        [Test]
+        public void GetByTransactionStatusAndMaximumAmount_ReturnsEmptyCollection_WhenAmountIsNotValid()
+        {
+            this.AddBulkOfTransactions();
+
+            double amount = this.chainblock.FirstOrDefault().Amount / 2;
+
+            List<ITransaction> actual = this.chainblock
+                                        .GetByTransactionStatusAndMaximumAmount(TransactionStatus.Successfull, amount)
+                                        .ToList();
+
+            Assert.That(actual, Is.EquivalentTo(new List<ITransaction>()));
+        }
+
+        [Test]
+        public void GetByTransactionStatusAndMaximumAmount_ReturnsFilteredAndSortedData()
+        {
+            this.AddBulkOfTransactions();
+
+            TransactionStatus status = TransactionStatus.Successfull;
+            double maxAmount = this.chainblock.Average(t => t.Amount);
+
+            List<ITransaction> transactions = this.chainblock
+                                        .GetByTransactionStatusAndMaximumAmount(status, maxAmount)
+                                        .ToList();
+
+            double prevAmount = double.PositiveInfinity;
+
+            foreach (ITransaction transaction in transactions)
+            {
+                Assert.That(transaction.Status, Is.EqualTo(status));
+                Assert.That(transaction.Amount, Is.LessThanOrEqualTo(maxAmount));
+                Assert.That(transaction.Amount, Is.LessThanOrEqualTo(prevAmount));
+
+                prevAmount = transaction.Amount;
+            }
+        }
+
+        [Test]
+        public void GetBySenderAndMinimumAmountDescending_ThrowsException_WhenSenderDoesNotExist()
+        {
+            this.AddBulkOfTransactions();
+
+            double minAmount = this.chainblock.Min(t => t.Amount);
+
+            Assert.Throws<InvalidOperationException>(() => 
+                                    this.chainblock.GetBySenderAndMinimumAmountDescending("InvalidSender", minAmount));
+        }
+
+        [Test]
+        public void GetBySenderAndMinimumAmountDescending_ThrowsException_WhenAmountIsNotValid()
+        {
+            this.AddBulkOfTransactions();
+
+            string sender = this.chainblock.FirstOrDefault().From;
+            double minAmount = this.chainblock.Max(t => t.Amount) + 1;
+
+            Assert.Throws<InvalidOperationException>(() =>
+                                        this.chainblock.GetBySenderAndMinimumAmountDescending(sender, minAmount));
+        }
+
+        [Test]
+        public void GetBySenderAndMinimumAmountDescending_ReturnsFilteredAndSortedData()
+        {
+            this.AddBulkOfTransactions();
+
+            string sender = this.chainblock.FirstOrDefault().From;
+            double minAmount = this.chainblock.Min(t => t.Amount);
+
+            List<ITransaction> result = this.chainblock
+                                                .GetBySenderAndMinimumAmountDescending(sender, minAmount)
+                                                .ToList();
+
+            double prevAmount = double.PositiveInfinity;
+
+            foreach (ITransaction transaction in result)
+            {
+                Assert.That(transaction.From, Is.EqualTo(sender));
+                Assert.That(transaction.Amount, Is.GreaterThan(minAmount));
+                Assert.That(transaction.Amount, Is.LessThanOrEqualTo(prevAmount));
+
+                prevAmount = transaction.Amount;
+            }
+        }
+
+        [Test]
+        public void GetByReceiverAndAmountRange_ThrowsExecption_WhenReceiverDoesNotExist()
+        {
+            this.AddBulkOfTransactions();
+
+            double lowAmount = this.chainblock.Min(t => t.Amount);
+            double highAmount = this.chainblock.Max(t => t.Amount);
+
+            Assert.Throws<InvalidOperationException>(() =>
+            this.chainblock.GetByReceiverAndAmountRange("FakeReceiver", lowAmount, highAmount));
+        }
+
+        [Test]
+        public void GetByReceiverAndAmountRange_ThrowsException_WhenAmountIsNotInRange()
+        {
+            this.AddBulkOfTransactions();
+
+            string receiver = this.chainblock.FirstOrDefault().To;
+
+            double lowAmount = this.chainblock.Min(t => t.Amount) - 1;
+            double highAmount = this.chainblock.Max(t => t.Amount) + 1;
+
+            Assert.Throws<InvalidOperationException>(() =>
+                this.chainblock.GetByReceiverAndAmountRange(receiver, lowAmount, highAmount));
+        }
+
+        [Test]
+        public void GetByReceiverAndAmountRange_ReturnsFilteredAndSortedData()
+        {
+            this.AddBulkOfTransactions();
+
+            string receiver = this.chainblock.FirstOrDefault().To;
+            double lowAmount = this.chainblock.Min(t => t.Amount);
+            double highAmount = this.chainblock.Max(t => t.Amount);
+
+            List<ITransaction> result = this.chainblock
+                                            .GetByReceiverAndAmountRange(receiver, lowAmount, highAmount)
+                                            .ToList();
+
+            foreach (ITransaction transaction in result)
+            {
+                Assert.That(transaction.To, Is.EqualTo(receiver));
+                Assert.That(transaction.Amount, Is.GreaterThanOrEqualTo(lowAmount));
+                Assert.That(transaction.Amount, Is.LessThan(highAmount));
+            }
+        }
+
+        [Test]
+        public void GetAllInAmountRange_ReturnsEmptyCollection_WhenAmountIsNotInRange()
+        {
+            this.AddBulkOfTransactions();
+
+            double minAmount = this.chainblock.Min(t => t.Amount) - 1;
+            double maxAmount = this.chainblock.Max(t => t.Amount);
+
+            List<ITransaction> result = this.chainblock.GetAllInAmountRange(minAmount, maxAmount).ToList();
+
+            Assert.That(result, Is.EquivalentTo(new List<ITransaction>()));
+
+            minAmount = this.chainblock.Min(t => t.Amount);
+            maxAmount = this.chainblock.Max(t => t.Amount) + 1;
+
+            result = this.chainblock.GetAllInAmountRange(minAmount, maxAmount).ToList();
+            Assert.That(result, Is.EquivalentTo(new List<ITransaction>()));
+        }
+
+        [Test]
+        public void GetAllInAmountRange_ReturnsFilteredAndSortedData()
+        {
+            this.AddBulkOfTransactions();
+
+            double minAmount = this.chainblock.Min(t => t.Amount);
+            double maxAmount = this.chainblock.Max(t => t.Amount);
+
+            List<ITransaction> result = this.chainblock.GetAllInAmountRange(minAmount, maxAmount).ToList();
+
+            foreach (ITransaction transaction in result)
+            {
+                Assert.That(transaction.Amount, Is.LessThanOrEqualTo(maxAmount));
+                Assert.That(transaction.Amount, Is.GreaterThanOrEqualTo(minAmount));
+            }
+        }
+
         private void AddBulkOfTransactions()
         {
             int n = 100;
@@ -395,7 +573,7 @@ namespace Chainblock.Tests
                     to = "Ina";
                 }
 
-                double amount = i % 2 == 0 ? 100 : 100 + i;
+                double amount = i % 2 == 0 ? 100 + 2 * i : 100 + i;
 
                 ITransaction transaction = new Transaction()
                 {
