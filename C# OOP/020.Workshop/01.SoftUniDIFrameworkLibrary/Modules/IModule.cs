@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace _01.SoftUniDIFrameworkLibrary.Modules
 {
-    internal class IModule
+    public interface IModule
     {
+        void Configure();
+
+        Type GetMapping(Type currentInterface, object attribute);
+
+        object GetInstance(Type type);
+
+        void SetInstance(Type implementation, object instance);
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _01.SoftUniDIFrameworkLibrary.Attributes
 {
-    internal class Inject
+    [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Field)]
+    public class Inject : Attribute
     {
     }
 }
