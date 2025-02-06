@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace _020.Workshop.Contracts
 {
-    public interface IReader
+    public interface IGameObject : IDrawable
     {
-        Position ReadKey();
-
-        string ReadLine();
+        Position Position { get; }
     }
 }

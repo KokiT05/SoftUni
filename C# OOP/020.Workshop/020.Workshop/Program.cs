@@ -1,4 +1,6 @@
 ﻿using _020.Workshop.Contracts;
+using _020.Workshop.DI;
+using _020.Workshop.DI.Containers;
 using _020.Workshop.ILoggers;
 
 namespace _020.Workshop
@@ -7,9 +9,14 @@ namespace _020.Workshop
     {
         static void Main(string[] args)
         {
-            ILogger logger = new ConsoleLogger();
+            IContainer container = new SnakeGameContainer();
+            container.ConfigureServices();
 
-            Engine engine = new Engine(logger);
+
+
+            //ILogger logger = new ConsoleLogger();
+            Injector injector = new Injector(container);
+            Engine engine = InjectorSingleton.Instance.Inject<Engine>();
             engine.Start();
             engine.End();
         }

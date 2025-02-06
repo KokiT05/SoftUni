@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _020.Workshop.DI.Containers
+namespace _020.Workshop.Contracts
 {
-    internal class SnakeGameContainer
+    public interface IDrawable
     {
+        void Draw();
     }
 }

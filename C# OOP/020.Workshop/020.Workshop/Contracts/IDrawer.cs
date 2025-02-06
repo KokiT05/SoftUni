@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace _020.Workshop.Contracts
 {
-    public interface IReader
+    public interface IDrawer
     {
-        Position ReadKey();
-
-        string ReadLine();
+        void DrawAtPosition(Position position, string toDraw);
     }
 }

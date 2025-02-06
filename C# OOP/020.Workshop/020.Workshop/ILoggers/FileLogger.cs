@@ -9,13 +9,14 @@ namespace _020.Workshop.ILoggers
 {
     public class FileLogger : ILogger
     {
-        public FileLogger()
+        private string path;
+        public FileLogger(string path)
         {
-            
+            this.path = path;
         }
         public void Log(string message)
         {
-            using (StreamWriter writer = new StreamWriter("../../../logs.txt", true))
+            using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine(message);
             }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace _020.Workshop.Contracts
 {
-    public interface IReader
+    public interface IMover
     {
-        Position ReadKey();
-
-        string ReadLine();
+        void Move(IGameObject gameObject, Position position);
     }
 }

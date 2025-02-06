@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _020.Workshop.DI.Attributes
 {
-    internal class Inject
+    [AttributeUsage(AttributeTargets.Constructor)]
+    public class Inject : Attribute
     {
     }
 }
