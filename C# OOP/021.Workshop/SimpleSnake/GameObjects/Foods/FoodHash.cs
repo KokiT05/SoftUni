@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace SimpleSnake.GameObjects.Foods
 {
-    internal class FoodHash
+    public class FoodHash : Food
     {
+        private const char FoodSymbol = '#';
+        private const int Points = 3;
+        private const ConsoleColor Color = ConsoleColor.Yellow;
+        public FoodHash(Wall wall) : base(wall, FoodSymbol, Points, Color)
+        {
+        }
     }
 }

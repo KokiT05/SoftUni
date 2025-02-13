@@ -11,11 +11,12 @@
         private static IntPtr ThisConsole = GetConsoleWindow();
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        private const int MAXIMIZE = 3;
+        private const int MAXIMIZE = 32;
 
         public static void CustomizeConsole()
         {
             Console.OutputEncoding = Encoding.Unicode;
+            //Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             ShowWindow(ThisConsole, MAXIMIZE);
             Console.BackgroundColor = ConsoleColor.White;

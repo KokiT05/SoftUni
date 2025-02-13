@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace SimpleSnake.GameObjects.Foods
 {
-    internal class FoodDollar
+    public class FoodDollar : Food
     {
+        private const char FoodSymbol = '$';
+        private const int Points = 2;
+        private const ConsoleColor Color = ConsoleColor.Green;
+        public FoodDollar(Wall wall) : base(wall, FoodSymbol, Points, Color)
+        {
+
+        }
     }
 }
