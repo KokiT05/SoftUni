@@ -124,7 +124,7 @@ namespace SimpleSnake.Core
 
         private void StopGame()
         {
-            Console.SetCursorPosition(20, 10);
+            Console.SetCursorPosition(10, 10);
             Console.Write("Game over!");
             Environment.Exit(0);
         }

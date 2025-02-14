@@ -10,7 +10,7 @@ namespace SimpleSnake.GameObjects.Foods
     {
         private const char FoodSymbol = '#';
         private const int Points = 3;
-        private const ConsoleColor Color = ConsoleColor.Yellow;
+        private const ConsoleColor Color = ConsoleColor.DarkYellow;
         public FoodHash(Wall wall) : base(wall, FoodSymbol, Points, Color)
         {
         }
