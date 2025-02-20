@@ -23,6 +23,9 @@ namespace Bakery.Models.Tables
             this.TableNumber = tableNumber;
             this.Capacity = capacity;
             this.PricePerPerson = pricePerPerson;
+
+            this.FoodOrders = new List<IBakedFood>();
+            this.DrinkOrders = new List<IDrink>();
         }
         public int TableNumber { get { return this.tableNumber; } private set { this.tableNumber = value; } }
 
@@ -31,7 +34,7 @@ namespace Bakery.Models.Tables
             get { return this.capacity; }
             private set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidTableCapacity);
                 }
@@ -45,7 +48,7 @@ namespace Bakery.Models.Tables
             get { return this.numberOfPeople; }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidNumberOfPeople);
                 }
