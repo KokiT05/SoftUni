@@ -24,6 +24,8 @@ namespace Bakery.Models.Tables
             this.Capacity = capacity;
             this.PricePerPerson = pricePerPerson;
 
+            this.IsReserved = false;
+
             this.FoodOrders = new List<IBakedFood>();
             this.DrinkOrders = new List<IDrink>();
         }

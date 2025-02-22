@@ -5,6 +5,7 @@ using Bakery.Models.Drinks;
 using Bakery.Models.Drinks.Contracts;
 using Bakery.Models.Tables;
 using Bakery.Models.Tables.Contracts;
+using Bakery.Utilities.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,11 @@ namespace Bakery.Core
         {
             IDrink drink = null;
 
+            if (type != "Tea" && type != "Water")
+            {
+                return string.Empty;
+            }
+
             if (type == "Tea")
             {
                 drink = new Tea(name, portion, brand);
@@ -40,12 +46,18 @@ namespace Bakery.Core
 
             this.drinks.Add(drink);
 
-            return $"Added {name} ({brand}) to the drink menu";
+
+            return string.Format(OutputMessages.DrinkAdded, name, brand);
         }
 
         public string AddFood(string type, string name, decimal price)
         {
             //type = type.ToLower();
+
+            if (type != "Bread" && type != "Cake")
+            {
+                return string.Empty;
+            }
 
             IBakedFood bakedFood = null;
 
@@ -60,11 +72,16 @@ namespace Bakery.Core
 
             this.bakedFoods.Add(bakedFood);
 
-            return $"Added {name} ({type}) to the menu";
+            return string.Format(OutputMessages.FoodAdded, name, type);
         }
 
         public string AddTable(string type, int tableNumber, int capacity)
         {
+            if (type != "InsideTable" && type != "OutsideTable")
+            {
+                return string.Empty;
+            }
+
             ITable table = null;
 
             if (type == "InsideTable")
@@ -78,7 +95,8 @@ namespace Bakery.Core
 
             this.tables.Add(table);
 
-            return $"Added table number {tableNumber} in the bakery";
+            //return $"Added table number {tableNumber} in the bakery";
+            return string.Format(OutputMessages.TableAdded, tableNumber);
         }
 
         public string GetFreeTablesInfo()
@@ -90,7 +108,7 @@ namespace Bakery.Core
                 result.AppendLine(table.GetFreeTableInfo());
             }
 
-            return result.ToString().Trim();
+            return result.ToString();
         }
 
         public string GetTotalIncome()
@@ -101,8 +119,8 @@ namespace Bakery.Core
             //{
             //    totalIncome += table.GetBill();
             //}
-
-            return $"Total income: {this.totalIncome:f2}lv";
+            return string.Format(OutputMessages.TotalIncome, this.totalIncome);
+            //return $"Total income: {this.totalIncome:f2}lv";
         }
 
         public string LeaveTable(int tableNumber)
@@ -125,19 +143,22 @@ namespace Bakery.Core
 
             if (table == null)
             {
-                return $"Could not find table {tableNumber}";
+                return string.Format(OutputMessages.WrongTableNumber, tableNumber);
+                //return $"Could not find table {tableNumber}";
             }
 
             IDrink drink = this.drinks.FirstOrDefault(d => d.Name == drinkName && d.Brand == drinkBrand);
 
             if (drink == null)
             {
-                return $"There is no {drinkName} {drinkBrand} available";
+                return string.Format(OutputMessages.DrinkAdded, drinkName, drinkBrand);
+                //return $"There is no {drinkName} {drinkBrand} available";
             }
 
             table.OrderDrink(drink);
 
-            return $"Table {tableNumber} ordered {drinkName} {drinkBrand}";
+            return string.Format(OutputMessages.FoodOrderSuccessful, tableNumber, drinkName, drinkBrand);
+            //return $"Table {tableNumber} ordered {drinkName} {drinkBrand}";
         }
 
         public string OrderFood(int tableNumber, string foodName)
@@ -146,19 +167,22 @@ namespace Bakery.Core
 
             if (table == null)
             {
-                return $"Could not find table {tableNumber}";
+                return string.Format(OutputMessages.WrongTableNumber, tableNumber);
+                //return $"Could not find table {tableNumber}";
             }
 
             IBakedFood bakedFood = this.bakedFoods.FirstOrDefault(f => f.Name == foodName);
 
             if (bakedFood == null)
             {
-                return $"No {foodName} in the menu";
+                return string.Format(OutputMessages.NonExistentFood, foodName);
+                //return $"No {foodName} in the menu";
             }
 
             table.OrderFood(bakedFood);
 
-            return $"Table {tableNumber} ordered {foodName}";
+            return string.Format(OutputMessages.FoodOrderSuccessful, tableNumber, foodName);
+            //return $"Table {tableNumber} ordered {foodName}";
         }
 
         public string ReserveTable(int numberOfPeople)
@@ -167,12 +191,14 @@ namespace Bakery.Core
 
             if (table == null)
             {
-                return $"No available table for {numberOfPeople} people";
+                return string.Format(OutputMessages.ReservationNotPossible, numberOfPeople);
+                //return $"No available table for {numberOfPeople} people";
             }
 
             table.Reserve(numberOfPeople);
 
-            return $"Table {table.TableNumber} has been reserved for {numberOfPeople} people";
+            //return $"Table {table.TableNumber} has been reserved for {numberOfPeople} people";
+            return string.Format(OutputMessages.TableReserved, table.TableNumber, numberOfPeople);
         }
     }
 }
