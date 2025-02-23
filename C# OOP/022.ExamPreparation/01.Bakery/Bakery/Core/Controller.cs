@@ -15,25 +15,23 @@ namespace Bakery.Core
 {
     public class Controller : IController
     {
-        private readonly ICollection<IBakedFood> bakedFoods;
-        private readonly ICollection<IDrink> drinks;
-        private readonly ICollection<ITable> tables;
+        private  List<IBakedFood> bakedFoods;
+        private  List<IDrink> drinks;
+        private  List<ITable> tables;
 
         private decimal totalIncome = 0M;
+
         public Controller()
         {
             this.bakedFoods = new List<IBakedFood>();
             this.drinks = new List<IDrink>();
             this.tables = new List<ITable>();
         }
+
         public string AddDrink(string type, string name, int portion, string brand)
         {
             IDrink drink = null;
-
-            if (type != "Tea" && type != "Water")
-            {
-                return string.Empty;
-            }
+           
 
             if (type == "Tea")
             {
@@ -54,11 +52,6 @@ namespace Bakery.Core
         {
             //type = type.ToLower();
 
-            if (type != "Bread" && type != "Cake")
-            {
-                return string.Empty;
-            }
-
             IBakedFood bakedFood = null;
 
             if (type == "Bread")
@@ -77,10 +70,6 @@ namespace Bakery.Core
 
         public string AddTable(string type, int tableNumber, int capacity)
         {
-            if (type != "InsideTable" && type != "OutsideTable")
-            {
-                return string.Empty;
-            }
 
             ITable table = null;
 
@@ -108,7 +97,7 @@ namespace Bakery.Core
                 result.AppendLine(table.GetFreeTableInfo());
             }
 
-            return result.ToString();
+            return result.ToString().TrimEnd();
         }
 
         public string GetTotalIncome()
@@ -125,7 +114,7 @@ namespace Bakery.Core
 
         public string LeaveTable(int tableNumber)
         {
-            ITable table = this.tables.First(t => t.TableNumber == tableNumber);
+            ITable table = this.tables.FirstOrDefault(t => t.TableNumber == tableNumber);
 
             totalIncome += table.GetBill() + table.Price;
             decimal tableBill = table.GetBill() + table.Price;

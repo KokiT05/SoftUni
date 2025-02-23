@@ -18,16 +18,20 @@ namespace Bakery.Models.Tables
         private bool isReserved;
         private decimal price;
 
+        // Code from the lecture
+        private List<IBakedFood> foodOrders;
+        private List<IDrink> drinkOrders;
+
         protected Table(int tableNumber, int capacity, decimal pricePerPerson)
         {
+            // Code from the lecture
+            this.foodOrders = new List<IBakedFood>();
+            this.drinkOrders = new List<IDrink>();
+
             this.TableNumber = tableNumber;
             this.Capacity = capacity;
             this.PricePerPerson = pricePerPerson;
 
-            this.IsReserved = false;
-
-            this.FoodOrders = new List<IBakedFood>();
-            this.DrinkOrders = new List<IDrink>();
         }
         public int TableNumber { get { return this.tableNumber; } private set { this.tableNumber = value; } }
 
@@ -36,7 +40,7 @@ namespace Bakery.Models.Tables
             get { return this.capacity; }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidTableCapacity);
                 }
@@ -50,7 +54,7 @@ namespace Bakery.Models.Tables
             get { return this.numberOfPeople; }
             private set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidNumberOfPeople);
                 }
@@ -66,20 +70,17 @@ namespace Bakery.Models.Tables
 
         public decimal Price { get { return this.pricePerPerson * this.numberOfPeople; } }
 
-        public readonly ICollection<IBakedFood> FoodOrders;
-        public readonly ICollection<IDrink> DrinkOrders;
-
         public void Clear()
         {
-            this.FoodOrders.Clear();
-            this.DrinkOrders.Clear();
+            this.foodOrders.Clear();
+            this.drinkOrders.Clear();
             this.IsReserved = false;
-            this.NumberOfPeople = 0;
+            this.numberOfPeople = 0;
         }
 
         public decimal GetBill()
         {
-            return this.FoodOrders.Sum(f => f.Price) + this.DrinkOrders.Sum(f => f.Price);
+            return this.foodOrders.Sum(f => f.Price) + this.drinkOrders.Sum(f => f.Price);
         }
 
         public string GetFreeTableInfo()
@@ -92,12 +93,16 @@ namespace Bakery.Models.Tables
 
         public void OrderDrink(IDrink drink)
         {
-            this.DrinkOrders.Add(drink);
+
+            // From the lecture
+            this.drinkOrders.Add(drink);
         }
 
         public void OrderFood(IBakedFood food)
         {
-            this.FoodOrders.Add(food);
+
+            // From the lecture
+            this.foodOrders.Add(food);
         }
 
         public void Reserve(int numberOfPeople)
