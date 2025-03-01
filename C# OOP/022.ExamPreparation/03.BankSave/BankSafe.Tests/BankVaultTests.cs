@@ -96,7 +96,7 @@ namespace BankSafe.Tests
         }
 
         //Code from the lecture
-
+        [Test]
         public void WhenCellDoesntNotExist_ShouldThrowExecption()
         {
             Exception exception = Assert.Throws<ArgumentException>(() =>
@@ -105,6 +105,81 @@ namespace BankSafe.Tests
             });
 
             Assert.AreEqual(exception.Message, "Cell doesn't exists!");
+        }
+
+        [Test]
+        public void WhenCellIsAlreadyTaken_ShouldThrowExecption()
+        {
+            Exception exception = Assert.Throws<ArgumentException>(() =>
+            {
+                this.bankVault.AddItem("A2", this.item);
+                this.bankVault.AddItem("A2", new Item("Owner", "333"));
+            });
+
+            Assert.AreEqual(exception.Message, "Cell is already taken!");
+        }
+
+        [Test]
+        public void WhenItemIsAdded_ShouldReturnCorrectMessage()
+        {       
+            string result = this.bankVault.AddItem("A2", this.item);
+
+            Assert.AreEqual(result, $"Item:{this.item.ItemId} saved successfully!");
+        }
+
+        [Test]
+        public void WhenItemIsAdded_ShouldSetItemToCell()
+        {
+            this.bankVault.AddItem("A2", this.item);
+
+            //Item currentItem = this.bankVault.VaultCells["A2"];
+
+            Assert.AreEqual(this.item, this.bankVault.VaultCells["A2"]);
+        }
+
+        [Test]
+        public void WhenRemoveCellAndCellDoesntNotExist_ShouldThrowExecption()
+        {
+            Exception exception = Assert.Throws<ArgumentException>(() =>
+            {
+                this.bankVault.RemoveItem("Z!", this.item);
+            });
+
+            Assert.AreEqual(exception.Message, "Cell doesn't exists!");
+        }
+
+        [Test]
+        public void WhenRemoveCellAndItemDoesntNotExist_ShouldThrowExecption()
+        {
+            Exception exception = Assert.Throws<ArgumentException>(() =>
+            {
+                this.bankVault.RemoveItem("A2", this.item);
+            });
+
+            Assert.AreEqual(exception.Message, "Item in that cell doesn't exists!");
+        }
+
+
+        [Test]
+        public void WhenItemIsRemoved_ShouldReturnCorrectMessage()
+        {
+            this.bankVault.AddItem("A2", this.item);
+
+            string result = this.bankVault.RemoveItem("A2", this.item);
+
+            Assert.AreEqual(result, $"Remove item:{item.ItemId} successfully!");
+        }
+
+        [Test]
+        public void WhenItemIsRemoved_ShouldMakeTheCellNull()
+        {
+            this.bankVault.AddItem("A2", this.item);
+
+            //Item currentItem = this.bankVault.VaultCells["A2"];
+
+            string result = this.bankVault.RemoveItem("A2", this.item);
+
+            Assert.AreEqual(null, this.bankVault.VaultCells["A2"]);
         }
     }
 }
