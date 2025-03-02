@@ -4,7 +4,19 @@ using System.Text;
 
 namespace AquaShop.Models.Fish
 {
-    internal class SaltwaterFish
+    public class SaltwaterFish : Fish
     {
+        private const int InitialSizeDefaultValue = 5;
+        private const int IncreasesSizeDefaultValue = 2;
+        public SaltwaterFish(string name, string species, decimal price) 
+            : base(name, species, price)
+        {
+            base.Size = InitialSizeDefaultValue;
+        }
+
+        public override void Eat()
+        {
+            base.Size += IncreasesSizeDefaultValue;
+        }
     }
 }

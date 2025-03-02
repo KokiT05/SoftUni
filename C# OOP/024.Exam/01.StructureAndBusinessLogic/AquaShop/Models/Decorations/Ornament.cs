@@ -4,7 +4,12 @@ using System.Text;
 
 namespace AquaShop.Models.Decorations
 {
-    internal class Ornament
+    public class Ornament : Decoration
     {
+        private const int ComfortDefaultValue = 1;
+        private const decimal PriceDefaultValue = 5;
+        public Ornament() : base(ComfortDefaultValue, PriceDefaultValue)
+        {
+        }
     }
 }
