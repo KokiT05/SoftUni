@@ -12,12 +12,21 @@ namespace Bakery.Models.BakedFoods
         private int portion;
         private decimal price;
 
-        protected BakedFood(string name, int portion, decimal price)
+        // Code from the lecture
+        public BakedFood(string name, int portion, decimal price)
         {
             this.Name = name;
             this.Portion = portion;
             this.Price = price;
         }
+
+        // My code
+        //protected BakedFood(string name, int portion, decimal price)
+        //{
+        //    this.Name = name;
+        //    this.Portion = portion;
+        //    this.Price = price;
+        //}
 
         public string Name 
         { 

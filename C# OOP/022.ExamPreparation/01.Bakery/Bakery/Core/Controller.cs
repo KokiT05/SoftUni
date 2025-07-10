@@ -15,34 +15,37 @@ namespace Bakery.Core
 {
     public class Controller : IController
     {
-        private  List<IBakedFood> bakedFoods;
-        private  List<IDrink> drinks;
-        private  List<ITable> tables;
+        private List<IBakedFood> bakedFoods;
+        private List<IDrink> drinks;
+        private List<ITable> tables;
 
-        private decimal totalIncome = 0M;
+        private decimal totalIncome = 0;
 
         public Controller()
         {
             this.bakedFoods = new List<IBakedFood>();
             this.drinks = new List<IDrink>();
             this.tables = new List<ITable>();
+
         }
 
         public string AddDrink(string type, string name, int portion, string brand)
         {
-            IDrink drink = null;
+            //IDrink drink = null;
            
 
             if (type == "Tea")
             {
-                drink = new Tea(name, portion, brand);
+                //drink = new Tea(name, portion, brand);
+                this.drinks.Add(new Tea(name, portion, brand));
             }
             else if (type == "Water")
             {
-                drink = new Water(name, portion, brand);
+                //drink = new Water(name, portion, brand);
+                this.drinks.Add(new Water(name, portion, brand));
             }
 
-            this.drinks.Add(drink);
+            //this.drinks.Add(drink);
 
 
             return string.Format(OutputMessages.DrinkAdded, name, brand);
@@ -50,20 +53,23 @@ namespace Bakery.Core
 
         public string AddFood(string type, string name, decimal price)
         {
+            // Code from the lecture
             //type = type.ToLower();
 
-            IBakedFood bakedFood = null;
+            //IBakedFood bakedFood = null;
 
             if (type == "Bread")
             {
-                bakedFood = new Bread(name, price);
+                //bakedFood = new Bread(name, price);
+                this.bakedFoods.Add(new Bread(name, price));
             }
             else if (type == "Cake")
             {
-                bakedFood = new Cake(name, price);
+                //bakedFood = new Cake(name, price);
+                this.bakedFoods.Add(new Cake(name, price));
             }
 
-            this.bakedFoods.Add(bakedFood);
+            //this.bakedFoods.Add(bakedFood);
 
             return string.Format(OutputMessages.FoodAdded, name, type);
         }
@@ -71,18 +77,20 @@ namespace Bakery.Core
         public string AddTable(string type, int tableNumber, int capacity)
         {
 
-            ITable table = null;
+            //ITable table = null;
 
             if (type == "InsideTable")
             {
-                table = new InsideTable(tableNumber, capacity);
+                //table = new InsideTable(tableNumber, capacity);
+                this.tables.Add(new InsideTable(tableNumber, capacity));
             }
             else if (type == "OutsideTable")
             {
-                table = new OutsideTable(tableNumber, capacity);
+                //table = new OutsideTable(tableNumber, capacity);
+                this.tables.Add(new OutsideTable(tableNumber, capacity));
             }
 
-            this.tables.Add(table);
+            //this.tables.Add(table);
 
             //return $"Added table number {tableNumber} in the bakery";
             return string.Format(OutputMessages.TableAdded, tableNumber);
@@ -146,8 +154,8 @@ namespace Bakery.Core
 
             table.OrderDrink(drink);
 
-            return string.Format(OutputMessages.FoodOrderSuccessful, tableNumber, drinkName, drinkBrand);
-            //return $"Table {tableNumber} ordered {drinkName} {drinkBrand}";
+            //return string.Format(OutputMessages.FoodOrderSuccessful, tableNumber, $"{drinkName} {drinkBrand}");
+            return $"Table {tableNumber} ordered {drinkName} {drinkBrand}";
         }
 
         public string OrderFood(int tableNumber, string foodName)

@@ -12,13 +12,24 @@ namespace Bakery.Models.Drinks
         private int portion;
         private decimal price;
         private string brand;
-        protected Drink(string name, int portion, decimal price, string brand)
+        
+        //Code from the lecture
+        public Drink(string name, int portion, decimal price, string brand)
         {
             this.Name = name;
             this.Portion = portion;
             this.Price = price;
             this.Brand = brand;
         }
+
+        // My code
+        //protected Drink(string name, int portion, decimal price, string brand)
+        //{
+        //    this.Name = name;
+        //    this.Portion = portion;
+        //    this.Price = price;
+        //    this.Brand = brand;
+        //}
         public string Name
         {
             get { return this.name; }
