@@ -1,0 +1,31 @@
+﻿@using ShoppingListApp.Web.ViewModels.ProductList
+@model List<AllProductListsIndexViewModel>
+
+@{
+    ViewData["Title"] = "Product lists";
+}
+
+<div class="product-container">
+    <h2 style="text-align: center; color: #333;">Чернови</h2>
+    <a class="align-content-center" asp-controller="ProductList" asp-action="Add">Add list</a>
+    <hr />
+
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var productList in Model)
+        {
+            <a asp-controller="ProductList" asp-action="GetSingle" asp-route-id="@productList.Id">
+                <div class="product-card">
+                    <p class="invisible"> @productList.Id</p>
+                    <h3>@productList.Name</h3>
+                    <p><strong>Описание:</strong> @productList.Description</p>
+                    <p class="price"><strong>Обща Цена:</strong> @productList.TotalPrice лв.</p>
+                </div>
+            </a>
+        }
+    }
+    else
+    {
+        <p class="no-products">Няма налични списъци.</p>
+    }
+</div>

@@ -1,0 +1,61 @@
+﻿<style >
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4; /* Лек фон за по-добър изглед */
+    font-family: Arial, sans-serif;
+}
+
+.product-container {
+    width: 100%;
+    max-width: 600px; /* Ограничаваме ширината за по-добро четене */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Сянка за визуално отделяне */
+    border-radius: 8px; /* Заоблени ъгли */
+    overflow: hidden; /* За да се скрият преливащите елементи */
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px; /* Разстояние между картите */
+    border-radius: 8px;
+    text-align: left; /* Текстът е подравнен вляво в картата */
+    box-sizing: border-box; /* Включва padding-а в общата ширина */
+}
+
+    .product-card:last-child {
+        margin-bottom: 0; /* Без долно отстояние за последния елемент */
+    }
+
+    .product-card h3 {
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+    }
+
+    .product-card p {
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .product-card .price {
+        font-weight: bold;
+        color: #007bff; /* Син цвят за цената */
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+.no-products {
+    text-align: center;
+    color: #555;
+    margin-top: 50px;
+    font-size: 1.2em;
+}
+
+</style >

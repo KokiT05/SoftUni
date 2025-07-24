@@ -1,0 +1,54 @@
+﻿@using ShoppingListApp.Web.ViewModels.Product
+@model CreateProductViewModel
+
+@{
+    ViewData["Title"] = "Add a new product";
+}
+
+<div class="form-container">
+    <h2 style="text-align: center; color: #333; margin-bottom: 30px;">Добави Нов Продукт</h2>
+    <hr />
+
+    <form asp-action="AddProduct">
+        <div asp-validation-summary="All" class="validation-summary-errors" asp-route-id="Id"></div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" placeholder="Въведете име на продукта" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control" placeholder="Въведете описание на продукта (по избор)"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" placeholder="Въведете цена" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn-primary">Добави Продукт</button>
+        </div>
+    </form>
+
+    <div style="text-align: center; margin-top: 20px;">
+        @if (ViewBag.ProductListId != null)
+        {
+            <a asp-controller="ProductList" asp-action="Details" asp-route-id="@ViewBag.ProductListId">Обратно към Списъка с Продукти</a>
+        }
+        else
+        {
+            <a asp-controller="ProductList" asp-action="ListProducts">Обратно към всички Списъци с Продукти</a>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

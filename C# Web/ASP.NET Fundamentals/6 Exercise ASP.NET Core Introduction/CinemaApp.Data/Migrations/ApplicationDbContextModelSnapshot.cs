@@ -26,47 +26,58 @@ namespace CinemaApp.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Movie Identifier");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("nvarchar(1000)")
+                        .HasComment("Movie Description");
 
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Movie Director");
 
                     b.Property<int>("Duration")
                         .HasMaxLength(300)
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Movie Duration");
 
                     b.Property<string>("Genre")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Movie Genre");
 
                     b.Property<string>("ImageUrl")
                         .HasMaxLength(2048)
-                        .HasColumnType("nvarchar(2048)");
+                        .HasColumnType("nvarchar(2048)")
+                        .HasComment("Movie image url");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("ReleaseDate")
+                        .HasColumnType("date")
+                        .HasComment("Movie Release Date");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Movie Title");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", t =>
+                        {
+                            t.HasComment("Movie in the system");
+                        });
 
                     b.HasData(
                         new
@@ -78,7 +89,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Fantasy",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2005, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2005, 11, 1),
                             Title = "Harry Potter and the Goblet of Fire"
                         },
                         new
@@ -90,7 +101,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Fantasy",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2001, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2001, 5, 1),
                             Title = "Lord of the Rings"
                         },
                         new
@@ -102,7 +113,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Sci-Fi",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2010, 7, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2010, 7, 16),
                             Title = "Inception"
                         },
                         new
@@ -114,7 +125,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Action",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2008, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2008, 7, 18),
                             Title = "The Dark Knight"
                         },
                         new
@@ -126,7 +137,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Sci-Fi",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2014, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2014, 11, 7),
                             Title = "Interstellar"
                         },
                         new
@@ -138,7 +149,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Sci-Fi",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BMDEzMmQwZjctZWU2My00MWNlLWE0NjItMDJlYTRlNGJiZjcyXkEyXkFqcGc@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2009, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2009, 12, 18),
                             Title = "Avatar"
                         },
                         new
@@ -150,7 +161,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Romance",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(1997, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(1997, 12, 19),
                             Title = "Titanic"
                         },
                         new
@@ -162,7 +173,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Sci-Fi",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(1999, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(1999, 3, 31),
                             Title = "The Matrix"
                         },
                         new
@@ -174,7 +185,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Drama",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(1994, 7, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(1994, 7, 6),
                             Title = "Forrest Gump"
                         },
                         new
@@ -186,7 +197,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Action",
                             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(2000, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(2000, 5, 5),
                             Title = "Gladiator"
                         },
                         new
@@ -198,7 +209,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Drama",
                             ImageUrl = "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_.jpg",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(1994, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(1994, 9, 23),
                             Title = "The Shawshank Redemption"
                         },
                         new
@@ -210,7 +221,7 @@ namespace CinemaApp.Data.Migrations
                             Genre = "Crime",
                             ImageUrl = "https://www.tallengestore.com/cdn/shop/products/PulpFiction-JohnTravoltaAndSamuelLJackson-MovieStill1_d3db6d19-235a-45aa-97b2-ab690665c224.jpg?v=1684129898",
                             IsDeleted = false,
-                            ReleaseDate = new DateTime(1994, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReleaseDate = new DateOnly(1994, 10, 14),
                             Title = "Pulp Fiction"
                         });
                 });

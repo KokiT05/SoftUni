@@ -1,0 +1,67 @@
+﻿@using ShoppingListApp.Web.ViewModels.ProductList
+@model SingleProductListViewModel
+
+@{
+    ViewData["Title"] = Model?.Name ?? "Детайли на списъка";
+}
+
+<div class="detail-container">
+    <div class="detail-header">
+        <h1>Детайли на списъка</h1>
+        <h2>@Model.Name</h2>
+    </div>
+    <hr />
+
+    <div class="detail-section">
+        <h4>Описание на списъка</h4>
+        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            <p class="detail-text">@Model.Description</p>
+        }
+        else
+        {
+            <p class="detail-text">Няма въведено описание за този списък.</p>
+        }
+    </div>
+
+    <a asp-controller="ProductList" asp-action="AddProduct" asp-route-id="@Model.Id">Add product</a>
+
+    <div class="detail-section">
+        <h4>Продукти в Списъка</h4>
+        @if (Model.Products != null && Model.Products.Any())
+        {
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>Име</th>
+                        <th>Описание</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.Description</td>
+                            <td>@product.Price?.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("bg-BG"))</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="total-price">
+                Обща Цена на списъка: @(Model.TotalPrice?.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("bg-BG")) ?? "0.00 лв.")
+            </div>
+        }
+        else
+        {
+            <p class="no-products-message">Няма добавени продукти към този списък.</p>
+            <div class="total-price">
+                Обща Цена на Списъка: @(Model.TotalPrice?.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("bg-BG")) ?? "0.00 лв.")
+            </div>
+        }
+    </div>
+
+    <hr />
+    <a asp-action="Index" class="back-link">Обратно към списъците</a>
+</div>

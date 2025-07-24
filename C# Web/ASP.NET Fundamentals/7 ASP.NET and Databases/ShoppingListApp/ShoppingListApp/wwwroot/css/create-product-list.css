@@ -1,0 +1,87 @@
+﻿<style >
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 500px; /* Ограничаваме ширината на формата */
+    margin-top: 50px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Важно за коректна ширина */
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+textarea.form-control {
+    min-height: 100px; /* Увеличаваме височината на текстовото поле */
+    resize: vertical; /* Позволява само вертикално преоразмеряване */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Бутонът заема цялата ширина */
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.validation-summary-errors ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.validation-summary-errors li {
+    color: red;
+    margin-bottom: 5px;
+}
+
+.text-danger {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block; /* За да е на отделен ред */
+}
+
+</style >

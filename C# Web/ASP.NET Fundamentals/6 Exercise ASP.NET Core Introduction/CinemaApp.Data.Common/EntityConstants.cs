@@ -32,6 +32,11 @@ namespace CinemaApp.Data.Common
 			public const int DescriptionMaxLength = 1000;
 
 			/// <summary>
+			/// Movie ImageUrl should be able to store text with length up to 2048 (refer Url)
+			/// </summary>
+			public const int ImageUrlMaxLength = 2048;
+
+			/// <summary>
 			/// Movie Duration should be between 1 and 300 minutes.
 			/// </summary>
 			public const int DurationMax = 300;
