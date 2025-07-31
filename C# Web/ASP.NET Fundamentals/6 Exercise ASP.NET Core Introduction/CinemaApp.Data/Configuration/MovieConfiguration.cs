@@ -30,7 +30,7 @@ namespace CinemaApp.Data.Configuration
 
 			model.Property(m => m.Director)
 				.IsRequired()
-				.HasMaxLength(EntityConstants.Movie.DirectorMaxLength);
+				.HasMaxLength(EntityConstants.Movie.DirectorNameMaxLength);
 
 			model.Property(m => m.Duration)
 				.IsRequired()

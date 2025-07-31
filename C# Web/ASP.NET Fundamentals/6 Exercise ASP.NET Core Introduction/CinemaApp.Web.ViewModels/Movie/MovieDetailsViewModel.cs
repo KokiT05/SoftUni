@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaApp.Web.ViewModels.Movie
 {
-	public class AllMoviesIndexViewModel
+	public class MovieDetailsViewModel
 	{
 		public string Id { get; set; } = null!;
 
@@ -18,8 +18,10 @@ namespace CinemaApp.Web.ViewModels.Movie
 
 		public string Director { get; set; } = null!;
 
-		public string? ImageUrl { get; set; }
+		public int Duration { get; set; }
 
+		public string Description { get; set; } = null!;
 
+		public string ImageUrl { get; set; } = null!;
 	}
 }
