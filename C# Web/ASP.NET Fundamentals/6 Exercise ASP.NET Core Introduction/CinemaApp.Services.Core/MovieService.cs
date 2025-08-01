@@ -91,6 +91,7 @@ namespace CinemaApp.Services.Core
                 .Where(m => m.Id.ToString() == id)
                 .Select(m => new MovieFormViewModel()
                 {
+                    Id = m.Id.ToString(),
                     Title = m.Title,
                     Genre = m.Genre,
                     Director = m.Director,
@@ -132,6 +133,44 @@ namespace CinemaApp.Services.Core
 
             await this.dbContext.SaveChangesAsync();
 
+
+            return true;
+        }
+
+        public async Task<bool> SoftDeleteAsync(string? id)
+        {
+            Movie? movie = await this.dbContext.Movies.SingleOrDefaultAsync(m => m.Id.ToString() == id);
+
+            if (movie == null)
+            {
+                return false;
+            }
+            else if (movie.IsDeleted == true)
+            {
+                return true;
+            }
+
+            movie.IsDeleted = true;
+            await this.dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> HardDeleteAsync(string? id)
+        {
+            Movie? movie = await this.dbContext.Movies.SingleOrDefaultAsync(m => m.Id.ToString() == id);
+
+            if (movie == null)
+            {
+                return false;
+            }
+            else if (movie.IsDeleted == true)
+            {
+                return true;
+            }
+
+            this.dbContext.Movies.Remove(movie);
+            await this.dbContext.SaveChangesAsync();
 
             return true;
         }
