@@ -138,29 +138,47 @@ namespace CinemaApp.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Delete(string? id)
 		{
-			MovieDetailsViewModel? movie = await this.movieService.GetMovieDetailsByIdAsync(id);
-
-			if (movie == null)
+			try
 			{
-				return this.RedirectToAction(nameof(Index));
-			}
+                DeleteMovieViewModel? movieToBeDeleted = 
+											await this.movieService.GetMovieDeleteDetailsByIdAsync(id);
 
-			return this.View(movie);
+                if (movieToBeDeleted == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+				return this.View(movieToBeDeleted);
+            }
+			catch (Exception e)
+			{
+                Console.WriteLine(e.Message);
+
+				return this.RedirectToAction(nameof(Index));   
+			}
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> DeleteConfirmed(string? id)
+		public async Task<IActionResult> Delete(DeleteMovieViewModel inputModel)
 		{
-            MovieDetailsViewModel? movie = await this.movieService.GetMovieDetailsByIdAsync(id);
 
-            if (movie == null)
-            {
-                return this.RedirectToAction(nameof(Index));
-            }
+			try
+			{
+				bool deleteResult = await this.movieService.SoftDeleteAsync(inputModel.Id);
 
-			await this.movieService.SoftDeleteAsync(id);
+				if (deleteResult == false)
+				{
+					return this.RedirectToAction(nameof(Index));
+				}
 
-			return this.RedirectToAction(nameof(Index));
+				return this.RedirectToAction(nameof(Index));
+			}
+			catch (Exception e)
+			{
+                Console.WriteLine(e.Message);
+
+				return this.RedirectToAction(nameof(Index));
+			}
         }
 	}
 }

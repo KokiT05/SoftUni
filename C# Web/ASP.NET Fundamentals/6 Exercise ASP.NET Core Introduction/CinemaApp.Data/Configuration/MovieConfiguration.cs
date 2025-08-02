@@ -47,7 +47,7 @@ namespace CinemaApp.Data.Configuration
                 .IsRequired()
                 .HasDefaultValue(false);
 
-            //model.HasQueryFilter(m => m.IsDeleted == false);
+            model.HasQueryFilter(m => m.IsDeleted == false);
 
             model.HasData(this.SeedMovies());
 		}

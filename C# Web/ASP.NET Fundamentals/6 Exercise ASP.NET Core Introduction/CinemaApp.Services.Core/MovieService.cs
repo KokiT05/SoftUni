@@ -109,8 +109,7 @@ namespace CinemaApp.Services.Core
         public async Task<bool> EditMovieAsync(MovieFormViewModel model)
         {
             //MovieFormViewModel? movieFormViewModel = null;
-            Movie? movie = await this.dbContext.Movies
-                                                .SingleOrDefaultAsync(m => m.Id.ToString() == model.Id);
+            Movie? movie = await this.FindMovieByStringIdAsync(model.Id); 
 
             if (movie == null)
             {
@@ -137,20 +136,36 @@ namespace CinemaApp.Services.Core
             return true;
         }
 
+        public async Task<DeleteMovieViewModel?> GetMovieDeleteDetailsByIdAsync(string? id)
+        {
+            DeleteMovieViewModel? deleteMovieViewModel = null;
+
+            Movie? movieToBeDeleted = await this.FindMovieByStringIdAsync(id);
+
+            if (movieToBeDeleted != null)
+            {
+                deleteMovieViewModel = new DeleteMovieViewModel()
+                {
+                    Id = movieToBeDeleted.Id.ToString(),
+                    Title = movieToBeDeleted.Title,
+                    ImageUrl = movieToBeDeleted.ImageUrl ?? $"/images/{NoImageUrl}",
+                };
+            }
+
+            return deleteMovieViewModel;
+        }
+
         public async Task<bool> SoftDeleteAsync(string? id)
         {
-            Movie? movie = await this.dbContext.Movies.SingleOrDefaultAsync(m => m.Id.ToString() == id);
 
-            if (movie == null)
+            Movie? movieToDelete = await this.FindMovieByStringIdAsync(id);
+
+            if (movieToDelete == null)
             {
                 return false;
             }
-            else if (movie.IsDeleted == true)
-            {
-                return true;
-            }
 
-            movie.IsDeleted = true;
+            movieToDelete.IsDeleted = true;
             await this.dbContext.SaveChangesAsync();
 
             return true;
@@ -158,21 +173,34 @@ namespace CinemaApp.Services.Core
 
         public async Task<bool> HardDeleteAsync(string? id)
         {
-            Movie? movie = await this.dbContext.Movies.SingleOrDefaultAsync(m => m.Id.ToString() == id);
+            Movie? movieToDelete = await this.FindMovieByStringIdAsync(id);
 
-            if (movie == null)
+            if (movieToDelete == null)
             {
                 return false;
             }
-            else if (movie.IsDeleted == true)
-            {
-                return true;
-            }
 
-            this.dbContext.Movies.Remove(movie);
+            this.dbContext.Movies.Remove(movieToDelete);
             await this.dbContext.SaveChangesAsync();
 
             return true;
+        }
+
+
+        private async Task<Movie?> FindMovieByStringIdAsync(string? id)
+        {
+            Movie? movie = null;
+
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                bool isGuidValid = Guid.TryParse(id, out Guid movieGuid);
+                if (isGuidValid)
+                {
+                    movie = await this.dbContext.Movies.FindAsync(movieGuid);
+                }
+            }
+
+            return movie;
         }
     }
 }

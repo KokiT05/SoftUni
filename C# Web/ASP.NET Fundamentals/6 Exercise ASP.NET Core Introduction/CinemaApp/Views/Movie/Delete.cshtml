@@ -1,4 +1,4 @@
-﻿@model CinemaApp.Web.ViewModels.Movie.MovieDetailsViewModel
+﻿@model CinemaApp.Web.ViewModels.Movie.DeleteMovieViewModel
 
 @{
     ViewData["Title"] = "Confirm Delete";
@@ -22,7 +22,7 @@
                             Are you sure you want to delete this movie?
                         </p>
 
-                        <form asp-controller="Movie" asp-action="DeleteConfirmed" method="post">
+                        <form asp-controller="Movie" asp-action="Delete" method="post">
                             <input type="hidden" name="id" value="@Model.Id" />
 
                             <div class="d-flex gap-2 mt-4">

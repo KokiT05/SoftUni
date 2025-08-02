@@ -48,6 +48,7 @@ namespace CinemaApp.Data.Models
 		[Comment("Movie image url")]
 		public string? ImageUrl {  get; set; }
 
+		[Comment("Shows if movie is deleted")]
 		public bool IsDeleted { get; set; } = false;
 	}
 }

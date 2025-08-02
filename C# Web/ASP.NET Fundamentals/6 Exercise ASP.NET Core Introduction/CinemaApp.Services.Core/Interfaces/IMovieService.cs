@@ -13,6 +13,8 @@ namespace CinemaApp.Services.Core.Interfaces
         Task<MovieFormViewModel?> GetEditableMovieByIdAsync(string? id);
         Task<bool> EditMovieAsync(MovieFormViewModel model);
 
+        Task<DeleteMovieViewModel?> GetMovieDeleteDetailsByIdAsync(string? id);
+
         Task<bool> SoftDeleteAsync(string? id);
 
         Task<bool> HardDeleteAsync(string? id);
