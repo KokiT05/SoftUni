@@ -2,6 +2,7 @@
 using CinemaApp.Data.Models;
 using CinemaApp.Services.Core.Interfaces;
 using CinemaApp.Web.ViewModels.Movie;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
@@ -10,8 +11,8 @@ using Microsoft.Identity.Client;
 namespace CinemaApp.Web.Controllers
 {
 	using static ViewModels.ValidationMessages.Movie;
-	public class MovieController : Controller
-	{
+	public class MovieController : BaseController
+    {
 		private readonly IMovieService movieService;
 
 		public MovieController(IMovieService movieService)
@@ -20,7 +21,8 @@ namespace CinemaApp.Web.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Index()
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
 		{
 			IEnumerable<AllMoviesIndexViewModel> movies = await this.movieService.GetAllMoviesAsync();
 
