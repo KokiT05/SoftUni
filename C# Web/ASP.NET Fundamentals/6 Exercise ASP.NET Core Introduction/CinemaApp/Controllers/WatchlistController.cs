@@ -40,7 +40,7 @@ namespace CinemaApp.Web.Controllers
             string userId = GetUserId();
 
             bool isInWatchlist = 
-                await this.watchlistService.IsMovieInWatchlistAsync(userId, Guid.Parse(movieId);
+                await this.watchlistService.IsMovieInWatchlistAsync(userId, Guid.Parse(movieId));
 
             if (!isInWatchlist)
             {
