@@ -50,5 +50,7 @@ namespace CinemaApp.Data.Models
 
 		[Comment("Shows if movie is deleted")]
 		public bool IsDeleted { get; set; } = false;
+
+		public ICollection<UserMovie> UserMovies { get; set; } = new HashSet<UserMovie>();
 	}
 }

@@ -16,61 +16,97 @@ namespace CinemaApp.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            if (!IsUserAuthenticated())
+            try
             {
-                //TODO: nameof(GetType(HomeController).Name i need to search for string method 
+                string? userId = this.GetUserId();
+
+                if (userId == null)
+                {
+                    return this.Forbid();
+                }
+
+				IEnumerable<WatchlistViewModel> watchlist =
+					await this.watchlistService.GetUserWatchlistAsync(userId);
+
+                return this.View(watchlist);
+
+			}
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
                 return this.RedirectToAction(nameof(Index), "Home");
             }
 
-            string userId = GetUserId();
+            //if (!IsUserAuthenticated())
+            //{
+            //    //TODO: nameof(GetType(HomeController).Name i need to search for string method 
+            //    return this.RedirectToAction(nameof(Index), "Home");
+            //}
 
-            IEnumerable<WatchlistViewModel> watchlist =
-                                await this.watchlistService.GetUserWatchlistAsync(userId);
+            //string userId = GetUserId();
 
-            return View(watchlist);
+            //IEnumerable<WatchlistViewModel> watchlist =
+            //                    await this.watchlistService.GetUserWatchlistAsync(userId);
+
+            //return View(watchlist);
         }
 
-        public async Task<IActionResult> Add(string movieId)
+        [HttpPost]
+        public async Task<IActionResult> Add(string? movieId)
         {
-            if (!IsUserAuthenticated())
+            try
             {
-				return this.RedirectToAction(nameof(Index), "Home");
-			}
+                string? userId = this.GetUserId();
+                if (userId == null)
+                {
+                    return this.Forbid();
+                }
 
-            string userId = GetUserId();
+                bool result = await this.watchlistService.AddToWatchlistAsync(userId, movieId);
 
-            bool isInWatchlist = 
-                await this.watchlistService.IsMovieInWatchlistAsync(userId, Guid.Parse(movieId));
+                if (result == false)
+                {
+                    return this.RedirectToAction(nameof(Index), "Movie");
+                }
 
-            if (!isInWatchlist)
-            {
-                await this.watchlistService.AddToWatchlistAsync(userId, movieId);
+                return this.RedirectToAction(nameof(Index));
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
 
-            return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(Index), "Home");
+            }
         }
 
-        public async Task<IActionResult> Remove(string movieId) 
+        [HttpPost]
+        public async Task<IActionResult> Remove(string? movieId) 
         {
-            if (!IsUserAuthenticated())
+            try
             {
-				return this.RedirectToAction(nameof(Index), "Home");
+                string? userId = this.GetUserId();
+
+                if (userId == null)
+                {
+                    return this.Forbid();
+                }
+
+				bool result = await this.watchlistService.RemoveFromWatchlistAsync(userId, movieId);
+
+				if (result == false)
+				{
+					return this.RedirectToAction(nameof(Index));
+				}
+                
+				return this.RedirectToAction(nameof(Index), "Movie");
 			}
-
-            string userId = GetUserId();
-
-            Guid movieGuidId = Guid.Parse(movieId);
-
-			// TODO: IsMovieInWatchlistAsync(userId, movieGuidId).Result;
-			bool isInWatchlist =
-	                await this.watchlistService.IsMovieInWatchlistAsync(userId, movieGuidId);
-
-            if (isInWatchlist)
+            catch (Exception e)
             {
-                await this.watchlistService.RemoveFromWatchlistAsync(userId, movieId);
-            }
+                Console.WriteLine(e.Message);
 
-			return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(Index), "Home");
+            }
         }
     }
 }

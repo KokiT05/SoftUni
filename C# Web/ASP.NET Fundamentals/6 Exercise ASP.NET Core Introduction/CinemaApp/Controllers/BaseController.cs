@@ -5,26 +5,43 @@ using System.Security.Claims;
 namespace CinemaApp.Web.Controllers
 {
     [Authorize]
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
         protected bool IsUserAuthenticated()
         {
-            if (User == null)
+            bool returResult = false;
+
+            if (this.User.Identity != null)
             {
-                return false;
+                returResult = this.User.Identity.IsAuthenticated;
             }
 
-            if (User.Identity == null)
-            {
-                return false;
-            }
+            return returResult;
 
-            return User.Identity.IsAuthenticated;
+            //if (User == null)
+            //{
+            //    return false;
+            //}
+
+            //if (User.Identity == null)
+            //{
+            //    return false;
+            //}
+
+            //return User.Identity.IsAuthenticated;
         }
 
-        protected string GetUserId()
+        protected string? GetUserId()
         {
-            return User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string? userId = null!;
+
+            if (this.IsUserAuthenticated())
+            {
+
+				userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier); 
+			}
+
+            return userId;
         }
     }
 }

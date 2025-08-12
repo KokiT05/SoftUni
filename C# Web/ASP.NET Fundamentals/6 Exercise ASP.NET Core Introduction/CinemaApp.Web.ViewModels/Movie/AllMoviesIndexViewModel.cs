@@ -20,6 +20,8 @@ namespace CinemaApp.Web.ViewModels.Movie
 
 		public string? ImageUrl { get; set; }
 
+		public bool IsAddedToUserWatchlist { get; set; }
+
 
 	}
 }

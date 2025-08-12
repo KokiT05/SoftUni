@@ -17,47 +17,111 @@ namespace CinemaApp.Services.Core
 
         public async Task<IEnumerable<WatchlistViewModel>> GetUserWatchlistAsync(string userId)
         {
-            return await this.applicationDbContext.UserMovies
-                                .Where(um => um.UserId == userId)
+            IEnumerable<WatchlistViewModel> userWatchlist = await this.applicationDbContext.UserMovies
+                                .Include(um => um.Movie)
+								.AsNoTracking()
+								.Where(um => um.UserId.ToLower() == userId.ToLower())
                                 .Select(um => new WatchlistViewModel()
                                 {
                                     MovieId = um.MovieId.ToString(),
                                     Title = um.Movie.Title,
                                     Genre = um.Movie.Genre,
-                                    ImageUrl = um.Movie.ImageUrl,
+                                    ImageUrl = um.Movie.ImageUrl ?? $"~/images/{NoImageUrl}",
                                     ReleaseDate = um.Movie.ReleaseDate.ToString(AppDateFormat)
                                 }).ToListAsync();
 
+            return userWatchlist;
+
         }
 
-        public async Task AddToWatchlistAsync(string userId, string movieId)
+        public async Task<bool> AddToWatchlistAsync(string? userId, string? movieId)
         {
-            UserMovie userMovie = new UserMovie()
+            bool result = false;
+
+            if (userId != null && movieId != null)
             {
-                UserId = userId,
-                MovieId = Guid.Parse(movieId),
-            };
+                bool isMovieIdValid = Guid.TryParse(movieId, out Guid movieGuidId);
+                if (isMovieIdValid)
+                {
+                    UserMovie? userMovie = await this.applicationDbContext
+                                                    .UserMovies
+                                                    .IgnoreQueryFilters()
+                                                    .SingleOrDefaultAsync(um => um.UserId.ToLower() == userId.ToLower()
+                                                     && um.MovieId.ToString() == movieGuidId.ToString());
 
-            await this.applicationDbContext.UserMovies.AddAsync(userMovie);
-            await this.applicationDbContext.SaveChangesAsync();
-        }
+                    if (userMovie != null)
+                    {
+                        userMovie.IsDeleted = false;
+                    }
+                    else
+                    {
+                        userMovie = new UserMovie()
+                        {
+                            UserId = userId,
+                            MovieId = movieGuidId
+                        };
 
-        public async Task<bool> IsMovieInWatchlistAsync(string userId, Guid movieId)
-        {
-            return await this.applicationDbContext.UserMovies
-                            .AnyAsync(um => um.UserId == userId && um.MovieId == movieId);
-        }
+                        await this.applicationDbContext.UserMovies.AddAsync(userMovie);
+                    }
 
-        public async Task RemoveFromWatchlistAsync(string userId, string movieId)
-        {
-            UserMovie? userMovie = await this.applicationDbContext.UserMovies
-                    .FirstOrDefaultAsync(um => um.UserId == userId && um.MovieId == Guid.Parse(movieId));
-
-            if (userMovie != null)
-            {
-                this.applicationDbContext.UserMovies.Remove(userMovie);
-                await this.applicationDbContext.SaveChangesAsync();
+                    await this.applicationDbContext.SaveChangesAsync();
+                    result = true;
+                }
             }
+
+            return result;
+        }
+
+        public async Task<bool> IsMovieInWatchlistAsync(string userId, string? movieId)
+        {
+            bool result = false;
+
+            if (userId != null && movieId != null)
+            {
+                bool isMovieIdValid = Guid.TryParse(movieId, out Guid movieGuidId);
+                if (isMovieIdValid)
+                {
+                    UserMovie? userMovie = await this.applicationDbContext
+                                            .UserMovies
+                                            .SingleOrDefaultAsync(um => um.UserId.ToLower() == userId.ToLower()
+                                                     && um.MovieId.ToString() == movieGuidId.ToString());
+
+                    if (userMovie != null)
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+			return result;
+		}
+
+        public async Task<bool> RemoveFromWatchlistAsync(string? userId, string? movieId)
+        {
+            bool result = false;
+
+            if (userId != null && movieId != null)
+            {
+                bool isMovieIdValid = Guid.TryParse(movieId, out Guid movieGuidId);
+                if (isMovieIdValid)
+                {
+                    UserMovie? userMovie = await this.applicationDbContext
+                                            .UserMovies
+											.SingleOrDefaultAsync(um => um.UserId.ToLower() == userId.ToLower()
+													 && um.MovieId.ToString() == movieGuidId.ToString());
+
+                    if (userMovie != null)
+                    {
+                        userMovie.IsDeleted = true;
+
+                        await this.applicationDbContext.SaveChangesAsync();
+
+                        result = true;
+                    }
+				}
+            }
+            
+            return result;
         }
     }
 }

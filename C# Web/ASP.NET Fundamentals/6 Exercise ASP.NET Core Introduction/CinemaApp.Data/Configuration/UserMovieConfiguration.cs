@@ -15,15 +15,23 @@ namespace CinemaApp.Data.Configuration
         {
             model.HasKey(um => new { um.UserId, um.MovieId });
 
+            model.Property(um => um.UserId).IsRequired();
+
+            model.Property(um => um.IsDeleted).HasDefaultValue(false);
+
             model.HasOne(um => um.User)
                 .WithMany()
                 .HasForeignKey(um => um.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             model.HasOne(um => um.Movie)
-                .WithMany()
+                .WithMany(m => m.UserMovies)
                 .HasForeignKey(um => um.MovieId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
+
+            model.HasQueryFilter(um => um.Movie.IsDeleted == false); 
+
+            model.HasQueryFilter(um => um.IsDeleted == false);
 
         }
     }

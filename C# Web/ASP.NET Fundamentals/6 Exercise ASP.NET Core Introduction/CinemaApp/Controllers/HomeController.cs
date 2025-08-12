@@ -13,6 +13,7 @@ namespace CinemaApp.Web.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Index()
         {

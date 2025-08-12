@@ -14,10 +14,12 @@ namespace CinemaApp.Web.Controllers
 	public class MovieController : BaseController
     {
 		private readonly IMovieService movieService;
+		private readonly IWatchlistService watchlistService;
 
-		public MovieController(IMovieService movieService)
+		public MovieController(IMovieService movieService, IWatchlistService watchlistService)
 		{
 			this.movieService = movieService;
+			this.watchlistService = watchlistService;
 		}
 
 		[HttpGet]
@@ -25,6 +27,15 @@ namespace CinemaApp.Web.Controllers
         public async Task<IActionResult> Index()
 		{
 			IEnumerable<AllMoviesIndexViewModel> movies = await this.movieService.GetAllMoviesAsync();
+
+			if (this.IsUserAuthenticated())
+			{
+				foreach (AllMoviesIndexViewModel movieViewModel in movies)
+				{
+					movieViewModel.IsAddedToUserWatchlist = await this.watchlistService
+																	.IsMovieInWatchlistAsync(this.GetUserId(), movieViewModel.Id);
+				}
+			}
 
 			return View(movies);
 		}
@@ -59,6 +70,7 @@ namespace CinemaApp.Web.Controllers
 		}
 
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> Details(string? id)
 		{
 			try
@@ -166,6 +178,11 @@ namespace CinemaApp.Web.Controllers
 
 			try
 			{
+				if (!this.ModelState.IsValid)
+				{
+					return this.RedirectToAction(nameof(Index));
+				}
+
 				bool deleteResult = await this.movieService.SoftDeleteAsync(inputModel.Id);
 
 				if (deleteResult == false)
