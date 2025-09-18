@@ -4,24 +4,24 @@ namespace Horizons.Services.Core.Contracts
 {
     public interface IDestinationService
     {
-        Task<IEnumerable<IndexDestinationViewModel>> GetAllDestination(string? userId);
+        Task<IEnumerable<IndexDestinationViewModel>> GetAllDestinationAsync(string? userId);
 
-        Task CreateDestination(AddDestinationViewModel inputAddDestinationModel, string? userId);
+        Task<bool> CreateDestination(AddDestinationInputModel inputAddDestinationModel, string userId);
 
-        Task<DetailsDestinationViewModel?> GetDetailsDestination(int? destinationId, string? userId);
+        Task<DetailsDestinationViewModel?> GetDetailsDestinationAsync(int? destinationId, string? userId);
 
-        Task<EditDestinationViewModel?> GetEditDestination(int? destinationId, string? userId);
+        Task<EditDestinationInputModel?> GetEditDestinationAsync(int? destinationId, string userId);
 
-        Task<bool> EditDestinationAsync(EditDestinationViewModel editDestinationViewModel, string? userId);
+        Task<bool> EditDestinationAsync(EditDestinationInputModel editDestinationInputModell, string userId);
 
-        Task<DeleteDestinationViewModel?> GetDeleteDestination(int? destinationId);
+        Task<DeleteDestinationInputModel?> GetDeleteDestinationAsync(int? destinationId, string userId);
 
-        Task<bool> DeleteDestination(DeleteDestinationViewModel? inputDeleteDestinationModel, string? userId);
+        Task<bool> SoftDeleteDestinationAsync(DeleteDestinationInputModel inputDeleteDestinationModel, string userId);
 
-        Task<IEnumerable<FavoritesDestinationViewModel>?> GetAllFavoritesDestinations(string? userId);
+        Task<IEnumerable<FavoritesDestinationViewModel>?> GetUserFavoritesDestinationsAsync(string userId);
 
-        Task AddDestinationToFavorites(int destinationId, string? userId);
+        Task<bool> AddDestinationToFavoritesAsync(int destinationId, string userId);
 
-        Task RemoveDestinationFromFavorite(int? destinationId, string? userId);
+        Task<bool> RemoveDestinationFromFavorite(int destinationId, string userId);
     }
 }

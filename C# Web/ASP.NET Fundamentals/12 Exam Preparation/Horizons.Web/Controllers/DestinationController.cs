@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace Horizons.Web.Controllers
 {
+    using static GCommon.ValidationConstatnts.DestinationConstants;
     public class DestinationController : BaseController
     {
         private readonly IDestinationService destinationService;
@@ -25,7 +26,7 @@ namespace Horizons.Web.Controllers
             {
                 string? userId = this.GetUserId();
 
-                IEnumerable<IndexDestinationViewModel> allDestinations = await this.destinationService.GetAllDestination(userId);
+                IEnumerable<IndexDestinationViewModel> allDestinations = await this.destinationService.GetAllDestinationAsync(userId);
                 return View(allDestinations);
             }
             catch (Exception e)
@@ -39,24 +40,41 @@ namespace Horizons.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            AddDestinationViewModel addDestination = new AddDestinationViewModel();
-            addDestination.Terrains = await this.terrainService.GetSelectListTerrain();
+            try
+            {
+                AddDestinationInputModel addDestination = new AddDestinationInputModel();
+                addDestination.PublishedOn = DateTime.UtcNow.ToString(PublishedOnDateFormat);
+                addDestination.Terrains = await this.terrainService.GetSelectListTerrainAsync();
 
-            return this.View(addDestination);
+                return this.View(addDestination);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return this.RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AddDestinationViewModel inputAddDestinationModel)
+        public async Task<IActionResult> Add(AddDestinationInputModel inputAddDestinationModel)
         {
-            if (ModelState.IsValid == false)
-            {
-                return this.View();
-            }
 
             try
             {
-                string? userId = this.GetUserId();
-                await this.destinationService.CreateDestination(inputAddDestinationModel, userId);
+                if (ModelState.IsValid == false)
+                {
+                    return this.View(inputAddDestinationModel);
+                }
+
+                string userId = this.GetUserId()!;
+                bool addResult = await this.destinationService.CreateDestination(inputAddDestinationModel, userId);
+
+                if (addResult == false)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Fatal error occurred while adding a destination!");
+                    return this.View(inputAddDestinationModel);
+                }
 
                 return this.RedirectToAction(nameof(Index));
             }
@@ -65,10 +83,8 @@ namespace Horizons.Web.Controllers
 
                 Console.WriteLine(e.Message);
 
-                this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(Index));
             }
-
-            return this.RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -80,7 +96,12 @@ namespace Horizons.Web.Controllers
                 string? userId = this.GetUserId();
 
                 DetailsDestinationViewModel? detailsDestination = await this.destinationService
-                                                                            .GetDetailsDestination(id, userId);
+                                                                            .GetDetailsDestinationAsync(id, userId);
+
+                if (detailsDestination == null)
+                {
+                    return this.RedirectToAction(nameof(Index)); 
+                }
 
                 return this.View(detailsDestination);
             }
@@ -97,15 +118,16 @@ namespace Horizons.Web.Controllers
         {
             try
             {
-                string? userId = this.GetUserId();
-                EditDestinationViewModel? editDestination = await this.destinationService.GetEditDestination(id, userId);
+                string userId = this.GetUserId()!;
+                EditDestinationInputModel? editDestination = await this.destinationService
+                                                                        .GetEditDestinationAsync(id, userId);
 
                 if (editDestination == null)
                 {
                     return this.RedirectToAction(nameof(Index));
                 }
 
-                editDestination.Terrains = await this.terrainService.GetSelectListTerrain();
+                editDestination.Terrains = await this.terrainService.GetSelectListTerrainAsync();
 
                 return this.View(editDestination);
             }
@@ -114,24 +136,29 @@ namespace Horizons.Web.Controllers
                 Console.WriteLine(e.Message);
 
                 return RedirectToAction(nameof(Index));
-                throw;
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditDestinationViewModel inputEditDestinationModel)
+        public async Task<IActionResult> Edit(EditDestinationInputModel inputEditDestinationModel)
         {
-            if (ModelState.IsValid == false)
-            {
-                inputEditDestinationModel.Terrains = await this.terrainService.GetSelectListTerrain();
-                return this.View(inputEditDestinationModel);
-            }
-
             try
             {
-                string? userId = this.GetUserId();
+                if (ModelState.IsValid == false)
+                {
+                    inputEditDestinationModel.Terrains = await this.terrainService.GetSelectListTerrainAsync();
+                    return this.View(inputEditDestinationModel);
+                }
 
-                bool isSuccessfyl = await this.destinationService.EditDestinationAsync(inputEditDestinationModel, userId);
+                string userId = this.GetUserId()!;
+                bool result = await this.destinationService.EditDestinationAsync(inputEditDestinationModel, userId);
+                inputEditDestinationModel.Terrains = await this.terrainService.GetSelectListTerrainAsync();
+
+                if (result == false)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Fatal error occurred while updating the destination!");
+                    return this.View(inputEditDestinationModel);
+                }
 
                 return this.RedirectToAction(nameof(Details), new {id = inputEditDestinationModel.Id});
             }
@@ -139,33 +166,55 @@ namespace Horizons.Web.Controllers
             {
                 Console.WriteLine(e.Message);
 
-                return this.RedirectToAction(nameof(Details), new { id = inputEditDestinationModel.Id });
+                return this.RedirectToAction(nameof(Index));
             }
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            DeleteDestinationViewModel? deleteDestination = await this.destinationService.GetDeleteDestination(id);
-
-            string? userId = this.GetUserId();
-
-            if (deleteDestination!= null && deleteDestination.PublisherId == userId)
+            try
             {
-                return this.View(deleteDestination);
-            }
+                string userId = this.GetUserId()!;
 
-            return this.RedirectToAction(nameof(Details), new { id = id });
+                DeleteDestinationInputModel? deleteDestinationViewModel = await this.destinationService
+                                                                                   .GetDeleteDestinationAsync(id, userId);
+
+                if (deleteDestinationViewModel == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+                return this.View(deleteDestinationViewModel);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return this.RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(DeleteDestinationViewModel? inputDeleteDestinationModel)
+        public async Task<IActionResult> Delete(DeleteDestinationInputModel inputDeleteDestinationModel)
         {
             try
             {
-                string? userId = this.GetUserId();
+                if (this.ModelState.IsValid == false)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Please do not modify the page!");
+                    return this.View(inputDeleteDestinationModel);
+                }
 
-                bool isSuccessfyl = await this.destinationService.DeleteDestination(inputDeleteDestinationModel, userId);
+                string userId = this.GetUserId()!;
+
+                bool isSuccessfyl = await this.destinationService.SoftDeleteDestinationAsync(inputDeleteDestinationModel, userId);
+
+                if (isSuccessfyl == false)
+                {
+                    this.ModelState.AddModelError(string.Empty, "Fatal error occurred while deleting the destination!");
+                    return this.View(inputDeleteDestinationModel);
+                }
 
                 return this.RedirectToAction(nameof(Index));
             }
@@ -181,9 +230,13 @@ namespace Horizons.Web.Controllers
         {
             try
             {
-                string? userId = this.GetUserId();
+                string userId = this.GetUserId()!;
                 IEnumerable<FavoritesDestinationViewModel>? favorites = await this.destinationService
-                                                                                .GetAllFavoritesDestinations(userId);
+                                                                                .GetUserFavoritesDestinationsAsync(userId);
+                if (favorites == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
 
                 return this.View(favorites);
             }
@@ -197,15 +250,26 @@ namespace Horizons.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddToFavorites(int id)
+        public async Task<IActionResult> AddToFavorites(int? id)
         {
             try
             {
-                string? userId = this.GetUserId();
+                if (id == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
 
-                await this.destinationService.AddDestinationToFavorites(id, userId);
+                string userId = this.GetUserId()!;
 
-                return this.RedirectToAction(nameof(Index));
+                bool addFavoriteDestinationResult =  await this.destinationService
+                                                                .AddDestinationToFavoritesAsync(id.Value, userId);
+
+                if (addFavoriteDestinationResult == false)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
+
+                return this.RedirectToAction(nameof(Favorites));
             }
             catch (Exception e)
             {
@@ -216,14 +280,24 @@ namespace Horizons.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RemoveFromFavorites(int id)
+        public async Task<IActionResult> RemoveFromFavorites(int? id)
         {
             try
             {
-                string? userId = this.GetUserId();
+                if (id == null)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
 
-                await this.destinationService.RemoveDestinationFromFavorite(id, userId);
+                string userId = this.GetUserId()!;
 
+                bool removeFavoriteDestinationResult = await this.destinationService
+                                                                .RemoveDestinationFromFavorite(id.Value, userId);
+
+                if (removeFavoriteDestinationResult == false)
+                {
+                    return this.RedirectToAction(nameof(Index));
+                }
 
                 return this.RedirectToAction(nameof(Favorites));
 

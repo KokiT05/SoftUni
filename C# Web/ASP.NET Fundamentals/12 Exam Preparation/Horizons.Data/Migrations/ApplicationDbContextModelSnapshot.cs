@@ -74,7 +74,7 @@ namespace Horizons.Data.Migrations
                             ImageUrl = "https://img.etimg.com/thumb/msid-112831459,width-640,height-480,imgsize-2180890,resizemode-4/rila-monastery-bulgaria.jpg",
                             IsDeleted = false,
                             Name = "Rila Monastery",
-                            PublishedOn = new DateTime(2025, 8, 19, 17, 21, 31, 78, DateTimeKind.Local).AddTicks(2966),
+                            PublishedOn = new DateTime(2025, 8, 27, 10, 2, 29, 742, DateTimeKind.Local).AddTicks(656),
                             PublisherId = "7699db7d-964f-4782-8209-d76562e0fece",
                             TerrainId = 1
                         },
@@ -85,7 +85,7 @@ namespace Horizons.Data.Migrations
                             ImageUrl = "https://travelplanner.ro/blog/wp-content/uploads/2023/01/durankulak-beach-1-850x550.jpg.webp",
                             IsDeleted = false,
                             Name = "Durankulak Beach",
-                            PublishedOn = new DateTime(2025, 8, 19, 17, 21, 31, 78, DateTimeKind.Local).AddTicks(3034),
+                            PublishedOn = new DateTime(2025, 8, 27, 10, 2, 29, 742, DateTimeKind.Local).AddTicks(732),
                             PublisherId = "7699db7d-964f-4782-8209-d76562e0fece",
                             TerrainId = 2
                         },
@@ -96,7 +96,7 @@ namespace Horizons.Data.Migrations
                             ImageUrl = "https://detskotobnr.binar.bg/wp-content/uploads/2017/11/Diavolsko_garlo_17.jpg",
                             IsDeleted = false,
                             Name = "Devil's Throat Cave",
-                            PublishedOn = new DateTime(2025, 8, 19, 17, 21, 31, 78, DateTimeKind.Local).AddTicks(3038),
+                            PublishedOn = new DateTime(2025, 8, 27, 10, 2, 29, 742, DateTimeKind.Local).AddTicks(736),
                             PublisherId = "7699db7d-964f-4782-8209-d76562e0fece",
                             TerrainId = 7
                         });
@@ -298,15 +298,15 @@ namespace Horizons.Data.Migrations
                         {
                             Id = "7699db7d-964f-4782-8209-d76562e0fece",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "70679938-1818-49ba-9272-aff4dd9c5b14",
+                            ConcurrencyStamp = "393c84a0-beb0-4e61-818a-4f95c350e3e0",
                             Email = "admin@horizons.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@HORIZONS.COM",
                             NormalizedUserName = "ADMIN@HORIZONS.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENR8I/c+aebr5GsIApCCNtjwHnq92y6N/6oqZUMAVTA/iGGBAa5A1Jw6bDroLdtiQA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFV3m2WolH8XIuG30lJ/8VkJtujnH5QUDbwPyxlvHGM0Rk+ZbB5ho/EGCEHdYMnSow==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f816dad4-1af0-4896-882b-e66eda1e6b8a",
+                            SecurityStamp = "61f0281d-38f2-45cd-9d4f-a6f6f925a8a0",
                             TwoFactorEnabled = false,
                             UserName = "admin@horizons.com"
                         });
@@ -402,7 +402,7 @@ namespace Horizons.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Publisher")
                         .WithMany()
                         .HasForeignKey("PublisherId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Horizons.Data.Models.Terrain", "Terrain")

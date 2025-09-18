@@ -18,9 +18,9 @@ namespace Horizons.Services.Core
             this.applicationDbContext = applicationDbContext;
         }
 
-        public async Task<ICollection<SelectListTerrainViewModel>> GetSelectListTerrain()
+        public async Task<IEnumerable<SelectListTerrainViewModel>> GetSelectListTerrainAsync()
         {
-            ICollection<SelectListTerrainViewModel> selectListTerrain = await applicationDbContext.Terrains
+            IEnumerable<SelectListTerrainViewModel> selectListTerrain = await applicationDbContext.Terrains
                                                                         .AsNoTracking()
                                                                         .Select(t => new SelectListTerrainViewModel()
                                                                         {

@@ -11,23 +11,21 @@ namespace Horizons.Web.Controllers
 
         protected bool IsAuthenticate()
         {
-            bool? isAuthenticate = this.User.Identity?.IsAuthenticated;
-            if (isAuthenticate == null)
-            {
-                return false;
-            }
-
-            return isAuthenticate.Value;
+            return this.User.Identity?.IsAuthenticated ?? false;
         }
 
         protected string? GetUserId()
         {
-            if (this.IsAuthenticate() == false)
+            string? userId = null;
+
+            bool isAuthenticated = this.IsAuthenticate();
+
+            if (isAuthenticated)
             {
-                return null;
+                userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             }
 
-            return this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return userId;
         }
     }
 }

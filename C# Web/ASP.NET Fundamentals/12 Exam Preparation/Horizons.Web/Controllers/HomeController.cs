@@ -9,9 +9,26 @@
 
     public class HomeController : BaseController
     {
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Index()
         {
+            try
+            {
+                if (this.IsAuthenticate())
+                {
+                    return this.RedirectToAction(nameof(Index), "Destination");
+                }
+
+                return this.View();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return this.RedirectToAction(nameof(Index));
+            }
+
             return View();
         }
 

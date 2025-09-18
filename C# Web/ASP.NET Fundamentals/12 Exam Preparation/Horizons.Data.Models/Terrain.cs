@@ -12,6 +12,6 @@ namespace Horizons.Data.Models
 
         public string Name { get; set; } = null!;
 
-        public ICollection<Destination> Destinations { get; set; } = new List<Destination>();
+        public virtual ICollection<Destination> Destinations { get; set; } = new HashSet<Destination>();
     }
 }

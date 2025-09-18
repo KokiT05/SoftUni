@@ -19,16 +19,16 @@ namespace Horizons.Data.Models
 
         public string PublisherId { get; set; } = null!;
 
-        public IdentityUser Publisher { get; set; } = null!;
+        public virtual IdentityUser Publisher { get; set; } = null!;
 
         public DateTime PublishedOn { get; set; }
 
         public int TerrainId { get; set; }
 
-        public Terrain Terrain { get; set; } = null!;
+        public virtual Terrain Terrain { get; set; } = null!;
 
         public bool IsDeleted { get; set; } = false;
 
-        public ICollection<UserDestination> UsersDestinations {  get; set; } = new List<UserDestination>();
+        public virtual ICollection<UserDestination> UsersDestinations {  get; set; } = new HashSet<UserDestination>();
     }
 }

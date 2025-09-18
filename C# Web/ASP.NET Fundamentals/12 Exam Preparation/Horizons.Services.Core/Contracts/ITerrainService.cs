@@ -9,6 +9,6 @@ namespace Horizons.Services.Core.Contracts
 {
     public interface ITerrainService
     {
-        Task<ICollection<SelectListTerrainViewModel>> GetSelectListTerrain();
+        Task<IEnumerable<SelectListTerrainViewModel>> GetSelectListTerrainAsync();
     }
 }
