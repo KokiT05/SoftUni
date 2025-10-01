@@ -12,18 +12,21 @@ for (int i = 1; i <= n; i++)
     {
         stack.Push(input[1]);
     }
-    else if (command == 2)
+    else if (command == 2 && stack.Count > 0)
     {
         stack.Pop();
     }
-    else if (command == 3)
+    else if (command == 3 && stack.Count > 0)
     {
         Console.WriteLine(stack.Max());
     }
-    else if (command == 4)
+    else if (command == 4 && stack.Count > 0)
     {
         Console.WriteLine(stack.Min());
     }
 }
 
-Console.WriteLine(string.Join(", ", stack));
+if (stack.Count > 0)
+{
+    Console.WriteLine(string.Join(", ", stack));
+}
