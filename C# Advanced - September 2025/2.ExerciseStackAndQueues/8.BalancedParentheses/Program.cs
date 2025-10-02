@@ -1,36 +1,96 @@
 ﻿string input = Console.ReadLine()!;
 
-Stack<char> balancedParentheses = new Stack<char>(input.Substring(0, input.Length / 2));
-int startIndex = 0;
-if (input.Length % 2 == 0)
+int middleIndex = 0;
+if (input.Length % 2 != 0)
 {
-    startIndex = input.Length / 2;
+	middleIndex = input.Length / 2;
+}
+
+int currentIdex = 0;
+Stack<char> balancedParentheses = new Stack<char>();
+for (int i = 0; i < input.Length; i++)
+{
+	if (input[middleIndex] != ' ')
+	{
+        if ((input[i] == '(') ||
+                        (input[i] == '[') ||
+                        (input[i] == '{') ||
+                        (input[i] == ' '))
+        {
+            balancedParentheses.Push(input[i]);
+        }
+		else if(balancedParentheses.Count > 0)
+		{
+			char currentElement = balancedParentheses.Peek();
+
+            if ((currentElement == '(' && input[i] == ')') ||
+                (currentElement == '[' && input[i] == ']') ||
+                (currentElement == '{' && input[i] == '}') ||
+                (currentElement == ' ' && input[i] == ' '))
+            {
+                currentIdex = i;
+                balancedParentheses.Pop();
+            }
+        }
+    }
+}
+
+if (balancedParentheses.Count == 0 && currentIdex == input.Length - 1)
+{
+    Console.WriteLine("YES");
+
 }
 else
 {
-    startIndex = (input.Length / 2) + 1;
+    Console.WriteLine("NO");
 }
 
-for (int i = startIndex; i <= input.Length && balancedParentheses.Count > 0; i++)
-{
-    char currentElement = balancedParentheses.Peek();
-    char currentElemetInput = input[i];
+//Stack<char> openParentheses;
+//Queue<char> closeParentheses;
 
-    if (currentElement == '(' && currentElemetInput == ')' ||
-        currentElement == '[' && currentElemetInput == ']' ||
-        currentElement == '{' && currentElemetInput == '}' ||
-        currentElement == ' ' && currentElemetInput == ' ')
-    {
-        balancedParentheses.Pop();
-    }
-    else
-    {
-        Console.WriteLine($"NO");
-        break;
-    }
-}
+//int middleIndex = 0;
+//if (input.Length % 2 != 0)
+//{
+//    middleIndex = (input.Length / 2);
+//    openParentheses = new Stack<char>(input.Substring(0, (input.Length - middleIndex)));
 
-if (balancedParentheses.Count == 0)
-{
-    Console.WriteLine($"YES");
-}
+
+//    closeParentheses = new Queue<char>(input.Substring(middleIndex, (input.Length - middleIndex)));
+//}
+//else
+//{
+//    openParentheses = new Stack<char>(input.Substring(0, input.Length / 2));
+//    closeParentheses = new Queue<char>(input.Substring(input.Length / 2, input.Length / 2));
+//}
+
+////Console.WriteLine(string.Join(',', openParentheses));
+////Console.WriteLine(string.Join(',', closeParentheses));
+
+//while (openParentheses.Count > 0 && closeParentheses.Count > 0)
+//{
+//    char OpenElement = openParentheses.Peek();
+//    char closeElement = closeParentheses.Peek();
+
+//    if ((OpenElement == '(' && closeElement == ')') ||
+//        (OpenElement == '[' && closeElement == ']') ||
+//        (OpenElement == '{' && closeElement == '}') ||
+//        (OpenElement == ' ' && closeElement == ' '))
+//    {
+//        openParentheses.Pop();
+//        closeParentheses.Dequeue();
+//    }
+//    else
+//    {
+//        Console.WriteLine($"NO");
+//        return;
+//    }
+//}
+
+//if (openParentheses.Count == 0 && closeParentheses.Count == 0)
+//{
+//    Console.WriteLine($"YES");
+//}
+//else
+//{
+//    Console.WriteLine("NO");
+//}
