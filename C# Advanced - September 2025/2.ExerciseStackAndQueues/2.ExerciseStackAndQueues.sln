@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8.BalancedParentheses", "8.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "9.SimpleTextEditor", "9.SimpleTextEditor\9.SimpleTextEditor.csproj", "{89C429D8-4512-4840-A079-11C530EA02FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.Crossroads", "10.Crossroads\10.Crossroads.csproj", "{B4B58B81-C004-42F2-BEF4-3656577B48C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10.Crossroads", "10.Crossroads\10.Crossroads.csproj", "{B4B58B81-C004-42F2-BEF4-3656577B48C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11.KeyRevolver", "11.KeyRevolver\11.KeyRevolver.csproj", "{7383EB3B-090D-40A1-8E44-88FE9EA445D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12.CupsАndBottles", "12.CupsАndBottles\12.CupsАndBottles.csproj", "{613856EE-A483-4694-B70A-DC4999F39759}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{B4B58B81-C004-42F2-BEF4-3656577B48C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4B58B81-C004-42F2-BEF4-3656577B48C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4B58B81-C004-42F2-BEF4-3656577B48C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7383EB3B-090D-40A1-8E44-88FE9EA445D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7383EB3B-090D-40A1-8E44-88FE9EA445D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7383EB3B-090D-40A1-8E44-88FE9EA445D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7383EB3B-090D-40A1-8E44-88FE9EA445D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613856EE-A483-4694-B70A-DC4999F39759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613856EE-A483-4694-B70A-DC4999F39759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613856EE-A483-4694-B70A-DC4999F39759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613856EE-A483-4694-B70A-DC4999F39759}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
