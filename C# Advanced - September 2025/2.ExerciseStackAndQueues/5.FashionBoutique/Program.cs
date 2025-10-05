@@ -7,27 +7,29 @@ int capacityRack = int.Parse(Console.ReadLine()!);
 int clothingSum = 0;
 int numbersRack = 0;
 
-if (stack.Count > 0 && capacityRack > 0)
-{
-	numbersRack = 1;
+//if (stack.Count > 0 && capacityRack > 0)
+//{
+//	numbersRack = 1;
 
-}
+//}
 
 
 for (int i = 0; i < clothesBox.Length; i++)
 {
-	clothingSum += stack.Pop();
+	clothingSum += stack.Peek();
 
-	if (clothingSum > capacityRack)
-	{
-		numbersRack++;
-		clothingSum -= capacityRack;
-	}
-	else if (clothingSum == capacityRack && stack.Count > 0)
+	if (clothingSum == capacityRack)
 	{
 		numbersRack++;
 		clothingSum = 0;
 	}
+	else if (clothingSum > capacityRack)
+	{
+		numbersRack++;
+		clothingSum = stack.Peek();
+	}
+
+    stack.Pop();
 
 }
 
